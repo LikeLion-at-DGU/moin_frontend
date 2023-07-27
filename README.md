@@ -21,6 +21,7 @@ React, jsx
 ## 1. 프로젝트 명
 
 모두의 인공지능, 모인 
+<br/>
 <img width="432" alt="Screenshot 2023-07-27 at 6 23 38 PM" src="https://github.com/LikeLion-at-DGU/moin_frontend/assets/78739194/999527ec-36ca-4d8a-9f4c-91f6137c6c17">
 
 
