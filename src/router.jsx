@@ -1,7 +1,7 @@
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Main from "./pages/main/Main";
 import { styled } from "styled-components";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/layouts/NavBar";
 
 
 const Wrapper = styled.div`

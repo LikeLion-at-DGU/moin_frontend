@@ -23,7 +23,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     vertical-align: baseline;
     font: inherit;
-    font-size: 100%;
+    font-size: 15px;
+    @media (max-width: 768px) {
+        font-size: 10px;
+}
   }
   article, aside, details, figcaption, figure,
   footer, header, hgroup, main, menu, nav, section {
