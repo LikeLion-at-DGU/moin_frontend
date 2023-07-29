@@ -23,9 +23,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     vertical-align: baseline;
     font: inherit;
-    font-size: 20px;
+    font-size: 15px;
     @media (max-width: 768px) {
-        font-size: 12px;
+        font-size: 10px;
 }
   }
   article, aside, details, figcaption, figure,
