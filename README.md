@@ -1,5 +1,7 @@
 <div><img src="https://capsule-render.vercel.app/api?type=waving&color=0:99cc99,100:009630&height=200&section=header&text=Moin&fontSize=90" /></div>
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLikeLion-at-DGU%2Fmoin_frontend&count_bg=%236E79C9&title_bg=%23828282&icon=&icon_color=%23E7E7E7&title=%EB%AA%A8%EC%9D%B8+%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C&edge_flat=false)](https://hits.seeyoufarm.com)
+
 모두의 인공지능, 모인 프론트엔드 Repo입니다 :)
 
 # 👋 팀원 소개
