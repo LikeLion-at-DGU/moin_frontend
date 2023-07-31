@@ -26,7 +26,8 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 15px;
     @media (max-width: 768px) {
         font-size: 10px;
-}
+    }
+    font-family: "Pretendard";
   }
   article, aside, details, figcaption, figure,
   footer, header, hgroup, main, menu, nav, section {
