@@ -1,30 +1,11 @@
-import Main from "./pages/main/Main";
-import { styled } from "styled-components";
-import NavBar from "./components/layouts/NavBar";
+import { createBrowserRouter } from "react-router-dom";
 
-import { createBrowserRouter, Outlet } from "react-router-dom";
-import NotFoundError from "./pages/Error/NotFound";
-import Login from "./pages/Auth/login";
 import App from "./App";
 
+import Main from "./pages/main/Main";
+import Login from "./pages/Auth/login";
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-export const Layout = () => {
-  return (
-    <>
-    <Wrapper>
-      <NavBar />
-      <Outlet />
-    </Wrapper>
-    </>
-  );
-};
+import NotFoundError from "./pages/Error/NotFound";
 
 const router = createBrowserRouter([
   {
