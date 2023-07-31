@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function MainCard() {
-  return (
-    <div>MainCard</div>
-  )
+  return <>MainCard</>;
 }
 
-export default MainCard
+export default MainCard;
