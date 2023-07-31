@@ -3,8 +3,9 @@ import { styled } from "styled-components";
 import NavBar from "./components/layouts/NavBar";
 
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import Error from "./pages/Error";
+import NotFoundError from "./pages/Error/NotFound";
 import Login from "./pages/Auth/login";
+import App from "./App";
 
 
 const Wrapper = styled.div`
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
 const Layout = () => {
   return (
     <>
+    <App/>
     <Wrapper>
       <NavBar />
       <Outlet />
@@ -25,20 +27,22 @@ const Layout = () => {
   );
 };
 
-
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Layout/>,
-    children: [
-      { path:"",
-        element:<Main/>,
-      },
-      { path:"login",
-        element:<Login/>
-      },
-    ],
-    errorElement: <Error/>,
+  path: "/",
+  element: <Layout/>,
+  children: [
+    { 
+    path:"",
+    element:<Main/>,
+    },
+
+    { 
+    path:"login",
+    element:<Login/>
+    },
+  ],
+  errorElement: <NotFoundError/>,
   },
 ]);
 
