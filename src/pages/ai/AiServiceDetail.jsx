@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function AiServiceDetail() {
-  return (
-    <div>AiServiceDetail</div>
-  )
+  return <></>;
 }
 
-export default AiServiceDetail
+export default AiServiceDetail;
