@@ -1,7 +1,7 @@
 import React from "react";
 
 function AiServiceDetail() {
-  return <></>;
+  return <>AiServiceDetail</>;
 }
 
 export default AiServiceDetail;
