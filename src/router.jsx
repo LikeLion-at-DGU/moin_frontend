@@ -15,10 +15,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-const Layout = () => {
+export const Layout = () => {
   return (
     <>
-    <App/>
     <Wrapper>
       <NavBar />
       <Outlet />
@@ -30,7 +29,7 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
   path: "/",
-  element: <Layout/>,
+  element: <App/>,
   children: [
     { 
     path:"",
