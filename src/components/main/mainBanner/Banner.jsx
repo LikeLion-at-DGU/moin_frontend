@@ -4,7 +4,7 @@ import * as S from "./style";
 function Banner() {
   return (
     <S.BannerWrapper>
-      <>banner</>
+      <>banner1</>
     </S.BannerWrapper>
   );
 }
