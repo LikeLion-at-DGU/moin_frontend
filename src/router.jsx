@@ -33,9 +33,9 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path:"AiService/:AiId",
-        element: <AiServiceDetail/>
-      },
+        path: "AiService/:AiId",
+        element: <AiServiceDetail />
+      }
     ],
     errorElement: <NotFoundError />
   }

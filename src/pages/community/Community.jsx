@@ -5,11 +5,11 @@ function Community() {
   return (
     <>
       Community
-      <div>커뮤니티(아직페이지없음...)</div>
-      <div>공지사항(아직페이지없음...)</div>
-      <a href={`/suggestion`}>건의사항</a>
+      <Link to={``}>커뮤니티</Link>
+      <Link to={``}>공지사항</Link>
+      <Link to={`/suggestion`}>건의사항</Link>
     </>
-  )
+  );
 }
 
 export default Community;

@@ -1,7 +1,7 @@
 import React from "react";
 
 function MainCard() {
-  return <div>MainCard</div>;
+  return <>MainCard</>;
 }
 
 export default MainCard;
