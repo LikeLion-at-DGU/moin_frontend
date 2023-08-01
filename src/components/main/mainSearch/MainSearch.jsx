@@ -1,7 +1,7 @@
 import React from "react";
 
 function MainSearch() {
-  return <>MainSearch</>;
+  return <div>MainSearch</div>;
 }
 
 export default MainSearch;
