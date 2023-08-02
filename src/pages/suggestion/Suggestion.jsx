@@ -1,7 +1,7 @@
 import React from "react";
 
 function Suggestion() {
-  return <div>suggestion</div>;
+  return <>suggestion</>;
 }
 
 export default Suggestion;
