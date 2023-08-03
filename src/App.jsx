@@ -8,7 +8,7 @@ import NavBar from "./components/layouts/NavBar";
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: 100%;
+  max-width: 1178px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,6 @@ const Layout = () => {
     </>
   );
 };
-
 
 function App() {
   return (
