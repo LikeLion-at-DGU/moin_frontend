@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./style";
 import MainSearch from "../../components/main/mainSearch/MainSearch";
-import MainCard from "../../components/main/mainCard/MainCard";
 import AiServiceList from "../../components/main/mainAiList/MainAiServiceList";
 import MainBannerList from "../../components/main/mainBanner/MainBannerList";
 
@@ -12,7 +11,6 @@ function Main() {
       {/* <S.MainDescription>설명</S.MainDescription> */}
       <MainBannerList />
 
-      {/* <MainCard /> 없애도될듯 */}
       <MainSearch />
 
       <AiServiceList />

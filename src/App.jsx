@@ -8,10 +8,11 @@ import NavBar from "./components/layouts/NavBar";
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: 1178px;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const Layout = () => {

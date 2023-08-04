@@ -4,10 +4,10 @@ export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 90vh;
+  justify-content: start;
+  height: 100%;
+  max-width: 1178px;
   width: 100%;
-  background-color: #f5f5f5;
 `;
 
 export const MainTitle = styled.h1`
