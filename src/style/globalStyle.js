@@ -23,9 +23,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     vertical-align: baseline;
     font: inherit;
-    font-size: 15px;
+    font-size: 10px;
     @media (max-width: 768px) {
-        font-size: 10px;
+        font-size: 7px;
     }
     font-family: "Pretendard";
   }

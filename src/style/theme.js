@@ -119,3 +119,4 @@ export const theme = {
   colors,
   fonts
 };
+export default colors;
