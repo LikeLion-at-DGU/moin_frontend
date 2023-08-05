@@ -1,4 +1,5 @@
 import { styled, keyframes } from "styled-components";
+import colors from "../../../style/theme";
 
 const fadeInAnimation = keyframes`
   from {
@@ -27,7 +28,7 @@ export const AuthInput = styled.input`
   font-weight: 500;
   padding-left: 3.1rem;
   font-size: 1.8rem;
-  color: #ff5d47;
+  color: ${colors.primary1};
   border-radius: 2.4rem;
   background: #f8f8fa;
   border: none;
@@ -36,7 +37,7 @@ export const AuthInput = styled.input`
 
   &:focus,
   &:not(:placeholder-shown) {
-    border: 0.2rem solid #ff5d47;
+    border: 0.2rem solid ${colors.primary1};
   }
 `;
 
@@ -93,5 +94,5 @@ export const LoginTitleWrapper = styled.div`
 export const LoginTitleStrong = styled.strong`
   font-weight: 900;
   font-size: 4rem;
-  color: #4285f4;
+  color: ${colors.primary1};
 `;

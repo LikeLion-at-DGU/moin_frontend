@@ -94,7 +94,7 @@ export default function Login() {
                     console.log("계정생성");
                   }}
                 >
-                  MOIN이 처음이신가요
+                  MOIN에 가입하고 더 많은 서비스를 누려보세요!
                 </S.AuthSignUpButton>
                 <S.AuthSocialButton
                   onClick={() => {

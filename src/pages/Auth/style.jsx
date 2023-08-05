@@ -1,4 +1,5 @@
 import { styled, keyframes } from "styled-components";
+import colors from "../../style/theme";
 
 const fadeInAnimation = keyframes`
   from {
@@ -20,6 +21,7 @@ export const AuthWrapper = styled.div`
   flex-grow: 1;
   padding-top: 10rem;
   margin-bottom: 10rem;
+  color: ${colors.black};
 `;
 
 export const AuthText = styled.div`
@@ -70,14 +72,14 @@ export const AuthButton = styled.button`
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
 
-  background: #ff5d47;
+  background: ${colors.primary1};
   /* orange */
   width: 56rem;
   height: 7.5rem;
   font-weight: 700;
   font-size: 2.4rem;
-  color: #ffffff;
-  box-shadow: 0rem 0.1rem 1rem rgba(255, 93, 71, 0.7);
+  color: ${colors.bg};
+  box-shadow: 0rem 0.1rem 1rem ${colors.primary1};
   border-radius: 4.4rem;
   margin-bottom: 4.1rem;
 `;
@@ -101,7 +103,7 @@ export const AuthSocialButton = styled.button`
   padding: 0rem 1.2rem 0rem 2.4rem;
   width: 40rem;
   height: 6.4rem;
-  background: #ffffff;
+  background: ${colors.bg};
   box-shadow: 0rem 0rem 0rem rgba(0, 0, 0, 0.08),
     0rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
   border-radius: 1.2rem;

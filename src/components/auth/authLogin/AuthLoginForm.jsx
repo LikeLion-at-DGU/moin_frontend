@@ -12,6 +12,7 @@ export default function AuthLoginForm(props) {
         name="email"
         onChange={handleInputChange}
         value={loginData.email}
+        isValid={loginData.email ? true : false}
       />
 
       <S.AuthInput
@@ -21,6 +22,7 @@ export default function AuthLoginForm(props) {
         name="pwd"
         onChange={handleInputChange}
         value={loginData.pwd}
+        isValid={loginData.pwd ? true : false}
       />
     </S.AuthInputWrapper>
   );
