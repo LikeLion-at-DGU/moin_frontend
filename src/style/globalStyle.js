@@ -113,6 +113,12 @@ export const GlobalStyle = createGlobalStyle`
       outline: none;
     }
   }
+  select{
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
 
   @font-face {
     font-family: 'GmarketSansMedium';
