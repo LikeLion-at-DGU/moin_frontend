@@ -89,3 +89,8 @@ export const LoginTitleWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const LoginTitleStrong = styled.strong`
+  font-weight: 900;
+  color: #4285f4;
+`;
