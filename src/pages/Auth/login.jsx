@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
 // 구글 이미지
-// import GoogleIcon from "../../assets/images/icon/google.png";
+import GoogleIcon from "../../assets/images/icon/google.png";
+import MoinIcon from "../../assets/images/moin_logo.png";
+// 컴포넌트
 import AuthLoginTitle from "../../components/auth/authLogin/AuthLoginTitle";
 import AuthLoginForm from "../../components/auth/authLogin/AuthLoginForm";
 
@@ -86,7 +88,7 @@ export default function Login() {
               />
 
               <S.AuthButtonWrapper>
-                <S.AuthButton type="submit">로그인</S.AuthButton>
+                <S.AuthButton type="submit">MO:IN에 로그인</S.AuthButton>
                 {/* 구글 로그인 */}
                 <S.AuthSignUpButton
                   type="button"
@@ -98,10 +100,20 @@ export default function Login() {
                 </S.AuthSignUpButton>
                 <S.AuthSocialButton
                   onClick={() => {
+                    console.log("자체회원가입");
+                  }}
+                >
+                  <S.AuthSocialButtonImg src={MoinIcon} alt="구글 로고" />
+                  <S.AuthSocialButtonText style={{ margin: "0 auto" }}>
+                    Moin 회원가입
+                  </S.AuthSocialButtonText>
+                </S.AuthSocialButton>
+                <S.AuthSocialButton
+                  onClick={() => {
                     console.log("구글계정생성");
                   }}
                 >
-                  {/* <GoogleIcon /> */}
+                  <S.AuthSocialButtonImg src={GoogleIcon} alt="구글 로고" />
                   <S.AuthSocialButtonText style={{ margin: "0 auto" }}>
                     Google 로그인
                   </S.AuthSocialButtonText>

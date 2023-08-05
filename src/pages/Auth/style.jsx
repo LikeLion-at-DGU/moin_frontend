@@ -74,9 +74,9 @@ export const AuthButton = styled.button`
 
   background: ${colors.primary1};
   /* orange */
-  width: 56rem;
-  height: 7.5rem;
-  font-weight: 700;
+  width: 40rem;
+  height: 6rem;
+  font-weight: 600;
   font-size: 2.4rem;
   color: ${colors.bg};
   box-shadow: 0rem 0.1rem 1rem ${colors.primary1};
@@ -115,4 +115,10 @@ export const AuthSocialButtonText = styled.p`
   margin: 0 auto;
   font-size: 2rem;
   font-weight: 600;
+`;
+
+// 구글 로그인 아이콘
+export const AuthSocialButtonImg = styled.img`
+  width: 3rem;
+  height: 3rem;
 `;
