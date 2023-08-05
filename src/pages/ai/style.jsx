@@ -22,7 +22,6 @@ export const AiServiceDetailBanner = styled.div`
 export const AiServiceDetailHeader = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: aliceblue; */
   color: #fff;
   position: relative;
 `;
@@ -32,7 +31,6 @@ export const AiServiceDetailShare = styled.div`
   margin-top: 2.9rem;
   margin-right: 3.5rem;
   justify-content: right;
-  /* background-color: pink; */
 `;
 
 export const AiServiceDetailShareImg = styled.img`
@@ -66,13 +64,6 @@ export const AiServiceThumbnail = styled.div`
 export const AiServiceThumbnailImg = styled.img`
   width: 44.2rem;
   height: 39.4rem;
-  /* z-index: 0;
-  position: absolute;
-  transform: translate(0, -50%);
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: auto; */
 `;
 
 export const AiServiceDetailContentDescription = styled.div`
@@ -137,6 +128,7 @@ export const AiServiceDetailContentDescriptionJobContent = styled.div`
   display: flex;
   font-size: 1.3rem;
   font-weight: 500;
+  margin-right: 0.8rem;
 `;
 
 export const AiServiceDetailContentDescriptionStar = styled.div`
@@ -153,7 +145,6 @@ export const AiServiceDetailContentDescriptionStarCnt = styled.div`
   display: flex;
   font-size: 1.4rem;
   margin-left: 1rem;
-  /* margin-left: 41.5rem; */
 `;
 
 export const AiServiceDetailContentDescriptionKeywordWrap = styled.div`
@@ -180,12 +171,6 @@ export const AiServiceDetailContentDescriptionBottom = styled.div`
 
 export const AiServiceDetailContentDescriptionBottomLink = styled.div`
   margin-top: 3.8rem;
-  /* font-size: 1.3rem;
-  font-weight: 700; */
-  /* border: 0.2rem solid #4285f4;
-  border-radius: 5px;
-  padding: 1rem; */
-  /* color: #4285f4; */
 `;
 
 export const AiServiceDetailContentDescriptionBottomLinkBox = styled.div`
@@ -205,14 +190,11 @@ export const AiServiceDetailContentDescriptionBottomHeart = styled.div`
   text-align: center;
   flex-direction: column;
   margin-right: 2rem;
-
-  /* position: relative; */
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeartIcon = styled.div`
   display: flex;
   margin-top: 2.5rem;
-  /* position: absolute; */
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeartCnt = styled.div`
