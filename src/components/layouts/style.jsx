@@ -41,4 +41,5 @@ export const NavBarMenu = styled.div`
 // NavLink
 export const NavLink = styled(Link)`
   font-size: 1.5rem;
+  font-weight: 600;
 `;
