@@ -7,7 +7,8 @@ import Community from "./pages/community/Community";
 import Notice from "./pages/notice/About";
 import Suggestion from "./pages/suggestion/Suggestion";
 import About from "./pages/about/About";
-import Login from "./pages/auth/login";
+import Login from "./pages/auth/Login";
+import Profile from "./pages/profile/Profile";
 
 import AiServiceDetail from "./pages/ai/AiServiceDetail";
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />
+      },
+      {
+        path: "mypage",
+        element: <Profile />
       },
       {
         path: "AiService/:AiId",
