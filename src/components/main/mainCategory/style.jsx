@@ -20,6 +20,7 @@ export const MainCategoryWrapper = styled.div`
 `;
 
 export const MainCategoryTitle = styled.div`
+  font-size: 1.5rem;
   width: 60px;
   flex-shrink: 0;
   color: ${props => props.theme.colors.primary1};
@@ -41,6 +42,7 @@ export const MainCategoryTagListWrapper = styled.div`
 `;
 
 export const MainCategoryTagWrapper = styled.div`
+  font-size: 1.5rem;
   height: 100%;
   padding: 0 1.5rem;
   margin: 0 0.5rem;

@@ -80,10 +80,14 @@ export const AiServiceBody = styled.div`
   padding: 0 2rem;
 `;
 
-export const AiServiceTitle = styled.div``;
+export const AiServiceTitle = styled.div`
+  font-size: 2.5rem;
+  font-weight: 700;
+`;
 
 export const AiServiceDescription = styled.div`
-  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  padding: 1rem 0;
 `;
 
 export const AiServiceStar = styled.div`

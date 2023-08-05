@@ -19,10 +19,10 @@ export const MainTitleWrapper = styled.div`
 `;
 
 export const MainTitle = styled.h1`
-  /* font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #333; */
-`;
-export const MainDescription = styled.p`
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.colors.primary1};
 `;

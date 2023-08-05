@@ -6,6 +6,8 @@ import MainBannerList from "../../components/main/mainBanner/MainBannerList";
 import MainCategory from "../../components/main/mainCategory/MainCategory";
 import Selector from "../../components/selector/Selector";
 
+import { AiOutlineSearch } from "react-icons/ai";
+
 function Main() {
   const categories = [
     { title: "직군", tags: ["전체", "개발자", "디자인"] },
@@ -24,8 +26,6 @@ function Main() {
   ];
   return (
     <S.MainWrapper>
-      {/* <S.MainTitle>타이틀</S.MainTitle> */}
-      {/* <S.MainDescription>설명</S.MainDescription> */}
       <MainBannerList />
 
       <MainSearch />
@@ -36,7 +36,9 @@ function Main() {
       <MainCategory category={categories[1]} />
 
       <S.MainTitleWrapper>
-        <S.MainTitle>모아보기</S.MainTitle>
+        <S.MainTitle>
+          <AiOutlineSearch size={"25px"} /> 모아보기
+        </S.MainTitle>
         <Selector />
       </S.MainTitleWrapper>
 
