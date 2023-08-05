@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const NavBarWrapper = styled.div`
@@ -10,7 +11,7 @@ export const NavBarWrapper = styled.div`
   width: 100%;
   max-width: 1178px;
   height: 60px;
-  padding: 0 20px;
+  padding: 0 2rem;
   position: relative;
   z-index: 1;
 
@@ -27,12 +28,17 @@ export const NavBarMenu = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 60%;
-  height: 60px;
-  padding: 0 20px;
+  height: 6rem;
+  padding: 0 2rem;
   position: relative;
   z-index: 1;
 
   @media (max-width: 768px) {
-    padding: 0 10px;
+    padding: 0 0.7rem;
   }
+`;
+
+// NavLink
+export const NavLink = styled(Link)`
+  font-size: 1.5rem;
 `;

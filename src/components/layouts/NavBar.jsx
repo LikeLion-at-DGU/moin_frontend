@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
 import * as S from "./style";
 
 export default function NavBar() {
   return (
     <S.NavBarWrapper>
-      <Link to={`/`}>MO:IN</Link>
+      <S.NavLink to={`/`}>MO:IN</S.NavLink>
       <S.NavBarMenu>
-        <Link to={`/community`}>커뮤니티</Link>
-        <Link to={`/notice`}>공지사항</Link>
-        <Link to={`/suggestion`}>건의사항</Link>
-        <Link to={`/about`}>About</Link>
-        <Link to={`/login`}>Login</Link>
+        <S.NavLink to={`/community`}>커뮤니티</S.NavLink>
+        <S.NavLink to={`/notice`}>공지사항</S.NavLink>
+        <S.NavLink to={`/suggestion`}>건의사항</S.NavLink>
+        <S.NavLink to={`/about`}>About</S.NavLink>
+        <S.NavLink to={`/login`}>Login</S.NavLink>
       </S.NavBarMenu>
     </S.NavBarWrapper>
   );
