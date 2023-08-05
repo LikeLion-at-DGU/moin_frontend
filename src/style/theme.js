@@ -19,7 +19,15 @@ import { css } from "styled-components";
 const colors = {
   primary1: "#4285F4",
   primary2: "#78AAFE",
-  bg: "#FFFFFF"
+  bg: "#FFFFFF",
+  gray1: "#F8F8FA",
+  gray2: "#EEEFF3",
+  gray3: "#DEDFE5",
+  gray4: "#AEAFB9",
+  gray5: "#606067",
+  gray6: "#E4E4E4",
+  gray7: "#E2E2E2",
+  black: "#282828"
 };
 
 function FONT({ weight, size, lineHeight }) {

@@ -3,12 +3,11 @@ import * as S from "./style";
 import Banner from "./banner";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css/autoplay";
 
 // 나중에 베너 데이터 생기면 삭제할게요!
 import bannerImg1 from "./banner1.png";
@@ -21,9 +20,9 @@ function MainBannerList() {
       <S.BannerListWrapper>
         <Swiper
           slidesPerView={1}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          navigation
-          // pagination={{ clickable: true }}
+          modules={[Pagination, Autoplay]}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
         >
           {banners.map(banner => (
             <SwiperSlide key={banner}>
