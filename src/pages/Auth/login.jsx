@@ -62,6 +62,9 @@ export default function Login() {
 
     // 메인 페이지로 이동
     navigate("/");
+
+    // 페이지 새로고침
+    window.location.reload();
   };
   const handleLogout = () => {
     // 로그아웃 시

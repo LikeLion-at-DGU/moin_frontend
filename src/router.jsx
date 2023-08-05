@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path: "profile",
+        path: "mypage",
         element: <Profile />
       },
       {
