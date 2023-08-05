@@ -17,11 +17,13 @@ export const AuthInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
+  text-align: center;
 `;
 
 export const AuthInput = styled.input`
   display: flex;
   flex-direction: column;
+
   margin: 0.5rem;
   width: 56rem;
   height: 8rem;
@@ -34,6 +36,10 @@ export const AuthInput = styled.input`
   border: none;
   outline: none;
   transition: border 0.3s;
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 0.5rem auto;
+  }
 
   &:focus,
   &:not(:placeholder-shown) {
