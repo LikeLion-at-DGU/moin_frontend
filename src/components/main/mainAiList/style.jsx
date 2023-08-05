@@ -7,6 +7,10 @@ export const MainAiServiceListWrapper = styled.div`
   justify-content: start;
 
   width: 100%;
+
+  position: relative;
+  padding-bottom: 6rem;
+  margin-bottom: 1rem;
 `;
 
 export const MainAiServiceListTitle = styled.div`
@@ -103,23 +107,6 @@ export const AiServiceStarDescription = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const AiServiceKeywords = styled.div`
-  display: flex;
-  justify-content: start;
-  margin: 0.5rem 0;
-`;
-
-export const AiServiceKeyword = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-  background-color: black;
-  color: white;
 `;
 
 export const AiServiceFooter = styled.div`
