@@ -4,7 +4,9 @@ import App from "./App";
 
 import Main from "./pages/main/Main";
 import Community from "./pages/community/Community";
+import Notice from "./pages/notice/About";
 import Suggestion from "./pages/suggestion/Suggestion";
+import About from "./pages/about/About";
 import Login from "./pages/auth/login";
 
 import AiServiceDetail from "./pages/ai/AiServiceDetail";
@@ -25,8 +27,16 @@ const router = createBrowserRouter([
         element: <Community />
       },
       {
+        path: "notice",
+        element: <Notice />
+      },
+      {
         path: "suggestion",
         element: <Suggestion />
+      },
+      {
+        path: "about",
+        element: <About />
       },
       {
         path: "login",

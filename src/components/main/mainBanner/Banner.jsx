@@ -1,10 +1,12 @@
 import React from "react";
 import * as S from "./style";
 
-function Banner() {
+function Banner(props) {
   return (
     <S.BannerWrapper>
-      <>banner1</>
+      <>
+        <S.BannerImg src={props.bannerImg} />
+      </>
     </S.BannerWrapper>
   );
 }

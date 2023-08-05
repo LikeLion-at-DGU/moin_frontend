@@ -7,7 +7,7 @@ export const AiServiceListWrapper = styled.div`
   flex-wrap: wrap;
   border: solid 2px #282828;
 
-  width: 90%;
+  width: 100%;
   padding: 30px;
 `;
 

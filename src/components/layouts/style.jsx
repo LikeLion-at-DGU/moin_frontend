@@ -1,13 +1,16 @@
 import { styled } from "styled-components";
 
 export const NavBarWrapper = styled.div`
+  color: ${props => props.theme.colors.primary1};
+  background-color: ${props => props.theme.colors.bg};
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  width: 100%;
+  max-width: 1178px;
   height: 60px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 0 20px;
   position: relative;
   z-index: 1;
 
