@@ -13,9 +13,9 @@ export const MainWrapper = styled.div`
 export const MainTitleWrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 10px;
+  padding: 1rem;
   justify-content: space-between;
-  margin-top: 60px;
+  margin-top: 6rem;
 `;
 
 export const MainTitle = styled.h1`

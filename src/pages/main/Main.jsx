@@ -4,7 +4,7 @@ import MainSearch from "../../components/main/mainSearch/MainSearch";
 import AiServiceList from "../../components/main/mainAiList/MainAiServiceList";
 import MainBannerList from "../../components/main/mainBanner/MainBannerList";
 import MainCategory from "../../components/main/mainCategory/MainCategory";
-import MainSelector from "../../components/main/mainSelector/MainSelector";
+import Selector from "../../components/selector/Selector";
 
 function Main() {
   const categories = [
@@ -37,7 +37,7 @@ function Main() {
 
       <S.MainTitleWrapper>
         <S.MainTitle>모아보기</S.MainTitle>
-        <MainSelector />
+        <Selector />
       </S.MainTitleWrapper>
 
       <AiServiceList />

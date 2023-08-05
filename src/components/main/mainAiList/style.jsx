@@ -12,13 +12,13 @@ export const MainAiServiceListWrapper = styled.div`
 export const MainAiServiceListTitle = styled.div`
   display: flex;
   width: 100%;
-  padding: 10px;
+  padding: 1rem;
   justify-content: space-between;
 `;
 
 export const MainAiServices = styled.div`
   width: 100%;
-  margin: 20px 0px;
+  margin: 2rem 0;
   display: grid;
   @media (max-width: 576px) {
     grid-template-rows: 1fr;
@@ -57,7 +57,7 @@ export const AiServiceThumbnail = styled.div`
   width: 100%;
   border-radius: 10px 10px 0px 0px;
   padding-bottom: 90%;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   overflow: hidden;
 `;
 
@@ -77,13 +77,13 @@ export const AiServiceBody = styled.div`
   flex-direction: column;
   justify-content: start;
   width: 100%;
-  padding: 0px 20px;
+  padding: 0 2rem;
 `;
 
 export const AiServiceTitle = styled.div``;
 
 export const AiServiceDescription = styled.div`
-  padding: 5px 0px;
+  padding: 0.5rem 0;
 `;
 
 export const AiServiceStar = styled.div`
@@ -93,7 +93,7 @@ export const AiServiceStar = styled.div`
 `;
 
 export const AiServiceStarDescription = styled.div`
-  margin: 0px 5px;
+  margin: 0 0.5rem;
   color: ${props => props.theme.colors.gray4};
   height: 100%;
   display: flex;
@@ -104,15 +104,15 @@ export const AiServiceStarDescription = styled.div`
 export const AiServiceKeywords = styled.div`
   display: flex;
   justify-content: start;
-  margin: 5px 0px;
+  margin: 0.5rem 0;
 `;
 
 export const AiServiceKeyword = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5px;
-  padding: 5px 10px;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 3px;
   background-color: black;
   color: white;
@@ -123,11 +123,11 @@ export const AiServiceFooter = styled.div`
   justify-content: end;
   align-items: center;
   width: 100%;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
 `;
 
 export const AiServiceLikeDescription = styled.div`
-  margin: 0px 5px;
+  margin: 0 0.5rem;
   color: ${props => props.theme.colors.gray4};
   height: 100%;
   display: flex;
