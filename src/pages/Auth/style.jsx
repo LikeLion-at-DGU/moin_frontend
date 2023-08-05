@@ -3,7 +3,7 @@ import { styled, keyframes } from "styled-components";
 const fadeInAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-2rem);
   }
   to {
     opacity: 1;
@@ -18,15 +18,15 @@ export const AuthWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  padding-top: 100px;
-  margin-bottom: 100px;
+  padding-top: 10rem;
+  margin-bottom: 10rem;
 `;
 
 export const AuthText = styled.div`
   text-align: center;
-  font-size: 36px;
+  font-size: 3.6rem;
   font-weight: 700;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 `;
 export const AuthForm = styled.form`
   display: flex;
@@ -36,23 +36,23 @@ export const AuthForm = styled.form`
 export const AuthInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 `;
 export const AuthInput = styled.input`
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  width: 557px;
-  height: 80px;
+  margin: 0.5rem;
+  width: 56rem;
+  height: 8rem;
   font-weight: 700;
-  padding-left: 31px;
-  font-size: 18px;
+  padding-left: 3.1rem;
+  font-size: 1.8rem;
   color: #ff5d47;
-  border-radius: 24px;
+  border-radius: 2.4rem;
   background: #f8f8fa;
-  border-radius: 24px;
+  border-radius: 2.4rem;
   &:focus {
-    border: 2px solid #ff5d47;
+    border: 0.2rem solid #ff5d47;
   }
 `;
 
@@ -61,53 +61,56 @@ export const AuthButtonWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 5rem;
 `;
 export const AuthButton = styled.button`
   display: flex;
   /* Orange */
-  padding: 30px;
+  padding: 3rem;
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
 
   background: #ff5d47;
   /* orange */
-  width: 562px;
-  height: 75px;
+  width: 56rem;
+  height: 7.5rem;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 2.4rem;
   color: #ffffff;
-  box-shadow: 0px 1px 10px rgba(255, 93, 71, 0.7);
-  border-radius: 44px;
-  margin-bottom: 41px;
+  box-shadow: 0rem 0.1rem 1rem rgba(255, 93, 71, 0.7);
+  border-radius: 4.4rem;
+  margin-bottom: 4.1rem;
 `;
 export const AuthSignUpButton = styled.button`
   display: flex;
   /* Orange */
-  padding: 30px;
+  padding: 3rem;
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
-  width: 562px;
-  height: 75px;
+  width: 56rem;
+  height: 7.5rem;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 2.4rem;
   color: #606067;
 `;
 
 export const AuthSocialButton = styled.button`
-  margin-top: 20px;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
-  padding: 0px 12px 0px 24px;
-  width: 398px;
-  height: 64px;
+  padding: 0rem 1.2rem 0rem 2.4rem;
+  width: 40rem;
+  height: 6.4rem;
   background: #ffffff;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.08), 0px 1px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
+  box-shadow: 0rem 0rem 0rem rgba(0, 0, 0, 0.08),
+    0rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
+  border-radius: 1.2rem;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 2.4rem;
 `;
 
 export const AuthSocialButtonText = styled.p`
   margin: 0 auto;
+  font-size: 2rem;
+  font-weight: 600;
 `;

@@ -3,7 +3,7 @@ import { styled, keyframes } from "styled-components";
 const fadeInAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-2rem);
   }
   to {
     opacity: 1;
@@ -15,20 +15,20 @@ export const AuthInputWrapper = styled.div`
   animation: ${fadeInAnimation} 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 `;
 
 export const AuthInput = styled.input`
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  width: 557px;
-  height: 80px;
+  margin: 0.5rem;
+  width: 56rem;
+  height: 8rem;
   font-weight: 500;
-  padding-left: 31px;
-  font-size: 18px;
+  padding-left: 3.1rem;
+  font-size: 1.8rem;
   color: #ff5d47;
-  border-radius: 24px;
+  border-radius: 2.4rem;
   background: #f8f8fa;
   border: none;
   outline: none;
@@ -36,52 +36,52 @@ export const AuthInput = styled.input`
 
   &:focus,
   &:not(:placeholder-shown) {
-    border: 2px solid #ff5d47;
+    border: 0.2rem solid #ff5d47;
   }
 `;
 
 /* ------- 회원 가입 컴포넌트 스타일 ------- */
 export const SignUpInputTitleText = styled.h2`
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 35px;
+  margin-bottom: 3.5rem;
 `;
 
 export const SignUpInput = styled.input`
   border: none;
-  border-bottom: 2px solid #aeafb9;
+  border-bottom: 0.2rem solid #aeafb9;
   outline: none;
-  padding: 5px;
+  padding: 0.5rem;
   ::placeholder {
     color: #aeafb9;
   }
   /* Your styling here */
   border-bottom: ${props =>
-    props.isValid ? "1px solid #000000" : "1px solid red"};
+    props.isValid ? "0.1rem solid #000000" : "0.1rem solid red"};
   /* Additional styling based on validity */
 `;
 
 export const SignUpInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 `;
 export const MessageText = styled.span`
-  margin-top: 10px;
+  margin-top: 1rem;
   color: ${props => (props.isValid ? "#00C24E" : "#FF5D47")};
-  font-size: 13px;
+  font-size: 1.3rem;
 `;
 
 /* ------- 로그인 타이틀 컴포넌트 스타일 ------- */
 export const LoginTitleText = styled.h2`
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 80px;
+  margin-bottom: 8rem;
 `;
 export const LoginSybTitleText = styled.h2`
-  font-size: 25px;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin: 25px 0px 20px 0px;
+  margin: 2.5rem 0rem 2rem 0rem;
 `;
 export const LoginTitleWrapper = styled.div`
   animation: ${fadeInAnimation} 0.5s ease-in-out;
@@ -92,5 +92,6 @@ export const LoginTitleWrapper = styled.div`
 
 export const LoginTitleStrong = styled.strong`
   font-weight: 900;
+  font-size: 4rem;
   color: #4285f4;
 `;

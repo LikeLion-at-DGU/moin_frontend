@@ -2,7 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
-function Login() {
+// 구글 이미지
+// import GoogleIcon from "../../assets/images/icon/google.png";
+import AuthLoginTitle from "../../components/auth/authLogin/AuthLoginTitle";
+import AuthLoginForm from "../../components/auth/authLogin/AuthLoginForm";
+
+// AuthLoginForm.jsx 가져오기
+
+export default function Login() {
   const navigate = useNavigate();
   // const userInfo = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState(null);
@@ -54,6 +61,12 @@ function Login() {
     // 메인 페이지로 이동
     navigate("/");
   };
+  const handleLogout = () => {
+    // 로그아웃 시
+    setUserInfo(null);
+    // token 비우기
+    localStorage.removeItem("userInfo");
+  };
 
   return (
     <>
@@ -64,34 +77,40 @@ function Login() {
             <S.AuthButton onClick={handleLogout}> 로그아웃 </S.AuthButton>
           </>
         ) : (
-          <S.AuthForm onSubmit={handleSubmit}>
-            {
-              <>
-                <LoginTitle />
-                <LoginForm
-                  handleInputChange={handleInputChange}
-                  loginData={loginData}
-                />
-              </>
-            }
-            <S.AuthButtonWrapper>
-              <S.AuthButton type="submit">로그인</S.AuthButton>
-              {/* 구글 로그인 */}
-              <S.AuthSignUpButton type="submit" onClick={handleClickCreate}>
-                MOIN이 처음이신가요
-              </S.AuthSignUpButton>
-              <S.AuthSocialButton onClick={handleGoogleLogin}>
-                <GoogleIcon />
-                <S.AuthSocialButtonText style={{ margin: "0 auto" }}>
-                  Google 로그인
-                </S.AuthSocialButtonText>
-              </S.AuthSocialButton>
-            </S.AuthButtonWrapper>
-          </S.AuthForm>
+          <>
+            <S.AuthForm onSubmit={handleSubmit}>
+              <AuthLoginTitle />
+              <AuthLoginForm
+                handleInputChange={handleInputChange}
+                loginData={loginData}
+              />
+
+              <S.AuthButtonWrapper>
+                <S.AuthButton type="submit">로그인</S.AuthButton>
+                {/* 구글 로그인 */}
+                <S.AuthSignUpButton
+                  type="button"
+                  onClick={() => {
+                    console.log("계정생성");
+                  }}
+                >
+                  MOIN이 처음이신가요
+                </S.AuthSignUpButton>
+                <S.AuthSocialButton
+                  onClick={() => {
+                    console.log("구글계정생성");
+                  }}
+                >
+                  {/* <GoogleIcon /> */}
+                  <S.AuthSocialButtonText style={{ margin: "0 auto" }}>
+                    Google 로그인
+                  </S.AuthSocialButtonText>
+                </S.AuthSocialButton>
+              </S.AuthButtonWrapper>
+            </S.AuthForm>
+          </>
         )}
       </S.AuthWrapper>
     </>
   );
 }
-
-export default Login;
