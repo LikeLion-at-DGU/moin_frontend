@@ -96,3 +96,10 @@ export const LoginTitleStrong = styled.strong`
   font-size: 4rem;
   color: ${colors.primary1};
 `;
+
+/* ------- 로그인 title image ------- */
+export const LoginLogo = styled.img`
+  height: 6rem;
+  object-fit: cover;
+  margin-bottom: 3rem;
+`;
