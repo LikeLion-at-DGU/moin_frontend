@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
-
+// aixos
+import axios from "../../api/axios";
 // 구글 이미지
 import GoogleIcon from "../../assets/images/icon/google.png";
+import KakaoIcon from "../../assets/images/icon/kakao.png";
 import MoinIcon from "../../assets/images/moin_logo.png";
+
 // 컴포넌트
 import AuthLoginTitle from "../../components/auths/authLogin/AuthLoginTitle";
 import AuthLoginForm from "../../components/auths/authLogin/AuthLoginForm";
+import AuthSocialButton from "../../components/auths/authSocialButton/AuthSocialButton";
 
 // AuthLoginForm.jsx 가져오기
 
@@ -35,7 +39,8 @@ export default function Login() {
   };
 
   // 로그인 후 이동 페이지 -> 메인 페이지
-  const handleSubmit = event => {
+  // 로그인 후 이동 페이지 -> 메인 페이지
+  const handleSubmit = async event => {
     event.preventDefault();
     const { email, pwd } = loginData;
 
@@ -45,26 +50,43 @@ export default function Login() {
       return;
     }
 
-    // 로그인 성공 시
-    setUserInfo({
-      email: email,
-      pwd: pwd
-    });
-
-    // 로그인 정보 LocalStorage에 저장하기
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify({
+    try {
+      // post 보내기 (로그인)
+      console.log("zz");
+      const response = await axios.post("auth/login/", {
         email: email,
-        pwd: pwd
-      })
-    );
+        password: pwd
+      });
+      console.log(response);
+      // accessToken 받아오기
+      const accessToken = response.data.accessToken;
 
-    // 메인 페이지로 이동
-    navigate("/");
+      // 로그인 성공 시
+      setUserInfo({
+        email: email,
+        accessToken: accessToken
+      });
+      alert("로그인에 성공했습니다.");
 
-    // 페이지 새로고침
-    window.location.reload();
+      // 로그인 정보 LocalStorage에 저장하기
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          email: email,
+          accessToken: accessToken
+        })
+      );
+
+      // 메인 페이지로 이동
+      navigate("/");
+
+      // 페이지 새로고침
+      window.location.reload();
+    } catch (error) {
+      // Handle login error (e.g., display an error message)
+      console.error("Login failed:", error.message);
+      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+    }
   };
   const handleLogout = () => {
     // 로그아웃 시
@@ -101,26 +123,31 @@ export default function Login() {
                 >
                   MOIN에 가입하고 더 많은 서비스를 누려보세요!
                 </S.AuthSignUpButton>
-                <S.AuthSocialButton
+                <AuthSocialButton
                   onClick={() => {
                     console.log("자체회원가입");
                   }}
-                >
-                  <S.AuthSocialButtonImg src={MoinIcon} alt="구글 로고" />
-                  <S.AuthSocialButtonText style={{ margin: "0 auto" }}>
-                    Moin 회원가입
-                  </S.AuthSocialButtonText>
-                </S.AuthSocialButton>
-                <S.AuthSocialButton
+                  imgSrc={MoinIcon}
+                  altText="모인 로고"
+                  buttonText="Moin 회원가입"
+                />
+                <AuthSocialButton
+                  onClick={() => {
+                    console.log("자체회원가입");
+                  }}
+                  imgSrc={KakaoIcon}
+                  altText="카카오 로고"
+                  buttonText="Kakao 로그인"
+                />
+
+                <AuthSocialButton
                   onClick={() => {
                     console.log("구글계정생성");
                   }}
-                >
-                  <S.AuthSocialButtonImg src={GoogleIcon} alt="구글 로고" />
-                  <S.AuthSocialButtonText style={{ margin: "0 auto" }}>
-                    Google 로그인
-                  </S.AuthSocialButtonText>
-                </S.AuthSocialButton>
+                  imgSrc={GoogleIcon}
+                  altText="구글 로고"
+                  buttonText="Google 로그인"
+                />
               </S.AuthButtonWrapper>
             </S.AuthForm>
           </>
