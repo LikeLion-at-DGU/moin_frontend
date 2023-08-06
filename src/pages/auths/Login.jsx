@@ -13,12 +13,17 @@ import AuthLoginTitle from "../../components/auths/authLogin/AuthLoginTitle";
 import AuthLoginForm from "../../components/auths/authLogin/AuthLoginForm";
 import AuthSocialButton from "../../components/auths/authSocialButton/AuthSocialButton";
 
-// AuthLoginForm.jsx 가져오기
+// recoil 적용
+import { useRecoilState } from "recoil";
+import { userState } from "../../context/authState";
 
 export default function Login() {
   const navigate = useNavigate();
   // const userInfo = useContext(AuthContext);
-  const [userInfo, setUserInfo] = useState(null);
+
+  // recoil 적용 (로그인 정보)
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   const [loginData, setLoginData] = useState({
     email: "",
     pwd: ""
@@ -38,7 +43,6 @@ export default function Login() {
     }));
   };
 
-  // 로그인 후 이동 페이지 -> 메인 페이지
   // 로그인 후 이동 페이지 -> 메인 페이지
   const handleSubmit = async event => {
     event.preventDefault();
@@ -68,15 +72,6 @@ export default function Login() {
       });
       alert("로그인에 성공했습니다.");
 
-      // 로그인 정보 LocalStorage에 저장하기
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({
-          email: email,
-          accessToken: accessToken
-        })
-      );
-
       // 메인 페이지로 이동
       navigate("/");
 
@@ -88,6 +83,7 @@ export default function Login() {
       alert("로그인에 실패했습니다. 다시 시도해주세요.");
     }
   };
+
   const handleLogout = () => {
     // 로그아웃 시
     setUserInfo(null);
