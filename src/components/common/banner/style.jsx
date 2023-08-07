@@ -1,5 +1,4 @@
-import { styled } from "styled-components";
-import { ReactComponent as MypageBook } from "../../assets/images/icon/mypageBook.svg";
+import { styled, keyframes } from "styled-components";
 
 // 전체 width 차지
 export const ProfileWrapper = styled.div`
@@ -25,7 +24,6 @@ export const ProfileBannerHeaderWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
 `;
-
 export const ProfileBannerHeaderContainer = styled.div`
   margin-top: 18rem;
   display: flex;
@@ -51,11 +49,4 @@ export const ProfileBannerHeaderTitle = styled.div`
   font-size: 5rem;
   font-weight: 700;
   line-height: normal;
-`;
-// MypageBook
-export const MypageBookImg = styled(MypageBook)`
-  display: flex;
-  width: 17rem;
-  height: 12rem;
-  margin-top: 16.5rem;
 `;
