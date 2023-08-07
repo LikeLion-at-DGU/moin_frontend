@@ -1,7 +1,8 @@
 import React from "react";
+import * as S from "./style";
 
 function Notice() {
-  return <>notice</>;
+  return <></>;
 }
 
 export default Notice;

@@ -5,7 +5,6 @@ import { userState } from "../../context/authState"; // Update the path to your 
 import * as SAuth from "../auths/style";
 import * as S from "./style";
 import Banner from "../../components/common/banner/Banner";
-// mypage_book.svg불러오기
 
 function Profile() {
   const navigate = useNavigate();
