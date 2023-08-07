@@ -58,3 +58,10 @@ export const MypageBookImg = styled(MypageBook)`
   height: 12rem;
   margin-top: 16.5rem;
 `;
+
+export const ProfileInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+`;

@@ -31,7 +31,10 @@ function Profile() {
         titleEnglish="MyPage"
         image={<S.MypageBookImg />}
       />
-      <SAuth.AuthButton onClick={handleLogout}>로그아웃</SAuth.AuthButton>
+
+      <S.ProfileInfoWrapper>
+        <SAuth.AuthButton onClick={handleLogout}>로그아웃</SAuth.AuthButton>
+      </S.ProfileInfoWrapper>
     </S.ProfileWrapper>
   );
 }
