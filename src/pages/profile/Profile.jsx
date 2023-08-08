@@ -2,10 +2,14 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../context/authState"; // Update the path to your authState.js
-import * as SAuth from "../auths/style";
 import * as S from "./style";
 import Banner from "../../components/common/banner/Banner";
 import MyPageUser from "../../assets/images/icon/mypageUserIcon.png";
+import MypageSetting from "../../assets/images/icon/mypageSetting.png";
+import MypageStar from "../../assets/images/icon/mypageStar.png";
+import MypageChat from "../../assets/images/icon/mypageChat.png";
+import MypageVector from "../../assets/images/icon/mypageVector.png";
+import AuthContentBox from "../../components/auths/authContentBox/AuthContentBox";
 
 function Profile() {
   const navigate = useNavigate();
@@ -41,6 +45,7 @@ function Profile() {
       />
 
       <S.ProfileInfoWrapper>
+        {/* 프로필 헤더  */}
         <S.ProfileInfoHeaderWrapper>
           <S.ProfileInfoHeaderTitle>
             <S.myPageUserIcon src={MyPageUser} />
@@ -49,9 +54,18 @@ function Profile() {
             </S.ProfileInfoHeaderTitleName>
             님의 마이페이지
           </S.ProfileInfoHeaderTitle>
-          <S.ProfileInfoHeaderButton>로그아웃</S.ProfileInfoHeaderButton>
+          <S.ProfileInfoHeaderButton onClick={handleLogout}>
+            로그아웃
+          </S.ProfileInfoHeaderButton>
         </S.ProfileInfoHeaderWrapper>
-        <SAuth.AuthButton onClick={handleLogout}>로그아웃</SAuth.AuthButton>
+
+        {/* 프로필 내용물 박스  */}
+        <S.ProfileInfoContentWrapper>
+          <AuthContentBox content="즐겨찾기" img={MypageStar} />
+          <AuthContentBox content="작성한 게시물" img={MypageVector} />
+          <AuthContentBox content="댓글 단 게시물" img={MypageChat} />
+          <AuthContentBox content="정보수정" img={MypageSetting} />
+        </S.ProfileInfoContentWrapper>
       </S.ProfileInfoWrapper>
     </S.ProfileWrapper>
   );
