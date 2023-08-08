@@ -109,3 +109,75 @@ export const AiServiceDetailReviewStarAvgContentResultCnt = styled.div`
 
 export const AiServiceDetailReviewStarAvgContentIcon = styled.div``;
 export const AiServiceDetailReviewStarAvgContentSubmit = styled.div``;
+
+// 이용후기 댓글
+
+// 댓글 작성하는 곳
+export const AiServiceDetailReviewCommentFormWrite = styled.form`
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const AiServiceDetailReviewCommentFormWriteTextArea = styled.textarea`
+  width: 86rem;
+  height: 9rem;
+  padding: 1rem;
+  resize: none;
+  border: 1px solid #aeafb9;
+  font-size: 1.8rem;
+  margin-right: 1rem;
+  font-family: inherit;
+  ::placeholder {
+    color: #acacac;
+  }
+  font-weight: 500;
+`;
+
+export const AiServiceDetailReviewCommentFormWriteButton = styled.button`
+  width: 80px;
+  height: 9rem;
+  border: 1px solid #aeafb9;
+`;
+
+// 이용 후기 목록
+export const AiServiceDetailReviewListLi = styled.li`
+  display: flex;
+  flex-direction: column;
+  padding: 2.6rem;
+  border-bottom: 2px solid #f0f0f0;
+`;
+
+export const AiServiceDetailReviewMyWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const AiServiceDetailReviewListHeader = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 3rem;
+`;
+export const AiServiceDetailReviewListWriter = styled.div`
+  color: #282828;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-right: 2rem;
+`;
+export const AiServiceDetailReviewListDate = styled.div`
+  color: #acacac;
+  font-size: 1.8rem;
+  font-weight: 500;
+`;
+export const AiServiceDetailReviewListContent = styled.div`
+  width: 100rem;
+  margin-top: 2.2rem;
+  margin-left: 3rem;
+  color: #282828;
+  font-size: 1.8rem;
+  font-weight: 500;
+  white-space: pre-line;
+  word-wrap: break-word;
+`;
