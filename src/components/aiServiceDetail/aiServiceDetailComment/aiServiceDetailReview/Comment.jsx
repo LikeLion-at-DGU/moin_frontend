@@ -15,15 +15,17 @@ const Comment = ({
 
   const handleEdit = () => {
     setIsEditing(true);
+    setEditedComment(content);
   };
 
   const handleSave = () => {
     onUpdate(editedComment);
     setIsEditing(false);
+    console.log(editedComment);
   };
 
   const handleDelete = () => {
-    onDelete(comment);
+    onDelete(content);
   };
 
   if (isMember && isRegist) {
@@ -83,7 +85,7 @@ const Comment = ({
         <>
           <S.AiServiceDetailReviewCommentFormWrite>
             <S.AiServiceDetailReviewCommentFormWriteTextArea
-              value={editedComment}
+              value={content}
               onChange={e => setEditedComment(e.target.value)}
               minLength={10}
               maxLength={300}

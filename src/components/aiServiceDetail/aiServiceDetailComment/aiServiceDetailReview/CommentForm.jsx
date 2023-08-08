@@ -16,11 +16,11 @@ const CommentForm = ({ onSubmit }) => {
     setPassword("");
     setIsRegist(true);
   };
-
+  /**
   if (isRegist) {
     return null;
   }
-
+ */
   return (
     <>
       <S.AiServiceDetailReviewCommentWrap>
@@ -47,13 +47,13 @@ const CommentForm = ({ onSubmit }) => {
             />
             {/* 비회원일 때 비밀번호 입력받기 */}
             {/* <input
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          pattern="\d{4}"
-          title="4 숫자를 입력해주세요."
-          required
-        /> */}
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                pattern="\d{4}"
+                title="4 숫자를 입력해주세요."
+                required
+              /> */}
             <S.AiServiceDetailReviewCommentFormWriteButton type="submit">
               등록
             </S.AiServiceDetailReviewCommentFormWriteButton>

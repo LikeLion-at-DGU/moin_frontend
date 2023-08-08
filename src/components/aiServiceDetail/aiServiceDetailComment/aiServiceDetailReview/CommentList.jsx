@@ -6,7 +6,6 @@ const CommentList = ({ comments, onUpdate, onDelete }) => {
 
   // 댓글 데이터를 최신순으로 정렬
   const sortedComments = comments.slice().reverse();
-  console.log(comments);
 
   return (
     <>

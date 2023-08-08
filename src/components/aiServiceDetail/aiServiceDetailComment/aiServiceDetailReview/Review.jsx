@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import axios from "axios";
+import { userState } from "../../../../context/authState";
+
+import { useRecoilState } from "recoil";
 
 function Review() {
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   const [comments, setComments] = useState([
     // { id: 1, text: "첫 번째 댓글입니다.", isMember: false },
     // { id: 2, text: "두 번째 댓글입니다.", isMember: false, password: "1234" }
@@ -32,7 +38,7 @@ function Review() {
   const handleUpdateComment = (id, updatedComment) => {
     setComments(prevComments =>
       prevComments.map(comment =>
-        comment.id === id ? { ...comment, text: updatedComment } : comment
+        comment.id === id ? { ...comment, content: updatedComment } : comment
       )
     );
   };
@@ -56,7 +62,8 @@ function Review() {
 
   return (
     <>
-      {showForm && <CommentForm onSubmit={handleSubmitComment} />}
+      {<CommentForm onSubmit={handleSubmitComment} />}
+
       <CommentList
         comments={comments}
         onUpdate={handleUpdateComment}
