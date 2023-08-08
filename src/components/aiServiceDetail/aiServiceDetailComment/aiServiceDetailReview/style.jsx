@@ -1,0 +1,111 @@
+import { styled } from "styled-components";
+
+export const AiServiceDetailReviewWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+// 별점
+export const AiServiceDetailReviewStarWrap = styled.div`
+  display: flex;
+  margin-left: 3rem;
+  margin-top: 3rem;
+`;
+
+export const AiServiceDetailReviewStarMy = styled.div``;
+
+export const AiServiceDetailReviewStarMyHeader = styled.div`
+  display: flex;
+`;
+
+export const AiServiceDetailReviewStarMyHeaderIcon = styled.img`
+  width: 2.8rem;
+`;
+
+export const AiServiceDetailReviewStarHeaderTitle = styled.div`
+  display: flex;
+  align-items: center;
+  color: #4285f4;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+`;
+
+export const AiServiceDetailReviewStarMyContent = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+`;
+
+export const AiServiceDetailReviewStarMyContentIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  border: 0.5px solid #acacac;
+  border-radius: 15px;
+  padding: 0.7rem 1.3rem;
+`;
+
+export const AiServiceDetailReviewStarMyContentSubmit = styled.div`
+  color: #aeafb9;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border: 0.5px solid #acacac;
+  border-radius: 14px;
+  padding: 1.5rem 1.3rem;
+  margin-left: 1rem;
+`;
+
+export const AiServiceDetailReviewStarAvg = styled.div`
+  margin-left: 26.3rem;
+`;
+
+export const AiServiceDetailReviewStarAvgHeader = styled.div`
+  display: flex;
+`;
+
+export const AiServiceDetailReviewStarAvgHeaderIcon = styled.img`
+  width: 2.8rem;
+`;
+
+export const AiServiceDetailReviewStarAvgHeaderTitle = styled.div``;
+
+export const AiServiceDetailReviewStarAvgContent = styled.div`
+  display: flex;
+  border: 0.5px solid #acacac;
+  border-radius: 14px;
+  padding: 0.75rem 4rem;
+  margin-top: 2rem;
+`;
+
+export const AiServiceDetailReviewStarAvgContentResult = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const AiServiceDetailReviewStarAvgContentResultAi = styled.div`
+  color: #4285f4;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-right: 0.8rem;
+`;
+
+export const AiServiceDetailReviewStarAvgContentResultTotal = styled.div`
+  color: #282828;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-right: 0.8rem;
+`;
+
+export const AiServiceDetailReviewStarAvgContentResultCnt = styled.div`
+  color: #9d9d9d;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-right: 3rem;
+`;
+
+export const AiServiceDetailReviewStarAvgContentIcon = styled.div``;
+export const AiServiceDetailReviewStarAvgContentSubmit = styled.div``;
