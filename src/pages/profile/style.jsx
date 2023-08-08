@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { ReactComponent as MypageBook } from "../../assets/images/icon/mypageBook.svg";
+import colors from "../../style/theme";
 
 // 전체 width 차지
 export const ProfileWrapper = styled.div`
@@ -59,9 +60,60 @@ export const MypageBookImg = styled(MypageBook)`
   margin-top: 16.5rem;
 `;
 
+export const myPageUserIcon = styled.img`
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+`;
+
 export const ProfileInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin: 0 auto;
+
+  height: 100%;
+  max-width: 1178px;
+  width: 100%;
+  margin-top: 13rem;
+  border: 1px solid black;
+`;
+
+export const ProfileInfoHeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+`;
+
+export const ProfileInfoHeaderTitle = styled.div`
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: normal;
+  color: ${colors.black};
+`;
+
+export const ProfileInfoHeaderButton = styled.button`
+  display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background-color: white;
+  color: #aeafb9;
+  border: 1px solid #aeafb9;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+`;
+
+export const ProfileInfoHeaderTitleName = styled.div`
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: normal;
+  color: ${colors.primary1};
 `;
