@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../context/authState"; // Update the path to your authState.js
 import * as SAuth from "../auths/style";
+import * as S from "./style";
+import Banner from "../../components/common/banner/Banner";
 
 function Profile() {
   const navigate = useNavigate();
@@ -23,9 +25,17 @@ function Profile() {
   };
 
   return (
-    <SAuth.AuthWrapper>
-      <SAuth.AuthButton onClick={handleLogout}>로그아웃</SAuth.AuthButton>
-    </SAuth.AuthWrapper>
+    <S.ProfileWrapper>
+      <Banner
+        titleKorean="마이페이지"
+        titleEnglish="MyPage"
+        image={<S.MypageBookImg />}
+      />
+
+      <S.ProfileInfoWrapper>
+        <SAuth.AuthButton onClick={handleLogout}>로그아웃</SAuth.AuthButton>
+      </S.ProfileInfoWrapper>
+    </S.ProfileWrapper>
   );
 }
 
