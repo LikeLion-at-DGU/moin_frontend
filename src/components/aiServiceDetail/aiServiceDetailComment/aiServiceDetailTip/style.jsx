@@ -82,3 +82,13 @@ export const CommentIcon = styled(FaRegCommentAlt)`
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 `;
+
+export const AiServiceDetailTipPaging = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  position: relative;
+  bottom: 0;
+  transform: translate(-50%, 0);
+`;

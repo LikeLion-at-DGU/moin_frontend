@@ -3,6 +3,7 @@ import * as S from "./style";
 
 // 컴포넌트
 import Selector from "../../../selector/Selector";
+import Paging from "../../../paging/Paging";
 
 export function AiServiceDetailTip() {
   const [tipContent, setTipContent] = useState([]);
@@ -119,6 +120,24 @@ export function AiServiceDetailTip() {
     setTipContent(tipData);
   }, []);
 
+  //Paging
+
+  // 한 페이지당 보여줄 댓글 수
+  const itemsPerPage = 10;
+
+  // 현재 페이지
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // 현재 페이지의 댓글 목록 계산
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = tipContent.slice(indexOfFirstItem, indexOfLastItem);
+
+  // 페이지 변경 핸들러
+  const handlePageChange = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <>
       <S.AiServiceDetailTipWrap>
@@ -132,7 +151,6 @@ export function AiServiceDetailTip() {
           </S.AiServiceDetailTipHeaderSort>
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
-
         {/* 이용꿀팁 목록 */}
         <S.AiServiceDetailTipTable>
           <S.AiServiceDetailTipTableThead>
@@ -149,13 +167,13 @@ export function AiServiceDetailTip() {
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
-            {tipContent.map(tip => (
+            {currentItems.map(tip => (
               <S.AiServiceDetailTipTableTr key={tip.id}>
                 <S.AiServiceDetailTipTableTd>
                   {tip.id}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {tip.title}{" "}
+                  {tip.title}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {tip.name}
@@ -173,6 +191,15 @@ export function AiServiceDetailTip() {
             ))}
           </S.AiServiceDetailTipTableTbody>
         </S.AiServiceDetailTipTable>
+        {/* 페이지네이션 컴포넌트 사용 */}
+        <S.AiServiceDetailTipPaging>
+          <Paging
+            page={currentPage}
+            count={tipContent.length}
+            postPerPage={itemsPerPage}
+            setPage={handlePageChange}
+          />
+        </S.AiServiceDetailTipPaging>
       </S.AiServiceDetailTipWrap>
     </>
   );
