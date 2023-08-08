@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import { BiSolidPencil } from "react-icons/bi";
+import { FaRegThumbsUp } from "react-icons/fa6";
+import { FaRegCommentAlt } from "react-icons/fa";
 
 export const AiServiceDetailTipWrap = styled.div`
   display: flex;
@@ -17,7 +19,7 @@ export const AiServiceDetailTipHeader = styled.div`
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
   display: flex;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
   color: #4285f4;
 
@@ -43,4 +45,40 @@ export const AiServiceDetailTipLine = styled.div`
   background: #4285f4;
   width: 110rem;
   height: 2px;
+`;
+
+// 이용꿀팁 목록
+export const AiServiceDetailTipTable = styled.table`
+  margin: 0 auto;
+  width: 100%;
+`;
+
+export const AiServiceDetailTipTableThead = styled.thead``;
+export const AiServiceDetailTipTableTbody = styled.tbody``;
+
+export const AiServiceDetailTipTableTr = styled.tr``;
+export const AiServiceDetailTipTableTh = styled.th`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+`;
+
+export const AiServiceDetailTipTableTd = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: center;
+`;
+
+export const LikeIcon = styled(FaRegThumbsUp)`
+  color: black;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+`;
+
+export const CommentIcon = styled(FaRegCommentAlt)`
+  color: black;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 `;
