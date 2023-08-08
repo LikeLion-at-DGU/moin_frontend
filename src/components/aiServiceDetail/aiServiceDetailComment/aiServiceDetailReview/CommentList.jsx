@@ -4,6 +4,9 @@ import * as S from "./style";
 const CommentList = ({ comments, onUpdate, onDelete }) => {
   const memberComments = comments.filter(comment => comment.isMember);
 
+  // 댓글 데이터를 최신순으로 정렬
+  const sortedComments = comments.slice().reverse();
+
   return (
     <>
       <>
@@ -23,7 +26,7 @@ const CommentList = ({ comments, onUpdate, onDelete }) => {
       {/* 댓글목록 */}
       <S.AiServiceDetailReviewListWrap>
         <S.AiServiceDetailReviewListUl>
-          {comments.map(comment => (
+          {sortedComments.map(comment => (
             <Comment
               key={comment.id}
               comment={comment.text}
