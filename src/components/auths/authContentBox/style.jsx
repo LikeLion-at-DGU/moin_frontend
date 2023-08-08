@@ -11,6 +11,10 @@ export const ProfileInfoContent = styled.div`
   border-radius: 11px;
   background: var(--grey-2, #f8f8fa);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  &:hover {
+    background-color: #f2f2f2;
+  }
 `;
 
 export const ProfileInfoContentTitle = styled.div`
