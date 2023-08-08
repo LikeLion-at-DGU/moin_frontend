@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./style";
 
-const Comment = ({ comment, onUpdate, onDelete }) => {
+const Comment = ({ comment, onUpdate, onDelete, isRegist, isMember }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedComment, setEditedComment] = useState(comment);
 
@@ -17,6 +17,28 @@ const Comment = ({ comment, onUpdate, onDelete }) => {
   const handleDelete = () => {
     onDelete(comment);
   };
+
+  if (isMember && isRegist) {
+    return (
+      <>
+        <S.AiServiceDetailReviewMyLi>
+          <S.AiServiceDetailReviewMyWrap>
+            <S.AiServiceDetailReviewMyHeader>
+              <S.AiServiceDetailReviewMyWriter>
+                작성자
+              </S.AiServiceDetailReviewMyWriter>
+              <S.AiServiceDetailReviewMyDate>
+                날짜
+              </S.AiServiceDetailReviewMyDate>
+            </S.AiServiceDetailReviewMyHeader>
+            <S.AiServiceDetailReviewMyContent>
+              {comment}
+            </S.AiServiceDetailReviewMyContent>
+          </S.AiServiceDetailReviewMyWrap>
+        </S.AiServiceDetailReviewMyLi>
+      </>
+    );
+  }
 
   return (
     <>

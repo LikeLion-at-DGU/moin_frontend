@@ -4,7 +4,7 @@ import CommentForm from "./CommentForm";
 
 function Review() {
   const [comments, setComments] = useState([
-    { id: 1, text: "첫 번째 댓글입니다.", isMember: true },
+    { id: 1, text: "첫 번째 댓글입니다.", isMember: false },
     { id: 2, text: "두 번째 댓글입니다.", isMember: false, password: "1234" }
   ]);
 

@@ -202,3 +202,59 @@ export const AiServiceDetailReviewCommentFormTitleText = styled.div`
   font-size: 2rem;
   font-weight: 700;
 `;
+
+// 내 댓글
+export const AiServiceDetailReviewMyLi = styled.li`
+  display: flex;
+  width: 95rem;
+  flex-direction: row;
+  padding: 2.6rem;
+  border-radius: 10px;
+  background: rgba(178, 191, 235, 0.39);
+  margin-top: 2.2rem;
+  margin-left: 5rem;
+`;
+
+export const AiServiceDetailReviewMyHeader = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 3rem;
+`;
+export const AiServiceDetailReviewMyWriter = styled.div`
+  color: #282828;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-right: 2rem;
+`;
+export const AiServiceDetailReviewMyDate = styled.div`
+  color: #acacac;
+  font-size: 1.8rem;
+  font-weight: 500;
+`;
+export const AiServiceDetailReviewMyContent = styled.div`
+  width: 70rem;
+  margin-top: 2.2rem;
+  margin-left: 3rem;
+  color: #282828;
+  font-size: 1.8rem;
+  font-weight: 500;
+  white-space: pre-line;
+  word-wrap: break-word;
+`;
+
+// 이용후기 목록
+export const AiServiceDetailReviewListWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #f0f0f0;
+  display: flex;
+  margin-top: 1.6rem;
+  width: 100%;
+`;
+
+export const AiServiceDetailReviewListUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
