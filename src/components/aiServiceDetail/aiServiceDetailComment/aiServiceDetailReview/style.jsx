@@ -293,3 +293,12 @@ export const AiServiceDetailReviewMyButtonDelete = styled.div`
   height: 3.7rem;
   margin-left: 1rem;
 `;
+
+// 이용후기 댓글 수정 폼
+export const AiServiceDetailReviewCommentFormWriteMy = styled.div`
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  justify-content: center;
+  align-items: center;
+`;

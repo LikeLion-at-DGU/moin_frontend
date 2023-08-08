@@ -21,29 +21,50 @@ const Comment = ({ comment, onUpdate, onDelete, isRegist, isMember }) => {
   if (isMember && isRegist) {
     return (
       <>
-        <S.AiServiceDetailReviewMyLi>
-          <S.AiServiceDetailReviewMyWrap>
-            <S.AiServiceDetailReviewMyHeader>
-              <S.AiServiceDetailReviewMyWriter>
-                작성자
-              </S.AiServiceDetailReviewMyWriter>
-              <S.AiServiceDetailReviewMyDate>
-                날짜
-              </S.AiServiceDetailReviewMyDate>
-            </S.AiServiceDetailReviewMyHeader>
-            <S.AiServiceDetailReviewMyContent>
-              {comment}
-            </S.AiServiceDetailReviewMyContent>
-          </S.AiServiceDetailReviewMyWrap>
-          <S.AiServiceDetailReviewMyButton>
-            <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
-              수정
-            </S.AiServiceDetailReviewMyButtonEdit>
-            <S.AiServiceDetailReviewMyButtonDelete onClick={handleDelete}>
-              삭제
-            </S.AiServiceDetailReviewMyButtonDelete>
-          </S.AiServiceDetailReviewMyButton>
-        </S.AiServiceDetailReviewMyLi>
+        {isEditing ? (
+          <>
+            <S.AiServiceDetailReviewCommentFormWriteMy>
+              <S.AiServiceDetailReviewCommentFormWriteTextArea
+                value={editedComment}
+                onChange={e => setEditedComment(e.target.value)}
+                minLength={10}
+                maxLength={300}
+              />
+
+              <S.AiServiceDetailReviewCommentFormWriteButton
+                onClick={handleSave}
+              >
+                등록
+              </S.AiServiceDetailReviewCommentFormWriteButton>
+            </S.AiServiceDetailReviewCommentFormWriteMy>
+          </>
+        ) : (
+          <>
+            <S.AiServiceDetailReviewMyLi>
+              <S.AiServiceDetailReviewMyWrap>
+                <S.AiServiceDetailReviewMyHeader>
+                  <S.AiServiceDetailReviewMyWriter>
+                    작성자
+                  </S.AiServiceDetailReviewMyWriter>
+                  <S.AiServiceDetailReviewMyDate>
+                    날짜
+                  </S.AiServiceDetailReviewMyDate>
+                </S.AiServiceDetailReviewMyHeader>
+                <S.AiServiceDetailReviewMyContent>
+                  {comment}
+                </S.AiServiceDetailReviewMyContent>
+              </S.AiServiceDetailReviewMyWrap>
+              <S.AiServiceDetailReviewMyButton>
+                <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
+                  수정
+                </S.AiServiceDetailReviewMyButtonEdit>
+                <S.AiServiceDetailReviewMyButtonDelete onClick={handleDelete}>
+                  삭제
+                </S.AiServiceDetailReviewMyButtonDelete>
+              </S.AiServiceDetailReviewMyButton>
+            </S.AiServiceDetailReviewMyLi>
+          </>
+        )}
       </>
     );
   }
