@@ -7,6 +7,7 @@ import AvgStar from "../../../../assets/images/icon/starAvg.png";
 
 // 컴포넌트
 import Star from "../../../common/star/Star";
+import Review from "./Review";
 
 export function AiServiceDetailReview() {
   return (
@@ -63,6 +64,7 @@ export function AiServiceDetailReview() {
           </S.AiServiceDetailReviewStarAvg>
         </S.AiServiceDetailReviewStarWrap>
       </S.AiServiceDetailReviewWrap>
+      <Review />
     </>
   );
 }
