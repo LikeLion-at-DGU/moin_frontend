@@ -116,6 +116,7 @@ export const AiServiceDetailReviewStarAvgContentSubmit = styled.div``;
 export const AiServiceDetailReviewCommentFormWrite = styled.form`
   display: flex;
   margin-top: 2rem;
+  margin-left: 2rem;
   justify-content: center;
   align-items: center;
 `;
