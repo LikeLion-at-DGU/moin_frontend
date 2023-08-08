@@ -35,6 +35,14 @@ const Comment = ({ comment, onUpdate, onDelete, isRegist, isMember }) => {
               {comment}
             </S.AiServiceDetailReviewMyContent>
           </S.AiServiceDetailReviewMyWrap>
+          <S.AiServiceDetailReviewMyButton>
+            <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
+              수정
+            </S.AiServiceDetailReviewMyButtonEdit>
+            <S.AiServiceDetailReviewMyButtonDelete onClick={handleDelete}>
+              삭제
+            </S.AiServiceDetailReviewMyButtonDelete>
+          </S.AiServiceDetailReviewMyButton>
         </S.AiServiceDetailReviewMyLi>
       </>
     );

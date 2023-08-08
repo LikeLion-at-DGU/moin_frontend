@@ -258,3 +258,38 @@ export const AiServiceDetailReviewListUl = styled.ul`
   flex-direction: column;
   width: 100%;
 `;
+
+// 이용후기 댓글 수정/삭제 버튼
+export const AiServiceDetailReviewMyButton = styled.div`
+  display: flex;
+  margin-left: 2rem;
+`;
+export const AiServiceDetailReviewMyButtonEdit = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  background: #4285f4;
+  padding: 0.7rem 1rem;
+  width: 6.7rem;
+  height: 3.7rem;
+`;
+export const AiServiceDetailReviewMyButtonDelete = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  background: #aeafb9;
+  padding: 0.7rem 1rem;
+  width: 6.7rem;
+  height: 3.7rem;
+  margin-left: 1rem;
+`;
