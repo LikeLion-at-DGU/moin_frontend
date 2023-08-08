@@ -181,3 +181,24 @@ export const AiServiceDetailReviewListContent = styled.div`
   white-space: pre-line;
   word-wrap: break-word;
 `;
+
+// 이용후기 댓글 작성 폼
+export const AiServiceDetailReviewCommentWrap = styled.div`
+  display: flex;
+  margin-top: 4.5rem;
+  margin-left: 3rem;
+`;
+export const AiServiceDetailReviewCommentForm = styled.div``;
+export const AiServiceDetailReviewCommentFormTitle = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const AiServiceDetailReviewCommentFormTitleIcon = styled.img`
+  width: 4rem;
+`;
+
+export const AiServiceDetailReviewCommentFormTitleText = styled.div`
+  color: #4285f4;
+  font-size: 2rem;
+  font-weight: 700;
+`;
