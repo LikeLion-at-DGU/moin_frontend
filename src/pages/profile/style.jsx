@@ -70,13 +70,12 @@ export const myPageUserIcon = styled.img`
 export const ProfileInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   margin: 0 auto;
-
   height: 100%;
   max-width: 1178px;
   width: 100%;
   margin-top: 13rem;
+  margin-bottom: 13rem;
   /* border: 1px solid black; */
 `;
 
@@ -85,7 +84,6 @@ export const ProfileInfoHeaderWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 4rem;
-  margin-right: 3rem;
 `;
 
 export const ProfileInfoHeaderTitle = styled.div`
@@ -127,7 +125,6 @@ export const ProfileInfoContentWrapper = styled.div`
   justify-content: space-between;
 
   margin-bottom: 4rem;
-  margin-right: 3rem;
 `;
 
 export const ProfileInfoContent = styled.div`

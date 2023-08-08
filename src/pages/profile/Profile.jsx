@@ -58,7 +58,6 @@ function Profile() {
             로그아웃
           </S.ProfileInfoHeaderButton>
         </S.ProfileInfoHeaderWrapper>
-
         {/* 프로필 내용물 박스  */}
         <S.ProfileInfoContentWrapper>
           <AuthContentBox content="즐겨찾기" img={MypageStar} />
@@ -66,6 +65,7 @@ function Profile() {
           <AuthContentBox content="댓글 단 게시물" img={MypageChat} />
           <AuthContentBox content="정보수정" img={MypageSetting} />
         </S.ProfileInfoContentWrapper>
+        탈퇴
       </S.ProfileInfoWrapper>
     </S.ProfileWrapper>
   );
