@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import * as S from "./style";
 
+// 아이콘
 import ReviewIcon from "../../../../assets/images/icon/review.png";
 
 const CommentForm = ({ onSubmit }) => {
   const [comment, setComment] = useState("");
   const [password, setPassword] = useState("");
+  const [isRegist, setIsRegist] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(comment, password);
     setComment("");
     setPassword("");
+    setIsRegist(true);
   };
+
+  if (isRegist) {
+    return null;
+  }
 
   return (
     <>
-      {" "}
       <S.AiServiceDetailReviewCommentWrap>
         <S.AiServiceDetailReviewCommentForm>
           <S.AiServiceDetailReviewCommentFormTitle>
@@ -37,6 +43,7 @@ const CommentForm = ({ onSubmit }) => {
               minLength={10}
               maxLength={300}
               required
+              placeholder="(최소 10자 - 최대 300자)"
             />
             {/* 비회원일 때 비밀번호 입력받기 */}
             {/* <input
