@@ -12,7 +12,7 @@ export const AiServiceDetailWrap = styled.div`
 
 export const AiServiceDetailBanner = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 47rem;
   background-color: rgba(0, 10, 65, 0.97);
   position: absolute;
