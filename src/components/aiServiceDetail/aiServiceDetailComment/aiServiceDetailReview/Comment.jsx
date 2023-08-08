@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import * as S from "./style";
 
-const Comment = ({ comment, onUpdate, onDelete, isRegist, isMember }) => {
+const Comment = ({
+  content,
+  onUpdate,
+  onDelete,
+  isRegist,
+  isMember,
+  writer,
+  created_at
+}) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedComment, setEditedComment] = useState(comment);
+  const [editedComment, setEditedComment] = useState(content);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -44,14 +52,14 @@ const Comment = ({ comment, onUpdate, onDelete, isRegist, isMember }) => {
               <S.AiServiceDetailReviewMyWrap>
                 <S.AiServiceDetailReviewMyHeader>
                   <S.AiServiceDetailReviewMyWriter>
-                    작성자
+                    {writer}
                   </S.AiServiceDetailReviewMyWriter>
                   <S.AiServiceDetailReviewMyDate>
-                    날짜
+                    {created_at}
                   </S.AiServiceDetailReviewMyDate>
                 </S.AiServiceDetailReviewMyHeader>
                 <S.AiServiceDetailReviewMyContent>
-                  {comment}
+                  {content}
                 </S.AiServiceDetailReviewMyContent>
               </S.AiServiceDetailReviewMyWrap>
               <S.AiServiceDetailReviewMyButton>
@@ -91,14 +99,14 @@ const Comment = ({ comment, onUpdate, onDelete, isRegist, isMember }) => {
             <S.AiServiceDetailReviewMyWrap>
               <S.AiServiceDetailReviewListHeader>
                 <S.AiServiceDetailReviewListWriter>
-                  작성자
+                  {writer}
                 </S.AiServiceDetailReviewListWriter>
                 <S.AiServiceDetailReviewListDate>
-                  날짜
+                  {created_at}
                 </S.AiServiceDetailReviewListDate>
               </S.AiServiceDetailReviewListHeader>
               <S.AiServiceDetailReviewListContent>
-                {comment}
+                {content}
               </S.AiServiceDetailReviewListContent>
             </S.AiServiceDetailReviewMyWrap>
           </S.AiServiceDetailReviewListLi>
