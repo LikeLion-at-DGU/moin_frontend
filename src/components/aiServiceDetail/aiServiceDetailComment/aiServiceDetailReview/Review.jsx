@@ -8,6 +8,8 @@ function Review() {
     { id: 2, text: "두 번째 댓글입니다.", isMember: false, password: "1234" }
   ]);
 
+  const [showForm, setShowForm] = useState(true); // 댓글 작성 폼 보이기 여부 (댓글 삭제 시 다시 댓글 보이게)
+
   const handleUpdateComment = (id, updatedComment) => {
     setComments(prevComments =>
       prevComments.map(comment =>
@@ -30,15 +32,19 @@ function Review() {
       password: password
     };
     setComments(prevComments => [...prevComments, newComment]);
+    setShowForm(false); // 댓글 등록 후 댓글 작성 폼 감추기
   };
 
   return (
     <>
-      <CommentForm onSubmit={handleSubmitComment} />
+      {showForm && <CommentForm onSubmit={handleSubmitComment} />}
       <CommentList
         comments={comments}
         onUpdate={handleUpdateComment}
-        onDelete={handleDeleteComment}
+        onDelete={commentId => {
+          handleDeleteComment(commentId);
+          setShowForm(true); // 댓글 삭제 후 댓글 작성 폼 보이도록 설정
+        }}
       />
     </>
   );
