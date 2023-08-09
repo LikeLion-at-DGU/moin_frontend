@@ -21,12 +21,13 @@ const Comment = ({
   const handleSave = () => {
     onUpdate(editedComment);
     setIsEditing(false);
-    console.log(editedComment);
   };
 
   const handleDelete = () => {
     onDelete(content);
   };
+
+  const formattedDate = new Date(created_at).toLocaleString(); // 날짜 형식 맞춤
 
   if (isMember && isRegist) {
     return (
@@ -57,7 +58,7 @@ const Comment = ({
                     {writer}
                   </S.AiServiceDetailReviewMyWriter>
                   <S.AiServiceDetailReviewMyDate>
-                    {created_at}
+                    {formattedDate}
                   </S.AiServiceDetailReviewMyDate>
                 </S.AiServiceDetailReviewMyHeader>
                 <S.AiServiceDetailReviewMyContent>
@@ -104,7 +105,7 @@ const Comment = ({
                   {writer}
                 </S.AiServiceDetailReviewListWriter>
                 <S.AiServiceDetailReviewListDate>
-                  {created_at}
+                  {formattedDate}
                 </S.AiServiceDetailReviewListDate>
               </S.AiServiceDetailReviewListHeader>
               <S.AiServiceDetailReviewListContent>

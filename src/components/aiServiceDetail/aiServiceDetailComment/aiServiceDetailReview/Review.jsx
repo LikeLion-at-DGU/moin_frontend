@@ -9,6 +9,8 @@ import { useRecoilState } from "recoil";
 function Review() {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
+  console.log("userInfo");
+  console.log(userInfo);
 
   const [comments, setComments] = useState([
     // { id: 1, text: "첫 번째 댓글입니다.", isMember: false },
@@ -53,9 +55,14 @@ function Review() {
     const newComment = {
       id: Date.now(),
       content: commentText,
+      created_at: Date(),
       isMember: true,
       password: password
     };
+
+    const currentDate = new Date(); // 현재 날짜와 시간 가져오기
+    console.log("댓글 등록 날짜 및 시간:", currentDate);
+
     setComments(prevComments => [...prevComments, newComment]);
     setShowForm(false); // 댓글 등록 후 댓글 작성 폼 감추기
   };
