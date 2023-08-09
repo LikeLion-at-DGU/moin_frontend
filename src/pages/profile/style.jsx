@@ -1,9 +1,21 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { ReactComponent as MypageBook } from "../../assets/images/icon/mypageBook.svg";
 import colors from "../../style/theme";
 
+const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 // 전체 width 차지
 export const ProfileWrapper = styled.div`
+  /* animation: ${fadeInAnimation} 0.5s ease-in-out; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -76,7 +88,7 @@ export const ProfileInfoWrapper = styled.div`
   width: 100%;
   margin-top: 13rem;
   margin-bottom: 13rem;
-  /* border: 1px solid black; */
+  animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
 
 export const ProfileInfoHeaderWrapper = styled.div`

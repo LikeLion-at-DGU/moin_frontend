@@ -26,5 +26,5 @@ export const ProfileInfoContentTitle = styled.div`
 
 export const ProfileInfoContentIcon = styled.img`
   height: 3.7rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 `;
