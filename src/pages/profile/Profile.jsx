@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { userState } from "../../context/authState"; // Update the path to your authState.js
+import { userState } from "../../context/authState"; // Update the path to your authState.j
 import * as S from "./style";
 // png
 import Banner from "../../components/common/banner/Banner";
@@ -23,7 +23,9 @@ function Profile() {
         titleEnglish="MyPage"
         image={<S.MypageBookImg />}
       />
-      <Outlet userInfo={userInfo} setUserInfo={setUserInfo} />
+      <S.ProfileInfoWrapper>
+        <Outlet />
+      </S.ProfileInfoWrapper>
     </S.ProfileWrapper>
   );
 }
