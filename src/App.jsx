@@ -5,6 +5,7 @@ import { theme } from "./style/theme.js";
 import { Outlet } from "react-router-dom";
 
 import NavBar from "./components/layouts/NavBar";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -27,6 +28,10 @@ const Layout = () => {
 };
 
 function App() {
+  const [laguage, setLaguage] = useState("KOR");
+  const getLanguage = laguage => {
+    setLaguage(laguage);
+  };
   return (
     <>
       <ThemeProvider theme={theme}>
