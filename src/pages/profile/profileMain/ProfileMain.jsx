@@ -57,7 +57,11 @@ function ProfileMain() {
           img={MypageChat}
           link="comment"
         />
-        <AuthContentBox content="정보수정" img={MypageSetting} link="modify" />
+        <AuthContentBox
+          content="회원정보 수정"
+          img={MypageSetting}
+          link="modify"
+        />
       </S.ProfileInfoContentWrapper>
       탈퇴
     </>
