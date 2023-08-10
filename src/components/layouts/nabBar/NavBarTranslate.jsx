@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import * as S from "./style";
 import { useRecoilState } from "recoil";
-import { LanguageAtom } from "../../recoil/LanguageAtom";
+import { LanguageAtom } from "../../../recoil/LanguageAtom";
 
 function NavBarTranslate(props) {
   const kor = useRef();

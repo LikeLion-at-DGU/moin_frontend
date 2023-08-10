@@ -18,6 +18,7 @@ import ProfileComment from "./pages/profile/profileComment/ProfileComment";
 import ProfilePost from "./pages/profile/profilePost/ProfilePost";
 import ProfileModify from "./pages/profile/profileModify/ProfileModify";
 import ProfileMain from "./pages/profile/profileMain/ProfileMain";
+import Search from "./pages/search/Search";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "AiService/:AiId",
         element: <AiServiceDetail />
+      },
+      {
+        path: "search",
+        element: <Search />
       }
     ],
     errorElement: <NotFoundError />

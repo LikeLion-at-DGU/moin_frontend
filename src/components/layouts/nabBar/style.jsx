@@ -39,7 +39,7 @@ export const NavLogoTitle = styled.div`
 export const NavMonitorMenu = styled.div`
   width: 620px;
   height: 6rem;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1;
@@ -49,7 +49,7 @@ export const NavMonitorMenu = styled.div`
 export const NavMobileMenu = styled.div`
   height: 6rem;
   width: 100%;
-  display: none;
+  display: flex;
   justify-content: end;
   align-items: center;
   z-index: 1;
@@ -60,9 +60,13 @@ export const NavMobileMenu = styled.div`
 export const NavLink = styled(Link)`
   font-size: 1.5rem;
   font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  color: ${props =>
+    props.$isActive ? props.theme.colors.primary1 : props.theme.colors.gray4};
 
   &:hover {
-    color: ${props => props.theme.colors.primary1};
+    background-color: ${props => props.theme.colors.gray2};
   }
 `;
 
