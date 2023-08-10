@@ -218,3 +218,17 @@ export const AiServiceDetailContentDescriptionBottomHeartCnt = styled.div`
   font-size: 1.4rem;
   font-weight: 400;
 `;
+
+// 조회수 추가
+
+export const AiServiceDetailContentDescriptionEndWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const AiServiceDetailContentDescriptionViews = styled.div`
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 600;
+`;

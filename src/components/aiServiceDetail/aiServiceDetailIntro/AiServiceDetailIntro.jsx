@@ -30,7 +30,8 @@ export function AiServiceDetailIntro() {
         like_cnt: 599,
         view_cnt: 1000,
         rating_point: 4,
-        rating_cnt: 202
+        rating_cnt: 202,
+        views: 402333
       }
     ];
     setIntroContent(introContentData);
@@ -109,16 +110,25 @@ export function AiServiceDetailIntro() {
                   </S.AiServiceDetailContentDescriptionStarCnt>
                 </S.AiServiceDetailContentDescriptionStar>
 
-                {/* 키워드 */}
-                <S.AiServiceDetailContentDescriptionKeywordWrap>
-                  {/* {introItem.keyword.map((keyword, index) => (
+                <S.AiServiceDetailContentDescriptionEndWrap>
+                  {/* 조회수 */}
+                  <S.AiServiceDetailContentDescriptionViews>
+                    조회 {introItem.views.toLocaleString()}
+                  </S.AiServiceDetailContentDescriptionViews>
+
+                  {/* 키워드 */}
+                  <S.AiServiceDetailContentDescriptionKeywordWrap>
+                    {/* {introItem.keyword.map((keyword, index) => (
                     <S.AiServiceDetailContentDescriptionKeyword key={index}>
                       {keyword}
                     </S.AiServiceDetailContentDescriptionKeyword>
                   ))} */}
-                  <Keyword keyword={introItem.keyword} keywordSize={"1.4rem"} />
-                </S.AiServiceDetailContentDescriptionKeywordWrap>
-
+                    <Keyword
+                      keyword={introItem.keyword}
+                      keywordSize={"1.4rem"}
+                    />
+                  </S.AiServiceDetailContentDescriptionKeywordWrap>
+                </S.AiServiceDetailContentDescriptionEndWrap>
                 <S.AiServiceDetailContentDescriptionBottom>
                   {/* 서비스 바로가기 */}
                   <S.AiServiceDetailContentDescriptionBottomLink>
