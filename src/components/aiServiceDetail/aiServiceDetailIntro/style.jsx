@@ -63,7 +63,6 @@ export const AiServiceDetailContent = styled.div`
 export const AiServiceThumbnail = styled.div`
   display: flex;
   border-radius: 10px;
-  border: 1px solid #000;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 `;
@@ -201,7 +200,7 @@ export const AiServiceDetailContentDescriptionBottomHeart = styled.div`
 
 export const AiServiceDetailContentDescriptionBottomHeartIcon = styled.div`
   display: flex;
-  margin-top: 2.5rem;
+  margin-top: 2.4rem;
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeartCnt = styled.div`
