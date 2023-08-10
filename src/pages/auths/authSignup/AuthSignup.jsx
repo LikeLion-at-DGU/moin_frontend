@@ -194,7 +194,7 @@ function Signup() {
           isvaild="true"
         />
       </S.SignUpInputWrapper>
-      <S.AuthSignUpButton>가입하기</S.AuthSignUpButton>
+      <S.AuthSignUpButton type="submit">가입하기</S.AuthSignUpButton>
     </S.SignUpInputContainer>
   );
 }
