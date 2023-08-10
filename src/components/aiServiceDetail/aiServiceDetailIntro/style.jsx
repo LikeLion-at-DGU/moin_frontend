@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import colors from "../../../style/theme";
+import { Link } from "react-router-dom";
 
 export const AiServiceDetailWrap = styled.div`
   display: flex;
@@ -177,16 +178,20 @@ export const AiServiceDetailContentDescriptionBottom = styled.div`
 
 export const AiServiceDetailContentDescriptionBottomLink = styled.div`
   margin-top: 3.8rem;
+  :hover {
+    color: white;
+    background-color: #4285f4;
+  }
 `;
 
-export const AiServiceDetailContentDescriptionBottomLinkBox = styled.div`
+export const StyledLink = styled(Link)`
   display: flex;
-  font-size: 1.3rem;
-  font-weight: 700;
   border: 0.2rem solid #4285f4;
   border-radius: 5px;
   padding: 0.9rem 1.1rem;
   color: #4285f4;
+  font-size: 1.3rem;
+  font-weight: 700;
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeart = styled.div`

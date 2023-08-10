@@ -120,11 +120,9 @@ export function AiServiceDetailIntro() {
                 <S.AiServiceDetailContentDescriptionBottom>
                   {/* 서비스 바로가기 */}
                   <S.AiServiceDetailContentDescriptionBottomLink>
-                    <S.AiServiceDetailContentDescriptionBottomLinkBox
-                      onClick={() => (window.location.href = introItem.url)}
-                    >
+                    <S.StyledLink to={introItem.url} target="_blank">
                       서비스 바로가기
-                    </S.AiServiceDetailContentDescriptionBottomLinkBox>
+                    </S.StyledLink>
                   </S.AiServiceDetailContentDescriptionBottomLink>
 
                   {/* 좋아요 */}
