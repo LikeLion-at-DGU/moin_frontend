@@ -95,3 +95,33 @@ export const AuthSignUpButton = styled.button`
   font-size: 2.4rem;
   color: #606067;
 `;
+export const AuthSignUpButtonDiv = styled.div`
+  display: flex;
+  /* Orange */
+  padding: 3rem;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  width: 56rem;
+  height: 7.5rem;
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: #606067;
+`;
+
+export const UnderButtonTextWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  color: #606067;
+  font-size: 1.8rem;
+`;
+
+export const UnderButtonText = styled.span`
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #606067;
+  margin-right: 1rem;
+  cursor: pointer;
+`;

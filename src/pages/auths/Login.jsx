@@ -121,22 +121,29 @@ export default function Login() {
             <S.AuthButtonWrapper>
               <S.AuthButton type="submit">MO:IN에 로그인</S.AuthButton>
               {/* 구글 로그인 */}
-              <S.AuthSignUpButton
-                type="button"
-                onClick={() => {
-                  console.log("계정생성");
-                }}
-              >
-                MOIN에 가입하고 더 많은 서비스를 누려보세요!
-              </S.AuthSignUpButton>
-              <AuthSocialButton
-                onClick={() => {
-                  console.log("자체회원가입");
-                }}
-                imgSrc={MoinIcon}
-                altText="모인 로고"
-                buttonText="Moin 회원가입"
-              />
+              <S.UnderButtonTextWrapper>
+                &nbsp;&nbsp;
+                <S.UnderButtonText
+                  onClick={() => {
+                    navigate("/login/create");
+                  }}
+                >
+                  모인계정 만들기
+                </S.UnderButtonText>{" "}
+                | &nbsp;&nbsp;
+                <S.UnderButtonText
+                  onClick={() => {
+                    navigate("/login/reset");
+                  }}
+                >
+                  비밀번호 초기화
+                </S.UnderButtonText>
+              </S.UnderButtonTextWrapper>
+
+              <S.AuthSignUpButtonDiv>
+                소셜을 통해 더 간편하게 가입하고 로그인해요!
+              </S.AuthSignUpButtonDiv>
+
               <AuthSocialButton
                 onClick={() => {
                   console.log("자체회원가입");
@@ -145,7 +152,6 @@ export default function Login() {
                 altText="카카오 로고"
                 buttonText="Kakao 로그인"
               />
-
               <AuthSocialButton
                 onClick={() => {
                   console.log("구글계정생성");
