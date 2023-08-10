@@ -103,7 +103,7 @@ const router = createBrowserRouter([
       },
       {
         path: "search",
-        element: <Search />
+        element: <search />
       }
     ],
     errorElement: <NotFoundError />
