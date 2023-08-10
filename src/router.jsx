@@ -18,6 +18,7 @@ import ProfileComment from "./pages/profile/profileComment/ProfileComment";
 import ProfilePost from "./pages/profile/profilePost/ProfilePost";
 import ProfileModify from "./pages/profile/profileModify/ProfileModify";
 import ProfileMain from "./pages/profile/profileMain/ProfileMain";
+import Auth from "./pages/auths/auth/auth";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,20 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />
+      },
+      {
+        path: "auth",
+        element: <Auth />,
+        children: [
+          {
+            path: "create",
+            element: <Login />
+          },
+          {
+            path: "reset",
+            element: <Login />
+          }
+        ]
       },
       {
         path: "mypage",

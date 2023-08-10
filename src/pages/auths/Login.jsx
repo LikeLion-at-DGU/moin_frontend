@@ -125,7 +125,7 @@ export default function Login() {
                 &nbsp;&nbsp;
                 <S.UnderButtonText
                   onClick={() => {
-                    navigate("/login/create");
+                    navigate("/auth/create");
                   }}
                 >
                   모인계정 만들기
@@ -133,7 +133,7 @@ export default function Login() {
                 | &nbsp;&nbsp;
                 <S.UnderButtonText
                   onClick={() => {
-                    navigate("/login/reset");
+                    navigate("/auth/reset");
                   }}
                 >
                   비밀번호 초기화
