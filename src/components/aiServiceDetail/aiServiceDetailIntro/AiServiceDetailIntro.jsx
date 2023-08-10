@@ -9,6 +9,7 @@ import CompanyIcon from "../../../assets/images/icon/company.png";
 import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
 import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
+import Keyword from "../../common/keyword/Keyword";
 
 export function AiServiceDetailIntro() {
   const [introContent, setIntroContent] = useState([]);
@@ -110,11 +111,12 @@ export function AiServiceDetailIntro() {
 
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
-                  {introItem.keyword.map((keyword, index) => (
+                  {/* {introItem.keyword.map((keyword, index) => (
                     <S.AiServiceDetailContentDescriptionKeyword key={index}>
                       {keyword}
                     </S.AiServiceDetailContentDescriptionKeyword>
-                  ))}
+                  ))} */}
+                  <Keyword keyword={introItem.keyword} keywordSize={"1.4rem"} />
                 </S.AiServiceDetailContentDescriptionKeywordWrap>
 
                 <S.AiServiceDetailContentDescriptionBottom>

@@ -171,13 +171,17 @@ export const AiServiceDetailContentDescriptionKeyword = styled.div`
   padding: 0.5rem 1rem;
 `;
 
+// export const StyledKeyword = styled(Keyword)`
+//   font-weight: 700;
+// `;
+
 export const AiServiceDetailContentDescriptionBottom = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
 export const AiServiceDetailContentDescriptionBottomLink = styled.div`
-  margin-top: 3.8rem;
+  margin-top: 2.5rem;
   :hover {
     color: white;
     background-color: #4285f4;
@@ -205,7 +209,7 @@ export const AiServiceDetailContentDescriptionBottomHeart = styled.div`
 
 export const AiServiceDetailContentDescriptionBottomHeartIcon = styled.div`
   display: flex;
-  margin-top: 2.4rem;
+  margin-top: 0.8rem;
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeartCnt = styled.div`
