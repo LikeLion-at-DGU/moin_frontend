@@ -232,3 +232,8 @@ export const AiServiceDetailContentDescriptionViews = styled.div`
   font-size: 1.2rem;
   font-weight: 600;
 `;
+
+// 좋아요 버튼 기능
+export const LikeButton = styled.button`
+  display: flex;
+`;

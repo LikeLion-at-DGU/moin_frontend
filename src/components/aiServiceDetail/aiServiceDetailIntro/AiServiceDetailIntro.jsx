@@ -13,6 +13,7 @@ import Keyword from "../../common/keyword/Keyword";
 
 export function AiServiceDetailIntro() {
   const [introContent, setIntroContent] = useState([]);
+  const [isLiked, setIsLiked] = useState(introContent.is_liked);
 
   useEffect(() => {
     const introContentData = [
@@ -27,6 +28,7 @@ export function AiServiceDetailIntro() {
         popular_job: ["개발자", "디자이너"], // 추가
         thumbnail:
           "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
+        is_liked: false,
         like_cnt: 599,
         view_cnt: 1000,
         rating_point: 4,
@@ -140,7 +142,13 @@ export function AiServiceDetailIntro() {
                   {/* 좋아요 */}
                   <S.AiServiceDetailContentDescriptionBottomHeart>
                     <S.AiServiceDetailContentDescriptionBottomHeartIcon>
-                      <Like likeSize={"4rem"} likeCheck={true}></Like>
+                      <S.LikeButton
+                        onClick={() => {
+                          setIsLiked(!isLiked);
+                        }}
+                      >
+                        <Like likeSize={"4rem"} likeCheck={isLiked} />
+                      </S.LikeButton>
                     </S.AiServiceDetailContentDescriptionBottomHeartIcon>
                     <S.AiServiceDetailContentDescriptionBottomHeartCnt>
                       {introItem.like_cnt}
