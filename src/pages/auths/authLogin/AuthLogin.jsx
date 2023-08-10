@@ -2,20 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 // aixos
-import axios from "../../api/axios";
+import axios from "../../../api/axios";
 // 구글 이미지
-import GoogleIcon from "../../assets/images/icon/google.png";
-import KakaoIcon from "../../assets/images/icon/kakao.png";
-import MoinIcon from "../../assets/images/moin_logo.png";
+import GoogleIcon from "../../../assets/images/icon/google.png";
+import KakaoIcon from "../../../assets/images/icon/kakao.png";
+import MoinIcon from "../../../assets/images/moin_logo.png";
 
 // 컴포넌트
-import AuthLoginTitle from "../../components/auths/authLogin/AuthLoginTitle";
-import AuthLoginForm from "../../components/auths/authLogin/AuthLoginForm";
-import AuthSocialButton from "../../components/auths/authSocialButton/AuthSocialButton";
+import AuthLoginTitle from "../../../components/auths/authLogin/AuthLoginTitle";
+import AuthLoginForm from "../../../components/auths/authLogin/AuthLoginForm";
+import AuthSocialButton from "../../../components/auths/authSocialButton/AuthSocialButton";
 
 // recoil 적용
 import { useRecoilState } from "recoil";
-import { userState } from "../../context/authState";
+import { userState } from "../../../context/authState";
 
 export default function Login() {
   const navigate = useNavigate();

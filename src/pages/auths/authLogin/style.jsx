@@ -1,5 +1,5 @@
 import { styled, keyframes } from "styled-components";
-import colors from "../../style/theme";
+import colors from "../../../style/theme";
 
 const fadeInAnimation = keyframes`
   from {

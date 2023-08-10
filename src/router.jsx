@@ -12,7 +12,7 @@ import Profile from "./pages/profile/Profile";
 import AiServiceDetail from "./pages/ai/AiServiceDetail";
 
 import NotFoundError from "./pages/errors/NotFound";
-import Login from "./pages/auths/Login";
+import Login from "./pages/auths/authLogin/AuthLogin";
 import ProfileFavorite from "./pages/profile/profileFavorite/ProfileFavorite";
 import ProfileComment from "./pages/profile/profileComment/ProfileComment";
 import ProfilePost from "./pages/profile/profilePost/ProfilePost";

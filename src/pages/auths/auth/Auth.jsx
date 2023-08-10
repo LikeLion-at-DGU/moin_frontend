@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import Banner from "../../../components/common/banner/Banner";
+import { Outlet } from "react-router-dom";
 
 function Auth() {
   return (
@@ -10,6 +11,7 @@ function Auth() {
         titleEnglish="JOIN MEMBERSHIP"
         image={<S.AuthIconImg />}
       />
+      <Outlet />
     </S.AuthWrapper>
   );
 }
