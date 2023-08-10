@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import * as S from "../../auths/authSignup/style";
+import { useNavigate } from "react-router-dom";
 
 function ProfileChangePassword() {
+  const navigate = useNavigate();
   const [pwd, setPwd] = useState("");
   const [passwordIsVaild, setpasswordIsVaild] = useState(false);
   const [pwdMatchMessage, setPwdMatchMessage] = useState("");
@@ -29,7 +31,7 @@ function ProfileChangePassword() {
     try {
       // axios.post("/signup", user);
       alert("비밀번호 변경이 완료되었습니다.");
-      navigate("/login");
+      navigate("/mypage");
     } catch (error) {
       alert("변경에 실패했습니다.");
     }
