@@ -17,7 +17,7 @@ import AuthSocialButton from "../../../components/auths/authSocialButton/AuthSoc
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 
-export default function Login() {
+export default function AuthLogin() {
   const navigate = useNavigate();
   // const userInfo = useContext(AuthContext);
 

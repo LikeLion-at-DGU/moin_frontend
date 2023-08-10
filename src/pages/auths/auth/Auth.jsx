@@ -11,7 +11,9 @@ function Auth() {
         titleEnglish="JOIN MEMBERSHIP"
         image={<S.AuthIconImg />}
       />
-      <Outlet />
+      <S.AuthInfoWrapper>
+        <Outlet />
+      </S.AuthInfoWrapper>
     </S.AuthWrapper>
   );
 }

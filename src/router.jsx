@@ -12,13 +12,15 @@ import Profile from "./pages/profile/Profile";
 import AiServiceDetail from "./pages/ai/AiServiceDetail";
 
 import NotFoundError from "./pages/errors/NotFound";
-import Login from "./pages/auths/authLogin/AuthLogin";
+import AuthLogin from "./pages/auths/authLogin/AuthLogin";
 import ProfileFavorite from "./pages/profile/profileFavorite/ProfileFavorite";
 import ProfileComment from "./pages/profile/profileComment/ProfileComment";
 import ProfilePost from "./pages/profile/profilePost/ProfilePost";
 import ProfileModify from "./pages/profile/profileModify/ProfileModify";
 import ProfileMain from "./pages/profile/profileMain/ProfileMain";
 import Auth from "./pages/auths/auth/auth";
+import AuthReset from "./pages/auths/authReset/AuthReset";
+import AuthSignup from "./pages/auths/authSignup/AuthSignup";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />
+        element: <AuthLogin />
       },
       {
         path: "auth",
@@ -55,11 +57,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: "create",
-            element: <Login />
+            element: <AuthSignup />
           },
           {
             path: "reset",
-            element: <Login />
+            element: <AuthReset />
           }
         ]
       },
