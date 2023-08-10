@@ -30,6 +30,11 @@ export const AiServiceDetailShare = styled.div`
   margin-top: 2.9rem;
   margin-right: 3.5rem;
   justify-content: right;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const AiServiceDetailShareImg = styled.img`
