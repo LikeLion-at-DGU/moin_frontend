@@ -21,6 +21,7 @@ import ProfileMain from "./pages/profile/profileMain/ProfileMain";
 import Auth from "./pages/auths/auth/auth";
 import AuthReset from "./pages/auths/authReset/AuthReset";
 import AuthSignup from "./pages/auths/authSignup/AuthSignup";
+import ProfileChangePassword from "./pages/profile/profileChangePassword/ProfileChangePassword";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <ProfileMain />
+          },
+          {
+            path: "changepassword",
+            element: <ProfileChangePassword />
           },
           {
             path: "favorite",
