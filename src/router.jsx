@@ -100,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "AiService/:AiId",
         element: <AiServiceDetail />
+      },
+      {
+        path: "search",
+        element: <Search />
       }
     ],
     errorElement: <NotFoundError />
