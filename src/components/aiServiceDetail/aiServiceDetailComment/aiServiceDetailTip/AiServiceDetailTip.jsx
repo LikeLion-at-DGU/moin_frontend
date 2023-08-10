@@ -146,8 +146,10 @@ export function AiServiceDetailTip() {
       <S.AiServiceDetailTipWrap>
         <S.AiServiceDetailTipHeader>
           <S.AiServiceDetailTipHeaderWrite>
-            <S.StyledPencilIcon />
-            글쓰기
+            <S.AiServiceDetailTipHeaderWriteContent>
+              <S.StyledPencilIcon />
+              글쓰기
+            </S.AiServiceDetailTipHeaderWriteContent>
           </S.AiServiceDetailTipHeaderWrite>
           <S.AiServiceDetailTipHeaderSort>
             <Selector /> {/* 임시로 넣어둠 */}
