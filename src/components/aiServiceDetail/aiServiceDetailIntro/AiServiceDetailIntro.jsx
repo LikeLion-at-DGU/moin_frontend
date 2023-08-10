@@ -8,6 +8,7 @@ import CompanyIcon from "../../../assets/images/icon/company.png";
 // 컴포넌트
 import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
+import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
 
 export function AiServiceDetailIntro() {
   const [introContent, setIntroContent] = useState([]);
@@ -41,9 +42,19 @@ export function AiServiceDetailIntro() {
         <S.AiServiceDetailWrap key={introItem.id}>
           <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
           <S.AiServiceDetailHeader>
-            <S.AiServiceDetailShare>
-              <S.AiServiceDetailShareImg src={ShareIcon} alt="공유 아이콘" />
-            </S.AiServiceDetailShare>
+            <CopyToClipboard
+              text={introItem.url}
+              onCopy={() => alert("링크가 복사되었습니다..")}
+            >
+              <S.CopyToClipboardElement>
+                <S.AiServiceDetailShare>
+                  <S.AiServiceDetailShareImg
+                    src={ShareIcon}
+                    alt="공유 아이콘"
+                  />
+                </S.AiServiceDetailShare>
+              </S.CopyToClipboardElement>
+            </CopyToClipboard>
             <S.AiServiceDetailRegistrant>
               MOIN 등록자 : {introItem.applier}
             </S.AiServiceDetailRegistrant>

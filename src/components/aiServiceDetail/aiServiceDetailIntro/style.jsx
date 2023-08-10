@@ -43,6 +43,9 @@ export const AiServiceDetailShareImg = styled.img`
   height: 4rem;
 `;
 
+// 클립보드
+export const CopyToClipboardElement = styled.text``;
+
 export const AiServiceDetailRegistrant = styled.div`
   display: flex;
   margin-top: 5.3rem;
