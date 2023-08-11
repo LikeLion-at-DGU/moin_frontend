@@ -21,7 +21,7 @@ function Main() {
         thumbnail:
           "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
         like_cnt: 599,
-        rating_point: 4,
+        rating_point: 4.75,
         rating_cnt: 202
       },
       {
@@ -32,7 +32,7 @@ function Main() {
         thumbnail:
           "http://image.koreatimes.com/article/2023/02/13/20230213105650631.jpg",
         like_cnt: 403,
-        rating_point: 3,
+        rating_point: 3.15,
         rating_cnt: 332
       }
     ];
