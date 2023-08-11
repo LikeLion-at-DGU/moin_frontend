@@ -29,6 +29,10 @@ const Comment = ({
 
   const formattedDate = new Date(created_at).toLocaleString(); // 날짜 형식 맞춤
 
+  console.log("userInfo Comment");
+  console.log(userInfo);
+  console.log("userInfo Comment");
+
   if (userInfo && isRegist) {
     return (
       <>
@@ -112,6 +116,13 @@ const Comment = ({
                 {content}
               </S.AiServiceDetailReviewListContent>
             </S.AiServiceDetailReviewMyWrap>
+            {!userInfo && (
+              <S.AiServiceDetailReviewMyButton>
+                <S.AiServiceDetailReviewMyButtonDelete onClick={handleDelete}>
+                  삭제
+                </S.AiServiceDetailReviewMyButtonDelete>
+              </S.AiServiceDetailReviewMyButton>
+            )}
           </S.AiServiceDetailReviewListLi>
         </>
       )}

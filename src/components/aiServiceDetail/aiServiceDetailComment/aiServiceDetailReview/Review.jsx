@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import * as S from "./style";
-import ReviewListIcon from "../../../../assets/images/icon/reviewList.png";
 
 import axios from "axios";
 import { userState } from "../../../../context/authState";

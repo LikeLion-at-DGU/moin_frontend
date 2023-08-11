@@ -153,7 +153,7 @@ export const AiServiceDetailReviewCommentFormWriteButton = styled.button`
 // 이용 후기 목록
 export const AiServiceDetailReviewListLi = styled.li`
   display: flex;
-  flex-direction: column;
+
   padding: 2.6rem;
   border-bottom: 2px solid #f0f0f0;
 `;

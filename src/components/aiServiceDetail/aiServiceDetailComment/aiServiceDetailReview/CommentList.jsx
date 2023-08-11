@@ -29,6 +29,9 @@ const CommentList = ({
     setShowMore(!showMore);
   };
 
+  console.log("userInfo List");
+  console.log(userInfo);
+  console.log("userInfo List");
   return (
     <>
       <>
@@ -96,6 +99,7 @@ const CommentList = ({
               created_at={comment.created_at}
               onUpdate={updatedComment => onUpdate(comment.id, updatedComment)}
               onDelete={() => onDelete(comment.id)}
+              userInfo={userInfo}
             />
           ))}
         </S.AiServiceDetailReviewListUl>
