@@ -168,13 +168,6 @@ function Main() {
           getCurrentOption={getCurrentOption}
         />
       </S.MainTitleWrapper>
-      <div
-        onClick={() => {
-          console.log("확인", data);
-        }}
-      >
-        확인
-      </div>
 
       <AiServiceList data={showData} />
     </S.MainWrapper>
