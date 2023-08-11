@@ -44,10 +44,13 @@ const CommentForm = ({ onSubmit, userInfo }) => {
             {!userInfo ? (
               <S.AiServiceDetailReviewCommentFormWritePwd
                 type="password"
+                inputMode="numeric"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 pattern="\d{4}"
-                title="4 숫자를 입력해주세요."
+                minLength={4}
+                maxLength={4}
+                title="4자리 숫자로 입력해주세요"
                 placeholder="비밀번호 (4자리 숫자)"
                 required
               />
