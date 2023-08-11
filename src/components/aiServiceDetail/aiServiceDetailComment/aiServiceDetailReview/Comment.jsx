@@ -6,7 +6,7 @@ const Comment = ({
   onUpdate,
   onDelete,
   isRegist,
-  isMember,
+  userInfo,
   writer,
   created_at
 }) => {
@@ -29,7 +29,7 @@ const Comment = ({
 
   const formattedDate = new Date(created_at).toLocaleString(); // 날짜 형식 맞춤
 
-  if (isMember && isRegist) {
+  if (userInfo && isRegist) {
     return (
       <>
         {isEditing ? (
