@@ -8,6 +8,7 @@ import CompanyIcon from "../../../assets/images/icon/company.png";
 // 컴포넌트
 import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
+import Keyword from "../../common/keyword/Keyword";
 
 export function AiServiceDetailIntro() {
   const [introContent, setIntroContent] = useState([]);
@@ -96,11 +97,15 @@ export function AiServiceDetailIntro() {
 
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
-                  {introItem.keyword.map((keyword, index) => (
+                  <Keyword
+                    keyword={introItem.keyword}
+                    keywordFontSize={"1.5rem"}
+                  />
+                  {/* {introItem.keyword.map((keyword, index) => (
                     <S.AiServiceDetailContentDescriptionKeyword key={index}>
                       {keyword}
                     </S.AiServiceDetailContentDescriptionKeyword>
-                  ))}
+                  ))} */}
                 </S.AiServiceDetailContentDescriptionKeywordWrap>
 
                 <S.AiServiceDetailContentDescriptionBottom>

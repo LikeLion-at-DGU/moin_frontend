@@ -4,7 +4,6 @@ import * as S from "./style";
 import { AiFillStar } from "react-icons/ai";
 
 function Star({ starNum, starSize }) {
-  console.log(starNum, starSize);
   return (
     <>
       <S.StarGray>
