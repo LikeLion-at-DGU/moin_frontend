@@ -15,6 +15,7 @@ function Keyword({ keyword, keywordFontSize, keywordFontWeight = "400" }) {
           style={{ backgroundColor: keywordColor[item] }}
           fontSize={keywordFontSize}
           fontWeight={keywordFontWeight}
+
         >
           {item}
         </S.KeywordTag>

@@ -8,10 +8,14 @@ import CompanyIcon from "../../../assets/images/icon/company.png";
 // 컴포넌트
 import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
+
+import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
+
 import Keyword from "../../common/keyword/Keyword";
 
 export function AiServiceDetailIntro() {
   const [introContent, setIntroContent] = useState([]);
+  const [isLiked, setIsLiked] = useState(introContent.is_liked);
 
   useEffect(() => {
     const introContentData = [
@@ -26,10 +30,12 @@ export function AiServiceDetailIntro() {
         popular_job: ["개발자", "디자이너"], // 추가
         thumbnail:
           "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
+        is_liked: false,
         like_cnt: 599,
         view_cnt: 1000,
         rating_point: 4,
-        rating_cnt: 202
+        rating_cnt: 202,
+        views: 402333
       }
     ];
     setIntroContent(introContentData);
@@ -42,9 +48,19 @@ export function AiServiceDetailIntro() {
         <S.AiServiceDetailWrap key={introItem.id}>
           <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
           <S.AiServiceDetailHeader>
-            <S.AiServiceDetailShare>
-              <S.AiServiceDetailShareImg src={ShareIcon} alt="공유 아이콘" />
-            </S.AiServiceDetailShare>
+            <CopyToClipboard
+              text={introItem.url}
+              onCopy={() => alert("링크가 복사되었습니다.")}
+            >
+              <S.CopyToClipboardElement>
+                <S.AiServiceDetailShare>
+                  <S.AiServiceDetailShareImg
+                    src={ShareIcon}
+                    alt="공유 아이콘"
+                  />
+                </S.AiServiceDetailShare>
+              </S.CopyToClipboardElement>
+            </CopyToClipboard>
             <S.AiServiceDetailRegistrant>
               MOIN 등록자 : {introItem.applier}
             </S.AiServiceDetailRegistrant>
@@ -95,6 +111,7 @@ export function AiServiceDetailIntro() {
                   </S.AiServiceDetailContentDescriptionStarCnt>
                 </S.AiServiceDetailContentDescriptionStar>
 
+
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
                   <Keyword
@@ -106,22 +123,28 @@ export function AiServiceDetailIntro() {
                       {keyword}
                     </S.AiServiceDetailContentDescriptionKeyword>
                   ))} */}
-                </S.AiServiceDetailContentDescriptionKeywordWrap>
+ </S.AiServiceDetailContentDescriptionKeywordWrap>
 
+
+  
                 <S.AiServiceDetailContentDescriptionBottom>
                   {/* 서비스 바로가기 */}
                   <S.AiServiceDetailContentDescriptionBottomLink>
-                    <S.AiServiceDetailContentDescriptionBottomLinkBox
-                      onClick={() => (window.location.href = introItem.url)}
-                    >
+                    <S.StyledLink to={introItem.url} target="_blank">
                       서비스 바로가기
-                    </S.AiServiceDetailContentDescriptionBottomLinkBox>
+                    </S.StyledLink>
                   </S.AiServiceDetailContentDescriptionBottomLink>
 
                   {/* 좋아요 */}
                   <S.AiServiceDetailContentDescriptionBottomHeart>
                     <S.AiServiceDetailContentDescriptionBottomHeartIcon>
-                      <Like likeSize={"4rem"} likeCheck={true}></Like>
+                      <S.LikeButton
+                        onClick={() => {
+                          setIsLiked(!isLiked);
+                        }}
+                      >
+                        <Like likeSize={"4rem"} likeCheck={isLiked} />
+                      </S.LikeButton>
                     </S.AiServiceDetailContentDescriptionBottomHeartIcon>
                     <S.AiServiceDetailContentDescriptionBottomHeartCnt>
                       {introItem.like_cnt}
