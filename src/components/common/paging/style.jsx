@@ -16,7 +16,7 @@ export const PagingNoPage = styled.div`
 
 export const Nav = styled.nav`
   position: absolute;
-  bottom: -1rem;
+  bottom: -1.5rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -32,7 +32,7 @@ export const Button = styled.button`
   margin: 0;
 
   color: ${props => props.theme.colors.gray4};
-  font-size: 1rem;
+  font-size: 1%.5;
 
   &:hover {
     background: ${props => props.theme.colors.gray1};

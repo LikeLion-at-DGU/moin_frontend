@@ -8,12 +8,7 @@ function Paging({ page, count, postPerPage, setPage }) {
   const numPagesSection = Math.ceil(numPages / pageRangeDisplayed);
   const [currentPageSection, setCurrentPageSection] = useState(0);
 
-  console.log("numsPages", numPages);
-  console.log("numPagesSection", numPagesSection);
-  console.log("count", count);
-
   useEffect(() => {
-    console.log(currentPageSection);
     setPage(currentPageSection * pageRangeDisplayed + 1);
   }, [currentPageSection]);
   return (
