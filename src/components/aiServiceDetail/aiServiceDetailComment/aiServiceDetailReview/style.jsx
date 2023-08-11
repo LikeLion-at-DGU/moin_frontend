@@ -1,5 +1,8 @@
 import styled, { keyframes } from "styled-components";
 
+// 컴포넌트
+import Modal from "react-modal"; // 모달창
+
 export const AiServiceDetailReviewWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -288,7 +291,7 @@ export const AiServiceDetailReviewMyButtonEdit = styled.div`
   width: 6.7rem;
   height: 3.7rem;
 `;
-export const AiServiceDetailReviewMyButtonDelete = styled.div`
+export const AiServiceDetailReviewMyButtonDelete = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -302,6 +305,10 @@ export const AiServiceDetailReviewMyButtonDelete = styled.div`
   width: 6.7rem;
   height: 3.7rem;
   margin-left: 1rem;
+
+  &:hover {
+    background: #6a6a70;
+  }
 `;
 
 // 이용후기 댓글 수정 폼
@@ -332,6 +339,29 @@ export const ReviewHeaderIcon = styled.img`
 `;
 
 // 비회원 비밀번호
+export const AiServiceDetailReviewMyButtonNotUser = styled.div`
+  display: flex;
+  margin-right: 0;
+`;
+
+export const AiServiceDetailReviewMyButtonDeleteNotUser = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  background: #aeafb9;
+  padding: 0.7rem 1rem;
+  width: 6.7rem;
+  height: 3.7rem;
+  margin-left: -5rem;
+  &:hover {
+    background: #6a6a70;
+  }
+`;
 
 export const AiServiceDetailReviewCommentFormWritePwd = styled.input`
   display: flex;
@@ -401,4 +431,75 @@ export const SlideCommentsWrap = styled.div`
     max-height: 100rem;
     transition: max-height 0.5s ease-in-out; //펼치는 속도
   }
+`;
+
+// 비회원 삭제 모달창
+export const NotUserDeleteModal = styled(Modal)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50rem;
+  height: 30rem;
+
+  overlay {
+    background-color: rgba(255, 2, 2, 0.5);
+    z-index: 1000;
+  }
+`;
+
+export const NotUserDeleteModalContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100rem;
+  height: 30rem;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+`;
+
+export const NotUserDeleteModalContentTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #4285f4;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+export const NotUserDeleteModalContentButtonWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+`;
+
+export const NotUserDeleteModalContentButtonConfirm = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #000;
+  padding: 1rem 4rem;
+  margin-right: 2rem;
+`;
+
+export const NotUserDeleteModalContentButtonCancle = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #000;
+  padding: 1rem 4rem;
 `;

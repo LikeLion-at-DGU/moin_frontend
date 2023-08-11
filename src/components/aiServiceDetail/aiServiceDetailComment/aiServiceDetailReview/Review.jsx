@@ -11,13 +11,8 @@ import { useRecoilState } from "recoil";
 function Review() {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
-  console.log("userInfo");
-  console.log(userInfo);
-  console.log("userInfo");
 
   const [comments, setComments] = useState([
-    // { id: 1, text: "첫 번째 댓글입니다.", isMember: false },
-    // { id: 2, text: "두 번째 댓글입니다.", isMember: false, password: "1234" }
     {
       id: 1,
       ai: "챗GPT",
