@@ -106,10 +106,7 @@ function Review() {
   return (
     <>
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
-      <S.ReviewHeader>
-        <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
-        <S.ReviewHeaderText>후기</S.ReviewHeaderText>
-      </S.ReviewHeader>
+
       <CommentList
         comments={comments}
         onUpdate={handleUpdateComment}

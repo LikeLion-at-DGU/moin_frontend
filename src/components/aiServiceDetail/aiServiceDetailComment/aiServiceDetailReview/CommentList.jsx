@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
 import * as S from "./style";
+import ReviewListIcon from "../../../../assets/images/icon/reviewList.png";
 const CommentList = ({
   comments,
   onUpdate,
@@ -80,6 +81,11 @@ const CommentList = ({
       </>
 
       {/* 댓글목록 */}
+      <S.ReviewHeader>
+        <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
+        <S.ReviewHeaderText>후기</S.ReviewHeaderText>
+      </S.ReviewHeader>
+
       <S.AiServiceDetailReviewListWrap>
         <S.AiServiceDetailReviewListUl>
           {sortedComments.map(comment => (
