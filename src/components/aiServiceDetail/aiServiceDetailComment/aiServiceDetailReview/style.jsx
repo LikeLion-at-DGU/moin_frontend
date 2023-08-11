@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const AiServiceDetailReviewWrap = styled.div`
   display: flex;
@@ -359,4 +359,46 @@ export const AiServiceDetailReviewCommentFormWritePwd = styled.input`
 
 export const AiServiceDetailReviewCommentFormWriteContent = styled.div`
   display: flex;
+`;
+
+// 내 댓글 더보기 버튼 생성
+const slideDown = keyframes`
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px; /* 적절한 최대 높이 설정 */
+    opacity: 1;
+  }
+`;
+
+export const MyCommentsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MoreButtonWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const MoreButton = styled.button`
+  display: flex;
+  color: #aeafb9;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1.3rem;
+`;
+
+export const SlideCommentsWrap = styled.div`
+  max-height: 0; // 처음에 안보이게
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out; //접는 속도
+
+  &.show {
+    max-height: 100rem;
+    transition: max-height 0.5s ease-in-out; //펼치는 속도
+  }
 `;
