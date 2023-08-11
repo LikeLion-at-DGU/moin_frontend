@@ -311,3 +311,21 @@ export const AiServiceDetailReviewCommentFormWriteMy = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+// 이용후기 헤더 추가
+export const ReviewHeader = styled.div`
+  display: flex;
+  margin-top: 7.5rem;
+  margin-left: 3rem;
+`;
+export const ReviewHeaderText = styled.div`
+  display: flex;
+  color: #4285f4;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+export const ReviewHeaderIcon = styled.img`
+  display: flex;
+  width: 2.8rem;
+  margin-right: 0.8rem;
+`;

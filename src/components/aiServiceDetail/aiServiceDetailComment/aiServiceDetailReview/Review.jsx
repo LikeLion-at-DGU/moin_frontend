@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
+import * as S from "./style";
+import ReviewListIcon from "../../../../assets/images/icon/reviewList.png";
+
 import axios from "axios";
 import { userState } from "../../../../context/authState";
 
@@ -70,7 +73,10 @@ function Review() {
   return (
     <>
       {<CommentForm onSubmit={handleSubmitComment} />}
-
+      <S.ReviewHeader>
+        <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
+        <S.ReviewHeaderText>후기</S.ReviewHeaderText>
+      </S.ReviewHeader>
       <CommentList
         comments={comments}
         onUpdate={handleUpdateComment}
