@@ -32,7 +32,7 @@ const CommentForm = ({ onSubmit }) => {
             />
 
             <S.AiServiceDetailReviewCommentFormTitleText>
-              당신의 후기를 남겨주세요
+              후기 작성
             </S.AiServiceDetailReviewCommentFormTitleText>
           </S.AiServiceDetailReviewCommentFormTitle>
 

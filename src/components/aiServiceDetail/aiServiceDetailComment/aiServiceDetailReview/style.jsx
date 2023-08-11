@@ -116,13 +116,13 @@ export const AiServiceDetailReviewStarAvgContentSubmit = styled.div``;
 export const AiServiceDetailReviewCommentFormWrite = styled.form`
   display: flex;
   margin-top: 2rem;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
   justify-content: center;
   align-items: center;
 `;
 
 export const AiServiceDetailReviewCommentFormWriteTextArea = styled.textarea`
-  width: 89rem;
+  width: 95rem;
   height: 9rem;
   padding: 1rem;
   padding-left: 1.5rem;
