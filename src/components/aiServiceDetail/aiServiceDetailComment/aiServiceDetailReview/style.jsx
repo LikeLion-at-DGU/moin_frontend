@@ -202,7 +202,8 @@ export const AiServiceDetailReviewCommentFormTitle = styled.div`
   align-items: center;
 `;
 export const AiServiceDetailReviewCommentFormTitleIcon = styled.img`
-  width: 4rem;
+  width: 2.3rem;
+  margin-right: 0.8rem;
 `;
 
 export const AiServiceDetailReviewCommentFormTitleText = styled.div`
