@@ -111,7 +111,6 @@ export function AiServiceDetailIntro() {
                   </S.AiServiceDetailContentDescriptionStarCnt>
                 </S.AiServiceDetailContentDescriptionStar>
 
-
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
                   <Keyword
@@ -123,10 +122,8 @@ export function AiServiceDetailIntro() {
                       {keyword}
                     </S.AiServiceDetailContentDescriptionKeyword>
                   ))} */}
- </S.AiServiceDetailContentDescriptionKeywordWrap>
+                </S.AiServiceDetailContentDescriptionKeywordWrap>
 
-
-  
                 <S.AiServiceDetailContentDescriptionBottom>
                   {/* 서비스 바로가기 */}
                   <S.AiServiceDetailContentDescriptionBottomLink>
