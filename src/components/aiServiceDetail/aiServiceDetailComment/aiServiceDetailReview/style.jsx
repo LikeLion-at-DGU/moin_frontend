@@ -115,10 +115,11 @@ export const AiServiceDetailReviewStarAvgContentSubmit = styled.div``;
 // 댓글 작성하는 곳
 export const AiServiceDetailReviewCommentFormWrite = styled.form`
   display: flex;
+  flex-direction: column;
   margin-top: 2rem;
   /* margin-left: 2rem; */
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const AiServiceDetailReviewCommentFormWriteTextArea = styled.textarea`
@@ -328,4 +329,34 @@ export const ReviewHeaderIcon = styled.img`
   display: flex;
   width: 2.8rem;
   margin-right: 0.8rem;
+`;
+
+// 비회원 비밀번호
+
+export const AiServiceDetailReviewCommentFormWritePwd = styled.input`
+  display: flex;
+
+  border-radius: 20px;
+  border: 1px solid #aeafb9;
+
+  width: 21rem;
+  height: 5.3rem;
+  padding: 1rem;
+  padding-left: 1.5rem;
+  resize: none;
+  border-radius: 20px;
+  border: 1px solid #aeafb9;
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-family: inherit;
+
+  margin-bottom: 1.3rem;
+
+  ::placeholder {
+    color: #acacac;
+  }
+`;
+
+export const AiServiceDetailReviewCommentFormWriteContent = styled.div`
+  display: flex;
 `;

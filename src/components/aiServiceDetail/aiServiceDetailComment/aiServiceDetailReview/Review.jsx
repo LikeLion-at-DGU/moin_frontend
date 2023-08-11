@@ -14,6 +14,7 @@ function Review() {
   const [userInfo, setUserInfo] = useRecoilState(userState);
   console.log("userInfo");
   console.log(userInfo);
+  console.log("userInfo");
 
   const [comments, setComments] = useState([
     // { id: 1, text: "첫 번째 댓글입니다.", isMember: false },
@@ -72,7 +73,7 @@ function Review() {
 
   return (
     <>
-      {<CommentForm onSubmit={handleSubmitComment} />}
+      <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
       <S.ReviewHeader>
         <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
         <S.ReviewHeaderText>후기</S.ReviewHeaderText>
