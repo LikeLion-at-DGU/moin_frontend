@@ -22,6 +22,7 @@ import Auth from "./pages/auths/auth/auth";
 import AuthReset from "./pages/auths/authReset/AuthReset";
 import AuthSignup from "./pages/auths/authSignup/AuthSignup";
 import ProfileChangePassword from "./pages/profile/profileChangePassword/ProfileChangePassword";
+import Search from "./pages/search/Search";
 
 const router = createBrowserRouter([
   {
@@ -103,7 +104,7 @@ const router = createBrowserRouter([
       },
       {
         path: "search",
-        element: <search />
+        element: <Search />
       }
     ],
     errorElement: <NotFoundError />
