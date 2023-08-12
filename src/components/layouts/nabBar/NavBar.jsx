@@ -58,7 +58,7 @@ export default function NavBar() {
       <S.NavLink
         to={menu.link}
         key={idx}
-        $isActive={location.pathname == menu.link}
+        $isActive={location.pathname.startsWith(menu.link)}
       >
         {menu.title}
       </S.NavLink>
