@@ -26,6 +26,7 @@ import Search from "./pages/search/Search";
 import ProfileFavoritePost from "./pages/profile/profileFavoritePost/ProfileFavoritePost";
 import DetailPage from "./pages/community/communityDetail/DetailPage";
 import SuggestionDetailPage from "./pages/suggestion/suggestionDetail/SuggestionDetailPage";
+import NoticeDetailPage from "./pages/notice/noticeDetail/noticeDetail";
 
 const router = createBrowserRouter([
   {
@@ -120,11 +121,11 @@ const router = createBrowserRouter([
       {
         path: "suggestion/:id",
         element: <SuggestionDetailPage />
+      },
+      {
+        path: "notice/:id",
+        element: <NoticeDetailPage />
       }
-      // {
-      //   path: "community/qnas/:qna_id",
-      //   element: <DetailPage />
-      // }
     ],
     errorElement: <NotFoundError />
   }
