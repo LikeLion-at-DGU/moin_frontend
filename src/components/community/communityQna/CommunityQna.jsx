@@ -119,7 +119,7 @@ function CommunityQna() {
 
   return (
     <>
-      <List data={qnaContent} url={"/community/qna/"} />
+      <List data={qnaContent} url={"/community/qnas/"} />
     </>
   );
 }

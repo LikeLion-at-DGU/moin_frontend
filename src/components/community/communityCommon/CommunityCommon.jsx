@@ -118,7 +118,7 @@ function CommunityCommon() {
   }, []);
   return (
     <>
-      <List data={commonContent} url={"/community/common/"} />
+      <List data={commonContent} url={"/community/commons/"} />
     </>
   );
 }

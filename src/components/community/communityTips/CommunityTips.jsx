@@ -118,7 +118,7 @@ function CommunityTips() {
 
   return (
     <>
-      <List data={tipContent} url={"/community/tip/"} />
+      <List data={tipContent} url={"/community/tips/"} />
     </>
   );
 }
