@@ -141,6 +141,16 @@ export function AiServiceDetailTip() {
     setCurrentPage(pageNumber);
   };
 
+  //selector
+  const SelectorOption = [
+    { value: "recent", title: "최신순" },
+    { value: "rating", title: "평점순" }
+  ];
+  const [currentOption, setCurrentOption] = useState("recent");
+  const getCurrentOption = option => {
+    setCurrentOption(option);
+  };
+
   return (
     <>
       <S.AiServiceDetailTipWrap>
@@ -152,7 +162,10 @@ export function AiServiceDetailTip() {
             </S.AiServiceDetailTipHeaderWriteContent>
           </S.AiServiceDetailTipHeaderWrite>
           <S.AiServiceDetailTipHeaderSort>
-            <Selector /> {/* 임시로 넣어둠 */}
+            <Selector
+              options={SelectorOption}
+              getCurrentOption={getCurrentOption}
+            />
           </S.AiServiceDetailTipHeaderSort>
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
