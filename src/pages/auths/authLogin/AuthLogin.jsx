@@ -38,14 +38,6 @@ export default function AuthLogin() {
     }));
   };
 
-  // 로그인 정보 불러오기
-  useEffect(() => {
-    const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
-    if (storedUserInfo) {
-      setUserInfo(storedUserInfo);
-    }
-  }, []);
-
   const handleSubmit = async event => {
     event.preventDefault();
     const { email, pwd } = loginData;
@@ -58,7 +50,6 @@ export default function AuthLogin() {
 
     try {
       const response = await axios.post("auth/login/", {
-        username: "hi",
         email: email,
         password: pwd
       });
@@ -66,7 +57,8 @@ export default function AuthLogin() {
       // accessToken 받아오기
       const accessToken = response.data.token.access;
       const refreshToken = response.data.token.refresh;
-      const nickname = response.data.nickname;
+      console.log(response);
+      const nickname = response.data.user.nickname;
 
       // 로그인 성공 시
       setUserInfo({
