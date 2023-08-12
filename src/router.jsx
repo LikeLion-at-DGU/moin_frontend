@@ -23,6 +23,7 @@ import AuthReset from "./pages/auths/authReset/AuthReset";
 import AuthSignup from "./pages/auths/authSignup/AuthSignup";
 import ProfileChangePassword from "./pages/profile/profileChangePassword/ProfileChangePassword";
 import Search from "./pages/search/Search";
+import DetailPage from "./pages/detail/DetailPage";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <Search />
+      },
+      {
+        path: "community/tips/:tip_id",
+        element: <DetailPage />
       }
     ],
     errorElement: <NotFoundError />

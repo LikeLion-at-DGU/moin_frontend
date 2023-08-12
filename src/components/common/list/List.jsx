@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import * as S from "./style";
 
 // 컴포넌트
@@ -6,6 +8,7 @@ import Selector from "../selector/Selector";
 import Paging from "../paging/Paging";
 
 const List = ({ data }) => {
+  const navigate = useNavigate();
   // 댓글 데이터를 최신순으로 정렬
   const sortedComments = data.slice().reverse();
 
@@ -73,7 +76,10 @@ const List = ({ data }) => {
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
             {currentItems.map(data => (
-              <S.AiServiceDetailTipTableTr key={data.id}>
+              <S.AiServiceDetailTipTableTr
+                key={data.id}
+                onClick={() => navigate(`/community/tips/${data.id}`)}
+              >
                 <S.AiServiceDetailTipTableTd>
                   {data.id}
                 </S.AiServiceDetailTipTableTd>
