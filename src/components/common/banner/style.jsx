@@ -23,6 +23,9 @@ export const ProfileBannerHeaderWrapper = styled.div`
   max-width: 1178px;
   width: 100%;
   justify-content: space-between;
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
 `;
 export const ProfileBannerHeaderContainer = styled.div`
   margin-top: 18rem;

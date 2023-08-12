@@ -4,8 +4,9 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import MyPageUser from "../../../assets/images/icon/mypageUserIcon.png";
 import MypageSetting from "../../../assets/images/icon/mypageSetting.png";
-import MypageStar from "../../../assets/images/icon/mypageStar.png";
 import MypageChat from "../../../assets/images/icon/mypageChat.png";
+import MypageHeart from "../../../assets/images/icon/mypageHeart.png";
+import MypageThumb from "../../../assets/images/icon/mypageThumb.png";
 import MypageVector from "../../../assets/images/icon/mypageVector.png";
 import AuthContentBox from "../../../components/auths/authContentBox/AuthContentBox";
 import { useNavigate } from "react-router-dom";
@@ -104,7 +105,16 @@ function ProfileMain() {
       </S.ProfileInfoHeaderWrapper>
       {/* 프로필 내용물 박스  */}
       <S.ProfileInfoContentWrapper>
-        <AuthContentBox content="즐겨찾기" img={MypageStar} link="favorite" />
+        <AuthContentBox
+          content="좋아요한 서비스"
+          img={MypageHeart}
+          link="favorite"
+        />
+        <AuthContentBox
+          content="좋아요한 게시물"
+          img={MypageThumb}
+          link="favoritePost"
+        />
         <AuthContentBox
           content="작성한 게시물"
           img={MypageVector}
