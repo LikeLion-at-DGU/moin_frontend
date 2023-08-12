@@ -116,7 +116,7 @@ export default function NavBar() {
               <S.NavSideBarHeader>
                 {userInfo ? (
                   <S.NavLink to={`/mypage`} $isActive={true}>
-                    홍길동 님
+                    {userInfo.nickname} 님
                   </S.NavLink>
                 ) : (
                   <S.NavLink to={`/login`} $isActive={true}>

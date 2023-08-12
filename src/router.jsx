@@ -24,6 +24,7 @@ import AuthSignup from "./pages/auths/authSignup/AuthSignup";
 import ProfileChangePassword from "./pages/profile/profileChangePassword/ProfileChangePassword";
 import Search from "./pages/search/Search";
 import DetailPage from "./pages/detail/DetailPage";
+import ProfileFavoritePost from "./pages/profile/profileFavoritePost/ProfileFavoritePost";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
           {
             path: "modify",
             element: <ProfileModify />
+          },
+          {
+            path: "favoritePost",
+            element: <ProfileFavoritePost />
           }
         ]
       },
