@@ -11,6 +11,7 @@ export const ProfileWrapper = styled.div`
 
 export const ProfileBanner = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 30rem;
   background-color: rgba(0, 10, 65, 0.97);
@@ -19,8 +20,7 @@ export const ProfileBanner = styled.div`
 export const ProfileBannerHeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 17rem;
-  margin-right: 17rem;
+  max-width: 1178px;
   width: 100%;
   justify-content: space-between;
 `;
