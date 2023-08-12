@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
@@ -15,20 +15,49 @@ function ProfileMain() {
   // 유저 정보 불러오기
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
+  // 로그인 정보 불러오기
+  useEffect(() => {
+    const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+    fetchUserData(storedUserInfo);
+  }, []); // userInfo가 변경될 때마다 실행
+
+  //fetchUserData
+  // GET /
+  const fetchUserData = async storedUserInfo => {
+    try {
+      const accessToken = storedUserInfo.accessToken;
+      console.log(userInfo);
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+      console.log(headers);
+
+      const response = await axios.get("mypage/profile/", {
+        headers
+      });
+      console.log(response);
+      if (response.status === 200) {
+        setUserInfo(response.data);
+      } else {
+        alert("유저 정보를 가져오는데 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      alert("유저 정보를 가져오는데 실패했습니다.");
+    }
+  };
+
   const navigate = useNavigate();
   const handleLogout = async () => {
     const shouldLogout = window.confirm("로그아웃 하시겠습니까?");
     if (!shouldLogout) {
       return;
     }
-
     try {
-      const accessToken = userInfo.accessToken; // 추출한 accessToken
-
+      const accessToken = userInfo.accessToken;
       const headers = {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
-
       const response = await axios.post("auth/logout/", null, {
         headers
       });
@@ -60,7 +89,7 @@ function ProfileMain() {
         <S.ProfileInfoHeaderTitle>
           <S.myPageUserIcon src={MyPageUser} />
           <S.ProfileInfoHeaderTitleName>
-            {userInfo && userInfo.email}
+            {userInfo && userInfo.nickname}
           </S.ProfileInfoHeaderTitleName>
           님의 마이페이지
         </S.ProfileInfoHeaderTitle>
