@@ -4,30 +4,38 @@ import { theme } from "./style/theme.js";
 
 import { Outlet } from "react-router-dom";
 
-import NavBar from "./components/layouts/NavBar";
+import { useState } from "react";
+import NavBar from "./components/layouts/nabBar/NavBar";
+import FooterBar from "./components/layouts/footer/FooterBar";
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  padding: 0px 10px;
   width: 100%;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 `;
 
 const Layout = () => {
   return (
     <>
+      <NavBar />
       <Wrapper>
-        <NavBar />
         <Outlet />
+        <FooterBar />
       </Wrapper>
     </>
   );
 };
 
 function App() {
+  const [laguage, setLaguage] = useState("KOR");
+  const getLanguage = laguage => {
+    setLaguage(laguage);
+  };
   return (
     <>
       <ThemeProvider theme={theme}>

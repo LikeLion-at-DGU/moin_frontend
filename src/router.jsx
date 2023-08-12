@@ -4,7 +4,7 @@ import App from "./App";
 
 import Main from "./pages/main/Main";
 import Community from "./pages/community/Community";
-import Notice from "./pages/notice/About";
+import Notice from "./pages/notice/Notice";
 import Suggestion from "./pages/suggestion/Suggestion";
 import About from "./pages/about/About";
 import Profile from "./pages/profile/Profile";
@@ -12,7 +12,19 @@ import Profile from "./pages/profile/Profile";
 import AiServiceDetail from "./pages/ai/AiServiceDetail";
 
 import NotFoundError from "./pages/errors/NotFound";
-import Login from "./pages/auths/Login";
+import AuthLogin from "./pages/auths/authLogin/AuthLogin";
+import ProfileFavorite from "./pages/profile/profileFavorite/ProfileFavorite";
+import ProfileComment from "./pages/profile/profileComment/ProfileComment";
+import ProfilePost from "./pages/profile/profilePost/ProfilePost";
+import ProfileModify from "./pages/profile/profileModify/ProfileModify";
+import ProfileMain from "./pages/profile/profileMain/ProfileMain";
+import Auth from "./pages/auths/auth/Auth";
+import AuthReset from "./pages/auths/authReset/AuthReset";
+import AuthSignup from "./pages/auths/authSignup/AuthSignup";
+import ProfileChangePassword from "./pages/profile/profileChangePassword/ProfileChangePassword";
+import Search from "./pages/search/Search";
+import DetailPage from "./pages/detail/DetailPage";
+import ProfileFavoritePost from "./pages/profile/profileFavoritePost/ProfileFavoritePost";
 
 const router = createBrowserRouter([
   {
@@ -41,15 +53,68 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />
+        element: <AuthLogin />
+      },
+      {
+        path: "auth",
+        element: <Auth />,
+        children: [
+          {
+            path: "create",
+            element: <AuthSignup />
+          },
+          {
+            path: "reset",
+            element: <AuthReset />
+          }
+        ]
       },
       {
         path: "mypage",
-        element: <Profile />
+        element: <Profile />,
+        children: [
+          {
+            path: "",
+            element: <ProfileMain />
+          },
+          {
+            path: "changepassword",
+            element: <ProfileChangePassword />
+          },
+          {
+            path: "favorite",
+            element: <ProfileFavorite />
+          },
+          {
+            path: "comment",
+            element: <ProfileComment />
+          },
+          {
+            path: "post",
+            element: <ProfilePost />
+          },
+          {
+            path: "modify",
+            element: <ProfileModify />
+          },
+          {
+            path: "favoritePost",
+            element: <ProfileFavoritePost />
+          }
+        ]
       },
+
       {
         path: "AiService/:AiId",
         element: <AiServiceDetail />
+      },
+      {
+        path: "search",
+        element: <Search />
+      },
+      {
+        path: "community/tips/:tip_id",
+        element: <DetailPage />
       }
     ],
     errorElement: <NotFoundError />

@@ -1,21 +1,32 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import * as SAuth from "../auths/style";
+import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userState } from "../../context/authState"; // Update the path to your authState.j
+import * as S from "./style";
+// png
+import Banner from "../../components/common/banner/Banner";
 
 function Profile() {
-  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useRecoilState(userState);
 
-  const handleLogout = () => {
-    localStorage.removeItem("userInfo");
-    navigate("/");
-    // 페이지 새로고침
-    window.location.reload();
-  };
+  useEffect(() => {
+    const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (storedUserInfo) {
+      setUserInfo(storedUserInfo);
+    }
+  }, []);
 
   return (
-    <SAuth.AuthWrapper>
-      <SAuth.AuthButton onClick={handleLogout}>로그아웃</SAuth.AuthButton>
-    </SAuth.AuthWrapper>
+    <S.ProfileWrapper>
+      <Banner
+        titleKorean="마이페이지"
+        titleEnglish="MyPage"
+        image={<S.MypageBookImg />}
+      />
+      <S.ProfileInfoWrapper>
+        <Outlet />
+      </S.ProfileInfoWrapper>
+    </S.ProfileWrapper>
   );
 }
 
