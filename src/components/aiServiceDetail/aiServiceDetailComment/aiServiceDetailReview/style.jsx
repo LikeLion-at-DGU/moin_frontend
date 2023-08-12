@@ -556,3 +556,21 @@ export const DeleteModalContentButtonWrap = styled.div`
   align-items: center;
   margin-top: 8.5rem;
 `;
+
+// 댓글 목록 페이징
+
+export const AiServiceDetailReviewListPagingWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+`;
+
+export const AiServiceDetailReviewListPaging = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  transform: translate(-50%, 0);
+`;

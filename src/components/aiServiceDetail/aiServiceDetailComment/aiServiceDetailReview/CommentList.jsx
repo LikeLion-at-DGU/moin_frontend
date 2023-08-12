@@ -3,6 +3,7 @@ import Comment from "./Comment";
 import * as S from "./style";
 import ReviewListIcon from "../../../../assets/images/icon/reviewList.png";
 import MyReviewListIcon from "../../../../assets/images/icon/myReviewList.png";
+import Paging from "../../../common/paging/Paging";
 
 const CommentList = ({
   comments,
@@ -27,6 +28,22 @@ const CommentList = ({
   const visibleComments = showMore
     ? mySortedComments
     : mySortedComments.slice(0, 1); // 처음엔 한 개만 보이게 설정
+
+  // 한 페이지당 보여줄 댓글 수
+  const itemsPerPage = 10;
+
+  // 현재 페이지
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // 현재 페이지의 댓글 목록 계산
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = sortedComments.slice(indexOfFirstItem, indexOfLastItem);
+
+  // 페이지 변경 핸들러
+  const handlePageChange = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleToggleShowMore = () => {
     setShowMore(!showMore);
@@ -104,7 +121,7 @@ const CommentList = ({
 
       <S.AiServiceDetailReviewListWrap>
         <S.AiServiceDetailReviewListUl>
-          {sortedComments.map(comment => (
+          {currentItems.map(comment => (
             <Comment
               key={comment.id}
               content={comment.content}
@@ -116,6 +133,16 @@ const CommentList = ({
             />
           ))}
         </S.AiServiceDetailReviewListUl>
+        <S.AiServiceDetailReviewListPagingWrap>
+          <S.AiServiceDetailReviewListPaging>
+            <Paging
+              page={currentPage}
+              count={comments.length}
+              postPerPage={itemsPerPage}
+              setPage={handlePageChange}
+            />
+          </S.AiServiceDetailReviewListPaging>
+        </S.AiServiceDetailReviewListPagingWrap>
       </S.AiServiceDetailReviewListWrap>
     </>
   );
