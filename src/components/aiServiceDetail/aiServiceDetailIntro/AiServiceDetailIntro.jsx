@@ -111,19 +111,24 @@ export function AiServiceDetailIntro() {
                   </S.AiServiceDetailContentDescriptionStarCnt>
                 </S.AiServiceDetailContentDescriptionStar>
 
-                {/* 키워드 */}
-                <S.AiServiceDetailContentDescriptionKeywordWrap>
-                  <Keyword
-                    keyword={introItem.keyword}
-                    keywordFontSize={"1.5rem"}
-                  />
-                  {/* {introItem.keyword.map((keyword, index) => (
+                <S.AiServiceDetailContentDescriptionEndWrap>
+                  {/* 조회수 */}
+                  <S.AiServiceDetailContentDescriptionViews>
+                    조회 {introItem.views.toLocaleString()}
+                  </S.AiServiceDetailContentDescriptionViews>
+                  {/* 키워드 */}
+                  <S.AiServiceDetailContentDescriptionKeywordWrap>
+                    <Keyword
+                      keyword={introItem.keyword}
+                      keywordFontSize={"1.5rem"}
+                    />
+                    {/* {introItem.keyword.map((keyword, index) => (
                     <S.AiServiceDetailContentDescriptionKeyword key={index}>
                       {keyword}
                     </S.AiServiceDetailContentDescriptionKeyword>
                   ))} */}
-                </S.AiServiceDetailContentDescriptionKeywordWrap>
-
+                  </S.AiServiceDetailContentDescriptionKeywordWrap>
+                </S.AiServiceDetailContentDescriptionEndWrap>
                 <S.AiServiceDetailContentDescriptionBottom>
                   {/* 서비스 바로가기 */}
                   <S.AiServiceDetailContentDescriptionBottomLink>
