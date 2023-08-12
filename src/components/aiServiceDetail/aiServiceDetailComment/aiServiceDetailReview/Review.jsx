@@ -14,13 +14,35 @@ function Review() {
 
   const [comments, setComments] = useState([
     {
-      id: 1,
-      ai: "챗GPT",
-      writer: "dudtlstm",
-      content: "내 과제 해결이!",
-      created_at: "2023-08-03T01:43:09.639646"
+      count: 24,
+      next: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/?page=3",
+      previous: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/",
+      results: [
+        {
+          id: 43,
+          ai: "ho",
+          is_tmp: false,
+          writer: "admin",
+          content: "페이지네이션 테스트\n",
+          created_at: "2023/08/10 12:12",
+          updated_at: "2023/08/10 12:12"
+        },
+        {
+          id: 52,
+          ai: "ho",
+          is_tmp: false,
+          writer: "admin",
+          content: "페이지네이션 테스트\n",
+          created_at: "2023/08/10 12:12",
+          updated_at: "2023/08/10 12:12"
+        }
+      ]
     }
   ]);
+
+  console.log(comments[0].count);
+
+  console.log(comments[0].results);
 
   // 내 댓글
   const [myComments, setMyComments] = useState([
@@ -102,7 +124,7 @@ function Review() {
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
 
       <CommentList
-        comments={comments}
+        comments={comments[0].results}
         onUpdate={handleUpdateComment}
         onDelete={commentId => {
           handleDeleteComment(commentId);
@@ -110,6 +132,7 @@ function Review() {
         }}
         userInfo={userInfo}
         myComments={myComments}
+        count={comments[0].count}
       />
     </>
   );

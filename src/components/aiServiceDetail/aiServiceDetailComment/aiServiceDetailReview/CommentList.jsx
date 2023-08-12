@@ -10,10 +10,12 @@ const CommentList = ({
   onUpdate,
   onDelete,
   userInfo,
-  myComments
+  myComments,
+  count
 }) => {
-  const memberComments = comments.filter(comment => comment.isMember);
+  // const memberComments = comments.filter(comment => comment.isMember);
 
+  console.log(comments);
   // 나중에 추가??
   // const filteredMyComments = myComments.filter(comment => comment.writer === userInfo.username);
 
@@ -116,7 +118,7 @@ const CommentList = ({
       {/* 댓글목록 */}
       <S.ReviewHeader>
         <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
-        <S.ReviewHeaderText>후기</S.ReviewHeaderText>
+        <S.ReviewHeaderText>후기 {count}</S.ReviewHeaderText>
       </S.ReviewHeader>
 
       <S.AiServiceDetailReviewListWrap>
