@@ -3,10 +3,10 @@ import * as S from "./style";
 import List from "../../common/list/List";
 
 function CommunityCommon() {
-  const [tipContent, setTipContent] = useState([]);
+  const [commonContent, setCommonContent] = useState([]);
 
   useEffect(() => {
-    const tipData = [
+    const commonData = [
       {
         id: 1,
         title: "챗지피티에 대해 알아보자",
@@ -114,11 +114,11 @@ function CommunityCommon() {
 
       // 추가.....
     ];
-    setTipContent(tipData);
+    setCommonContent(commonData);
   }, []);
   return (
     <>
-      <List data={tipContent} url={"/community/"} />
+      <List data={commonContent} url={"/community/common/"} />
     </>
   );
 }
