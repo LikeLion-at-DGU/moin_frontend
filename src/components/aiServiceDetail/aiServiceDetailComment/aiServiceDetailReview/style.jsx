@@ -151,6 +151,10 @@ export const AiServiceDetailReviewCommentFormWriteButton = styled.button`
   text-align: center;
   font-size: 1.8rem;
   font-weight: 500;
+
+  &:hover {
+    background: #e8e8e8;
+  }
 `;
 
 // 이용 후기 목록
@@ -219,13 +223,13 @@ export const AiServiceDetailReviewCommentFormTitleText = styled.div`
 // 내 댓글
 export const AiServiceDetailReviewMyLi = styled.li`
   display: flex;
-  width: 95rem;
+  width: 100rem;
   flex-direction: row;
   padding: 2.6rem;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(178, 191, 235, 0.39);
   margin-top: 2.2rem;
-  margin-left: 5rem;
+  margin-left: 3rem;
 `;
 
 export const AiServiceDetailReviewMyHeader = styled.div`
@@ -275,9 +279,9 @@ export const AiServiceDetailReviewListUl = styled.ul`
 // 이용후기 댓글 수정/삭제 버튼
 export const AiServiceDetailReviewMyButton = styled.div`
   display: flex;
-  margin-left: 2rem;
+  margin-left: 5rem;
 `;
-export const AiServiceDetailReviewMyButtonEdit = styled.div`
+export const AiServiceDetailReviewMyButtonEdit = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,6 +294,10 @@ export const AiServiceDetailReviewMyButtonEdit = styled.div`
   padding: 0.7rem 1rem;
   width: 6.7rem;
   height: 3.7rem;
+
+  &:hover {
+    background: #2c5aa3;
+  }
 `;
 export const AiServiceDetailReviewMyButtonDelete = styled.button`
   display: flex;
@@ -315,7 +323,7 @@ export const AiServiceDetailReviewMyButtonDelete = styled.button`
 export const AiServiceDetailReviewCommentFormWriteMy = styled.div`
   display: flex;
   margin-top: 2rem;
-  margin-left: 5rem;
+  margin-left: 3rem;
   justify-content: center;
   align-items: center;
 `;
@@ -492,6 +500,10 @@ export const NotUserDeleteModalContentButtonConfirm = styled.button`
   border: 1px solid #000;
   padding: 1rem 4rem;
   margin-right: 2rem;
+
+  &:hover {
+    background-color: #ededed;
+  }
 `;
 
 export const NotUserDeleteModalContentButtonCancle = styled.button`
@@ -502,6 +514,10 @@ export const NotUserDeleteModalContentButtonCancle = styled.button`
   border-radius: 20px;
   border: 1px solid #000;
   padding: 1rem 4rem;
+
+  &:hover {
+    background-color: #ededed;
+  }
 `;
 
 // 나의 후기 헤더
@@ -522,4 +538,21 @@ export const AiServiceDetailReviewCommentMyReviewText = styled.div`
   color: #4285f4;
   font-size: 2rem;
   font-weight: 700;
+`;
+
+// 회원 삭제창
+export const DeleteModalContentTitle = styled.div`
+  display: flex;
+  color: #4285f4;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+export const DeleteModalContentButtonWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8.5rem;
 `;
