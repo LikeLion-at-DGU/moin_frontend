@@ -66,10 +66,12 @@ export default function AuthLogin() {
       // accessToken 받아오기
       const accessToken = response.data.token.access;
       const refreshToken = response.data.token.refresh;
+      const nickname = response.data.nickname;
 
       // 로그인 성공 시
       setUserInfo({
         email: email,
+        nickname: nickname,
         accessToken: accessToken,
         refreshToken: refreshToken // 저장 추가
       });
@@ -79,6 +81,7 @@ export default function AuthLogin() {
         "userInfo",
         JSON.stringify({
           email: email,
+          nickname: nickname,
           accessToken: accessToken,
           refreshToken: refreshToken // 저장 추가
         })
