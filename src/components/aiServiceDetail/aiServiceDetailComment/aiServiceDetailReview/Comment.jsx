@@ -41,6 +41,12 @@ const Comment = ({
     handleDelete();
   };
 
+  const handleEditSubmit = e => {
+    e.preventDefault();
+    onSubmit(editedComment);
+    setEditedComment("");
+  };
+
   const handleDelete = async () => {
     try {
       setError(""); // 에러 초기화
@@ -122,6 +128,30 @@ const Comment = ({
                   삭제
                 </S.AiServiceDetailReviewMyButtonDelete>
               </S.AiServiceDetailReviewMyButton>
+
+              {/* 삭제 모달 */}
+              <S.NotUserDeleteModal
+                isOpen={isModalOpen}
+                onRequestClose={() => setIsModalOpen(false)}
+                contentLabel="댓글 삭제 확인"
+                ariaHideApp={false}
+              >
+                <S.NotUserDeleteModalContentWrap>
+                  <S.DeleteModalContentTitle>
+                    정말로 삭제하시겠습니까?
+                  </S.DeleteModalContentTitle>
+                  <S.DeleteModalContentButtonWrap>
+                    <S.NotUserDeleteModalContentButtonConfirm type="submit">
+                      확인
+                    </S.NotUserDeleteModalContentButtonConfirm>
+                    <S.NotUserDeleteModalContentButtonCancle
+                      onClick={() => setIsModalOpen(false)}
+                    >
+                      취소
+                    </S.NotUserDeleteModalContentButtonCancle>
+                  </S.DeleteModalContentButtonWrap>
+                </S.NotUserDeleteModalContentWrap>
+              </S.NotUserDeleteModal>
             </S.AiServiceDetailReviewMyLi>
           </>
         )}
