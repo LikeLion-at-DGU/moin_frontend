@@ -25,6 +25,7 @@ import ProfileChangePassword from "./pages/profile/profileChangePassword/Profile
 import Search from "./pages/search/Search";
 import ProfileFavoritePost from "./pages/profile/profileFavoritePost/ProfileFavoritePost";
 import DetailPage from "./pages/community/communityDetail/DetailPage";
+import SuggestionDetailPage from "./pages/suggestion/suggestionDetail/SuggestionDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -115,11 +116,11 @@ const router = createBrowserRouter([
       {
         path: "community/:type/:id",
         element: <DetailPage />
+      },
+      {
+        path: "suggestion/:id",
+        element: <SuggestionDetailPage />
       }
-      // {
-      //   path: "community/commons/:common_id",
-      //   element: <DetailPage />
-      // },
       // {
       //   path: "community/qnas/:qna_id",
       //   element: <DetailPage />

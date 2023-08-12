@@ -136,7 +136,6 @@ function ProfileMain() {
           link="modify"
         />
       </S.ProfileInfoContentWrapper>
-      탈퇴
     </>
   );
 }
