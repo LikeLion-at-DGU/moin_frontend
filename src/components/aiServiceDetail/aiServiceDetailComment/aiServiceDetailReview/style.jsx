@@ -126,7 +126,7 @@ export const AiServiceDetailReviewCommentFormWrite = styled.form`
 `;
 
 export const AiServiceDetailReviewCommentFormWriteTextArea = styled.textarea`
-  width: 95rem;
+  width: 91rem;
   height: 9rem;
   padding: 1rem;
   padding-left: 1.5rem;
@@ -502,4 +502,24 @@ export const NotUserDeleteModalContentButtonCancle = styled.button`
   border-radius: 20px;
   border: 1px solid #000;
   padding: 1rem 4rem;
+`;
+
+// 나의 후기 헤더
+export const AiServiceDetailReviewCommentMyReviewWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 7rem;
+  margin-left: 3rem;
+`;
+
+export const AiServiceDetailReviewCommentMyReviewListIcon = styled.img`
+  width: 2.3rem;
+  margin-right: 0.8rem;
+`;
+
+export const AiServiceDetailReviewCommentMyReviewText = styled.div`
+  display: flex;
+  color: #4285f4;
+  font-size: 2rem;
+  font-weight: 700;
 `;

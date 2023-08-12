@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import * as S from "./style";
-
 import axios from "axios";
+
 import { userState } from "../../../../context/authState";
 
 import { useRecoilState } from "recoil";
