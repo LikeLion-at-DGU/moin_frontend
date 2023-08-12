@@ -121,7 +121,7 @@ export function AiServiceDetailTip() {
 
   return (
     <>
-      <List data={tipContent} />
+      <List data={tipContent} content={"community/tips"} />
     </>
   );
 }

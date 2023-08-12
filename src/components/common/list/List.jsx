@@ -7,7 +7,7 @@ import * as S from "./style";
 import Selector from "../selector/Selector";
 import Paging from "../paging/Paging";
 
-const List = ({ data }) => {
+const List = ({ data, content }) => {
   const navigate = useNavigate();
   // 댓글 데이터를 최신순으로 정렬
   const sortedComments = data.slice().reverse();
@@ -78,7 +78,7 @@ const List = ({ data }) => {
             {currentItems.map(data => (
               <S.AiServiceDetailTipTableTr
                 key={data.id}
-                onClick={() => navigate(`/community/tips/${data.id}`)}
+                onClick={() => navigate(`/${content}/${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
                   {data.id}
