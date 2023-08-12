@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import Banner from "../../components/common/banner/Banner";
+import List from "../../components/common/list/List";
 
 function Community() {
   return (
@@ -10,6 +11,7 @@ function Community() {
         titleEnglish="COMMUNITY"
         image={<S.CommunityIconImg />}
       />
+      {/* <List data={null} url={"/community/"} /> */}
     </S.CommunityWrapper>
   );
 }
