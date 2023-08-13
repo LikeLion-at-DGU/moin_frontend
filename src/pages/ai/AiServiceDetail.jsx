@@ -24,7 +24,7 @@ function AiServiceDetail() {
         "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
       is_liked: false,
       like_cnt: 599,
-      view_cnt: 1000,
+      view_cnt: 92,
       avg_point: 3.7,
       my_rating_point: 4,
       rating_cnt: 202,

@@ -107,7 +107,7 @@ export function AiServiceDetailIntro({ introContent }) {
               <S.AiServiceDetailContentDescriptionEndWrap>
                 {/* 조회수 */}
                 <S.AiServiceDetailContentDescriptionViews>
-                  조회 {introContent.views.toLocaleString()}
+                  조회 {introContent.view_cnt.toLocaleString()}
                 </S.AiServiceDetailContentDescriptionViews>
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
