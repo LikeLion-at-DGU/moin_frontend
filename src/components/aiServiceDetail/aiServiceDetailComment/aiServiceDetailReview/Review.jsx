@@ -12,33 +12,31 @@ function Review() {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
-  const [comments, setComments] = useState([
-    {
-      count: 24,
-      next: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/?page=3",
-      previous: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/",
-      results: [
-        {
-          id: 43,
-          ai: "ho",
-          is_tmp: false,
-          writer: "admin",
-          content: "페이지네이션 테스트\n",
-          created_at: "2023/08/10 12:12",
-          updated_at: "2023/08/10 12:12"
-        },
-        {
-          id: 52,
-          ai: "ho",
-          is_tmp: false,
-          writer: "admin",
-          content: "페이지네이션 테스트\n",
-          created_at: "2023/08/10 12:12",
-          updated_at: "2023/08/10 12:12"
-        }
-      ]
-    }
-  ]);
+  const [comments, setComments] = useState({
+    count: 24,
+    next: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/?page=3",
+    previous: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/",
+    results: [
+      {
+        id: 43,
+        ai: "ho",
+        is_tmp: false,
+        writer: "admin",
+        content: "페이지네이션 테스트\n",
+        created_at: "2023/08/10 12:12",
+        updated_at: "2023/08/10 12:12"
+      },
+      {
+        id: 52,
+        ai: "ho",
+        is_tmp: false,
+        writer: "admin",
+        content: "페이지네이션 테스트\n",
+        created_at: "2023/08/10 12:12",
+        updated_at: "2023/08/10 12:12"
+      }
+    ]
+  });
 
   // 내 댓글
   const [myComments, setMyComments] = useState([
@@ -120,7 +118,7 @@ function Review() {
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
 
       <CommentList
-        comments={comments[0].results}
+        comments={comments.results}
         onUpdate={handleUpdateComment}
         onDelete={commentId => {
           handleDeleteComment(commentId);
@@ -128,7 +126,7 @@ function Review() {
         }}
         userInfo={userInfo}
         myComments={myComments}
-        count={comments[0].count}
+        count={comments.count}
       />
     </>
   );
