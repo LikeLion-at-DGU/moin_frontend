@@ -1,0 +1,17 @@
+import React from "react";
+import * as S from "./style"; // 해당 컴포넌트에 사용되는 스타일 파일 경로를 임포트해주세요.
+
+const CommunityDetailContent = ({ detail }) => {
+  return (
+    <>
+      <S.DetailTitle>{detail.title}</S.DetailTitle>
+      <S.DetailTitleInfoWrapper>
+        <S.DetailTitleGrayInfo>작성자 : {detail.writer}</S.DetailTitleGrayInfo>
+        <S.DetailTitleGrayInfo>{detail.created_at}</S.DetailTitleGrayInfo>
+      </S.DetailTitleInfoWrapper>
+      <S.DetailContent>{detail.content}</S.DetailContent>
+    </>
+  );
+};
+
+export default CommunityDetailContent;

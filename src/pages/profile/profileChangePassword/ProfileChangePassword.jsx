@@ -48,6 +48,7 @@ function ProfileChangePassword() {
       };
 
       const requestData = {
+        origin_password: pwd0,
         new_password1: pwd, // 변경할 비밀번호
         new_password2: confirmPwd // 변경할 비밀번호 확인
       };
