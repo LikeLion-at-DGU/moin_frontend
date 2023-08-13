@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./style";
+import axios from "axios";
 
 // 아이콘
 import MyStar from "../../../../assets/images/icon/starMy.png";
@@ -8,8 +9,13 @@ import AvgStar from "../../../../assets/images/icon/starAvg.png";
 // 컴포넌트
 import Star from "../../../common/star/Star";
 import Review from "./Review";
+import { userState } from "../../../../context/authState";
+import { useRecoilState } from "recoil";
 
-export function AiServiceDetailReview() {
+export function AiServiceDetailReview(introContent) {
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   return (
     <>
       <S.AiServiceDetailReviewWrap>
@@ -26,7 +32,10 @@ export function AiServiceDetailReview() {
             </S.AiServiceDetailReviewStarMyHeader>
             <S.AiServiceDetailReviewStarMyContent>
               <S.AiServiceDetailReviewStarMyContentIcon>
-                <Star starNum={3} starSize={2.4} />
+                <Star
+                  starNum={userInfo ? introContent.my_rating_point : 0}
+                  starSize={2.4}
+                />
               </S.AiServiceDetailReviewStarMyContentIcon>
               <S.AiServiceDetailReviewStarMyContentSubmit>
                 등록

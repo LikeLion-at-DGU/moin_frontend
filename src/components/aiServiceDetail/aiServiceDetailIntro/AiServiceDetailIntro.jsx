@@ -13,33 +13,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
 
 import Keyword from "../../common/keyword/Keyword";
 
-export function AiServiceDetailIntro() {
-  const [introContent, setIntroContent] = useState([]);
+export function AiServiceDetailIntro({ introContent }) {
   const [isLiked, setIsLiked] = useState(introContent.is_liked);
-
-  useEffect(() => {
-    const introContentData = [
-      {
-        id: 1,
-        title: "Chat GPT",
-        content: "chan AI가 개발했지요?",
-        url: "https://chat.openai.com/",
-        company: "Open AI",
-        applier: "admin",
-        keyword: ["챗봇", "과제"],
-        popular_job: ["개발자", "디자이너"], // 추가
-        thumbnail:
-          "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
-        is_liked: false,
-        like_cnt: 599,
-        view_cnt: 1000,
-        rating_point: 4,
-        rating_cnt: 202,
-        views: 402333
-      }
-    ];
-    setIntroContent(introContentData);
-  }, []);
 
   return (
     <>
