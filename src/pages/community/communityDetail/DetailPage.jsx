@@ -19,7 +19,7 @@ function DetailPage() {
   // detail와서 ai name받기
   const [aiName, setAiName] = useState("ChatGPT-3");
   const [isWriter, setIsWriter] = useState(false);
-  const [isUser, setIsUser] = useState(false);
+  const [isUser, setIsUser] = useState(true);
 
   const [detail, setDetail] = useState({});
 
