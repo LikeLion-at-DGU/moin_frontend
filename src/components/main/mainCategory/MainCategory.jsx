@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import * as S from "./style";
-import "./swiper.css";
+import "./mainCategorySwiper.css";
 
 function MainCategory(props) {
   const category = props.category;
@@ -18,6 +18,7 @@ function MainCategory(props) {
 
         <S.MainCategoryTagListWrapper>
           <Swiper
+            className="mainCategorySwiper"
             slidesPerView="auto"
             breakpoints={{
               390: {
