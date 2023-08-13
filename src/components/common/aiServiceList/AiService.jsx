@@ -28,10 +28,10 @@ function AiService({ item }) {
       <S.AiServiceBody>
         {/* Ai이름, 설명 */}
         <S.AiServiceTitle>{item.title}</S.AiServiceTitle>
-        <S.AiServiceDescription>{item.content}</S.AiServiceDescription>
+        <S.AiServiceDescription>{item.description}</S.AiServiceDescription>
         {/* 별점 */}
         <S.AiServiceStar>
-          <Star starNum={item.rating_point} starSize={2} />
+          <Star starNum={item.avg_point} starSize={2} />
           <S.AiServiceStarDescription>
             ({item.rating_cnt})
           </S.AiServiceStarDescription>
@@ -41,8 +41,10 @@ function AiService({ item }) {
       </S.AiServiceBody>
       {/* 좋아요 */}
       <S.AiServiceFooter>
-        <S.AiServiceLikeDescription>{item.like_cnt}</S.AiServiceLikeDescription>
-        <Like likeSize={"20px"} likeCheck={true}></Like>
+        <S.AiServiceLikeDescription>
+          {item.likes_cnt}
+        </S.AiServiceLikeDescription>
+        <Like likeSize={"20px"} likeCheck={item.is_liked}></Like>
       </S.AiServiceFooter>
     </S.AiServiceWrapper>
   );
