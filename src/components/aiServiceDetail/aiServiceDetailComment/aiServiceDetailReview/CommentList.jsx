@@ -15,7 +15,6 @@ const CommentList = ({
 }) => {
   // const memberComments = comments.filter(comment => comment.isMember);
 
-  console.log(comments);
   // 나중에 추가??
   // const filteredMyComments = myComments.filter(comment => comment.writer === userInfo.username);
 

@@ -51,7 +51,7 @@ export const AiServiceDetailReviewStarMyContentIcon = styled.div`
   padding: 0.7rem 1.3rem;
 `;
 
-export const AiServiceDetailReviewStarMyContentSubmit = styled.div`
+export const AiServiceDetailReviewStarMyContentSubmit = styled.button`
   color: #aeafb9;
   text-align: center;
   font-size: 1.8rem;
@@ -60,6 +60,10 @@ export const AiServiceDetailReviewStarMyContentSubmit = styled.div`
   border-radius: 14px;
   padding: 1.5rem 1.3rem;
   margin-left: 1rem;
+
+  &:hover {
+    background-color: #ededed;
+  }
 `;
 
 export const AiServiceDetailReviewStarAvg = styled.div`
@@ -573,4 +577,22 @@ export const AiServiceDetailReviewListPaging = styled.div`
   position: relative;
   bottom: 0;
   transform: translate(-50%, 0);
+`;
+
+export const RatingBox = styled.div`
+  margin: 0 auto;
+
+  & svg {
+    color: #c4c4c4;
+    cursor: pointer;
+  }
+  :hover svg {
+    color: black;
+  }
+  & svg:hover ~ svg {
+    color: #c4c4c4;
+  }
+  .black {
+    color: black;
+  }
 `;

@@ -12,34 +12,14 @@ import Star from "../../common/star/Star";
 import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
 
 import Keyword from "../../common/keyword/Keyword";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../context/authState";
 
-export function AiServiceDetailIntro() {
-  const [introContent, setIntroContent] = useState([]);
+export function AiServiceDetailIntro({ introContent }) {
   const [isLiked, setIsLiked] = useState(introContent.is_liked);
 
-  useEffect(() => {
-    const introContentData = [
-      {
-        id: 1,
-        title: "Chat GPT",
-        content: "chan AI가 개발했지요?",
-        url: "https://chat.openai.com/",
-        company: "Open AI",
-        applier: "admin",
-        keyword: ["챗봇", "과제"],
-        popular_job: ["개발자", "디자이너"], // 추가
-        thumbnail:
-          "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
-        is_liked: false,
-        like_cnt: 599,
-        view_cnt: 1000,
-        rating_point: 4,
-        rating_cnt: 202,
-        views: 402333
-      }
-    ];
-    setIntroContent(introContentData);
-  }, []);
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
 
   return (
     <>
@@ -143,6 +123,12 @@ export function AiServiceDetailIntro() {
                     <S.AiServiceDetailContentDescriptionBottomHeartIcon>
                       <S.LikeButton
                         onClick={() => {
+                          if (!userInfo) {
+                            // 로그인하지 않은 경우 로그인 페이지로 이동
+                            window.location.href = "/login";
+                            return;
+                          }
+
                           setIsLiked(!isLiked);
                         }}
                       >

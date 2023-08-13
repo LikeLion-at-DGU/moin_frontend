@@ -40,10 +40,6 @@ function Review() {
     }
   ]);
 
-  console.log(comments[0].count);
-
-  console.log(comments[0].results);
-
   // 내 댓글
   const [myComments, setMyComments] = useState([
     {
