@@ -14,6 +14,7 @@ const CommunityDetailContent = ({ detail, isWriter, id }) => {
           id={id}
           handleEdit={null}
           handleDelete={null}
+          isBlue={false}
         />
       </S.DetailTitleWrapper>
       <S.DetailTitleInfoWrapper>
