@@ -321,34 +321,37 @@ function Main() {
   }, []);
 
   return (
-    <S.MainWrapper>
+    <>
       <MainBannerList />
-      <SearchForm />
-      {/* 직군 카테고리 */}
-      <MainCategory
-        category={categoriesJob}
-        currentCategoryTag={currentCategoryTagJob}
-        getCurrentCategoryTag={getCurrentCategoryTagJob}
-      />
-      {/* 키워드 카테고리 */}
-      <MainCategory
-        category={categoriesKeyword}
-        currentCategoryTag={currentCategoryTagKeyword}
-        getCurrentCategoryTag={getCurrentCategoryTagKeyword}
-      />
-      <S.MainTitleWrapper>
-        <S.MainTitle>
-          <AiOutlineSearch size={"25px"} style={{ marginRight: "5px" }} />{" "}
-          모아보기
-        </S.MainTitle>
-        <Selector
-          options={SelectorOption}
-          getCurrentOption={getCurrentOption}
-        />
-      </S.MainTitleWrapper>
 
-      <AiServiceList data={showData} />
-    </S.MainWrapper>
+      <S.MainWrapper>
+        <SearchForm />
+        {/* 직군 카테고리 */}
+        <MainCategory
+          category={categoriesJob}
+          currentCategoryTag={currentCategoryTagJob}
+          getCurrentCategoryTag={getCurrentCategoryTagJob}
+        />
+        {/* 키워드 카테고리 */}
+        <MainCategory
+          category={categoriesKeyword}
+          currentCategoryTag={currentCategoryTagKeyword}
+          getCurrentCategoryTag={getCurrentCategoryTagKeyword}
+        />
+        <S.MainTitleWrapper>
+          <S.MainTitle>
+            <AiOutlineSearch size={"25px"} style={{ marginRight: "5px" }} />{" "}
+            모아보기
+          </S.MainTitle>
+          <Selector
+            options={SelectorOption}
+            getCurrentOption={getCurrentOption}
+          />
+        </S.MainTitleWrapper>
+
+        <AiServiceList data={showData} />
+      </S.MainWrapper>
+    </>
   );
 }
 

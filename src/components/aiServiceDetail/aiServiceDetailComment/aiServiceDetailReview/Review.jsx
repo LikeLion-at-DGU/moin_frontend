@@ -130,7 +130,7 @@ function Review() {
         userInfo={userInfo}
         myComments={myComments.my_comment}
         myCommentsCnt={myComments.my_comment_cnt}
-        count={comments[0].count}
+        count={comments.count}
       />
     </>
   );
