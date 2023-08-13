@@ -116,3 +116,11 @@ export const AiServiceDetailTipPaging = styled.div`
   bottom: 0;
   transform: translate(-50%, 0);
 `;
+
+export const AiServiceDetailTipTableTrContent = styled.tr`
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
