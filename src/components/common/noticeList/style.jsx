@@ -65,7 +65,7 @@ export const AiServiceDetailTipHeaderSort = styled.div`
 
 export const AiServiceDetailTipLine = styled.div`
   display: flex;
-  margin-top: 2.7rem;
+  margin-top: 8rem;
   background: #4285f4;
   width: 110rem;
   height: 2px;

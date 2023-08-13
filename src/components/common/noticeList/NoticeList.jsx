@@ -49,25 +49,6 @@ const NoticeList = ({ data, url, writeUrl }) => {
   return (
     <>
       <S.AiServiceDetailTipWrap>
-        <S.AiServiceDetailTipHeader>
-          <S.AiServiceDetailTipHeaderWrite>
-            <S.AiServiceDetailTipHeaderWriteContent
-              onClick={() => {
-                // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo ? navigate("/login") : navigate(writeUrl);
-              }}
-            >
-              <S.StyledPencilIcon />
-              글쓰기
-            </S.AiServiceDetailTipHeaderWriteContent>
-          </S.AiServiceDetailTipHeaderWrite>
-          <S.AiServiceDetailTipHeaderSort>
-            <Selector
-              options={SelectorOption}
-              getCurrentOption={getCurrentOption}
-            />
-          </S.AiServiceDetailTipHeaderSort>
-        </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
         <S.AiServiceDetailTipTable>
