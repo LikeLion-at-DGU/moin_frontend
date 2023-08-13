@@ -8,6 +8,7 @@ import { AiServiceDetailContentDescriptionCompanyImg } from "../../../components
 import CommunityDetailContent from "../../../components/common/communityDetailContent/CommunityDetailContent";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
+import CommentInput from "../../../components/common/CommentInput/CommentInput";
 
 function DetailPage() {
   const [user] = useRecoilState(userState);
@@ -17,7 +18,9 @@ function DetailPage() {
 
   // detail와서 ai name받기
   const [aiName, setAiName] = useState("ChatGPT-3");
-  const [isWriter, setIsWriter] = useState(true);
+  const [isWriter, setIsWriter] = useState(false);
+  const [isUser, setIsUser] = useState(false);
+
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
@@ -67,25 +70,6 @@ function DetailPage() {
     );
   };
 
-  // 댓글 인풋 렌더링
-  const renderCommentInput = isWriter => {
-    return !isWriter ? (
-      <>
-        <S.DetailCommentInputWrapper>
-          <S.DetailCommentInput placeholder="로그인 후 댓글을 작성할 수 있습니다." />
-          <S.DetailCommentButton>등록</S.DetailCommentButton>
-        </S.DetailCommentInputWrapper>
-      </>
-    ) : (
-      <>
-        <S.DetailCommentInputWrapper>
-          <S.DetailCommentInput placeholder="답변을 작성해보세요 !" />
-          <S.DetailCommentButton>등록</S.DetailCommentButton>
-        </S.DetailCommentInputWrapper>
-      </>
-    );
-  };
-
   return (
     <S.DetailPageWrapper>
       <CommuntiyDetailPageType
@@ -99,7 +83,7 @@ function DetailPage() {
       <S.DetailDiviner />
       {/* 댓글 입력 */}
       <S.DetailCommentHeader>답변 {detail.comments_cnt}</S.DetailCommentHeader>
-      {renderCommentInput()}
+      <CommentInput isUser={isUser} />
       <S.DetailDiviner />
     </S.DetailPageWrapper>
   );
