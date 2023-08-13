@@ -48,19 +48,20 @@ export function AiServiceDetailIntro() {
         <S.AiServiceDetailWrap key={introItem.id}>
           <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
           <S.AiServiceDetailHeader>
-            <CopyToClipboard
-              text={introItem.url}
-              onCopy={() => alert("링크가 복사되었습니다.")}
-            >
-              <S.CopyToClipboardElement>
-                <S.AiServiceDetailShare>
+            <S.CopyToClipboardElement>
+              <S.AiServiceDetailShare>
+                <CopyToClipboard
+                  text={introItem.url}
+                  onCopy={() => alert("링크가 복사되었습니다.")}
+                >
                   <S.AiServiceDetailShareImg
                     src={ShareIcon}
                     alt="공유 아이콘"
                   />
-                </S.AiServiceDetailShare>
-              </S.CopyToClipboardElement>
-            </CopyToClipboard>
+                </CopyToClipboard>
+              </S.AiServiceDetailShare>
+            </S.CopyToClipboardElement>
+
             <S.AiServiceDetailRegistrant>
               MOIN 등록자 : {introItem.applier}
             </S.AiServiceDetailRegistrant>
