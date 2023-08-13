@@ -34,3 +34,9 @@ export const DetailDiviner = styled.hr`
   border: none;
   margin-bottom: 2rem;
 `;
+
+export const DetailCommentHeader = styled.div`
+  color: #4285f4;
+  font-size: 2rem;
+  font-weight: 600;
+`;

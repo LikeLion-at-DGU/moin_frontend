@@ -177,9 +177,15 @@ export const AiServiceDetailReviewMyWrap = styled.div`
 export const AiServiceDetailReviewListHeader = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: row;
+  justify-content: space-between;
   margin-left: 3rem;
 `;
+
+export const AiServiceDetailReviewListHeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const AiServiceDetailReviewListWriter = styled.div`
   color: #282828;
   font-size: 2.2rem;
@@ -268,10 +274,11 @@ export const AiServiceDetailReviewMyContent = styled.div`
 export const AiServiceDetailReviewListWrap = styled.div`
   display: flex;
   flex-direction: column;
+
   border-top: 2px solid #f0f0f0;
   display: flex;
   margin-top: 1.6rem;
-  width: 100%;
+  width: 95%;
 `;
 
 export const AiServiceDetailReviewListUl = styled.ul`

@@ -3,6 +3,7 @@ import * as S from "./style";
 
 // 컴포넌트
 import Modal from "react-modal"; // 모달창
+import EditDelete from "../../../common/editDelete/EditDelete";
 
 const Comment = ({
   content,
@@ -180,12 +181,15 @@ const Comment = ({
           <S.AiServiceDetailReviewListLi>
             <S.AiServiceDetailReviewMyWrap>
               <S.AiServiceDetailReviewListHeader>
-                <S.AiServiceDetailReviewListWriter>
-                  {writer}
-                </S.AiServiceDetailReviewListWriter>
-                <S.AiServiceDetailReviewListDate>
-                  {formattedDate}
-                </S.AiServiceDetailReviewListDate>
+                <S.AiServiceDetailReviewListHeaderWrapper>
+                  <S.AiServiceDetailReviewListWriter>
+                    {writer}
+                  </S.AiServiceDetailReviewListWriter>
+                  <S.AiServiceDetailReviewListDate>
+                    {formattedDate}
+                  </S.AiServiceDetailReviewListDate>
+                </S.AiServiceDetailReviewListHeaderWrapper>
+                <EditDelete isWriter={true} id={3} />
               </S.AiServiceDetailReviewListHeader>
               <S.AiServiceDetailReviewListContent>
                 {content}

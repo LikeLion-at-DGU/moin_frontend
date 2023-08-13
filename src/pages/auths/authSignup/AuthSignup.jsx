@@ -47,7 +47,7 @@ function Signup() {
       user.job
     ) {
       try {
-        const response = await axios.post("auth/signup/", {
+        const response = await axios.post("auth/signup", {
           nickname: user.nickname,
           email: user.email,
           job: user.job,
