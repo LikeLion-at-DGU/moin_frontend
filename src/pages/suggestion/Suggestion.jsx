@@ -3,6 +3,7 @@ import * as S from "./style";
 import * as CS from "../community/style";
 import Banner from "../../components/common/banner/Banner";
 import List from "../../components/common/list/List";
+import SuggestionList from "../../components/common/suggestionList/SuggestionList";
 
 function Suggestion() {
   const [sugestionContent, setSugestionContent] = useState([]);
@@ -127,7 +128,7 @@ function Suggestion() {
         image={<S.SuggestionIconImg />}
       />
       <CS.CommunityContentWrapper>
-        <List data={sugestionContent} url={"/suggestion/"} />
+        <SuggestionList data={sugestionContent} url={"/suggestion/"} />
       </CS.CommunityContentWrapper>
     </S.SuggestionWrapper>
   );

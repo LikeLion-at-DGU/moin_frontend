@@ -9,7 +9,7 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 
-const NoticeList = ({ data, url, writeUrl }) => {
+const SuggestionList = ({ data, url, writeUrl }) => {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
@@ -50,17 +50,7 @@ const NoticeList = ({ data, url, writeUrl }) => {
     <>
       <S.AiServiceDetailTipWrap>
         <S.AiServiceDetailTipHeader>
-          <S.AiServiceDetailTipHeaderWrite>
-            <S.AiServiceDetailTipHeaderWriteContent
-              onClick={() => {
-                // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo ? navigate("/login") : navigate(writeUrl);
-              }}
-            >
-              <S.StyledPencilIcon />
-              글쓰기
-            </S.AiServiceDetailTipHeaderWriteContent>
-          </S.AiServiceDetailTipHeaderWrite>
+          <S.AiServiceDetailTipHeaderWrite></S.AiServiceDetailTipHeaderWrite>
           <S.AiServiceDetailTipHeaderSort>
             <Selector
               options={SelectorOption}
@@ -76,10 +66,10 @@ const NoticeList = ({ data, url, writeUrl }) => {
               <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
+              <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh>
                 등록일시
               </S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh>조회수</S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
@@ -96,11 +86,9 @@ const NoticeList = ({ data, url, writeUrl }) => {
                   {data.title}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
+                <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.date}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  {data.view_cnt}
                 </S.AiServiceDetailTipTableTd>
               </S.AiServiceDetailTipTableTr>
             ))}
@@ -120,4 +108,4 @@ const NoticeList = ({ data, url, writeUrl }) => {
   );
 };
 
-export default NoticeList;
+export default SuggestionList;
