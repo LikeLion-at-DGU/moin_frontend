@@ -12,9 +12,10 @@ import axios from "../../api/axios";
 
 function Main() {
   const [data, setData] = useState([]);
-  const [showData, setShowData] = useState([]);
+  const [count, setCount] = useState(0);
 
-  const [num, setNum] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const getCurrentPage = currentPage => setCurrentPage(currentPage);
 
   const categoriesJob = {
     title: "직업군",
@@ -89,28 +90,27 @@ function Main() {
           0
         )
       );
-      setShowData(results);
+      setData(data);
     } else {
-      setShowData(data);
+      setData(data);
     }
   }, [data, currentCategoryTagJob, currentCategoryTagKeyword]);
 
-  //데이터입력
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   const fetchData = async () => {
-    const aiData = [];
     try {
-      const response = await axios.get(`/moin?page=${num}`);
+      const response = await axios.get(`/moin?page=${currentPage}`);
+
+      setCount(response.data.count);
       setData(response.data.results);
-      // setData(response.data.results);
-      // console.log(data);
     } catch (e) {
       console.log(e);
     }
   };
+
   return (
     <>
       <MainBannerList />
@@ -140,7 +140,12 @@ function Main() {
           />
         </S.MainTitleWrapper>
 
-        <AiServiceList data={showData} />
+        <AiServiceList
+          data={data}
+          count={count}
+          currentPage={currentPage}
+          getCurrentPage={getCurrentPage}
+        />
       </S.MainWrapper>
     </>
   );
