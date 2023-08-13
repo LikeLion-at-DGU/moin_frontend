@@ -29,7 +29,6 @@ function CommentInput({ isUser, id }) {
       );
       if (response.status === 200) {
         alert("댓글이 등록되었습니다.");
-        navigate("/login");
       }
     } catch (err) {
       console.log(err);

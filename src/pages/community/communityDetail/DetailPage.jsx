@@ -83,7 +83,7 @@ function DetailPage() {
       <S.DetailDiviner />
       {/* 댓글 입력 */}
       <S.DetailCommentHeader>답변 {detail.comments_cnt}</S.DetailCommentHeader>
-      <CommentInput isUser={isUser} />
+      <CommentInput isUser={isUser} id={detail.id} />
       <S.DetailDiviner />
     </S.DetailPageWrapper>
   );
