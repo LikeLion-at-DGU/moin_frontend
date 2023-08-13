@@ -14,7 +14,7 @@ function Main() {
   const [showData, setShowData] = useState([]);
 
   const categoriesJob = {
-    title: "직군",
+    title: "직업군",
     tags: [
       "1 sss",
       "2 ss s",
