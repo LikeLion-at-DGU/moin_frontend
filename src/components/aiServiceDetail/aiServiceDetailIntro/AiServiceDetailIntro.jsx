@@ -10,6 +10,9 @@ import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
 
 import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import Keyword from "../../common/keyword/Keyword";
 import { useRecoilState } from "recoil";
@@ -21,19 +24,25 @@ export function AiServiceDetailIntro({ introContent }) {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
+  // Toast
+
+  const notify = () => {
+    toast.info("링크가 복사되었습니다.", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 2000 // 3초로 설정
+    });
+  };
+
   return (
     <>
-      {/* {item.name} */}
+      {/* {item.name} */} <ToastContainer />
       {introContent.map(introItem => (
         <S.AiServiceDetailWrap key={introItem.id}>
           <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
           <S.AiServiceDetailHeader>
             <S.CopyToClipboardElement>
               <S.AiServiceDetailShare>
-                <CopyToClipboard
-                  text={introItem.url}
-                  onCopy={() => alert("링크가 복사되었습니다.")}
-                >
+                <CopyToClipboard text={introItem.url} onCopy={notify}>
                   <S.AiServiceDetailShareImg
                     src={ShareIcon}
                     alt="공유 아이콘"
