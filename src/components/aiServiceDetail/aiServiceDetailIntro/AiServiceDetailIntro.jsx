@@ -19,19 +19,26 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 
 export function AiServiceDetailIntro({ introContent }) {
+  if (!introContent) {
+    return null; // introContent가 없을 때 아무 것도 렌더링하지 않음
+  }
+
+  // 좋아요
   const [isLiked, setIsLiked] = useState(introContent.is_liked);
 
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   // Toast
-
   const notify = () => {
     toast.info("링크가 복사되었습니다.", {
       position: toast.POSITION.BOTTOM_LEFT,
       autoClose: 2000 // 3초로 설정
     });
   };
+
+  console.log("durl");
+  console.log(introContent);
 
   return (
     <>

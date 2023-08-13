@@ -87,8 +87,8 @@ export function AiServiceDetailReview({ introContent }) {
             </S.AiServiceDetailReviewStarMyHeader>
             <S.AiServiceDetailReviewStarMyContent>
               <S.AiServiceDetailReviewStarMyContentIcon>
-                <Wrap>
-                  <Stars>
+                <S.Wrap>
+                  <S.Stars>
                     {ARRAY.map((el, idx) => {
                       return (
                         <AiFillStar
@@ -99,8 +99,8 @@ export function AiServiceDetailReview({ introContent }) {
                         />
                       );
                     })}
-                  </Stars>
-                </Wrap>
+                  </S.Stars>
+                </S.Wrap>
                 {/* <Star
                   starNum={userInfo ? introContent[0].my_rating_point : 0}
                   starSize={2.4}
@@ -149,29 +149,3 @@ export function AiServiceDetailReview({ introContent }) {
     </>
   );
 }
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Stars = styled.div`
-  display: flex;
-  padding: 0.6rem;
-  & svg {
-    color: #d9d9d9;
-    cursor: pointer;
-  }
-
-  :hover svg {
-    color: #ffd600;
-  }
-
-  & svg:hover ~ svg {
-    color: #d9d9d9;
-  }
-
-  .yellowStar {
-    color: #ffd600;
-  }
-`;

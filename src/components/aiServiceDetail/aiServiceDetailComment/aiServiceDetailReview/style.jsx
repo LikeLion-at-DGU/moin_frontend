@@ -571,3 +571,29 @@ export const RatingBox = styled.div`
     color: black;
   }
 `;
+
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Stars = styled.div`
+  display: flex;
+  padding: 0.6rem;
+  & svg {
+    color: #d9d9d9;
+    cursor: pointer;
+  }
+
+  :hover svg {
+    color: #ffd600;
+  }
+
+  & svg:hover ~ svg {
+    color: #d9d9d9;
+  }
+
+  .yellowStar {
+    color: #ffd600;
+  }
+`;

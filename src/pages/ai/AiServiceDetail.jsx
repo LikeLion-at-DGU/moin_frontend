@@ -46,10 +46,6 @@ function AiServiceDetail() {
     setCurrentTab(index);
   };
 
-  // console.log("여기");
-  // console.log(introContent);
-  // console.log("여기");
-
   return (
     <>
       <AiServiceDetailIntro introContent={introContent} />
