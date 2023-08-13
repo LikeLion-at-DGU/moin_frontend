@@ -41,7 +41,7 @@ export function AiServiceDescription() {
           {data.introduce}
         </S.AiServiceDescriptionIntroContent>
         <S.AiServiceDescriptionFunctionTitle>
-          <S.AiServiceDescriptionIntroIcon
+          <S.AiServiceDescriptionBulbIcon
             src={DescriptionBulbIcon}
             alt="상세 기능 아이콘"
           />

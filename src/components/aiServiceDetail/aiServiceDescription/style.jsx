@@ -20,7 +20,6 @@ export const AiServiceDescriptionIntroIcon = styled.img`
   width: 2.2rem;
   height: 2.2rem;
   margin-right: 1rem;
-  cursor: pointer;
 `;
 
 export const AiServiceDescriptionIntroContent = styled.div`
@@ -43,6 +42,7 @@ export const AiServiceDescriptionFunctionTitle = styled.div`
   font-size: 2rem;
   font-weight: 700;
   margin-top: 10rem;
+  align-items: center;
 `;
 
 export const AiServiceDescriptionFunctionContent = styled.li`
@@ -97,7 +97,7 @@ export const AiServiceDescriptionFunctionWrap = styled.div`
 // 아이콘
 export const AiServiceDescriptionFunctionIcon = styled.img`
   display: flex;
-  width: 0.7rem;
+  width: 0.8rem;
   margin-right: 1rem;
   margin-top: 0.8rem;
 `;
@@ -112,4 +112,11 @@ export const AiServiceDescriptionFunctionContentWrap = styled.div`
   white-space: pre-line;
   word-wrap: break-word;
   align-items: flex-start;
+`;
+
+export const AiServiceDescriptionBulbIcon = styled.img`
+  display: flex;
+  width: 1.9rem;
+  height: auto;
+  margin-right: 1rem;
 `;
