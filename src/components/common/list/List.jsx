@@ -6,8 +6,13 @@ import * as S from "./style";
 // 컴포넌트
 import Selector from "../selector/Selector";
 import Paging from "../paging/Paging";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../context/authState";
 
-const List = ({ data, url }) => {
+const List = ({ data, url, writeUrl }) => {
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   const navigate = useNavigate();
   // 댓글 데이터를 최신순으로 정렬
   const sortedComments = data.slice().reverse();
@@ -46,7 +51,12 @@ const List = ({ data, url }) => {
       <S.AiServiceDetailTipWrap>
         <S.AiServiceDetailTipHeader>
           <S.AiServiceDetailTipHeaderWrite>
-            <S.AiServiceDetailTipHeaderWriteContent>
+            <S.AiServiceDetailTipHeaderWriteContent
+              onClick={() => {
+                // 로그인하지 않은 경우 로그인 페이지로 이동
+                !userInfo ? navigate("/login") : navigate(writeUrl);
+              }}
+            >
               <S.StyledPencilIcon />
               글쓰기
             </S.AiServiceDetailTipHeaderWriteContent>
@@ -76,7 +86,7 @@ const List = ({ data, url }) => {
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
             {currentItems.map(data => (
-              <S.AiServiceDetailTipTableTr
+              <S.AiServiceDetailTipTableTrContent
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
@@ -98,7 +108,7 @@ const List = ({ data, url }) => {
                   <S.CommentIcon />
                   {data.comment_cnt}
                 </S.AiServiceDetailTipTableTd>
-              </S.AiServiceDetailTipTableTr>
+              </S.AiServiceDetailTipTableTrContent>
             ))}
           </S.AiServiceDetailTipTableTbody>
         </S.AiServiceDetailTipTable>
