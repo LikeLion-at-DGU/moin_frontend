@@ -29,7 +29,7 @@ export function AiServiceDetailReview({ introContent }) {
     userInfo
       ? Array(5)
           .fill(false)
-          .map((_, index) => index < introContent[0].my_rating_point)
+          .map((_, index) => index < introContent.my_rating_point)
       : Array(5).fill(false)
   );
 
@@ -129,17 +129,17 @@ export function AiServiceDetailReview({ introContent }) {
             <S.AiServiceDetailReviewStarAvgContent>
               <S.AiServiceDetailReviewStarAvgContentResult>
                 <S.AiServiceDetailReviewStarAvgContentResultAi>
-                  {introContent[0].rating_point}
+                  {introContent.avg_point}
                 </S.AiServiceDetailReviewStarAvgContentResultAi>
                 <S.AiServiceDetailReviewStarAvgContentResultTotal>
                   / 5.0
                 </S.AiServiceDetailReviewStarAvgContentResultTotal>
                 <S.AiServiceDetailReviewStarAvgContentResultCnt>
-                  ({introContent[0].rating_cnt})
+                  ({introContent.rating_cnt})
                 </S.AiServiceDetailReviewStarAvgContentResultCnt>
               </S.AiServiceDetailReviewStarAvgContentResult>
               <S.AiServiceDetailReviewStarAvgContentIcon>
-                <Star starNum={introContent[0].rating_point} starSize={3} />
+                <Star starNum={introContent.avg_point} starSize={3} />
               </S.AiServiceDetailReviewStarAvgContentIcon>
             </S.AiServiceDetailReviewStarAvgContent>
           </S.AiServiceDetailReviewStarAvg>
