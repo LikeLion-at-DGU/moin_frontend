@@ -213,6 +213,11 @@ export const AiServiceDetailContentDescriptionBottomHeart = styled.div`
 export const AiServiceDetailContentDescriptionBottomHeartIcon = styled.div`
   display: flex;
   margin-top: 0.8rem;
+
+  transition: transform 200ms;
+  :hover {
+    transform: scale(1.03);
+  }
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeartCnt = styled.div`
