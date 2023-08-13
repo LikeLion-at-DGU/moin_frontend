@@ -184,7 +184,7 @@ export const AiServiceDetailContentDescriptionBottom = styled.div`
 `;
 
 export const AiServiceDetailContentDescriptionBottomLink = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   :hover {
     color: white;
     background-color: #4285f4;
@@ -212,7 +212,7 @@ export const AiServiceDetailContentDescriptionBottomHeart = styled.div`
 
 export const AiServiceDetailContentDescriptionBottomHeartIcon = styled.div`
   display: flex;
-  margin-top: 0.8rem;
+  margin-top: 0.2rem;
 
   transition: transform 200ms;
   :hover {
