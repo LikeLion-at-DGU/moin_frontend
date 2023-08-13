@@ -27,7 +27,7 @@ function AiServiceDetail() {
         like_cnt: 599,
         view_cnt: 1000,
         rating_point: 3.7,
-        my_rating_point: 5,
+        my_rating_point: 4,
         rating_cnt: 202,
         views: 402333
       }
