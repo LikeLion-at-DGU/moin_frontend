@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import List from "../../common/list/List";
+import TipsList from "../../common/tipsList/TipsList";
 function CommunityTips() {
   const [tipContent, setTipContent] = useState([]);
 
@@ -118,7 +119,7 @@ function CommunityTips() {
 
   return (
     <>
-      <List data={tipContent} url={"/community/tips/"} />
+      <TipsList data={tipContent} url={"/community/tips/"} />
     </>
   );
 }
