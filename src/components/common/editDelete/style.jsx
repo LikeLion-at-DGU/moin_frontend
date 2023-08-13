@@ -11,4 +11,5 @@ export const DetailTitleIcon = styled.img`
   width: 1.8rem;
   height: 1.8rem;
   margin-right: 1rem;
+  cursor: pointer;
 `;

@@ -189,7 +189,7 @@ const Comment = ({
                     {formattedDate}
                   </S.AiServiceDetailReviewListDate>
                 </S.AiServiceDetailReviewListHeaderWrapper>
-                <EditDelete isWriter={true} />
+                <EditDelete isWriter={true} id={3} />
               </S.AiServiceDetailReviewListHeader>
               <S.AiServiceDetailReviewListContent>
                 {content}
