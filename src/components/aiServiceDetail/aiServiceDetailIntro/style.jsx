@@ -32,7 +32,6 @@ export const AiServiceDetailShare = styled.div`
   margin-top: 2.9rem;
   margin-right: -12rem;
   justify-content: right;
-  cursor: pointer;
 
   :hover {
     transform: scale(1.1);
@@ -43,6 +42,7 @@ export const AiServiceDetailShareImg = styled.img`
   display: flex;
   width: 4rem;
   height: 4rem;
+  cursor: pointer;
 `;
 
 // 클립보드
