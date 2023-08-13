@@ -4,6 +4,7 @@ import * as S from "./style";
 import ReviewListIcon from "../../../../assets/images/icon/reviewList.png";
 import MyReviewListIcon from "../../../../assets/images/icon/myReviewList.png";
 import Paging from "../../../common/paging/Paging";
+import CommonCommentList from "../../../common/commonCommentList/CommonCommentList";
 
 const CommentList = ({
   comments,
@@ -119,32 +120,17 @@ const CommentList = ({
         <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
         <S.ReviewHeaderText>후기 {count}</S.ReviewHeaderText>
       </S.ReviewHeader>
-
-      <S.AiServiceDetailReviewListWrap>
-        <S.AiServiceDetailReviewListUl>
-          {currentItems.map(comment => (
-            <Comment
-              key={comment.id}
-              content={comment.content}
-              writer={comment.writer}
-              created_at={comment.created_at}
-              onUpdate={updatedComment => onUpdate(comment.id, updatedComment)}
-              onDelete={() => onDelete(comment.id)}
-              userInfo={userInfo}
-            />
-          ))}
-        </S.AiServiceDetailReviewListUl>
-        <S.AiServiceDetailReviewListPagingWrap>
-          <S.AiServiceDetailReviewListPaging>
-            <Paging
-              page={currentPage}
-              count={comments.length}
-              postPerPage={itemsPerPage}
-              setPage={handlePageChange}
-            />
-          </S.AiServiceDetailReviewListPaging>
-        </S.AiServiceDetailReviewListPagingWrap>
-      </S.AiServiceDetailReviewListWrap>
+      {/* CommonCommentList 컴포넌트로 대체 */}
+      <CommonCommentList
+        currentItems={currentItems}
+        comments={comments}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        onUpdate={onUpdate}
+        onDelete={onDelete}
+        userInfo={userInfo}
+      />
     </>
   );
 };

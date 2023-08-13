@@ -9,7 +9,7 @@ export const DetailTitleIconWrapper = styled.div`
 `;
 export const DetailTitleIcon = styled.img`
   width: 1.8rem;
-  height: 1.8rem;
+  height: 2rem;
   margin-right: 1rem;
   cursor: pointer;
 `;

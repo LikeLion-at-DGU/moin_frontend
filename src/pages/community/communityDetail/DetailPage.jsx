@@ -9,6 +9,7 @@ import CommunityDetailContent from "../../../components/common/communityDetailCo
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import CommentInput from "../../../components/common/CommentInput/CommentInput";
+import CommonCommentList from "../../../components/common/commonCommentList/CommonCommentList";
 
 function DetailPage() {
   const [user] = useRecoilState(userState);
@@ -18,10 +19,38 @@ function DetailPage() {
 
   // detail와서 ai name받기
   const [aiName, setAiName] = useState("ChatGPT-3");
-  const [isWriter, setIsWriter] = useState(false);
+  const [isWriter, setIsWriter] = useState(true);
   const [isUser, setIsUser] = useState(true);
 
   const [detail, setDetail] = useState({});
+
+  const [comments, setComments] = useState([
+    {
+      count: 24,
+      next: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/?page=${id}",
+      previous: "http://127.0.0.1:8000/api/v1/moin/detail/ho/comments/",
+      results: [
+        {
+          id: 43,
+          ai: "ho",
+          is_tmp: false,
+          writer: "admin",
+          content: "페이지네이션 테스트\n",
+          created_at: "2023/08/10 12:12",
+          updated_at: "2023/08/10 12:12"
+        },
+        {
+          id: 52,
+          ai: "ho",
+          is_tmp: false,
+          writer: "admin",
+          content: "페이지네이션 테스트\n",
+          created_at: "2023/08/10 12:12",
+          updated_at: "2023/08/10 12:12"
+        }
+      ]
+    }
+  ]);
 
   useEffect(() => {
     fetchDetail();
@@ -65,7 +94,7 @@ function DetailPage() {
       </>
     ) : (
       <>
-        <CommunityDetailContent detail={detail} isWriter={isWriter} />
+        <CommunityDetailContent detail={detail} isWriter={isWriter} id={1} />
       </>
     );
   };
@@ -85,6 +114,17 @@ function DetailPage() {
       <S.DetailCommentHeader>답변 {detail.comments_cnt}</S.DetailCommentHeader>
       <CommentInput isUser={isUser} id={detail.id} />
       <S.DetailDiviner />
+
+      {/* <CommonCommentList
+        currentItems={detail.comments} // 사용할 댓글 데이터 배열
+        comments={detail.comments} // 전체 댓글 데이터 배열
+        itemsPerPage={10} // 한 페이지당 보여줄 댓글 수
+        currentPage={1} // 현재 페이지
+        handlePageChange={(pageNumber) => setCurrentPage(pageNumber)} // 페이지 변경 핸들러
+        onUpdate={(commentId, updatedComment) => updateComment(commentId, updatedComment)} // 댓글 업데이트 핸들러
+        onDelete={(commentId) => deleteComment(commentId)} // 댓글 삭제 핸들러
+        userInfo={user} // 사용자 정보
+      /> */}
     </S.DetailPageWrapper>
   );
 }
