@@ -4,12 +4,17 @@ import BinIcon from "../../../assets/images/icon/bin.png";
 import PencilIcon from "../../../assets/images/icon/pencil.png";
 import EditDelete from "../editDelete/EditDelete";
 
-const CommunityDetailContent = ({ detail, isWriter }) => {
+const CommunityDetailContent = ({ detail, isWriter, id }) => {
   return (
     <>
       <S.DetailTitleWrapper>
         <S.DetailTitle>{detail.title}</S.DetailTitle>
-        <EditDelete isWriter={isWriter} />
+        <EditDelete
+          isWriter={isWriter}
+          id={id}
+          handleEdit={null}
+          handleDelete={null}
+        />
       </S.DetailTitleWrapper>
       <S.DetailTitleInfoWrapper>
         <S.DetailTitleGrayInfo>작성자 : {detail.writer}</S.DetailTitleGrayInfo>

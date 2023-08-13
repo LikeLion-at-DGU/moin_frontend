@@ -6,6 +6,7 @@ import Modal from "react-modal"; // 모달창
 import EditDelete from "../../../common/editDelete/EditDelete";
 
 const Comment = ({
+  key,
   content,
   onUpdate,
   onDelete,
@@ -120,14 +121,21 @@ const Comment = ({
                 </S.AiServiceDetailReviewMyContent>
               </S.AiServiceDetailReviewMyWrap>
               <S.AiServiceDetailReviewMyButton>
-                <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
+                <EditDelete
+                  isWriter={true}
+                  id={key}
+                  handleEdit={handleEdit}
+                  handleDelete={handleDeleteButton}
+                  isBlue={true}
+                />
+                {/* <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
                   수정
                 </S.AiServiceDetailReviewMyButtonEdit>
                 <S.AiServiceDetailReviewMyButtonDelete
                   onClick={handleDeleteButton}
                 >
                   삭제
-                </S.AiServiceDetailReviewMyButtonDelete>
+                </S.AiServiceDetailReviewMyButtonDelete> */}
               </S.AiServiceDetailReviewMyButton>
 
               {/* 삭제 모달 */}
