@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import List from "../../common/list/List";
+import CommonList from "../../common/commonList/CommonList";
 
 function CommunityCommon() {
   const [commonContent, setCommonContent] = useState([]);
@@ -118,7 +119,7 @@ function CommunityCommon() {
   }, []);
   return (
     <>
-      <List
+      <CommonList
         data={commonContent}
         url={"/community/commons/"}
         writeUrl={"/community/create"}

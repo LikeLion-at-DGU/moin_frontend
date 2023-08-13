@@ -2,7 +2,9 @@ import axios from "../../../api/axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import * as S from "./style";
-import RightArrowBlue from "../../../assets/images/icon/rightArrowBlue.png";
+import ThumbIcon from "../../../assets/images/icon/mypageThumb.png";
+import ThumbOutlineIcon from "../../../assets/images/icon/thumb_outline.png";
+import EyeOutlineIcon from "../../../assets/images/icon/eye_outline.png";
 import CommuntiyDetailPageType from "../../../components/community/communtiyDetailPageType/CommuntiyDetailPageType";
 import { AiServiceDetailContentDescriptionCompanyImg } from "../../../components/aiServiceDetail/aiServiceDetailIntro/style";
 import CommunityDetailContent from "../../../components/common/communityDetailContent/CommunityDetailContent";
@@ -62,6 +64,35 @@ function DetailPage() {
   const [isUser, setIsUser] = useState(true);
 
   const [detail, setDetail] = useState({});
+  const [likeCount, setLikeCount] = useState(0);
+  const [likeImage, setLikeImage] = useState(ThumbOutlineIcon);
+
+  const handleLike = async islike => {
+    // 비어 토큰
+
+    // 유저 있는지 없는지 체크
+    try {
+      // islike is true
+      // 좋아요 취소
+      if (islike) {
+        setLikeCount(likeCount - 1);
+        setLikeImage(ThumbOutlineIcon);
+        // post
+        setDetail(prevDetail => ({ ...prevDetail, likes_cnt: likeCount - 1 }));
+      }
+      // islike is false
+      // 좋아요
+      else {
+        setLikeCount(likeCount + 1);
+        setLikeImage(ThumbIcon);
+        // post
+        setDetail(prevDetail => ({ ...prevDetail, likes_cnt: likeCount + 1 }));
+      }
+    } catch (error) {
+      console.log(error);
+      // Handle error if needed
+    }
+  };
 
   useEffect(() => {
     fetchDetail();
@@ -91,6 +122,7 @@ function DetailPage() {
           updated_at: "202301.01 8:40"
         }
       };
+      setLikeCount(response.data.likes_cnt);
       setDetail(response.data);
     } catch (error) {
       console.log(error);
@@ -102,10 +134,31 @@ function DetailPage() {
     return !detail ? (
       <>
         <S.DetailTitle>로딩중</S.DetailTitle>
+        <S.DetailDiviner />
       </>
     ) : (
       <>
         <CommunityDetailContent detail={detail} isWriter={isWriter} id={1} />
+        <S.DetailDiviner />
+        <S.LikeViewWrapper>
+          <S.Thumbnailimg src={EyeOutlineIcon} alt="조회수" />
+          <S.DetailViewText>{detail.view_cnt}</S.DetailViewText>
+          {/* is_liked 여부에 따라 */}
+          {detail.is_liked ? (
+            <S.Thumbnailimg
+              src={likeImage}
+              alt="좋아요"
+              onClick={() => handleLike(true)}
+            />
+          ) : (
+            <S.Thumbnailimg
+              src={likeImage}
+              alt="좋아요"
+              onClick={() => handleLike(false)}
+            />
+          )}
+          <S.DetailViewText>{likeCount}</S.DetailViewText>
+        </S.LikeViewWrapper>
       </>
     );
   };
@@ -120,11 +173,10 @@ function DetailPage() {
       {/* detail 불러오기 */}
       {renderDetail(isWriter)}
 
-      <S.DetailDiviner />
       {/* 댓글 입력 */}
       <S.DetailCommentHeader>답변 {detail.comments_cnt}</S.DetailCommentHeader>
       <CommentInput isUser={isUser} id={detail.id} />
-      <S.DetailDiviner />
+      {/* <S.DetailDiviner /> */}
       <CommonCommentList
         currentItems={comments.results} // 사용할 댓글 데이터 배열
         comments={comments.results} // 전체 댓글 데이터 배열
