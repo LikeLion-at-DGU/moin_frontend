@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style";
+
 import axios from "axios";
 
 // 아이콘
@@ -25,9 +26,11 @@ export function AiServiceDetailReview({ introContent }) {
 
   // 별점 기본값 설정
   const [clicked, setClicked] = useState(
-    Array(5)
-      .fill(false)
-      .map((_, index) => index < introContent[0].my_rating_point)
+    userInfo
+      ? Array(5)
+          .fill(false)
+          .map((_, index) => index < introContent[0].my_rating_point)
+      : Array(5).fill(false)
   );
 
   const handleStarClick = index => {
@@ -60,6 +63,11 @@ export function AiServiceDetailReview({ introContent }) {
   };
 
   const handleSubmit = () => {
+    if (!userInfo) {
+      // 로그인하지 않은 경우 로그인 페이지로 이동
+      window.location.href = "/login";
+      return;
+    }
     sendReview();
   };
 
