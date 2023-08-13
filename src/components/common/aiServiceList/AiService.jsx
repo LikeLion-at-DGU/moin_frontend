@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import * as S from "./style";
 
 import { useNavigate } from "react-router-dom";
@@ -10,9 +10,10 @@ function AiService({ item }) {
   // 함수 수정할게용....
 
   const navigate = useNavigate();
-
+  const wrapper = useRef();
   return (
     <S.AiServiceWrapper
+      ref={wrapper}
       onClick={() =>
         navigate(`AiService/${item.title}`, {
           state: {
