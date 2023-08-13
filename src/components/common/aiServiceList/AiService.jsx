@@ -37,7 +37,7 @@ function AiService({ item }) {
           </S.AiServiceStarDescription>
         </S.AiServiceStar>
         {/* 키워드 */}
-        <Keyword keyword={item.keyword} keywordSize={"1rem"} />
+        <Keyword keyword={item.keywords} keywordSize={"1rem"} />
       </S.AiServiceBody>
       {/* 좋아요 */}
       <S.AiServiceFooter>
