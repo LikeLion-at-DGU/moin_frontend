@@ -12,9 +12,14 @@ import Star from "../../common/star/Star";
 import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
 
 import Keyword from "../../common/keyword/Keyword";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../context/authState";
 
 export function AiServiceDetailIntro({ introContent }) {
   const [isLiked, setIsLiked] = useState(introContent.is_liked);
+
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
 
   return (
     <>
@@ -118,6 +123,12 @@ export function AiServiceDetailIntro({ introContent }) {
                     <S.AiServiceDetailContentDescriptionBottomHeartIcon>
                       <S.LikeButton
                         onClick={() => {
+                          if (!userInfo) {
+                            // 로그인하지 않은 경우 로그인 페이지로 이동
+                            window.location.href = "/login";
+                            return;
+                          }
+
                           setIsLiked(!isLiked);
                         }}
                       >

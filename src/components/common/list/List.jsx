@@ -6,8 +6,13 @@ import * as S from "./style";
 // 컴포넌트
 import Selector from "../selector/Selector";
 import Paging from "../paging/Paging";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../context/authState";
 
 const List = ({ data, url }) => {
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   const navigate = useNavigate();
   // 댓글 데이터를 최신순으로 정렬
   const sortedComments = data.slice().reverse();
@@ -46,7 +51,15 @@ const List = ({ data, url }) => {
       <S.AiServiceDetailTipWrap>
         <S.AiServiceDetailTipHeader>
           <S.AiServiceDetailTipHeaderWrite>
-            <S.AiServiceDetailTipHeaderWriteContent>
+            <S.AiServiceDetailTipHeaderWriteContent
+              onClick={() => {
+                if (!userInfo) {
+                  // 로그인하지 않은 경우 로그인 페이지로 이동
+                  window.location.href = "/login";
+                  return;
+                }
+              }}
+            >
               <S.StyledPencilIcon />
               글쓰기
             </S.AiServiceDetailTipHeaderWriteContent>

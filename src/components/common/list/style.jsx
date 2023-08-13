@@ -30,8 +30,6 @@ export const AiServiceDetailTipHeader = styled.div`
 `;
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
-  cursor: pointer;
-
   :hover {
     color: white;
     background-color: #4285f4;
@@ -48,6 +46,7 @@ export const AiServiceDetailTipHeaderWriteContent = styled.div`
   border: 2px solid #4285f4;
   padding: 0.7rem 1rem;
   margin-right: 88rem;
+  cursor: pointer;
 
   :hover {
     color: white;
