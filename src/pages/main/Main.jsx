@@ -15,7 +15,20 @@ function Main() {
 
   const categoriesJob = {
     title: "직군",
-    tags: ["전체", "개발자", "디자인"]
+    tags: [
+      "1 sss",
+      "2 ss s",
+      "3 sss",
+      "4 sss sss",
+      "5 sssss",
+      "6  sss",
+      "7  s sa",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ]
   };
   const [currentCategoryTagJob, setCurrentCategoryTagJob] = useState(0);
   const getCurrentCategoryTagJob = tag => {

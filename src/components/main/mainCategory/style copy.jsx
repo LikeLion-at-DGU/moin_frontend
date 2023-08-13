@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const BannerListWrapper = styled.div`
   width: 100%;
   position: relative;
-  margin: 0rem 2rem;
   z-index: 0;
 `;
 
