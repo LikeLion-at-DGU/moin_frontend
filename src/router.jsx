@@ -27,6 +27,7 @@ import ProfileFavoritePost from "./pages/profile/profileFavoritePost/ProfileFavo
 import DetailPage from "./pages/community/communityDetail/DetailPage";
 import SuggestionDetailPage from "./pages/suggestion/suggestionDetail/SuggestionDetailPage";
 import NoticeDetailPage from "./pages/notice/noticeDetail/noticeDetail";
+import CommunityCreatPost from "./pages/community/communityCreatePost/CommunityCreatPost";
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: "notice/:id",
         element: <NoticeDetailPage />
+      },
+      {
+        path: "community/create",
+        element: <CommunityCreatPost />
       }
     ],
     errorElement: <NotFoundError />

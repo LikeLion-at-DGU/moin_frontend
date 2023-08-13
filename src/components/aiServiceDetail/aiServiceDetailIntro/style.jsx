@@ -32,9 +32,9 @@ export const AiServiceDetailShare = styled.div`
   margin-top: 2.9rem;
   margin-right: -12rem;
   justify-content: right;
-
+  transition: transform 450ms;
   :hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 
