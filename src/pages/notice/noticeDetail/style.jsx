@@ -34,3 +34,36 @@ export const DetailDiviner = styled.hr`
   border: none;
   margin-bottom: 2rem;
 `;
+
+export const DetailCommentHeader = styled.div`
+  color: #4285f4;
+  font-size: 2rem;
+  font-weight: 600;
+`;
+
+export const Thumbnailimg = styled.img`
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+  justify-self: center;
+  align-self: flex-end;
+  margin-bottom: 6rem;
+`;
+
+export const DetailViewText = styled.p`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 16px;
+`;
+export const LikeViewWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  justify-content: flex-end;
+
+  margin-bottom: 2rem;
+`;
