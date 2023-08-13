@@ -8,10 +8,13 @@ import Selector from "../../components/common/selector/Selector";
 
 import { AiOutlineSearch } from "react-icons/ai";
 import SearchForm from "../../components/common/searchForm/SearchForm";
+import axios from "../../api/axios";
 
 function Main() {
   const [data, setData] = useState([]);
   const [showData, setShowData] = useState([]);
+
+  const [num, setNum] = useState(1);
 
   const categoriesJob = {
     title: "직업군",
@@ -94,232 +97,20 @@ function Main() {
 
   //데이터입력
   useEffect(() => {
-    const aiData = [
-      {
-        id: 1,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
-        like_cnt: 599,
-        rating_point: 4.75,
-        rating_cnt: 202
-      },
-      {
-        id: 2,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "http://image.koreatimes.com/article/2023/02/13/20230213105650631.jpg",
-        like_cnt: 403,
-        rating_point: 0.15,
-        rating_cnt: 332
-      },
-      {
-        id: 3,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://image.mediapen.com/news/202103/news_605667_1614652226_m.jpg",
-        like_cnt: 10,
-        rating_point: 1.75,
-        rating_cnt: 202
-      },
-      {
-        id: 4,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "https://i.pinimg.com/236x/20/54/47/20544776a249886254358f5da2d74229.jpg",
-        like_cnt: 100,
-        rating_point: 2.45,
-        rating_cnt: 332
-      },
-      {
-        id: 5,
-        title: "서현",
-        content: "서현현",
-        keyword: ["챗봇", "농담곰"],
-        thumbnail:
-          "https://i.namu.wiki/i/YUl8OYhqGEIkaSdhdBVKfG1HIc-zsq3-1-2JLHKjroWUbWEVV5NSoAUjgJHWuKvbb72P9K1VrwQcK0AN8P86ew.webp",
-        like_cnt: 200,
-        rating_point: 3.05,
-        rating_cnt: 332
-      },
-      {
-        id: 1,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
-        like_cnt: 599,
-        rating_point: 4.75,
-        rating_cnt: 202
-      },
-      {
-        id: 2,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "http://image.koreatimes.com/article/2023/02/13/20230213105650631.jpg",
-        like_cnt: 403,
-        rating_point: 0.15,
-        rating_cnt: 332
-      },
-      {
-        id: 3,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://image.mediapen.com/news/202103/news_605667_1614652226_m.jpg",
-        like_cnt: 10,
-        rating_point: 1.75,
-        rating_cnt: 202
-      },
-      {
-        id: 4,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "https://i.pinimg.com/236x/20/54/47/20544776a249886254358f5da2d74229.jpg",
-        like_cnt: 100,
-        rating_point: 2.45,
-        rating_cnt: 332
-      },
-      {
-        id: 5,
-        title: "서현",
-        content: "서현현",
-        keyword: ["챗봇", "농담곰"],
-        thumbnail:
-          "https://i.namu.wiki/i/YUl8OYhqGEIkaSdhdBVKfG1HIc-zsq3-1-2JLHKjroWUbWEVV5NSoAUjgJHWuKvbb72P9K1VrwQcK0AN8P86ew.webp",
-        like_cnt: 200,
-        rating_point: 3.05,
-        rating_cnt: 332
-      },
-      {
-        id: 1,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
-        like_cnt: 599,
-        rating_point: 4.75,
-        rating_cnt: 202
-      },
-      {
-        id: 2,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "http://image.koreatimes.com/article/2023/02/13/20230213105650631.jpg",
-        like_cnt: 403,
-        rating_point: 0.15,
-        rating_cnt: 332
-      },
-      {
-        id: 3,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://image.mediapen.com/news/202103/news_605667_1614652226_m.jpg",
-        like_cnt: 10,
-        rating_point: 1.75,
-        rating_cnt: 202
-      },
-      {
-        id: 4,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "https://i.pinimg.com/236x/20/54/47/20544776a249886254358f5da2d74229.jpg",
-        like_cnt: 100,
-        rating_point: 2.45,
-        rating_cnt: 332
-      },
-      {
-        id: 5,
-        title: "서현",
-        content: "서현현",
-        keyword: ["챗봇", "농담곰"],
-        thumbnail:
-          "https://i.namu.wiki/i/YUl8OYhqGEIkaSdhdBVKfG1HIc-zsq3-1-2JLHKjroWUbWEVV5NSoAUjgJHWuKvbb72P9K1VrwQcK0AN8P86ew.webp",
-        like_cnt: 200,
-        rating_point: 3.05,
-        rating_cnt: 332
-      },
-      {
-        id: 1,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://www.headmind.com/wp-content/uploads/2023/01/CHAT-GPT.png",
-        like_cnt: 599,
-        rating_point: 4.75,
-        rating_cnt: 202
-      },
-      {
-        id: 2,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "http://image.koreatimes.com/article/2023/02/13/20230213105650631.jpg",
-        like_cnt: 403,
-        rating_point: 0.15,
-        rating_cnt: 332
-      },
-      {
-        id: 3,
-        title: "chat GPT",
-        content: "chan AI가 개발했지요?",
-        keyword: ["챗봇", "과제"],
-        thumbnail:
-          "https://image.mediapen.com/news/202103/news_605667_1614652226_m.jpg",
-        like_cnt: 10,
-        rating_point: 1.75,
-        rating_cnt: 202
-      },
-      {
-        id: 4,
-        title: "Bing",
-        content: "빙빙",
-        keyword: ["챗봇", "심서현", "논문"],
-        thumbnail:
-          "https://i.pinimg.com/236x/20/54/47/20544776a249886254358f5da2d74229.jpg",
-        like_cnt: 100,
-        rating_point: 2.45,
-        rating_cnt: 332
-      },
-      {
-        id: 5,
-        title: "서현",
-        content: "서현현",
-        keyword: ["챗봇", "농담곰"],
-        thumbnail:
-          "https://i.namu.wiki/i/YUl8OYhqGEIkaSdhdBVKfG1HIc-zsq3-1-2JLHKjroWUbWEVV5NSoAUjgJHWuKvbb72P9K1VrwQcK0AN8P86ew.webp",
-        like_cnt: 200,
-        rating_point: 3.05,
-        rating_cnt: 332
-      }
-    ];
-
-    setData(aiData);
+    fetchData();
   }, []);
 
+  const fetchData = async () => {
+    const aiData = [];
+    try {
+      const response = await axios.get(`/moin?page=${num}`);
+      setData(response.data.results);
+      // setData(response.data.results);
+      // console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <>
       <MainBannerList />
