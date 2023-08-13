@@ -94,7 +94,7 @@ export function AiServiceDetailIntro({ introContent }) {
               {/* 별점 */}
               <S.AiServiceDetailContentDescriptionStar>
                 <S.AiServiceDetailContentDescriptionStarIcon>
-                  <Star starNum={introContent.rating_point} starSize={2.4} />
+                  <Star starNum={introContent.avg_point} starSize={2.4} />
                 </S.AiServiceDetailContentDescriptionStarIcon>
                 <S.AiServiceDetailContentDescriptionStarCnt>
                   ({introContent.rating_cnt})
