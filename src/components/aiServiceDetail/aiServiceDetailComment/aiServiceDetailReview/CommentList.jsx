@@ -12,6 +12,7 @@ const CommentList = ({
   onDelete,
   userInfo,
   myComments,
+  myCommentsCnt,
   count
 }) => {
   // const memberComments = comments.filter(comment => comment.isMember);
@@ -65,7 +66,7 @@ const CommentList = ({
                         src={MyReviewListIcon}
                         alt="나의 후기 아이콘"
                       />
-                      나의 후기
+                      나의 후기 {myCommentsCnt}
                     </S.AiServiceDetailReviewCommentMyReviewText>
                   </S.AiServiceDetailReviewCommentMyReviewWrap>
                   {/* 보여지는 첫 번째 댓글 */}

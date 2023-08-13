@@ -86,7 +86,7 @@ const List = ({ data, url, writeUrl }) => {
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
             {currentItems.map(data => (
-              <S.AiServiceDetailTipTableTr
+              <S.AiServiceDetailTipTableTrContent
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
@@ -108,7 +108,7 @@ const List = ({ data, url, writeUrl }) => {
                   <S.CommentIcon />
                   {data.comment_cnt}
                 </S.AiServiceDetailTipTableTd>
-              </S.AiServiceDetailTipTableTr>
+              </S.AiServiceDetailTipTableTrContent>
             ))}
           </S.AiServiceDetailTipTableTbody>
         </S.AiServiceDetailTipTable>

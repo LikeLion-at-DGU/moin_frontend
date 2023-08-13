@@ -29,7 +29,7 @@ export function AiServiceDetailReview({ introContent }) {
     userInfo
       ? Array(5)
           .fill(false)
-          .map((_, index) => index < introContent[0].my_rating_point)
+          .map((_, index) => index < introContent.my_rating_point)
       : Array(5).fill(false)
   );
 
@@ -87,8 +87,8 @@ export function AiServiceDetailReview({ introContent }) {
             </S.AiServiceDetailReviewStarMyHeader>
             <S.AiServiceDetailReviewStarMyContent>
               <S.AiServiceDetailReviewStarMyContentIcon>
-                <Wrap>
-                  <Stars>
+                <S.Wrap>
+                  <S.Stars>
                     {ARRAY.map((el, idx) => {
                       return (
                         <AiFillStar
@@ -99,8 +99,8 @@ export function AiServiceDetailReview({ introContent }) {
                         />
                       );
                     })}
-                  </Stars>
-                </Wrap>
+                  </S.Stars>
+                </S.Wrap>
                 {/* <Star
                   starNum={userInfo ? introContent[0].my_rating_point : 0}
                   starSize={2.4}
@@ -129,17 +129,17 @@ export function AiServiceDetailReview({ introContent }) {
             <S.AiServiceDetailReviewStarAvgContent>
               <S.AiServiceDetailReviewStarAvgContentResult>
                 <S.AiServiceDetailReviewStarAvgContentResultAi>
-                  {introContent[0].rating_point}
+                  {introContent.avg_point}
                 </S.AiServiceDetailReviewStarAvgContentResultAi>
                 <S.AiServiceDetailReviewStarAvgContentResultTotal>
                   / 5.0
                 </S.AiServiceDetailReviewStarAvgContentResultTotal>
                 <S.AiServiceDetailReviewStarAvgContentResultCnt>
-                  ({introContent[0].rating_cnt})
+                  ({introContent.rating_cnt})
                 </S.AiServiceDetailReviewStarAvgContentResultCnt>
               </S.AiServiceDetailReviewStarAvgContentResult>
               <S.AiServiceDetailReviewStarAvgContentIcon>
-                <Star starNum={introContent[0].rating_point} starSize={3} />
+                <Star starNum={introContent.avg_point} starSize={3} />
               </S.AiServiceDetailReviewStarAvgContentIcon>
             </S.AiServiceDetailReviewStarAvgContent>
           </S.AiServiceDetailReviewStarAvg>
@@ -149,29 +149,3 @@ export function AiServiceDetailReview({ introContent }) {
     </>
   );
 }
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Stars = styled.div`
-  display: flex;
-  padding: 0.6rem;
-  & svg {
-    color: #d9d9d9;
-    cursor: pointer;
-  }
-
-  :hover svg {
-    color: #ffd600;
-  }
-
-  & svg:hover ~ svg {
-    color: #d9d9d9;
-  }
-
-  .yellowStar {
-    color: #ffd600;
-  }
-`;
