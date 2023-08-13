@@ -12,10 +12,12 @@ import Review from "./Review";
 import { userState } from "../../../../context/authState";
 import { useRecoilState } from "recoil";
 
-export function AiServiceDetailReview(introContent) {
+export function AiServiceDetailReview({ introContent }) {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
-
+  console.log(introContent);
+  console.log("Rating Point:", introContent[0].rating_point);
+  console.log("여기");
   return (
     <>
       <S.AiServiceDetailReviewWrap>
@@ -33,7 +35,7 @@ export function AiServiceDetailReview(introContent) {
             <S.AiServiceDetailReviewStarMyContent>
               <S.AiServiceDetailReviewStarMyContentIcon>
                 <Star
-                  starNum={userInfo ? introContent.my_rating_point : 0}
+                  starNum={userInfo ? introContent[0].my_rating_point : 0}
                   starSize={2.4}
                 />
               </S.AiServiceDetailReviewStarMyContentIcon>
@@ -57,17 +59,17 @@ export function AiServiceDetailReview(introContent) {
             <S.AiServiceDetailReviewStarAvgContent>
               <S.AiServiceDetailReviewStarAvgContentResult>
                 <S.AiServiceDetailReviewStarAvgContentResultAi>
-                  4.0
+                  {introContent[0].rating_point}
                 </S.AiServiceDetailReviewStarAvgContentResultAi>
                 <S.AiServiceDetailReviewStarAvgContentResultTotal>
                   / 5.0
                 </S.AiServiceDetailReviewStarAvgContentResultTotal>
                 <S.AiServiceDetailReviewStarAvgContentResultCnt>
-                  (531)
+                  ({introContent[0].rating_cnt})
                 </S.AiServiceDetailReviewStarAvgContentResultCnt>
               </S.AiServiceDetailReviewStarAvgContentResult>
               <S.AiServiceDetailReviewStarAvgContentIcon>
-                <Star starNum={3} starSize={2.4} />
+                <Star starNum={introContent[0].rating_point} starSize={2.4} />
               </S.AiServiceDetailReviewStarAvgContentIcon>
             </S.AiServiceDetailReviewStarAvgContent>
           </S.AiServiceDetailReviewStarAvg>
