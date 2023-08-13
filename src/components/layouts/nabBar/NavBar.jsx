@@ -51,6 +51,7 @@ export default function NavBar() {
     if (isMobile) {
       sideBarClose();
     }
+    window.scrollTo(0, 0);
   }, [location]);
 
   const setMenu = () => {
