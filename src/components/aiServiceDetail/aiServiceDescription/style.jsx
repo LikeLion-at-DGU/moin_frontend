@@ -47,7 +47,6 @@ export const AiServiceDescriptionFunctionTitle = styled.div`
 
 export const AiServiceDescriptionFunctionContent = styled.li`
   display: flex;
-
   width: 100rem;
   margin-top: 1rem;
   margin-left: 0.3rem;
@@ -101,4 +100,16 @@ export const AiServiceDescriptionFunctionIcon = styled.img`
   width: 0.7rem;
   margin-right: 1rem;
   margin-top: 0.8rem;
+`;
+export const AiServiceDescriptionFunctionContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  line-height: 3rem;
+  color: #282828;
+  font-size: 1.8rem;
+  font-weight: 500;
+  white-space: pre-line;
+  word-wrap: break-word;
+  align-items: flex-start;
 `;
