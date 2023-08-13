@@ -15,6 +15,15 @@ export const DetailTitleInfoWrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
+export const DetailTitleWrapper = styled.div`
+  display: flex;
+  // row
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const DetailTitleGrayInfo = styled.p`
   font-size: 1.4rem;
   font-weight: 400;

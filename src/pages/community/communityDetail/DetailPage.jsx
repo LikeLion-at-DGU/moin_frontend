@@ -6,14 +6,18 @@ import RightArrowBlue from "../../../assets/images/icon/rightArrowBlue.png";
 import CommuntiyDetailPageType from "../../../components/community/communtiyDetailPageType/CommuntiyDetailPageType";
 import { AiServiceDetailContentDescriptionCompanyImg } from "../../../components/aiServiceDetail/aiServiceDetailIntro/style";
 import CommunityDetailContent from "../../../components/common/communityDetailContent/CommunityDetailContent";
+import { userState } from "../../../context/authState";
+import { useRecoilState } from "recoil";
 
 function DetailPage() {
+  const [user] = useRecoilState(userState);
+
   // type에는 common,tips, qnas 들어갈 수 있음
   const { type, id } = useParams();
 
   // detail와서 ai name받기
   const [aiName, setAiName] = useState("ChatGPT-3");
-
+  const [isWriter, setIsWriter] = useState(true);
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
@@ -50,6 +54,7 @@ function DetailPage() {
     }
   };
 
+  // 디테일 렌더링
   const renderDetail = () => {
     return !detail ? (
       <>
@@ -57,7 +62,26 @@ function DetailPage() {
       </>
     ) : (
       <>
-        <CommunityDetailContent detail={detail} />
+        <CommunityDetailContent detail={detail} isWriter={isWriter} />
+      </>
+    );
+  };
+
+  // 댓글 인풋 렌더링
+  const renderCommentInput = isWriter => {
+    return !isWriter ? (
+      <>
+        <S.DetailCommentInputWrapper>
+          <S.DetailCommentInput placeholder="로그인 후 댓글을 작성할 수 있습니다." />
+          <S.DetailCommentButton>등록</S.DetailCommentButton>
+        </S.DetailCommentInputWrapper>
+      </>
+    ) : (
+      <>
+        <S.DetailCommentInputWrapper>
+          <S.DetailCommentInput placeholder="답변을 작성해보세요 !" />
+          <S.DetailCommentButton>등록</S.DetailCommentButton>
+        </S.DetailCommentInputWrapper>
       </>
     );
   };
@@ -69,7 +93,13 @@ function DetailPage() {
         aiName={type === "tips" ? aiName : null}
       />
       <S.DetailDiviner />
-      {renderDetail()}
+      {/* detail 불러오기 */}
+      {renderDetail(isWriter)}
+
+      <S.DetailDiviner />
+      {/* 댓글 입력 */}
+      <S.DetailCommentHeader>답변 {detail.comments_cnt}</S.DetailCommentHeader>
+      {renderCommentInput()}
       <S.DetailDiviner />
     </S.DetailPageWrapper>
   );
