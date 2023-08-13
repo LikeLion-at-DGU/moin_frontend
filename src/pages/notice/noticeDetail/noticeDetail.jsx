@@ -69,7 +69,7 @@ function NoticeDetailPage() {
     <S.DetailPageWrapper>
       <CommuntiyDetailPageType type={"notice"} aiName={null} />
       <S.DetailDiviner />
-      {renderDetail(false)}
+      {renderDetail()}
     </S.DetailPageWrapper>
   );
 }
