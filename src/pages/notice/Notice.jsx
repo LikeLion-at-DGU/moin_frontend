@@ -3,6 +3,7 @@ import * as S from "./style";
 import * as CS from "../community/style";
 import Banner from "../../components/common/banner/Banner";
 import List from "../../components/common/list/List";
+import NoticeList from "../../components/common/noticeList/NoticeList";
 
 function Notice() {
   const [noticeContent, setNoticeContent] = useState([]);
@@ -127,7 +128,7 @@ function Notice() {
         image={<S.NoticeIconImg />}
       />
       <CS.CommunityContentWrapper>
-        <List data={noticeContent} url={"/notice/"} />
+        <NoticeList data={noticeContent} url={"/notice/"} />
       </CS.CommunityContentWrapper>
     </S.NoticeWrapper>
   );
