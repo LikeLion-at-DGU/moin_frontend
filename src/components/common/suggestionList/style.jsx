@@ -26,7 +26,7 @@ export const AiServiceDetailTipWrap = styled.div`
 export const AiServiceDetailTipHeader = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 5.1rem;
+  margin-top: 3.1rem;
 `;
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
@@ -65,7 +65,7 @@ export const AiServiceDetailTipHeaderSort = styled.div`
 
 export const AiServiceDetailTipLine = styled.div`
   display: flex;
-  margin-top: 2.7rem;
+  margin-top: 2rem;
   background: #4285f4;
   width: 110rem;
   height: 2px;
@@ -115,4 +115,9 @@ export const AiServiceDetailTipPaging = styled.div`
   position: relative;
   bottom: 0;
   transform: translate(-50%, 0);
+`;
+
+export const StatusText = styled.p`
+  color: ${props => props.color};
+  font-size: 1.6rem;
 `;

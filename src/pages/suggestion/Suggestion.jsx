@@ -11,108 +11,49 @@ function Suggestion() {
   useEffect(() => {
     const sugestionData = [
       {
-        id: 1,
-        title: "챗지피티에 대해 알아보자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
         id: 2,
-        title: "챗지피티에 ",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 3,
-        title: "챗지피티에 대해 보자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
+        ai: "chan",
+        writer: "chan",
+        title: "음",
+        reflected_status: 0,
+        created_at: "2023/08/09 04:49",
+        updated_at: "2023/08/09 04:49"
       },
       {
         id: 4,
-        title: "챗지피티에 대해 알아보자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 5,
-        title: "챗지피티에 대해 알아보자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 6,
-        title: "챗지피티에 대해 알아보자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 7,
-        title: "챗지피티에 대해 알아보자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 8,
-        title: "챗지피티에",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
+        ai: "chan",
+        writer: "",
+        title: "모인 3차 회의했어용",
+        reflected_status: 0,
+        created_at: "2023/08/09 11:44",
+        updated_at: "2023/08/09 23:30"
       },
       {
         id: 9,
-        title: "챗지피티에",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
+        ai: null,
+        writer: "dudtlstm",
+        title: "ai없이",
+        reflected_status: 2,
+        created_at: "2023/08/10 10:31",
+        updated_at: "2023/08/10 10:31"
       },
       {
         id: 10,
-        title: "챗지피티에",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
+        ai: null,
+        writer: "dudtlstm",
+        title: "hihi",
+        reflected_status: 0,
+        created_at: "2023/08/10 11:07",
+        updated_at: "2023/08/10 11:07"
       },
       {
-        id: 11,
-        title: "챗지피티에",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 12,
-        title: "챗지피티에 ",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
-      },
-      {
-        id: 13,
-        title: "챗지피티에 해자",
-        name: "Chat GPT",
-        date: "2023/01/01 23:00",
-        like: 17,
-        comment_cnt: 5
+        id: 3,
+        ai: "ho",
+        writer: "wy",
+        title: "반대할게요. 이 서비스.",
+        reflected_status: 1,
+        created_at: "2023/08/09 11:34",
+        updated_at: "2023/08/09 11:35"
       }
 
       // 추가.....

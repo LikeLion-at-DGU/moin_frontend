@@ -50,13 +50,17 @@ const SuggestionList = ({ data, url, writeUrl }) => {
     <>
       <S.AiServiceDetailTipWrap>
         <S.AiServiceDetailTipHeader>
-          <S.AiServiceDetailTipHeaderWrite></S.AiServiceDetailTipHeaderWrite>
-          <S.AiServiceDetailTipHeaderSort>
-            <Selector
-              options={SelectorOption}
-              getCurrentOption={getCurrentOption}
-            />
-          </S.AiServiceDetailTipHeaderSort>
+          <S.AiServiceDetailTipHeaderWrite>
+            <S.AiServiceDetailTipHeaderWriteContent
+              onClick={() => {
+                // 로그인하지 않은 경우 로그인 페이지로 이동
+                !userInfo ? navigate("/login") : navigate(writeUrl);
+              }}
+            >
+              <S.StyledPencilIcon />
+              글쓰기
+            </S.AiServiceDetailTipHeaderWriteContent>
+          </S.AiServiceDetailTipHeaderWrite>
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
@@ -66,9 +70,11 @@ const SuggestionList = ({ data, url, writeUrl }) => {
               <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh>
                 등록일시
+              </S.AiServiceDetailTipTableTh>
+              <S.AiServiceDetailTipTableTh>
+                반영여부
               </S.AiServiceDetailTipTableTh>
               <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
             </S.AiServiceDetailTipTableTr>
@@ -86,9 +92,17 @@ const SuggestionList = ({ data, url, writeUrl }) => {
                   {data.title}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.date}
+                  {data.created_at}
+                </S.AiServiceDetailTipTableTd>
+                <S.AiServiceDetailTipTableTd>
+                  {data.reflected_status === 0 ? (
+                    <S.StatusText color="#282828">대기중</S.StatusText>
+                  ) : data.reflected_status === 1 ? (
+                    <S.StatusText color="#4285F4">반영</S.StatusText>
+                  ) : (
+                    <S.StatusText color="#FF5D47">미반영</S.StatusText>
+                  )}
                 </S.AiServiceDetailTipTableTd>
               </S.AiServiceDetailTipTableTr>
             ))}
