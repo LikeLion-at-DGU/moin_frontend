@@ -1,5 +1,14 @@
 import { styled, keyframes } from "styled-components";
-
+const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 // 전체 width 차지
 export const ProfileWrapper = styled.div`
   display: flex;
@@ -26,6 +35,7 @@ export const ProfileBannerHeaderWrapper = styled.div`
   @media (max-width: 1200px) {
     width: 90%;
   }
+  animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
 export const ProfileBannerHeaderContainer = styled.div`
   margin-top: 18rem;

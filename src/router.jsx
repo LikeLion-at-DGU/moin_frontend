@@ -23,8 +23,10 @@ import AuthReset from "./pages/auths/authReset/AuthReset";
 import AuthSignup from "./pages/auths/authSignup/AuthSignup";
 import ProfileChangePassword from "./pages/profile/profileChangePassword/ProfileChangePassword";
 import Search from "./pages/search/Search";
-import DetailPage from "./pages/detail/DetailPage";
 import ProfileFavoritePost from "./pages/profile/profileFavoritePost/ProfileFavoritePost";
+import DetailPage from "./pages/community/communityDetail/DetailPage";
+import SuggestionDetailPage from "./pages/suggestion/suggestionDetail/SuggestionDetailPage";
+import NoticeDetailPage from "./pages/notice/noticeDetail/noticeDetail";
 
 const router = createBrowserRouter([
   {
@@ -113,8 +115,16 @@ const router = createBrowserRouter([
         element: <Search />
       },
       {
-        path: "community/tips/:tip_id",
+        path: "community/:type/:id",
         element: <DetailPage />
+      },
+      {
+        path: "suggestion/:id",
+        element: <SuggestionDetailPage />
+      },
+      {
+        path: "notice/:id",
+        element: <NoticeDetailPage />
       }
     ],
     errorElement: <NotFoundError />

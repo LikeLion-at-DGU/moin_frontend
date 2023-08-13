@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import * as CS from "../community/style";
-import Banner from "../../components/common/banner/Banner";
-import List from "../../components/common/list/List";
+import List from "../../common/list/List";
 
-function Notice() {
-  const [noticeContent, setNoticeContent] = useState([]);
+function CommunityCommon() {
+  const [commonContent, setCommonContent] = useState([]);
 
   useEffect(() => {
-    const noticeData = [
+    const commonData = [
       {
         id: 1,
         title: "챗지피티에 대해 알아보자",
@@ -116,21 +114,13 @@ function Notice() {
 
       // 추가.....
     ];
-    setNoticeContent(noticeData);
+    setCommonContent(commonData);
   }, []);
-
   return (
-    <S.NoticeWrapper>
-      <Banner
-        titleKorean="공지사항"
-        titleEnglish="NOTICE"
-        image={<S.NoticeIconImg />}
-      />
-      <CS.CommunityContentWrapper>
-        <List data={noticeContent} url={"/notice/"} />
-      </CS.CommunityContentWrapper>
-    </S.NoticeWrapper>
+    <>
+      <List data={commonContent} url={"/community/commons/"} />
+    </>
   );
 }
 
-export default Notice;
+export default CommunityCommon;

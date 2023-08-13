@@ -1,13 +1,25 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { BiSolidPencil } from "react-icons/bi";
 import { FaRegThumbsUp } from "react-icons/fa6";
 import { FaRegCommentAlt } from "react-icons/fa";
+
+const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const AiServiceDetailTipWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
 
 // 헤더 (글쓰기, 정렬순)
