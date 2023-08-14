@@ -8,8 +8,8 @@ function CommunityCommon() {
   const [commonContent, setCommonContent] = useState([]);
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
-  // get
-  // /api/v1/communities/commons
+
+  const [count, setCount] = useState(0);
 
   //selector
   const SelectorOption = [
@@ -30,6 +30,7 @@ function CommunityCommon() {
       );
 
       const commentContentData = response.data.results;
+      setCount(response.data.count);
       setCommonContent(commentContentData);
     } catch (e) {
       console.log(e);
@@ -40,6 +41,11 @@ function CommunityCommon() {
     setCurrentPage(1);
     fetchCommonContent();
   }, [currentOption]);
+
+  //페이지변경
+  useEffect(() => {
+    fetchCommonContent();
+  }, [currentPage]);
 
   return (
     <>
@@ -52,6 +58,7 @@ function CommunityCommon() {
         getCurrentOption={getCurrentOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        count={count}
       />
     </>
   );

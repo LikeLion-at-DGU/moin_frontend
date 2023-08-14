@@ -3,11 +3,12 @@ import * as S from "./style";
 
 // 컴포넌트
 import List from "../../../common/list/List";
+import axios from "../../../../api/axios";
 
-export function AiServiceDetailTip() {
+export function AiServiceDetailTip({ aiName }) {
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [count, setCount] = useState(0);
   const [tipContent, setTipContent] = useState([]);
 
   const SelectorOption = [
@@ -21,24 +22,30 @@ export function AiServiceDetailTip() {
     setCurrentOption(option);
   };
 
-  const fetchQnaContent = async () => {
+  const fetchTipContent = async () => {
     try {
       const response = await axios.get(
-        `/communities/tips?ordering=${currentOption}&page=${currentPage}`
+        `/communities/tips?ordering=${currentOption}&page=${currentPage}&search=${aiName}`
       );
 
       const tipContentData = response.data.results;
+      setCount(response.data.count);
       setTipContent(tipContentData);
-      qnaContentData;
     } catch (e) {
       console.log(e);
     }
   };
 
+  // 초기 ai option
   useEffect(() => {
     setCurrentPage(1);
-    fetchQnaContent();
+    fetchTipContent();
   }, [currentOption]);
+
+  // 페이지 변경 핸들러
+  useEffect(() => {
+    fetchTipContent();
+  }, [currentPage]);
 
   return (
     <>
@@ -51,6 +58,7 @@ export function AiServiceDetailTip() {
         getCurrentOption={getCurrentOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        count={count}
       />
     </>
   );
