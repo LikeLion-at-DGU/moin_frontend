@@ -41,7 +41,7 @@ function AiServiceDetail() {
   const tabContents = [
     <AiServiceDescription />,
     <AiServiceDetailReview introContent={introContent} />,
-    <AiServiceDetailTip />
+    <AiServiceDetailTip aiName={aiName} />
   ];
 
   const selectMenuHandler = index => {
