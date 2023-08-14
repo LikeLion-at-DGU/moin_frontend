@@ -14,11 +14,11 @@ const CommonList = ({
   url,
   writeUrl,
   SelectorOption,
+  currentOption,
   getCurrentOption,
   currentPage,
   setCurrentPage
 }) => {
-  // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
@@ -85,7 +85,9 @@ const CommonList = ({
                 onClick={() => navigate(`${url}${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
-                  {currentItems.length - idx}
+                  {currentOption === "popular" || currentOption === "like"
+                    ? idx + 1
+                    : currentItems.length - idx}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.title}

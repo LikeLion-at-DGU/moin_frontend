@@ -48,6 +48,7 @@ function CommunityCommon() {
         data={commonContent}
         url={"/community/commons/"}
         writeUrl={"/community/create"}
+        currentOption={currentOption}
         SelectorOption={SelectorOption}
         getCurrentOption={getCurrentOption}
         currentPage={currentPage}
