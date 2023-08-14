@@ -23,23 +23,17 @@ const TipsList = ({
   getCurrentAiOption,
   getCurrentOption,
   currentPage,
-  setCurrentPage
+  setCurrentPage,
+  count
 }) => {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
-  // 댓글 데이터를 최신순으로 정렬
-  const sortedComments = data.slice().reverse();
 
   //Paging
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
-
-  // 현재 페이지의 댓글 목록 계산
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortedComments.slice(indexOfFirstItem, indexOfLastItem);
 
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
@@ -83,7 +77,7 @@ const TipsList = ({
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
-        {currentItems && currentItems.length > 0 ? (
+        {data && data.length > 0 ? (
           <S.AiServiceDetailTipTable>
             <S.AiServiceDetailTipTableThead>
               <S.AiServiceDetailTipTableTr>
@@ -99,15 +93,15 @@ const TipsList = ({
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
-              {currentItems.map((data, idx) => (
+              {data.map((data, idx) => (
                 <S.AiServiceDetailTipTableTrContent
                   key={data.id}
                   onClick={() => navigate(`${url}${data.id}`)}
                 >
                   <S.AiServiceDetailTipTableTd>
                     {currentOption === "popular" || currentOption === "like"
-                      ? idx + 1
-                      : currentItems.length - idx}
+                      ? idx + 1 + (currentPage - 1) * itemsPerPage
+                      : count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.title}
@@ -138,7 +132,7 @@ const TipsList = ({
         <S.AiServiceDetailTipPaging>
           <Paging
             page={currentPage}
-            count={sortedComments.length}
+            count={count}
             postPerPage={itemsPerPage}
             setPage={handlePageChange}
           />

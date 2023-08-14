@@ -7,19 +7,10 @@ import * as S from "./style";
 import "./mdEditorStyle.css";
 
 import * as AIS from "../../ai/style";
-import CommunityCommonPost from "../../../components/community/communityCommonPost/CommunityCommonPost";
-import CommunityTipsPost from "../../../components/community/communityTipsPost/CommunityTipsPost";
-import CommunityQnaPost from "../../../components/community/communityQnaPost/CommunityQnaPost";
 
 function CommunityCreatPost() {
   // 탭 기능 구현
   const [currentTab, setCurrentTab] = useState(0);
-
-  const tabContents = [
-    <CommunityCommonPost />,
-    <CommunityTipsPost />,
-    <CommunityQnaPost />
-  ];
 
   const selectMenuHandler = index => {
     setCurrentTab(index);

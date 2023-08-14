@@ -9,6 +9,8 @@ function CommunityQna() {
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [count, setCount] = useState(1);
+
   const SelectorOption = [
     { value: "recent", title: "최신순" },
     { value: "popular", title: "조회순" },
@@ -27,6 +29,7 @@ function CommunityQna() {
       );
 
       const qnaContentData = response.data.results;
+      setCount(response.data.count);
       setQnaContent(qnaContentData);
     } catch (e) {
       console.log(e);
@@ -37,6 +40,11 @@ function CommunityQna() {
     setCurrentPage(1);
     fetchQnaContent();
   }, [currentOption]);
+
+  //페이지변경시
+  useEffect(() => {
+    fetchQnaContent();
+  }, [currentPage]);
 
   return (
     <>
@@ -49,6 +57,7 @@ function CommunityQna() {
         getCurrentOption={getCurrentOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        count={count}
       />
     </>
   );

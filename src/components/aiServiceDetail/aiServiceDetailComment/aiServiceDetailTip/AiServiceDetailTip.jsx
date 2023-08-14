@@ -8,7 +8,7 @@ import axios from "../../../../api/axios";
 export function AiServiceDetailTip({ aiName }) {
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [count, setCount] = useState(0);
   const [tipContent, setTipContent] = useState([]);
 
   const SelectorOption = [
@@ -29,7 +29,7 @@ export function AiServiceDetailTip({ aiName }) {
       );
 
       const tipContentData = response.data.results;
-      console.log(tipContentData);
+      setCount(response.data.count);
       setTipContent(tipContentData);
     } catch (e) {
       console.log(e);
@@ -58,6 +58,7 @@ export function AiServiceDetailTip({ aiName }) {
         getCurrentOption={getCurrentOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        count={count}
       />
     </>
   );

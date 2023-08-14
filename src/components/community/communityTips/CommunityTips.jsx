@@ -14,6 +14,7 @@ function CommunityTips() {
   };
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
+  const [count, setCount] = useState(0);
 
   const SelectorOption = [
     { value: "recent", title: "최신순" },
@@ -44,9 +45,8 @@ function CommunityTips() {
       const response = await axios.get(
         `/communities/tips?ordering=${currentOption}&page=${currentPage}&search=${DecodeAiOption}`
       );
-      console.log(response);
-
       const tipContentData = response.data.results;
+      setCount(response.data.count);
       setTipContent(tipContentData);
     } catch (e) {
       console.log(e);
@@ -83,6 +83,7 @@ function CommunityTips() {
         getCurrentAiOption={getCurrentAiOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        count={count}
       />
     </>
   );
