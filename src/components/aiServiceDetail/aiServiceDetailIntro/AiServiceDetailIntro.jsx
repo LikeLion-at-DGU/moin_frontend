@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import * as S from "./style";
 
 // 아이콘
@@ -17,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Keyword from "../../common/keyword/Keyword";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
+import axios from "../../../api/axios";
 
 export function AiServiceDetailIntro({ introContent }) {
   if (!introContent) {
@@ -28,6 +30,79 @@ export function AiServiceDetailIntro({ introContent }) {
 
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
+
+  const location = useLocation();
+  const aiName = decodeURI(location.pathname.split("/")[2]);
+
+  // 로그인 정보 불러오기
+  useEffect(() => {
+    const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+    fetchUserData(storedUserInfo);
+  }, []); // userInfo가 변경될 때마다 실행
+
+  //fetchUserData
+  // GET /
+  const fetchUserData = async storedUserInfo => {
+    try {
+      const accessToken = storedUserInfo.accessToken;
+      console.log(userInfo);
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+      console.log(headers);
+
+      const response = await axios.get("mypage/profile", {
+        headers
+      });
+
+      console.log(response);
+      if (response.status === 200) {
+        // setUserInfo(response.data);
+      } else {
+        alert("유저 정보를 가져오는데 실패했습니다.");
+        // remove local stroage
+        localStorage.removeItem("userInfo");
+        localStorage.removeItem("recoil-persist");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      alert("유저 정보를 가져오는데 실패했습니다.");
+    }
+  };
+
+  const handleLikeToggle = async () => {
+    try {
+      if (!userInfo) {
+        // 로그인하지 않은 경우 로그인 페이지로 이동
+        window.location.href = "/login";
+        return;
+      }
+
+      const accessToken = userInfo.accessToken;
+      const headers = {
+        Authorization: `Bearer ${accessToken}`
+      };
+
+      const response = await axios.post(
+        `/moin/detail/${aiName}/like`, // 서버의 좋아요 토글 API 엔드포인트
+        {
+          contentId: introContent.id // 좋아요를 토글할 컨텐츠의 고유 ID 등을 전달
+        },
+        {
+          headers
+        }
+      );
+
+      if (response.data.detail === "좋아요를 눌렀습니다.") {
+        setIsLiked(true);
+      } else if (response.data.detail === "좋아요를 취소하였습니다.") {
+        setIsLiked(false);
+      }
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    }
+  };
 
   // Toast
   const notify = () => {
@@ -132,13 +207,8 @@ export function AiServiceDetailIntro({ introContent }) {
                   <S.AiServiceDetailContentDescriptionBottomHeartIcon>
                     <S.LikeButton
                       onClick={() => {
-                        if (!userInfo) {
-                          // 로그인하지 않은 경우 로그인 페이지로 이동
-                          window.location.href = "/login";
-                          return;
-                        }
-
                         setIsLiked(!isLiked);
+                        handleLikeToggle();
                       }}
                     >
                       <Like likeSize={"4rem"} likeCheck={isLiked} />
