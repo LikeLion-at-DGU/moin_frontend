@@ -25,10 +25,9 @@ function CommunityCommon() {
 
   const fetchCommonContent = async () => {
     try {
-      let Api_Url = "";
-      Api_Url = `/communities/commons?ordering=${currentOption}&page=${currentPage}`;
-      const response = await axios.get(Api_Url);
-      console.log(response);
+      const response = await axios.get(
+        `/communities/commons?ordering=${currentOption}&page=${currentPage}`
+      );
 
       const commentContentData = response.data.results;
       setCommonContent(commentContentData);

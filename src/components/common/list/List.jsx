@@ -9,7 +9,16 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 
-const List = ({ data, url, writeUrl }) => {
+const List = ({
+  data,
+  url,
+  writeUrl,
+  SelectorOption,
+  currentOption,
+  getCurrentOption,
+  currentPage,
+  setCurrentPage
+}) => {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
@@ -22,7 +31,6 @@ const List = ({ data, url, writeUrl }) => {
   const itemsPerPage = 10;
 
   // 현재 페이지
-  const [currentPage, setCurrentPage] = useState(1);
 
   // 현재 페이지의 댓글 목록 계산
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -32,18 +40,6 @@ const List = ({ data, url, writeUrl }) => {
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
-  };
-
-  console.log(data);
-
-  //selector
-  const SelectorOption = [
-    { value: "recent", title: "최신순" },
-    { value: "rating", title: "평점순" }
-  ];
-  const [currentOption, setCurrentOption] = useState("recent");
-  const getCurrentOption = option => {
-    setCurrentOption(option);
   };
 
   return (
@@ -91,7 +87,9 @@ const List = ({ data, url, writeUrl }) => {
                 onClick={() => navigate(`${url}${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
-                  {currentItems.length - idx}
+                  {currentOption === "popular" || currentOption === "like"
+                    ? idx + 1
+                    : currentItems.length - idx}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.title}
