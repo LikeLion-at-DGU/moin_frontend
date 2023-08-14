@@ -19,20 +19,7 @@ function Main() {
 
   const categoriesJob = {
     title: "직업군",
-    tags: [
-      "1 sss",
-      "2 ss s",
-      "3 sss",
-      "4 sss sss",
-      "5 sssss",
-      "6  sss",
-      "7  s sa",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12"
-    ]
+    tags: ["전체", "방송 분야", "3 sss", "4 sss sss"]
   };
   const [currentCategoryTagJob, setCurrentCategoryTagJob] = useState(0);
   const getCurrentCategoryTagJob = tag => {
@@ -41,7 +28,7 @@ function Main() {
 
   const categoriesKeyword = {
     title: "키워드",
-    tags: ["전체", "챗봇", "논문", "과제", "심서현"]
+    tags: ["전체", "챗봇", "인공지능", "자기개발", "심서현"]
   };
   const [currentCategoryTagKeyword, setCurrentCategoryTagKeyword] = useState(0);
   const getCurrentCategoryTagKeyword = tag => {
@@ -50,6 +37,8 @@ function Main() {
 
   const SelectorOption = [
     { value: "recent", title: "최신순" },
+    { value: "popular", title: "조회순" },
+    { value: "like", title: "좋아요순" },
     { value: "rating", title: "평점순" }
   ];
   const [currentOption, setCurrentOption] = useState("recent");
@@ -57,59 +46,42 @@ function Main() {
     setCurrentOption(option);
   };
 
-  const sortByRecent = (a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
-  const sortByRating = (a, b) =>
-    a.rating_point > b.rating_point
-      ? -1
-      : a.rating_point < b.rating_point
-      ? 1
-      : 0;
-
-  //옵셥변경
-  useEffect(() => {
-    let sortedData = [];
-
-    switch (currentOption) {
-      case "recent":
-        sortedData = data.sort(sortByRecent);
-        break;
-      case "rating":
-        sortedData = data.sort(sortByRating);
-        break;
-    }
-
-    setData(sortedData.slice(0, sortedData.length));
-  }, [currentOption]);
-
-  //카테고리변경
-  useEffect(() => {
-    if (currentCategoryTagKeyword != 0) {
-      const results = data.filter(Ai =>
-        Ai.keyword.includes(
-          categoriesKeyword.tags[currentCategoryTagKeyword],
-          0
-        )
-      );
-      setData(data);
-    } else {
-      setData(data);
-    }
-  }, [data, currentCategoryTagJob, currentCategoryTagKeyword]);
-
-  useEffect(() => {
-    fetchData();
-  }, [currentPage]);
-
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/moin?page=${currentPage}`);
+      let Api_Url = "";
+      if (currentCategoryTagJob != 0 && currentCategoryTagKeyword != 0) {
+        //job keyword 선택된경우
+        Api_Url = `/moin?job=${categoriesJob.tags[currentCategoryTagJob]}&keyword=${categoriesKeyword.tags[currentCategoryTagKeyword]}&ordering=${currentOption}&page=${currentPage}`;
+      } else if (currentCategoryTagJob != 0 && currentCategoryTagKeyword == 0) {
+        //job 선택된경우
+        Api_Url = `/moin?job=${categoriesJob.tags[currentCategoryTagJob]}&ordering=${currentOption}&page=${currentPage}`;
+      } else if (currentCategoryTagJob == 0 && currentCategoryTagKeyword != 0) {
+        //keyword 선택된경우
+        Api_Url = `/moin?keyword=${categoriesKeyword.tags[currentCategoryTagKeyword]}&ordering=${currentOption}&page=${currentPage}`;
+      } else if (currentCategoryTagJob == 0 && currentCategoryTagKeyword == 0) {
+        //job keyword 선택 안 된 경우
+        Api_Url = `/moin?page=${currentPage}&ordering=${currentOption}`;
+      }
+
+      const response = await axios.get(Api_Url);
 
       setCount(response.data.count);
-      setData(response.data.results);
+      setData(response.data.results.slice(0, response.data.results.length));
     } catch (e) {
       console.log(e);
     }
   };
+
+  //옵션, 카테고리 변경
+  useEffect(() => {
+    setCurrentPage(1);
+    fetchData();
+  }, [currentOption, currentCategoryTagJob, currentCategoryTagKeyword]);
+
+  //페이지변경
+  useEffect(() => {
+    fetchData();
+  }, [currentPage]);
 
   return (
     <>
