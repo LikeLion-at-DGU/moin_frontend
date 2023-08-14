@@ -21,7 +21,9 @@ export function AiServiceDescription() {
   const fetchData = async () => {
     try {
       const response = await axios.get(`/moin/detail/${aiName}/info`);
-      console.log("gd", response.data);
+      const detailData = response.data[0];
+
+      setData(detailData);
     } catch (e) {
       console.log(e);
     }
