@@ -11,24 +11,17 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 
-const TipsList = ({ data, url, writeUrl }) => {
-  const [Ais, setAis] = useState([]);
-
-  const AisList = [
-    "챗지피티",
-    "aaa",
-    "aaa",
-    "zzz",
-    "bbb",
-    "cc",
-    "대학생",
-    "기타"
-  ];
-  useEffect(() => {
-    // 데이터 통신해서 API넣기
-    setAis(AisList);
-  }, []);
-
+const TipsList = ({
+  data,
+  url,
+  writeUrl,
+  SelectorOption,
+  currentOption,
+  getCurrentOption,
+  currentPage,
+  setCurrentPage,
+  Ais
+}) => {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
@@ -40,9 +33,6 @@ const TipsList = ({ data, url, writeUrl }) => {
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
 
-  // 현재 페이지
-  const [currentPage, setCurrentPage] = useState(1);
-
   // 현재 페이지의 댓글 목록 계산
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -51,20 +41,6 @@ const TipsList = ({ data, url, writeUrl }) => {
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
-  };
-
-  console.log(data);
-
-  //selector
-  const SelectorOption = [
-    { value: "recent", title: "최신순" },
-    { value: "rating", title: "조회순" },
-    { value: "recent", title: "평점순" },
-    { value: "recent", title: "좋아요순" }
-  ];
-  const [currentOption, setCurrentOption] = useState("recent");
-  const getCurrentOption = option => {
-    setCurrentOption(option);
   };
 
   return (
@@ -121,30 +97,32 @@ const TipsList = ({ data, url, writeUrl }) => {
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
-            {currentItems.map(data => (
-              <S.AiServiceDetailTipTableTr
+            {currentItems.map((data, idx) => (
+              <S.AiServiceDetailTipTableTrContent
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
-                  {data.id}
+                  {currentOption === "popular" || currentOption === "like"
+                    ? idx + 1
+                    : currentItems.length - idx}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.title}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.name}
+                  {data.ai}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.date}
+                  {data.created_at}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   <S.LikeIcon />
-                  {data.like}
+                  {data.likes_cnt}
                   <S.CommentIcon />
-                  {data.comment_cnt}
+                  {data.comments_cnt}
                 </S.AiServiceDetailTipTableTd>
-              </S.AiServiceDetailTipTableTr>
+              </S.AiServiceDetailTipTableTrContent>
             ))}
           </S.AiServiceDetailTipTableTbody>
         </S.AiServiceDetailTipTable>

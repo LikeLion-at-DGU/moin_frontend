@@ -65,20 +65,20 @@ const NoticeList = ({ data, url, writeUrl }) => {
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
-            {currentItems.map(data => (
+            {currentItems.map((data, idx) => (
               <S.AiServiceDetailTipTableTr
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
-                  {data.id}
+                  {currentItems.length - idx}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.title}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.date}
+                  {data.created_at}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.view_cnt}
