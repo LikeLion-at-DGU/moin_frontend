@@ -19,7 +19,19 @@ function Main() {
 
   const categoriesJob = {
     title: "직업군",
-    tags: ["전체", "방송 분야", "3 sss", "4 sss sss"]
+    tags: [
+      "전체",
+      "IT",
+      "디자인",
+      "교육",
+      "마케팅",
+      "연구",
+      "금융",
+      "학생",
+      "서현",
+      "유진",
+      "기타"
+    ]
   };
   const [currentCategoryTagJob, setCurrentCategoryTagJob] = useState(0);
   const getCurrentCategoryTagJob = tag => {
@@ -28,7 +40,19 @@ function Main() {
 
   const categoriesKeyword = {
     title: "키워드",
-    tags: ["전체", "챗봇", "인공지능", "자기개발", "심서현"]
+    tags: [
+      "전체",
+      "챗봇",
+      "개발",
+      "디자인",
+      "영상",
+      "마케팅",
+      "분석",
+      "음성",
+      "언어",
+      "유료",
+      "무료"
+    ]
   };
   const [currentCategoryTagKeyword, setCurrentCategoryTagKeyword] = useState(0);
   const getCurrentCategoryTagKeyword = tag => {
