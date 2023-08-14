@@ -21,6 +21,11 @@ const Comment = ({
   const [password, setPassword] = useState(""); // 비회원 댓글 삭제 비밀번호
   const [error, setError] = useState("");
 
+  console.log("writer", writer);
+  if (!writer) {
+    return <></>;
+  }
+
   const handleEdit = () => {
     setIsEditing(true);
     setEditedComment(content);

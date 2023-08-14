@@ -12,16 +12,18 @@ const CommentList = ({
   onDelete,
   userInfo,
   myComments,
-  myCommentsCnt,
-  count
+  myCommentsCnt
+  // count
 }) => {
-  // const memberComments = comments.filter(comment => comment.isMember);
+  // 댓글 내용 부분만 추출
+  const commentsContent = comments.results;
 
-  // 나중에 추가??
-  // const filteredMyComments = myComments.filter(comment => comment.writer === userInfo.username);
+  if (!commentsContent) {
+    return <>Loading comments...</>;
+  }
 
   // 댓글 데이터를 최신순으로 정렬
-  const sortedComments = comments.slice().reverse();
+  const sortedComments = commentsContent.slice().reverse();
 
   // 내 댓글 더보기
   const [showMore, setShowMore] = useState(false);
@@ -119,7 +121,7 @@ const CommentList = ({
       {/* 댓글목록 */}
       <S.ReviewHeader>
         <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
-        <S.ReviewHeaderText>후기 {count}</S.ReviewHeaderText>
+        <S.ReviewHeaderText>후기 {comments.count}</S.ReviewHeaderText>
       </S.ReviewHeader>
       {/* CommonCommentList 컴포넌트로 대체 */}
       <CommonCommentList

@@ -13,10 +13,20 @@ const CommonCommentList = ({
   onDelete,
   userInfo
 }) => {
+  // 댓글 내용 부분만 추출
+  const commentsContent = comments.results;
+
+  if (!commentsContent) {
+    return <>Loading comments...</>;
+  }
+
+  // 댓글 데이터를 최신순으로 정렬
+  const sortedComments = commentsContent.slice().reverse();
+
   return (
     <S.AiServiceDetailReviewListWrap>
       <S.AiServiceDetailReviewListUl>
-        {currentItems.map(comment => (
+        {sortedComments.map(comment => (
           <Comment
             key={comment.id}
             content={comment.content}
@@ -32,7 +42,7 @@ const CommonCommentList = ({
         <S.AiServiceDetailReviewListPaging>
           <Paging
             page={currentPage}
-            count={comments.length}
+            count={sortedComments.length}
             postPerPage={itemsPerPage}
             setPage={handlePageChange}
           />
