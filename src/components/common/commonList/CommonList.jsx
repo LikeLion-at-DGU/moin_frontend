@@ -9,42 +9,34 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 
-const CommonList = ({ data, url, writeUrl }) => {
+const CommonList = ({
+  data,
+  url,
+  writeUrl,
+  SelectorOption,
+  getCurrentOption,
+  currentPage,
+  setCurrentPage
+}) => {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
   // 댓글 데이터를 최신순으로 정렬
-  const sortedComments = data.slice().reverse();
+  // const data = data.slice().reverse();
 
   //Paging
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
 
-  // 현재 페이지
-  const [currentPage, setCurrentPage] = useState(1);
-
   // 현재 페이지의 댓글 목록 계산
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortedComments.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
-  };
-
-  console.log(data);
-
-  //selector
-  const SelectorOption = [
-    { value: "recent", title: "최신순" },
-    { value: "rating", title: "좋아요순" },
-    { value: "rating", title: "조회순" }
-  ];
-  const [currentOption, setCurrentOption] = useState("recent");
-  const getCurrentOption = option => {
-    setCurrentOption(option);
   };
 
   return (
@@ -117,7 +109,7 @@ const CommonList = ({ data, url, writeUrl }) => {
         <S.AiServiceDetailTipPaging>
           <Paging
             page={currentPage}
-            count={sortedComments.length}
+            count={data.length}
             postPerPage={itemsPerPage}
             setPage={handlePageChange}
           />
