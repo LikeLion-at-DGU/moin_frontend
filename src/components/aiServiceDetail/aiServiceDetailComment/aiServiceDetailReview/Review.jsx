@@ -51,6 +51,8 @@ function Review() {
 
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
+  // 현재 페이지
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchData();
@@ -58,7 +60,9 @@ function Review() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/moin/detail/${aiName}/comments`);
+      const response = await axios.get(
+        `/moin/detail/${aiName}/comments?pages=${currentPage}`
+      );
       const detailData = response.data;
 
       setComments(detailData);
@@ -112,7 +116,8 @@ function Review() {
         userInfo={userInfo}
         myComments={myComments.my_comment}
         myCommentsCnt={myComments.my_comment_cnt}
-        // count={comments[0].count}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );

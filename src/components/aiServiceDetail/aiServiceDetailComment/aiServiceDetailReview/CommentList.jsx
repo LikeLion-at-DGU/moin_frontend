@@ -12,7 +12,9 @@ const CommentList = ({
   onDelete,
   userInfo,
   myComments,
-  myCommentsCnt
+  myCommentsCnt,
+  currentPage,
+  setCurrentPage
   // count
 }) => {
   // 댓글 내용 부분만 추출
@@ -36,9 +38,6 @@ const CommentList = ({
 
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
-
-  // 현재 페이지
-  const [currentPage, setCurrentPage] = useState(1);
 
   // 현재 페이지의 댓글 목록 계산
   const indexOfLastItem = currentPage * itemsPerPage;
