@@ -12,16 +12,21 @@ const CommentList = ({
   onDelete,
   userInfo,
   myComments,
-  myCommentsCnt,
   currentPage,
   setCurrentPage
   // count
 }) => {
   // 댓글 내용 부분만 추출
   const commentsContent = comments.results;
-
   if (!commentsContent) {
     return <>Loading comments...</>;
+  }
+
+  // 내 댓글 내용 부분만 추출
+  const myCommentsContent = myComments.my_comment;
+  const myCommentsCnt = myComments.my_comment_cnt;
+  if (!myCommentsContent) {
+    return <>Loading myComments...</>;
   }
 
   // 댓글 데이터를 최신순으로 정렬
@@ -31,7 +36,7 @@ const CommentList = ({
   const [showMore, setShowMore] = useState(false);
 
   // 작성한 댓글 데이터를 최신순으로 정렬
-  const mySortedComments = myComments.slice().reverse();
+  const mySortedComments = myCommentsContent.slice().reverse();
   const visibleComments = showMore
     ? mySortedComments
     : mySortedComments.slice(0, 1); // 처음엔 한 개만 보이게 설정
@@ -85,7 +90,7 @@ const CommentList = ({
                   />
 
                   {/* 더보기 버튼 */}
-                  {myComments.length > 1 && (
+                  {myCommentsContent.length > 1 && (
                     <S.MoreButtonWrap>
                       <S.MoreButton onClick={handleToggleShowMore}>
                         {showMore ? "접기" : "펼치기"}

@@ -16,46 +16,17 @@ function Review() {
   const [comments, setComments] = useState({});
 
   // 내 댓글
-  const [myComments, setMyComments] = useState({
-    my_comment_cnt: 7,
-    my_comment: [
-      {
-        id: 1,
-        ai: "ho",
-        is_tmp: false,
-        writer: "admin",
-        content: "1새 댓글~~",
-        created_at: "2023/08/11 02:52",
-        updated_at: "2023/08/11 02:52"
-      },
-      {
-        id: 2,
-        ai: "ho",
-        is_tmp: false,
-        writer: "admin",
-        content: "2새 댓글~~",
-        created_at: "2023/08/11 02:52",
-        updated_at: "2023/08/11 02:52"
-      },
-      {
-        id: 2,
-        ai: "ho",
-        is_tmp: false,
-        writer: "admin",
-        content: "3새 댓글~~",
-        created_at: "2023/08/11 02:52",
-        updated_at: "2023/08/11 02:52"
-      }
-    ]
-  });
+  const [myComments, setMyComments] = useState({});
 
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
+
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchData();
+    fetchDataMy();
   }, []);
 
   const fetchData = async () => {
@@ -66,6 +37,17 @@ function Review() {
       const detailData = response.data;
 
       setComments(detailData);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const fetchDataMy = async () => {
+    try {
+      const response = await axios.get(`/moin/detail/${aiName}/mycomments`);
+
+      const detailData = response.data;
+      setMyComments(detailData);
     } catch (e) {
       console.log(e);
     }
@@ -114,8 +96,7 @@ function Review() {
           setShowForm(true); // 댓글 삭제 후 댓글 작성 폼 보이도록 설정
         }}
         userInfo={userInfo}
-        myComments={myComments.my_comment}
-        myCommentsCnt={myComments.my_comment_cnt}
+        myComments={myComments}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
