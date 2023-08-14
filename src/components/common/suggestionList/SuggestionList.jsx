@@ -71,7 +71,7 @@ const SuggestionList = ({
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
               {data.map((data, idx) => (
-                <S.AiServiceDetailTipTableTr
+                <S.AiServiceDetailTipTableTrContent
                   key={data.id}
                   onClick={() => navigate(`${url}${data.id}`)}
                 >
@@ -94,7 +94,7 @@ const SuggestionList = ({
                       <S.StatusText color="#FF5D47">미반영</S.StatusText>
                     )}
                   </S.AiServiceDetailTipTableTd>
-                </S.AiServiceDetailTipTableTr>
+                </S.AiServiceDetailTipTableTrContent>
               ))}
             </S.AiServiceDetailTipTableTbody>
           </S.AiServiceDetailTipTable>
