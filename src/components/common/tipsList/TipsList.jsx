@@ -50,7 +50,7 @@ const TipsList = ({
               name="ais"
               onChange={e => getCurrentAiOption(e.target.value)}
             >
-              <S.Option value="">서비스 선택</S.Option>
+              <S.Option value="">▿ 서비스 선택</S.Option>
               {aiOption.map((ai, index) => (
                 <S.Option key={index} value={ai.title}>
                   {ai.title}
