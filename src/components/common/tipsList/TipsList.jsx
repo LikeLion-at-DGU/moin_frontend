@@ -121,8 +121,8 @@ const TipsList = ({ data, url, writeUrl }) => {
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
-            {currentItems.map(data => (
-              <S.AiServiceDetailTipTableTr
+            {currentItems.map((data, idx) => (
+              <S.AiServiceDetailTipTableTrContent
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
@@ -133,7 +133,7 @@ const TipsList = ({ data, url, writeUrl }) => {
                   {data.title}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.name}
+                  {data.ai}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.created_at}
@@ -144,7 +144,7 @@ const TipsList = ({ data, url, writeUrl }) => {
                   <S.CommentIcon />
                   {data.comments_cnt}
                 </S.AiServiceDetailTipTableTd>
-              </S.AiServiceDetailTipTableTr>
+              </S.AiServiceDetailTipTableTrContent>
             ))}
           </S.AiServiceDetailTipTableTbody>
         </S.AiServiceDetailTipTable>

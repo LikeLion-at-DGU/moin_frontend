@@ -14,6 +14,13 @@ const fadeInAnimation = keyframes`
   }
 `;
 
+export const AiServiceDetailTipTableTrContent = styled.tr`
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
 export const AiServiceDetailTipWrap = styled.div`
   display: flex;
   flex-direction: column;

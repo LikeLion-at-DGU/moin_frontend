@@ -65,7 +65,7 @@ const NoticeList = ({ data, url, writeUrl }) => {
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
-            {currentItems.map(data => (
+            {currentItems.map((data, idx) => (
               <S.AiServiceDetailTipTableTr
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}

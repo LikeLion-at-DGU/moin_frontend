@@ -88,7 +88,7 @@ const CommonList = ({ data, url, writeUrl }) => {
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
             {currentItems.map((data, idx) => (
-              <S.AiServiceDetailTipTableTr
+              <S.AiServiceDetailTipTableTrContent
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
@@ -109,7 +109,7 @@ const CommonList = ({ data, url, writeUrl }) => {
                   <S.CommentIcon />
                   {data.comments_cnt}
                 </S.AiServiceDetailTipTableTd>
-              </S.AiServiceDetailTipTableTr>
+              </S.AiServiceDetailTipTableTrContent>
             ))}
           </S.AiServiceDetailTipTableTbody>
         </S.AiServiceDetailTipTable>
