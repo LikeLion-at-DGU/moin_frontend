@@ -10,7 +10,7 @@ import { AiServiceDetailContentDescriptionCompanyImg } from "../../../components
 import CommunityDetailContent from "../../../components/common/communityDetailContent/CommunityDetailContent";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
-import CommentInput from "../../../components/common/CommentInput/CommentInput";
+import CommentInput from "../../../components/common/commentInput/CommentInput";
 import CommonCommentList from "../../../components/common/commonCommentList/CommonCommentList";
 
 function DetailPage() {
