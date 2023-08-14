@@ -8,6 +8,7 @@ import Selector from "../selector/Selector";
 import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
+import NoPage from "../noPage/NoPage";
 
 const SuggestionList = ({ data, url, writeUrl }) => {
   // 회원 정보
@@ -64,50 +65,57 @@ const SuggestionList = ({ data, url, writeUrl }) => {
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
-        <S.AiServiceDetailTipTable>
-          <S.AiServiceDetailTipTableThead>
-            <S.AiServiceDetailTipTableTr>
-              <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh>
-                등록일시
-              </S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh>
-                반영여부
-              </S.AiServiceDetailTipTableTh>
-              <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
-            </S.AiServiceDetailTipTableTr>
-          </S.AiServiceDetailTipTableThead>
-          <S.AiServiceDetailTipTableTbody>
-            {currentItems.map((data, idx) => (
-              <S.AiServiceDetailTipTableTr
-                key={data.id}
-                onClick={() => navigate(`${url}${data.id}`)}
-              >
-                <S.AiServiceDetailTipTableTd>
-                  {currentItems.length - idx}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  {data.title}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  {data.created_at}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  {data.reflected_status === 0 ? (
-                    <S.StatusText color="#282828">대기중</S.StatusText>
-                  ) : data.reflected_status === 1 ? (
-                    <S.StatusText color="#4285F4">반영</S.StatusText>
-                  ) : (
-                    <S.StatusText color="#FF5D47">미반영</S.StatusText>
-                  )}
-                </S.AiServiceDetailTipTableTd>
+        {currentItems && currentItems.length > 0 ? (
+          <S.AiServiceDetailTipTable>
+            <S.AiServiceDetailTipTableThead>
+              <S.AiServiceDetailTipTableTr>
+                <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  등록일시
+                </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  반영여부
+                </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
-            ))}
-          </S.AiServiceDetailTipTableTbody>
-        </S.AiServiceDetailTipTable>
+            </S.AiServiceDetailTipTableThead>
+            <S.AiServiceDetailTipTableTbody>
+              {currentItems.map((data, idx) => (
+                <S.AiServiceDetailTipTableTr
+                  key={data.id}
+                  onClick={() => navigate(`${url}${data.id}`)}
+                >
+                  <S.AiServiceDetailTipTableTd>
+                    {currentItems.length - idx}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    {data.title}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    {data.created_at}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    {data.reflected_status === 0 ? (
+                      <S.StatusText color="#282828">대기중</S.StatusText>
+                    ) : data.reflected_status === 1 ? (
+                      <S.StatusText color="#4285F4">반영</S.StatusText>
+                    ) : (
+                      <S.StatusText color="#FF5D47">미반영</S.StatusText>
+                    )}
+                  </S.AiServiceDetailTipTableTd>
+                </S.AiServiceDetailTipTableTr>
+              ))}
+            </S.AiServiceDetailTipTableTbody>
+          </S.AiServiceDetailTipTable>
+        ) : (
+          <>
+            <NoPage />
+          </>
+        )}
+
         {/* 페이지네이션 컴포넌트 사용 */}
         <S.AiServiceDetailTipPaging>
           <Paging

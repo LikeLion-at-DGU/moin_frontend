@@ -8,6 +8,7 @@ import Selector from "../selector/Selector";
 import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
+import NoPage from "../noPage/NoPage";
 
 const CommonList = ({
   data,
@@ -78,34 +79,40 @@ const CommonList = ({
               <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
-          <S.AiServiceDetailTipTableTbody>
-            {currentItems.map((data, idx) => (
-              <S.AiServiceDetailTipTableTrContent
-                key={data.id}
-                onClick={() => navigate(`${url}${data.id}`)}
-              >
-                <S.AiServiceDetailTipTableTd>
-                  {currentOption === "popular" || currentOption === "like"
-                    ? idx + 1
-                    : currentItems.length - idx}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  {data.title}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  {data.created_at}
-                </S.AiServiceDetailTipTableTd>
-                <S.AiServiceDetailTipTableTd>
-                  <S.LikeIcon />
-                  {data.likes_cnt}
-                  <S.CommentIcon />
-                  {data.comments_cnt}
-                </S.AiServiceDetailTipTableTd>
-              </S.AiServiceDetailTipTableTrContent>
-            ))}
-          </S.AiServiceDetailTipTableTbody>
+          {currentItems && currentItems.length > 0 ? (
+            <S.AiServiceDetailTipTableTbody>
+              {currentItems.map((data, idx) => (
+                <S.AiServiceDetailTipTableTrContent
+                  key={data.id}
+                  onClick={() => navigate(`${url}${data.id}`)}
+                >
+                  <S.AiServiceDetailTipTableTd>
+                    {currentOption === "popular" || currentOption === "like"
+                      ? idx + 1
+                      : currentItems.length - idx}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    {data.title}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    {data.created_at}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    <S.LikeIcon />
+                    {data.likes_cnt}
+                    <S.CommentIcon />
+                    {data.comments_cnt}
+                  </S.AiServiceDetailTipTableTd>
+                </S.AiServiceDetailTipTableTrContent>
+              ))}
+            </S.AiServiceDetailTipTableTbody>
+          ) : (
+            <>
+              <NoPage />
+            </>
+          )}
         </S.AiServiceDetailTipTable>
         {/* 페이지네이션 컴포넌트 사용 */}
         <S.AiServiceDetailTipPaging>
