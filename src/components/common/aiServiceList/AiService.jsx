@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Star from "../star/Star";
 import Like from "../like/Like";
 import Keyword from "../keyword/Keyword";
+import ColoredItem from "../highLightItem/HighLightItem";
+import HightLightItem from "../highLightItem/HighLightItem";
 
-function AiService({ item }) {
+function AiService({ item, searchTerm }) {
   // 함수 수정할게용....
 
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ function AiService({ item }) {
     <S.AiServiceWrapper
       ref={wrapper}
       onClick={() =>
-        navigate(`AiService/${item.title}`, {
+        navigate(`/AiService/${item.title}`, {
           state: {
             item: item
           }
@@ -26,10 +28,25 @@ function AiService({ item }) {
       <S.AiServiceThumbnail>
         <S.AiServiceThumbnailImg src={item.thumbnail} />
       </S.AiServiceThumbnail>
+
       <S.AiServiceBody>
         {/* Ai이름, 설명 */}
-        <S.AiServiceTitle>{item.title}</S.AiServiceTitle>
-        <S.AiServiceDescription>{item.description}</S.AiServiceDescription>
+        <S.AiServiceTitle>
+          {searchTerm != null ? (
+            <HightLightItem item={item.title} query={searchTerm} />
+          ) : (
+            item.title
+          )}
+        </S.AiServiceTitle>
+
+        <S.AiServiceDescription>
+          {searchTerm != null ? (
+            <HightLightItem item={item.description} query={searchTerm} />
+          ) : (
+            item.description
+          )}
+        </S.AiServiceDescription>
+
         {/* 별점 */}
         <S.AiServiceStar>
           <Star starNum={item.avg_point} starSize={2} />
@@ -37,9 +54,11 @@ function AiService({ item }) {
             ({item.rating_cnt})
           </S.AiServiceStarDescription>
         </S.AiServiceStar>
+
         {/* 키워드 */}
         <Keyword keyword={item.keywords} keywordSize={"1rem"} />
       </S.AiServiceBody>
+
       {/* 좋아요 */}
       <S.AiServiceFooter>
         <S.AiServiceLikeDescription>

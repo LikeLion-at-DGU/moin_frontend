@@ -68,11 +68,13 @@ function Search() {
           getCurrentOption={getCurrentOption}
         />
       </S.SearchTitleWrapper>
+
       <AiServiceList
         data={data}
         count={count}
         currentPage={currentPage}
         getCurrentPage={getCurrentPage}
+        searchTerm={searchTerm}
       />
     </S.SearchWrapper>
   );
