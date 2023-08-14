@@ -91,7 +91,7 @@ const List = ({ data, url, writeUrl }) => {
                 onClick={() => navigate(`${url}${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
-                  {data.id}
+                  {currentItems.length - idx}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.title}
@@ -100,13 +100,13 @@ const List = ({ data, url, writeUrl }) => {
                   {data.name}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.date}
+                  {data.created_at}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   <S.LikeIcon />
-                  {data.like}
+                  {data.likes_cnt}
                   <S.CommentIcon />
-                  {data.comment_cnt}
+                  {data.comments_cnt}
                 </S.AiServiceDetailTipTableTd>
               </S.AiServiceDetailTipTableTrContent>
             ))}

@@ -87,13 +87,13 @@ const CommonList = ({ data, url, writeUrl }) => {
             </S.AiServiceDetailTipTableTr>
           </S.AiServiceDetailTipTableThead>
           <S.AiServiceDetailTipTableTbody>
-            {currentItems.map(data => (
+            {currentItems.map((data, idx) => (
               <S.AiServiceDetailTipTableTr
                 key={data.id}
                 onClick={() => navigate(`${url}${data.id}`)}
               >
                 <S.AiServiceDetailTipTableTd>
-                  {data.id}
+                  {currentItems.length - idx}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   {data.title}
@@ -101,13 +101,13 @@ const CommonList = ({ data, url, writeUrl }) => {
                 <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
-                  {data.date}
+                  {data.created_at}
                 </S.AiServiceDetailTipTableTd>
                 <S.AiServiceDetailTipTableTd>
                   <S.LikeIcon />
-                  {data.like}
+                  {data.likes_cnt}
                   <S.CommentIcon />
-                  {data.comment_cnt}
+                  {data.comments_cnt}
                 </S.AiServiceDetailTipTableTd>
               </S.AiServiceDetailTipTableTr>
             ))}
