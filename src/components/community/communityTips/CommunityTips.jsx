@@ -6,8 +6,12 @@ import axios from "../../../api/axios";
 function CommunityTips() {
   const [tipContent, setTipContent] = useState([]);
 
-  const [Ais, setAis] = useState([]);
+  const [aiOption, setAiOption] = useState([]);
+  const [currentAiOption, setCurrentAiOption] = useState("");
 
+  const getCurrentAiOption = option => {
+    setCurrentAiOption(option);
+  };
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,12 +27,12 @@ function CommunityTips() {
     setCurrentOption(option);
   };
 
+  // ai option state
   const fetchAiContent = async () => {
     try {
       const response = await axios.get("moin/all/ai");
-      const aiData = response.data.results;
-
-      setAis(["aa", "aiData"]);
+      const aiData = response.data;
+      setAiOption(aiData);
     } catch (e) {
       console.log(e);
     }
@@ -36,9 +40,11 @@ function CommunityTips() {
 
   const fetchTipContent = async () => {
     try {
+      const DecodeAiOption = decodeURI(currentAiOption);
       const response = await axios.get(
-        `/communities/tips?ordering=${currentOption}&page=${currentPage}`
+        `/communities/tips?ordering=${currentOption}&page=${currentPage}&search=${DecodeAiOption}`
       );
+      console.log(response);
 
       const tipContentData = response.data.results;
       setTipContent(tipContentData);
@@ -47,12 +53,21 @@ function CommunityTips() {
     }
   };
 
+  // 초기 ai option
+  useEffect(() => {
+    fetchAiContent();
+  }, []);
+
+  // 옵션 선택시
   useEffect(() => {
     setCurrentPage(1);
-    fetchAiContent();
-    console.log(Ais);
     fetchTipContent();
-  }, [currentOption]);
+  }, [currentOption, currentAiOption]);
+
+  //페이지변경시
+  useEffect(() => {
+    fetchTipContent();
+  }, [currentPage]);
 
   return (
     <>
@@ -61,11 +76,13 @@ function CommunityTips() {
         url={"/community/tips/"}
         writeUrl={"/community/create"}
         currentOption={currentOption}
+        currentAiOption={currentAiOption}
         SelectorOption={SelectorOption}
+        aiOption={aiOption}
         getCurrentOption={getCurrentOption}
+        getCurrentAiOption={getCurrentAiOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        Ais={Ais}
       />
     </>
   );

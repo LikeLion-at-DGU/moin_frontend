@@ -16,11 +16,13 @@ const TipsList = ({
   url,
   writeUrl,
   SelectorOption,
+  currentAiOption,
   currentOption,
+  aiOption,
+  getCurrentAiOption,
   getCurrentOption,
   currentPage,
-  setCurrentPage,
-  Ais
+  setCurrentPage
 }) => {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -51,18 +53,16 @@ const TipsList = ({
             <S.Select
               required
               name="ais"
-              onChange={e => setAis(e.target.value)}
-              value={Ais}
+              onChange={e => getCurrentAiOption(e.target.value)}
             >
-              <S.Option value="" disabled>
-                직종을 선택해주세요.
-              </S.Option>
-              {Ais.map((ai, index) => (
-                <S.Option key={index} value={ai}>
-                  {ai === "서비스 선택" ? <>서비스선택</> : ai}
+              <S.Option value="">서비스 선택</S.Option>
+              {aiOption.map((ai, index) => (
+                <S.Option key={index} value={ai.title}>
+                  {ai.title}
                 </S.Option>
               ))}
             </S.Select>
+
             <S.AiServiceDetailTipHeaderWriteContent
               onClick={() => {
                 // 로그인하지 않은 경우 로그인 페이지로 이동
