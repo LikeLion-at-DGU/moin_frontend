@@ -12,31 +12,37 @@ const CommentList = ({
   onDelete,
   userInfo,
   myComments,
-  myCommentsCnt,
-  count
+  currentPage,
+  setCurrentPage
+  // count
 }) => {
-  // const memberComments = comments.filter(comment => comment.isMember);
+  // 댓글 내용 부분만 추출
+  const commentsContent = comments.results;
+  if (!commentsContent) {
+    return <>Loading comments...</>;
+  }
 
-  // 나중에 추가??
-  // const filteredMyComments = myComments.filter(comment => comment.writer === userInfo.username);
+  // 내 댓글 내용 부분만 추출
+  const myCommentsContent = myComments.my_comment;
+  const myCommentsCnt = myComments.my_comment_cnt;
+  if (!myCommentsContent) {
+    return <>Loading myComments...</>;
+  }
 
   // 댓글 데이터를 최신순으로 정렬
-  const sortedComments = comments.slice().reverse();
+  const sortedComments = commentsContent.slice().reverse();
 
   // 내 댓글 더보기
   const [showMore, setShowMore] = useState(false);
 
   // 작성한 댓글 데이터를 최신순으로 정렬
-  const mySortedComments = myComments.slice().reverse();
+  const mySortedComments = myCommentsContent.slice().reverse();
   const visibleComments = showMore
     ? mySortedComments
     : mySortedComments.slice(0, 1); // 처음엔 한 개만 보이게 설정
 
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
-
-  // 현재 페이지
-  const [currentPage, setCurrentPage] = useState(1);
 
   // 현재 페이지의 댓글 목록 계산
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -84,7 +90,7 @@ const CommentList = ({
                   />
 
                   {/* 더보기 버튼 */}
-                  {myComments.length > 1 && (
+                  {myCommentsContent.length > 1 && (
                     <S.MoreButtonWrap>
                       <S.MoreButton onClick={handleToggleShowMore}>
                         {showMore ? "접기" : "펼치기"}
@@ -119,7 +125,7 @@ const CommentList = ({
       {/* 댓글목록 */}
       <S.ReviewHeader>
         <S.ReviewHeaderIcon src={ReviewListIcon} alt="후기 목록 아이콘" />
-        <S.ReviewHeaderText>후기 {count}</S.ReviewHeaderText>
+        <S.ReviewHeaderText>후기 {comments.count}</S.ReviewHeaderText>
       </S.ReviewHeader>
       {/* CommonCommentList 컴포넌트로 대체 */}
       <CommonCommentList
