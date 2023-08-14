@@ -44,7 +44,7 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
               {data.map((data, idx) => (
-                <S.AiServiceDetailTipTableTr
+                <S.AiServiceDetailTipTableTrContent
                   key={data.id}
                   onClick={() => navigate(`${url}${data.id}`)}
                 >
@@ -61,7 +61,7 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
                   <S.AiServiceDetailTipTableTd>
                     {data.view_cnt}
                   </S.AiServiceDetailTipTableTd>
-                </S.AiServiceDetailTipTableTr>
+                </S.AiServiceDetailTipTableTrContent>
               ))}
             </S.AiServiceDetailTipTableTbody>
           </S.AiServiceDetailTipTable>

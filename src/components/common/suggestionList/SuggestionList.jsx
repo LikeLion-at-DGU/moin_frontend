@@ -10,7 +10,14 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../noPage/NoPage";
 
-const SuggestionList = ({ data, url, writeUrl }) => {
+const SuggestionList = ({
+  data,
+  url,
+  writeUrl,
+  currentPage,
+  setCurrentPage,
+  count
+}) => {
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
@@ -23,31 +30,26 @@ const SuggestionList = ({ data, url, writeUrl }) => {
     setCurrentPage(pageNumber);
   };
 
-  //selector
-  const SelectorOption = [
-    { value: "recent", title: "최신순" },
-    { value: "rating", title: "평점순" }
-  ];
-  const [currentOption, setCurrentOption] = useState("recent");
-  const getCurrentOption = option => {
-    setCurrentOption(option);
-  };
-
   return (
     <>
       <S.AiServiceDetailTipWrap>
+        <S.SuggestionHeaderWrapper>
+          <S.SuggestionHeaderText>
+            💡&nbsp;&nbsp;이용안내{" "}
+          </S.SuggestionHeaderText>
+          건의사항은 관리자 열람 이후, 건의 내용에 따라 답변까지 3-5일
+          소요됩니다.
+        </S.SuggestionHeaderWrapper>
         <S.AiServiceDetailTipHeader>
-          <S.AiServiceDetailTipHeaderWrite>
-            <S.AiServiceDetailTipHeaderWriteContent
-              onClick={() => {
-                // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo ? navigate("/login") : navigate(writeUrl);
-              }}
-            >
-              <S.StyledPencilIcon />
-              글쓰기
-            </S.AiServiceDetailTipHeaderWriteContent>
-          </S.AiServiceDetailTipHeaderWrite>
+          <S.AiServiceDetailTipHeaderWriteContent
+            onClick={() => {
+              // 로그인하지 않은 경우 로그인 페이지로 이동
+              !userInfo ? navigate("/login") : navigate(writeUrl);
+            }}
+          >
+            <S.StyledPencilIcon />
+            글쓰기
+          </S.AiServiceDetailTipHeaderWriteContent>
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
@@ -74,7 +76,7 @@ const SuggestionList = ({ data, url, writeUrl }) => {
                   onClick={() => navigate(`${url}${data.id}`)}
                 >
                   <S.AiServiceDetailTipTableTd>
-                    {data.length - idx}
+                    {count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.title}
@@ -101,7 +103,6 @@ const SuggestionList = ({ data, url, writeUrl }) => {
             <NoPage />
           </>
         )}
-
         {/* 페이지네이션 컴포넌트 사용 */}
         <S.AiServiceDetailTipPaging>
           <Paging

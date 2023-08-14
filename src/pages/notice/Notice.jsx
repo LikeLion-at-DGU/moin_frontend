@@ -29,6 +29,10 @@ function Notice() {
       console.log(e);
     }
   };
+  //페이지변경
+  useEffect(() => {
+    fetchNoticeContent();
+  }, [currentPage]);
 
   return (
     <S.NoticeWrapper>

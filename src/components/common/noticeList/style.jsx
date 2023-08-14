@@ -81,7 +81,13 @@ export const AiServiceDetailTipTableThead = styled.thead``;
 export const AiServiceDetailTipTableTbody = styled.tbody`
   animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
+export const AiServiceDetailTipTableTrContent = styled.tr`
+  cursor: pointer;
 
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
 export const AiServiceDetailTipTableTr = styled.tr``;
 export const AiServiceDetailTipTableTh = styled.th`
   padding: 2rem;
