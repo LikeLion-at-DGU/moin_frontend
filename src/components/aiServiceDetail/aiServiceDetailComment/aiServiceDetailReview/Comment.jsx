@@ -15,6 +15,7 @@ const Comment = ({
   isRegist,
   userInfo,
   writer,
+  isTemp,
   created_at
 }) => {
   const [user, setUser] = useRecoilState(userState); // 유저 정보
@@ -91,10 +92,12 @@ const Comment = ({
 
       if (response.status === 204 || response.status === 200) {
         alert("댓글이 삭제가 됐습니다.");
+        setPassword("");
         // 새로고침
         window.location.reload();
       }
     } catch (error) {
+      setPassword("");
       alert("비밀번호가 틀렸습니다.");
     }
   };
@@ -104,6 +107,7 @@ const Comment = ({
       <>
         {isEditing ? (
           <>
+            {/* ------------ 로그인 유저 수정 폼 ------------ */}
             <S.AiServiceDetailReviewCommentFormWriteMy>
               <S.AiServiceDetailReviewCommentFormWriteTextArea
                 value={editedComment}
@@ -121,6 +125,7 @@ const Comment = ({
           </>
         ) : (
           <>
+            {/* ------------ 로그인 유저 댓글 ------------ */}
             <S.AiServiceDetailReviewMyLi>
               <S.AiServiceDetailReviewMyWrap>
                 <S.AiServiceDetailReviewMyHeader>
@@ -139,7 +144,7 @@ const Comment = ({
                 <EditDelete
                   isWriter={true}
                   id={id}
-                  isUser={true}
+                  isUser={false}
                   handleEdit={handleEdit}
                   handleDelete={UserDeleteSubmit}
                   isBlue={true}
@@ -154,7 +159,7 @@ const Comment = ({
                 </S.AiServiceDetailReviewMyButtonDelete> */}
               </S.AiServiceDetailReviewMyButton>
 
-              {/* 삭제 모달 */}
+              {/* ------------ 유저 삭제 모달 ------------ */}
               <S.NotUserDeleteModal
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
@@ -190,6 +195,7 @@ const Comment = ({
     <>
       {isEditing ? (
         <>
+          {/* ------------ 수정창 ------------ */}
           <S.AiServiceDetailReviewCommentFormWrite>
             <S.AiServiceDetailReviewCommentFormWriteTextArea
               value={content}
@@ -204,6 +210,7 @@ const Comment = ({
         </>
       ) : (
         <>
+          {/* ------------ 전체 댓글 리스트 ------------ */}
           <S.AiServiceDetailReviewListLi>
             <S.AiServiceDetailReviewMyWrap>
               <S.AiServiceDetailReviewListHeader>
@@ -215,10 +222,11 @@ const Comment = ({
                     {created_at}
                   </S.AiServiceDetailReviewListDate>
                 </S.AiServiceDetailReviewListHeaderWrapper>
+                {/* 비유저 삭제 쓰레기통 */}
                 <EditDelete
                   isWriter={true}
-                  isUser={false}
-                  id={3}
+                  isUser={!isTemp}
+                  id={id}
                   handleDelete={UserDeleteSubmit}
                 />
               </S.AiServiceDetailReviewListHeader>
@@ -230,7 +238,7 @@ const Comment = ({
               <S.AiServiceDetailReviewMyButtonNotUser></S.AiServiceDetailReviewMyButtonNotUser>
             )}
 
-            {/* 삭제 모달 */}
+            {/* ------------ 비유저 삭제  모달창 ------------ */}
             <S.NotUserDeleteModal
               isOpen={isModalOpen}
               onRequestClose={() => setIsModalOpen(false)}

@@ -51,6 +51,8 @@ function Review() {
         headers
       });
       const detailData = response.data;
+      console.log("내 댓글");
+      console.log(detailData);
       setMyComments(detailData);
     } catch (e) {
       console.log(e);

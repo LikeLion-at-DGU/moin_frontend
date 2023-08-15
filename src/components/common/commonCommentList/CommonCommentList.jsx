@@ -28,6 +28,7 @@ const CommonCommentList = ({
           <Comment
             key={idx}
             id={comment.id}
+            isTemp={comment.is_tmp}
             content={comment.content}
             writer={comment.writer}
             created_at={comment.created_at}

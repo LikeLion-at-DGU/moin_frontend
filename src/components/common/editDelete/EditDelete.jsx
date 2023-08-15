@@ -67,11 +67,14 @@ function EditDelete({
     ) : (
       <>
         {!isUser ? (
-          <></>
+          <>
+            <S.DetailTitleIcon src={BinIcon} onClick={handleDelete} />
+          </>
         ) : (
-          <S.DetailTitleIcon src={PencilIcon} onClick={handleEdit} />
+          <>
+            {/* <S.DetailTitleIcon src={PencilIcon} onClick={handleEdit} /> */}
+          </>
         )}
-        <S.DetailTitleIcon src={BinIcon} onClick={handleDelete} />
       </>
     );
   };
