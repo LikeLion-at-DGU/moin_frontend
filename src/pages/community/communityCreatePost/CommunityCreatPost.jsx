@@ -35,7 +35,6 @@ function CommunityCreatPost() {
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
-        <S.AiServiceDetailCommentCategory2>
           <AIS.AiServiceDetailCommentCategoryTabMenu>
             <AIS.AiServiceDetailCommentCategoryMenuItem
               isActive={currentTab === 0}
