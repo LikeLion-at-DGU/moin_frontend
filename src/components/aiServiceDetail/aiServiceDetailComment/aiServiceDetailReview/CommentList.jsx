@@ -34,7 +34,8 @@ const CommentList = ({
 
   const renderUserComment = () => {
     // 내 댓글 내용 부분만 추출
-    const myCommentsContent = myComments.my_comment;
+
+    const myCommentsContent = myComments.my_comment ?? [];
     const myCommentsCnt = myComments.my_comment_cnt;
     // 작성한 댓글 데이터를 최신순으로 정렬
     const mySortedComments = myCommentsContent.slice().reverse();
