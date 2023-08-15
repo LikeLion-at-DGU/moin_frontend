@@ -65,19 +65,61 @@ function Review() {
     );
   };
 
-  const handleSubmitComment = (commentText, password) => {
-    const newComment = {
-      id: Date.now(),
-      content: commentText,
-      created_at: Date(),
-      isMember: true,
-      password: password
-    };
+  const handleSubmitComment = async (commentText, password) => {
+    // /api/v1/moin/detail/{aiName}/comments
+    let newComment = "";
+    if (userInfo) {
+      const accessToken = userInfo.accessToken; // 추출한 accessToken
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+      newComment = {
+        content: commentText
+      };
+      try {
+        const response = await axios.post(
+          `/api/v1/moin/detail/${aiName}/comments`,
+          newComment,
+          {
+            headers
+          }
+        );
 
-    const currentDate = new Date(); // 현재 날짜와 시간 가져오기
-    console.log("댓글 등록 날짜 및 시간:", currentDate);
+        console.log("회원 댓글 등록 : ");
+        console.log(response);
+        if (response.status === 200) {
+          alert("댓글이 등록되었습니다.");
+          fetchData();
+          fetchDataMy();
+        }
+      } catch (e) {
+        console.log(e);
+        alert("댓글 등록에 실패하였습니다.");
+      }
+    } else {
+      newComment = {
+        content: commentText,
+        password: password
+      };
+      try {
+        const response = await axios.post(
+          `moin/detail/${aiName}/comments`,
+          newComment
+        );
+        console.log("비회원 댓글 등록 : ");
+        console.log(response);
+        if (response.status === 200) {
+          alert("댓글이 등록되었습니다.");
+          fetchData();
+          fetchDataMy();
+        }
+      } catch (e) {
+        console.log(e);
+        alert("댓글 등록에 실패하였습니다.");
+      }
+    }
 
-    setComments(prevComments => [...prevComments, newComment]);
+    // setComments(prevComments => [...prevComments, newComment]);
     setShowForm(false); // 댓글 등록 후 댓글 작성 폼 감추기
   };
 
