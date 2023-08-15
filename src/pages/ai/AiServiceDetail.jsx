@@ -19,11 +19,21 @@ function AiServiceDetail() {
   const [title, setTitle] = useState("new");
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
+  const [isLiked, setIsLiked] = useState(false);
 
-  // console.log(aiName);
+  // 별점 등록
+  const [rating, setRating] = useState(0);
+
+  // 초반 데이터 불러오기
   useEffect(() => {
     fetchData();
+    // 사용자 조회수 셋팅
   }, []);
+
+  // 별점 변한 후 데이터 불러오기
+  useEffect(() => {
+    fetchData();
+  }, [rating, isLiked]);
 
   const fetchData = async () => {
     try {
@@ -39,6 +49,7 @@ function AiServiceDetail() {
 
       setIntroContent(detailData);
       setData(detailData);
+      setIsLiked(detailData.is_liked);
     } catch (e) {
       console.log(e);
     }
@@ -49,7 +60,7 @@ function AiServiceDetail() {
 
   const tabContents = [
     <AiServiceDescription />,
-    <AiServiceDetailReview introContent={introContent} />,
+    <AiServiceDetailReview introContent={introContent} setRating={setRating} />,
     <AiServiceDetailTip aiName={aiName} />
   ];
 
@@ -59,7 +70,11 @@ function AiServiceDetail() {
 
   return (
     <>
-      <AiServiceDetailIntro introContent={introContent} fetchData={fetchData} />
+      <AiServiceDetailIntro
+        introContent={introContent}
+        isLiked={isLiked}
+        setIsLiked={setIsLiked}
+      />
 
       <S.AiServiceDetailCommentWrap>
         <S.AiServiceDetailCommentCategory>

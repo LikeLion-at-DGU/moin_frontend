@@ -32,6 +32,8 @@ export const AiServiceDetailCommentTip = styled.div`
   padding-bottom: 1.8rem;
 `;
 
+export const TabMenuWrap = styled.div``;
+
 // 탭 메뉴
 export const AiServiceDetailCommentCategoryTabMenu = styled.ul`
   display: flex;

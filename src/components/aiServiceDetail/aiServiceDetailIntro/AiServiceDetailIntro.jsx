@@ -25,18 +25,17 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import axios from "../../../api/axios";
 
-export function AiServiceDetailIntro({ introContent, fetchData }) {
+export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   if (!introContent) {
     return null; // introContent가 없을 때 아무 것도 렌더링하지 않음
   }
   const navigate = useNavigate();
-  // 좋아요
-  const [isLiked, setIsLiked] = useState(introContent.is_liked);
-  const [likeCnt, setLikeCnt] = useState(introContent.likes_cnt);
 
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
+  // 조회수
+  const [viewCnt, setViewCnt] = useState(introContent.view_cnt);
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
 
@@ -152,7 +151,7 @@ export function AiServiceDetailIntro({ introContent, fetchData }) {
               <S.AiServiceDetailContentDescriptionEndWrap>
                 {/* 조회수 */}
                 <S.AiServiceDetailContentDescriptionViews>
-                  조회 {introContent.view_cnt.toLocaleString()}
+                  조회 {viewCnt.toLocaleString()}
                 </S.AiServiceDetailContentDescriptionViews>
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
@@ -187,7 +186,7 @@ export function AiServiceDetailIntro({ introContent, fetchData }) {
                     </S.LikeButton>
                   </S.AiServiceDetailContentDescriptionBottomHeartIcon>
                   <S.AiServiceDetailContentDescriptionBottomHeartCnt>
-                    {likeCnt}
+                    {introContent.likes_cnt}
                   </S.AiServiceDetailContentDescriptionBottomHeartCnt>
                 </S.AiServiceDetailContentDescriptionBottomHeart>
               </S.AiServiceDetailContentDescriptionBottom>
