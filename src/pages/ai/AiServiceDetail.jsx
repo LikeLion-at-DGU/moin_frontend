@@ -9,8 +9,11 @@ import { AiServiceDetailTip } from "../../components/aiServiceDetail/aiServiceDe
 import { AiServiceDescription } from "../../components/aiServiceDetail/aiServiceDescription/AiServiceDescription";
 
 import axios from "../../api/axios";
+import { userState } from "../../context/authState";
+import { useRecoilState } from "recoil";
 
 function AiServiceDetail() {
+  const [userInfo, setUserInfo] = useRecoilState(userState);
   const [data, setData] = useState();
   const [introContent, setIntroContent] = useState();
   const [title, setTitle] = useState("new");
@@ -24,7 +27,13 @@ function AiServiceDetail() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/moin/detail/${aiName}`);
+      const accessToken = userInfo.accessToken; // 추출한 accessToken
+      console.log(userInfo);
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+
+      const response = await axios.get(`/moin/detail/${aiName}`, { headers });
 
       const detailData = response.data;
 
@@ -50,7 +59,7 @@ function AiServiceDetail() {
 
   return (
     <>
-      <AiServiceDetailIntro introContent={introContent} />
+      <AiServiceDetailIntro introContent={introContent} fetchData={fetchData} />
 
       <S.AiServiceDetailCommentWrap>
         <S.AiServiceDetailCommentCategory>

@@ -12,6 +12,7 @@ const CommentForm = ({ onSubmit, userInfo }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(comment, password);
+
     setComment("");
     setPassword("");
     setIsRegist(true);
