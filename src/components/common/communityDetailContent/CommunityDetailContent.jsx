@@ -3,8 +3,33 @@ import * as S from "./style"; // 해당 컴포넌트에 사용되는 스타일 �
 import BinIcon from "../../../assets/images/icon/bin.png";
 import PencilIcon from "../../../assets/images/icon/pencil.png";
 import EditDelete from "../editDelete/EditDelete";
+import axios from "../../../api/axios";
+import { useNavigate } from "react-router-dom";
 
-const CommunityDetailContent = ({ detail, isWriter, id }) => {
+const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      try {
+        const accessToken = user.accessToken; // 추출한 accessToken
+        console.log(user);
+        const headers = {
+          Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+        };
+        const response = await axios.delete(`communities/posts/${id}`, {
+          headers
+        });
+        console.log(response);
+        if (response.status === 204) {
+          navigate("/community");
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
   return (
     <>
       <S.DetailTitleWrapper>
@@ -13,7 +38,7 @@ const CommunityDetailContent = ({ detail, isWriter, id }) => {
           isWriter={isWriter}
           id={id}
           handleEdit={null}
-          handleDelete={null}
+          handleDelete={handleDelete}
           isBlue={false}
         />
       </S.DetailTitleWrapper>
