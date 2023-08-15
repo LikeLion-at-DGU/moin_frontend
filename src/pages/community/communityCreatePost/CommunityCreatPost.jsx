@@ -35,6 +35,8 @@ function CommunityCreatPost() {
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
+        <S.CommuntiyCreateHeader> 글 작성</S.CommuntiyCreateHeader>
+
         <AIS.AiServiceDetailCommentCategory>
           <AIS.AiServiceDetailCommentCategoryTabMenu>
             <AIS.AiServiceDetailCommentCategoryMenuItem
@@ -58,6 +60,10 @@ function CommunityCreatPost() {
           </AIS.AiServiceDetailCommentCategoryTabMenu>
         </AIS.AiServiceDetailCommentCategory>
         {/* {tabContents[currentTab]} */}
+        <S.CommunityCreateTitle
+          placeholder="제목을 입력해주세요."
+          maxLength="100"
+        ></S.CommunityCreateTitle>
 
         <FileDrop
           onDragOver={event => {
@@ -119,6 +125,10 @@ function CommunityCreatPost() {
             data-color-mode="light"
           />
         </FileDrop>
+        {/* // 작성완료버튼 */}
+        <S.ButtonWrapper>
+          <S.CommunityCreateButton>작성완료</S.CommunityCreateButton>
+        </S.ButtonWrapper>
       </AIS.AiServiceDetailCommentWrap>
     </>
   );

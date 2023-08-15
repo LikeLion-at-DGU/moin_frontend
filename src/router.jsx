@@ -28,6 +28,7 @@ import DetailPage from "./pages/community/communityDetail/DetailPage";
 import SuggestionDetailPage from "./pages/suggestion/suggestionDetail/SuggestionDetailPage";
 import NoticeDetailPage from "./pages/notice/noticeDetail/noticeDetail";
 import CommunityCreatPost from "./pages/community/communityCreatePost/CommunityCreatPost";
+import CommunityEdit from "./pages/community/communityEdit/CommunityEdit";
 
 const router = createBrowserRouter([
   {
@@ -134,6 +135,10 @@ const router = createBrowserRouter([
       {
         path: "community/create",
         element: <CommunityCreatPost />
+      },
+      {
+        path: "community/edit/:id",
+        element: <CommunityEdit />
       }
     ],
     errorElement: <NotFoundError />

@@ -30,6 +30,11 @@ const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
     }
   };
 
+  // edit으로 보내기
+  const handleEdit = () => {
+    navigate(`/community/edit/${id}`);
+  };
+
   return (
     <>
       <S.DetailTitleWrapper>
@@ -37,9 +42,9 @@ const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
         <EditDelete
           isWriter={isWriter}
           id={id}
-          handleEdit={null}
+          handleEdit={handleEdit}
           handleDelete={handleDelete}
-          isBlue={false}
+          isBlue={true}
         />
       </S.DetailTitleWrapper>
       <S.DetailTitleInfoWrapper>
