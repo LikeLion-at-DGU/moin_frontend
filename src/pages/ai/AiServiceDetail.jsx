@@ -9,27 +9,47 @@ import { AiServiceDetailTip } from "../../components/aiServiceDetail/aiServiceDe
 import { AiServiceDescription } from "../../components/aiServiceDetail/aiServiceDescription/AiServiceDescription";
 
 import axios from "../../api/axios";
+import { userState } from "../../context/authState";
+import { useRecoilState } from "recoil";
 
 function AiServiceDetail() {
+  const [userInfo, setUserInfo] = useRecoilState(userState);
   const [data, setData] = useState();
   const [introContent, setIntroContent] = useState();
   const [title, setTitle] = useState("new");
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
+  const [isLiked, setIsLiked] = useState(false);
 
-  // console.log(aiName);
+  // 별점 등록
+  const [rating, setRating] = useState(0);
+
+  // 초반 데이터 불러오기
   useEffect(() => {
     fetchData();
+    // 사용자 조회수 셋팅
   }, []);
+
+  // 별점 변한 후 데이터 불러오기
+  useEffect(() => {
+    fetchData();
+  }, [rating, isLiked]);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/moin/detail/${aiName}`);
+      const accessToken = userInfo.accessToken; // 추출한 accessToken
+      console.log(userInfo);
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+
+      const response = await axios.get(`/moin/detail/${aiName}`, { headers });
 
       const detailData = response.data;
 
       setIntroContent(detailData);
       setData(detailData);
+      setIsLiked(detailData.is_liked);
     } catch (e) {
       console.log(e);
     }
@@ -40,7 +60,7 @@ function AiServiceDetail() {
 
   const tabContents = [
     <AiServiceDescription />,
-    <AiServiceDetailReview introContent={introContent} />,
+    <AiServiceDetailReview introContent={introContent} setRating={setRating} />,
     <AiServiceDetailTip aiName={aiName} />
   ];
 
@@ -50,7 +70,11 @@ function AiServiceDetail() {
 
   return (
     <>
-      <AiServiceDetailIntro introContent={introContent} />
+      <AiServiceDetailIntro
+        introContent={introContent}
+        isLiked={isLiked}
+        setIsLiked={setIsLiked}
+      />
 
       <S.AiServiceDetailCommentWrap>
         <S.AiServiceDetailCommentCategory>

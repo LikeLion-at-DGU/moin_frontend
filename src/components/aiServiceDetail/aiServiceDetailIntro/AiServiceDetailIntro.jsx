@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  useNavigation,
+  useParams
+} from "react-router-dom";
 import * as S from "./style";
 
 // 아이콘
@@ -20,88 +25,55 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import axios from "../../../api/axios";
 
-export function AiServiceDetailIntro({ introContent }) {
+export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   if (!introContent) {
     return null; // introContent가 없을 때 아무 것도 렌더링하지 않음
   }
-
-  // 좋아요
-  const [isLiked, setIsLiked] = useState(introContent.is_liked);
+  const navigate = useNavigate();
 
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
+  // 조회수
+  const [viewCnt, setViewCnt] = useState(introContent.view_cnt);
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
 
-  // 로그인 정보 불러오기
-  useEffect(() => {
-    const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
-    fetchUserData(storedUserInfo);
-  }, []); // userInfo가 변경될 때마다 실행
-
-  //fetchUserData
-  // GET /
-  const fetchUserData = async storedUserInfo => {
-    try {
-      const accessToken = storedUserInfo.accessToken;
-      console.log(userInfo);
-      const headers = {
-        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
-      };
-      console.log(headers);
-
-      const response = await axios.get("mypage/profile", {
-        headers
-      });
-
-      console.log(response);
-      if (response.status === 200) {
-        // setUserInfo(response.data);
-      } else {
-        alert("유저 정보를 가져오는데 실패했습니다.");
-        // remove local stroage
-        localStorage.removeItem("userInfo");
-        localStorage.removeItem("recoil-persist");
-        navigate("/login");
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      alert("유저 정보를 가져오는데 실패했습니다.");
-    }
-  };
-
   const handleLikeToggle = async () => {
+    if (!userInfo) {
+      // 로그인하지 않은 경우 로그인 페이지로 이동
+      navigate("/login");
+      return;
+    }
+
     try {
-      if (!userInfo) {
-        // 로그인하지 않은 경우 로그인 페이지로 이동
-        window.location.href = "/login";
-        return;
-      }
+      // 좋아요 상태 확인
 
       const accessToken = userInfo.accessToken;
       const headers = {
         Authorization: `Bearer ${accessToken}`
       };
 
-      const response = await axios.post(
-        `/moin/detail/${aiName}/like`, // 서버의 좋아요 토글 API 엔드포인트
-        {
-          contentId: introContent.id // 좋아요를 토글할 컨텐츠의 고유 ID 등을 전달
-        },
-        {
+      // isLiked가 true이면 좋아요 취소, delete 요청보내기
+      if (isLiked) {
+        const response = await axios.delete(`moin/detail/${aiName}/like`, {
           headers
-        }
-      );
+        });
 
-      if (response.data.detail === "좋아요를 눌렀습니다.") {
-        setIsLiked(true);
-      } else if (response.data.detail === "좋아요를 취소하였습니다.") {
-        setIsLiked(false);
+        if (response.status === 200) {
+          setIsLiked(false);
+          setLikeCnt(likeCnt - 1);
+        }
+      } else {
+        const response = await axios.post(`moin/detail/${aiName}/like`, null, {
+          headers
+        });
+        if (response.status === 200) {
+          setIsLiked(true);
+          setLikeCnt(likeCnt + 1);
+        }
       }
-    } catch (error) {
-      console.error("Error toggling like:", error);
-    }
+    } catch (error) {}
   };
 
   // Toast
@@ -179,7 +151,7 @@ export function AiServiceDetailIntro({ introContent }) {
               <S.AiServiceDetailContentDescriptionEndWrap>
                 {/* 조회수 */}
                 <S.AiServiceDetailContentDescriptionViews>
-                  조회 {introContent.view_cnt.toLocaleString()}
+                  조회 {viewCnt.toLocaleString()}
                 </S.AiServiceDetailContentDescriptionViews>
                 {/* 키워드 */}
                 <S.AiServiceDetailContentDescriptionKeywordWrap>
@@ -207,7 +179,6 @@ export function AiServiceDetailIntro({ introContent }) {
                   <S.AiServiceDetailContentDescriptionBottomHeartIcon>
                     <S.LikeButton
                       onClick={() => {
-                        setIsLiked(!isLiked);
                         handleLikeToggle();
                       }}
                     >
