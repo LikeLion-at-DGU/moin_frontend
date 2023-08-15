@@ -29,6 +29,7 @@ import SuggestionDetailPage from "./pages/suggestion/suggestionDetail/Suggestion
 import NoticeDetailPage from "./pages/notice/noticeDetail/noticeDetail";
 import CommunityCreatPost from "./pages/community/communityCreatePost/CommunityCreatPost";
 import CommunityEdit from "./pages/community/communityEdit/CommunityEdit";
+import SuggestionCreate from "./pages/suggestion/suggestionCreate/SuggestionCreate";
 
 const router = createBrowserRouter([
   {
@@ -127,6 +128,14 @@ const router = createBrowserRouter([
       {
         path: "suggestion/:id",
         element: <SuggestionDetailPage />
+      },
+      {
+        path: "suggestion/create",
+        element: <SuggestionCreate />
+      },
+      {
+        path: "suggestion/edit/:id",
+        element: <CommunityCreatPost />
       },
       {
         path: "notice/:id",
