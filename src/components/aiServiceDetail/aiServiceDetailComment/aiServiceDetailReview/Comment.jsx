@@ -11,7 +11,6 @@ import axios from "../../../../api/axios";
 const Comment = ({
   id,
   content,
-  onUpdate,
   isRegist,
   userInfo,
   writer,
@@ -41,8 +40,36 @@ const Comment = ({
     setEditedComment(content);
   };
 
-  const handleSave = () => {
-    onUpdate(editedComment);
+  const UserUpdateSubmit = async () => {
+    // 유저 수정 Patch 보내기 ㅣ
+    // `moin/detail/comments/${id}`
+    const accessToken = userInfo.accessToken; // 추출한 accessToken
+    const headers = {
+      Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+    };
+    try {
+      const response = await axios.patch(
+        `moin/detail/comments/${id}`,
+        {
+          content: editedComment
+        },
+        {
+          headers
+        }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        alert("댓글이 수정되었습니다.");
+
+        // 새로고침
+        window.location.reload();
+      }
+    } catch (e) {
+      console.log(e);
+      alert("댓글 수정에 실패했습니다.");
+    }
+
+    // 수정 성공시
     setIsEditing(false);
   };
 
@@ -117,7 +144,7 @@ const Comment = ({
               />
 
               <S.AiServiceDetailReviewCommentFormWriteButton
-                onClick={handleSave}
+                onClick={UserUpdateSubmit}
               >
                 등록
               </S.AiServiceDetailReviewCommentFormWriteButton>
@@ -193,95 +220,76 @@ const Comment = ({
 
   return (
     <>
-      {isEditing ? (
-        <>
-          {/* ------------ 수정창 ------------ */}
-          <S.AiServiceDetailReviewCommentFormWrite>
-            <S.AiServiceDetailReviewCommentFormWriteTextArea
-              value={content}
-              onChange={e => setEditedComment(e.target.value)}
-              minLength={10}
-              maxLength={300}
+      {/* ------------ 전체 댓글 리스트 ------------ */}
+      <S.AiServiceDetailReviewListLi>
+        <S.AiServiceDetailReviewMyWrap>
+          <S.AiServiceDetailReviewListHeader>
+            <S.AiServiceDetailReviewListHeaderWrapper>
+              <S.AiServiceDetailReviewListWriter>
+                {writer}
+              </S.AiServiceDetailReviewListWriter>
+              <S.AiServiceDetailReviewListDate>
+                {created_at}
+              </S.AiServiceDetailReviewListDate>
+            </S.AiServiceDetailReviewListHeaderWrapper>
+            {/* 비유저 삭제 쓰레기통 */}
+            <EditDelete
+              isWriter={true}
+              isUser={!isTemp}
+              id={id}
+              handleDelete={UserDeleteSubmit}
             />
-            <S.AiServiceDetailReviewCommentFormWriteButton onClick={handleSave}>
-              등록
-            </S.AiServiceDetailReviewCommentFormWriteButton>
-          </S.AiServiceDetailReviewCommentFormWrite>
-        </>
-      ) : (
-        <>
-          {/* ------------ 전체 댓글 리스트 ------------ */}
-          <S.AiServiceDetailReviewListLi>
-            <S.AiServiceDetailReviewMyWrap>
-              <S.AiServiceDetailReviewListHeader>
-                <S.AiServiceDetailReviewListHeaderWrapper>
-                  <S.AiServiceDetailReviewListWriter>
-                    {writer}
-                  </S.AiServiceDetailReviewListWriter>
-                  <S.AiServiceDetailReviewListDate>
-                    {created_at}
-                  </S.AiServiceDetailReviewListDate>
-                </S.AiServiceDetailReviewListHeaderWrapper>
-                {/* 비유저 삭제 쓰레기통 */}
-                <EditDelete
-                  isWriter={true}
-                  isUser={!isTemp}
-                  id={id}
-                  handleDelete={UserDeleteSubmit}
-                />
-              </S.AiServiceDetailReviewListHeader>
-              <S.AiServiceDetailReviewListContent>
-                {content}
-              </S.AiServiceDetailReviewListContent>
-            </S.AiServiceDetailReviewMyWrap>
-            {!userInfo && (
-              <S.AiServiceDetailReviewMyButtonNotUser></S.AiServiceDetailReviewMyButtonNotUser>
-            )}
+          </S.AiServiceDetailReviewListHeader>
+          <S.AiServiceDetailReviewListContent>
+            {content}
+          </S.AiServiceDetailReviewListContent>
+        </S.AiServiceDetailReviewMyWrap>
+        {!userInfo && (
+          <S.AiServiceDetailReviewMyButtonNotUser></S.AiServiceDetailReviewMyButtonNotUser>
+        )}
 
-            {/* ------------ 비유저 삭제  모달창 ------------ */}
-            <S.NotUserDeleteModal
-              isOpen={isModalOpen}
-              onRequestClose={() => setIsModalOpen(false)}
-              contentLabel="댓글 삭제 확인"
-              ariaHideApp={false}
+        {/* ------------ 비유저 삭제  모달창 ------------ */}
+        <S.NotUserDeleteModal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          contentLabel="댓글 삭제 확인"
+          ariaHideApp={false}
+        >
+          <S.NotUserDeleteModalContentWrap>
+            <S.NotUserDeleteModalContentTitle>
+              비밀번호를 입력하세요
+            </S.NotUserDeleteModalContentTitle>
+
+            <S.AiServiceDetailReviewCommentFormWrite
+              onSubmit={nonUserDeleteSubmit}
             >
-              <S.NotUserDeleteModalContentWrap>
-                <S.NotUserDeleteModalContentTitle>
-                  비밀번호를 입력하세요
-                </S.NotUserDeleteModalContentTitle>
+              <S.AiServiceDetailReviewCommentFormWritePwd
+                type="password"
+                inputMode="numeric"
+                value={password}
+                onChange={handlePasswordChange}
+                pattern="\d{4}"
+                minLength={4}
+                maxLength={4}
+                title="4자리 숫자로 입력해주세요"
+                placeholder="비밀번호 (4자리 숫자)"
+                required
+              />
 
-                <S.AiServiceDetailReviewCommentFormWrite
-                  onSubmit={nonUserDeleteSubmit}
+              <S.NotUserDeleteModalContentButtonWrap>
+                <S.NotUserDeleteModalContentButtonConfirm type="submit">
+                  확인
+                </S.NotUserDeleteModalContentButtonConfirm>
+                <S.NotUserDeleteModalContentButtonCancle
+                  onClick={() => setIsModalOpen(false)}
                 >
-                  <S.AiServiceDetailReviewCommentFormWritePwd
-                    type="password"
-                    inputMode="numeric"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    pattern="\d{4}"
-                    minLength={4}
-                    maxLength={4}
-                    title="4자리 숫자로 입력해주세요"
-                    placeholder="비밀번호 (4자리 숫자)"
-                    required
-                  />
-
-                  <S.NotUserDeleteModalContentButtonWrap>
-                    <S.NotUserDeleteModalContentButtonConfirm type="submit">
-                      확인
-                    </S.NotUserDeleteModalContentButtonConfirm>
-                    <S.NotUserDeleteModalContentButtonCancle
-                      onClick={() => setIsModalOpen(false)}
-                    >
-                      취소
-                    </S.NotUserDeleteModalContentButtonCancle>
-                  </S.NotUserDeleteModalContentButtonWrap>
-                </S.AiServiceDetailReviewCommentFormWrite>
-              </S.NotUserDeleteModalContentWrap>
-            </S.NotUserDeleteModal>
-          </S.AiServiceDetailReviewListLi>
-        </>
-      )}
+                  취소
+                </S.NotUserDeleteModalContentButtonCancle>
+              </S.NotUserDeleteModalContentButtonWrap>
+            </S.AiServiceDetailReviewCommentFormWrite>
+          </S.NotUserDeleteModalContentWrap>
+        </S.NotUserDeleteModal>
+      </S.AiServiceDetailReviewListLi>
     </>
   );
 };
