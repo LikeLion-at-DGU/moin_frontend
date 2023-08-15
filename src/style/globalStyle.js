@@ -36,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
   *[hidden] {
       display: none;
   }
+
   body {
     touch-action: manipulation;
     line-height: 1;

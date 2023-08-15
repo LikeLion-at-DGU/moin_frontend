@@ -10,7 +10,7 @@ export const NavWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 1178px;
-  height: 6rem;
+  height: 60px;
   padding: 0 2rem;
 
   z-index: 2;

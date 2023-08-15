@@ -34,7 +34,7 @@ function CommunityCreatPost() {
 
   return (
     <>
-      <AIS.AiServiceDetailCommentWrap
+      <AIS.AiServiceDetailCommentWrap>
         <AIS.AiServiceDetailCommentCategory>
           <AIS.AiServiceDetailCommentCategoryTabMenu>
             <AIS.AiServiceDetailCommentCategoryMenuItem

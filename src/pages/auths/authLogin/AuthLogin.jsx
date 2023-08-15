@@ -79,14 +79,12 @@ export default function AuthLogin() {
         })
       );
 
-      alert("로그인에 성공했습니다.");
-
       // 메인 페이지로 이동
       navigate("/");
     } catch (error) {
       // Handle login error (e.g., display an error message)
       console.error("Login failed:", error.message);
-      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+      alert("비밀번호를 다시 입력해주세요!");
     }
   };
 

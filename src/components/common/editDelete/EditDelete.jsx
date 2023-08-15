@@ -7,7 +7,14 @@ import PencilIconBlue from "../../../assets/images/icon/pencilBlue.png";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import axios from "../../../api/axios";
-function EditDelete({ isWriter, id, handleEdit, handleDelete, isBlue }) {
+function EditDelete({
+  isWriter,
+  id,
+  handleEdit,
+  handleDelete,
+  isBlue,
+  isUser
+}) {
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const deleteComment = async () => {
@@ -59,8 +66,15 @@ function EditDelete({ isWriter, id, handleEdit, handleDelete, isBlue }) {
       </>
     ) : (
       <>
-        <S.DetailTitleIcon src={PencilIcon} onClick={handleEdit} />
-        <S.DetailTitleIcon src={BinIcon} onClick={handleDelete} />
+        {!isUser ? (
+          <>
+            <S.DetailTitleIcon src={BinIcon} onClick={handleDelete} />
+          </>
+        ) : (
+          <>
+            {/* <S.DetailTitleIcon src={PencilIcon} onClick={handleEdit} /> */}
+          </>
+        )}
       </>
     );
   };
