@@ -38,6 +38,8 @@ export const AboutSection_Body = styled.div`
   }
 `;
 
+export const AboutSection_Box = styled.div``;
+
 export const AboutSection_Img = styled.img`
   position: absolute;
   z-index: 1;
