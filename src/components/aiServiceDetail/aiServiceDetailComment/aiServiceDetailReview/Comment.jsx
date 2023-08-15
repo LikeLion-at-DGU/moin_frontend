@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import * as S from "./style";
 
 // 컴포넌트
-import Modal from "react-modal"; // 모달창
+
 import EditDelete from "../../../common/editDelete/EditDelete";
 import { userState } from "../../../../context/authState";
 import { useRecoilState } from "recoil";
 import axios from "../../../../api/axios";
+import Modal from "../../../common/modal/Modal";
 
 const Comment = ({
   id,
@@ -187,30 +188,11 @@ const Comment = ({
               </S.AiServiceDetailReviewMyButton>
 
               {/* ------------ 유저 삭제 모달 ------------ */}
-              <S.NotUserDeleteModal
+              <Modal
                 isOpen={isModalOpen}
-                onRequestClose={() => setIsModalOpen(false)}
-                contentLabel="댓글 삭제 확인"
-                ariaHideApp={false}
-              >
-                <S.NotUserDeleteModalContentWrap>
-                  <S.DeleteModalContentTitle>
-                    정말로 삭제하시겠습니까?
-                  </S.DeleteModalContentTitle>
-                  <S.DeleteModalContentButtonWrap>
-                    <S.NotUserDeleteModalContentButtonConfirm
-                      onClick={userCommentOnclick}
-                    >
-                      확인
-                    </S.NotUserDeleteModalContentButtonConfirm>
-                    <S.NotUserDeleteModalContentButtonCancle
-                      onClick={() => setIsModalOpen(false)}
-                    >
-                      취소
-                    </S.NotUserDeleteModalContentButtonCancle>
-                  </S.DeleteModalContentButtonWrap>
-                </S.NotUserDeleteModalContentWrap>
-              </S.NotUserDeleteModal>
+                onClose={() => setIsModalOpen(false)}
+                onConfirm={userCommentOnclick}
+              />
             </S.AiServiceDetailReviewMyLi>
           </>
         )}
