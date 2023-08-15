@@ -6,7 +6,7 @@ import Modal from "react-modal"; // 모달창
 import EditDelete from "../../../common/editDelete/EditDelete";
 
 const Comment = ({
-  key,
+  id,
   content,
   onUpdate,
   onDelete,
@@ -59,7 +59,7 @@ const Comment = ({
 
       // 댓글 삭제 요청 보내기
       const response = await axios.delete(
-        `/api/v1/moin/detail/comments/${comment_id}/delete_tmp`,
+        `/api/v1/moin/detail/comments/${id}/delete_tmp`,
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`
@@ -127,7 +127,7 @@ const Comment = ({
               <S.AiServiceDetailReviewMyButton>
                 <EditDelete
                   isWriter={true}
-                  id={key}
+                  id={id}
                   isUser={true}
                   handleEdit={handleEdit}
                   handleDelete={handleDeleteButton}

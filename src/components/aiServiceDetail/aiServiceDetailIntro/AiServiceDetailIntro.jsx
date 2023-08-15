@@ -59,16 +59,12 @@ export function AiServiceDetailIntro({ introContent }) {
       if (response.status === 200) {
         // setUserInfo(response.data);
       } else {
-        alert("유저 정보를 가져오는데 실패했습니다.");
         // remove local stroage
         localStorage.removeItem("userInfo");
         localStorage.removeItem("recoil-persist");
         navigate("/login");
       }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      alert("유저 정보를 가져오는데 실패했습니다.");
-    }
+    } catch (error) {}
   };
 
   const handleLikeToggle = async () => {

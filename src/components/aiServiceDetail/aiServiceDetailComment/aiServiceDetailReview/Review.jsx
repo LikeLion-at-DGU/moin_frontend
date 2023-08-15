@@ -24,18 +24,14 @@ function Review() {
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    fetchData();
-    fetchDataMy();
-  }, []);
-
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `/moin/detail/${aiName}/comments?pages=${currentPage}`
+        `/moin/detail/${aiName}/comments?page=${currentPage}`
       );
+      console.log(`currentPage ${currentPage}`);
+      console.log(response.data);
       const detailData = response.data;
-
       setComments(detailData);
     } catch (e) {
       console.log(e);
@@ -84,6 +80,12 @@ function Review() {
     setComments(prevComments => [...prevComments, newComment]);
     setShowForm(false); // 댓글 등록 후 댓글 작성 폼 감추기
   };
+
+  // 초반 셋팅
+  useEffect(() => {
+    fetchData();
+    fetchDataMy();
+  }, []);
 
   //페이지변경
   useEffect(() => {

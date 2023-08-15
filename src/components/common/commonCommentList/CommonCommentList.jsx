@@ -21,14 +21,15 @@ const CommonCommentList = ({
   }
 
   // 댓글 데이터를 최신순으로 정렬
-  const sortedComments = commentsContent.slice().reverse();
+  // const sortedComments = commentsContent.slice().reverse();
 
   return (
     <S.AiServiceDetailReviewListWrap>
       <S.AiServiceDetailReviewListUl>
-        {sortedComments.map(comment => (
+        {commentsContent.map((comment, idx) => (
           <Comment
-            key={comment.id}
+            key={idx}
+            id={comment.id}
             content={comment.content}
             writer={comment.writer}
             created_at={comment.created_at}

@@ -29,9 +29,6 @@ const CommentList = ({
     return <>Loading myComments...</>;
   }
 
-  // 댓글 데이터를 최신순으로 정렬
-  const sortedComments = commentsContent.slice().reverse();
-
   // 내 댓글 더보기
   const [showMore, setShowMore] = useState(false);
 
@@ -98,6 +95,7 @@ const CommentList = ({
                     {mySortedComments.slice(1).map(comment => (
                       <Comment
                         key={comment.id}
+                        id={comment.id}
                         content={comment.content}
                         writer={comment.writer}
                         created_at={comment.created_at}

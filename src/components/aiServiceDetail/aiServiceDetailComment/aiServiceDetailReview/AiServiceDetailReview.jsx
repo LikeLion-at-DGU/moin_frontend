@@ -14,13 +14,14 @@ import Star from "../../../common/star/Star";
 import Review from "./Review";
 import { userState } from "../../../../context/authState";
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 const ARRAY = [0, 1, 2, 3, 4];
 
 export function AiServiceDetailReview({ introContent }) {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
-
+  const navigate = useNavigate();
   // 별점 등록
   const [rating, setRating] = useState(0);
 
@@ -62,10 +63,10 @@ export function AiServiceDetailReview({ introContent }) {
     // });
   };
 
+  // 로그인하지 않은 경우 로그인 페이지로 이동
   const handleSubmit = () => {
     if (!userInfo) {
-      // 로그인하지 않은 경우 로그인 페이지로 이동
-      window.location.href = "/login";
+      navigate("/login");
       return;
     }
     sendReview();
