@@ -50,7 +50,7 @@ function SuggestionCreate() {
       return;
     }
     if (currentAiOption === "▿ 서비스 선택") {
-      setCurrentAiOption(null);
+      setCurrentAiOption("");
     }
 
     try {
@@ -61,7 +61,7 @@ function SuggestionCreate() {
 
       console.log(currentAiOption);
       const data = {
-        ai: currentAiOption == "" ? null : currentAiOption,
+        ai: currentAiOption,
         title: title,
         content: value,
         url: url
