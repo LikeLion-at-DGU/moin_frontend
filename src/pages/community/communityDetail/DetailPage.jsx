@@ -98,6 +98,7 @@ function DetailPage() {
 
       setLikeCount(response.data.likes_cnt);
       setDetail(response.data);
+      setAiName(response.data.ai);
     } catch (error) {
       console.log(error);
     }
