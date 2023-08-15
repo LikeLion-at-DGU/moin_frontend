@@ -4,17 +4,20 @@ import * as S from "./style";
 // 컴포넌트
 import Modal from "react-modal"; // 모달창
 import EditDelete from "../../../common/editDelete/EditDelete";
+import { userState } from "../../../../context/authState";
+import { useRecoilState } from "recoil";
+import axios from "../../../../api/axios";
 
 const Comment = ({
   id,
   content,
   onUpdate,
-  onDelete,
   isRegist,
   userInfo,
   writer,
   created_at
 }) => {
+  const [user, setUser] = useRecoilState(userState); // 유저 정보
   const [isEditing, setIsEditing] = useState(false);
   const [editedComment, setEditedComment] = useState(content);
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달창
@@ -24,6 +27,13 @@ const Comment = ({
   if (!writer) {
     return <></>;
   }
+
+  const handlePasswordChange = event => {
+    const inputValue = event.target.value;
+    if (/^[0-9]*$/.test(inputValue)) {
+      setPassword(inputValue);
+    }
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -35,58 +45,63 @@ const Comment = ({
     setIsEditing(false);
   };
 
-  const handleDeleteButton = () => {
+  // 유저 삭제
+  const UserDeleteSubmit = () => {
     setIsModalOpen(true);
-    //onDelete(content);
+
+    // if (userInfo) {
+    //   const accessToken = userInfo.accessToken; // 추출한 accessToken
+    //   const headers = {
+    //     Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+    //   };
+    //   newComment = {
+    //     content: commentText
+    //   };
+    //   try {
+    //     const response = await axios.post(
+    //       `/api/v1/moin/detail/${aiName}/comments`,
+    //       newComment,
+    //       {
+    //         headers
+    //       }
+    //     );
+
+    //     console.log("회원 댓글 등록 : ");
+    //     console.log(response);
+    //     if (response.status === 200) {
+    //       alert("댓글이 등록되었습니다.");
+    //       fetchData();
+    //       fetchDataMy();
+    //     }
+    //   } catch (e) {
+    //     console.log(e);
+    //     alert("댓글 등록에 실패하였습니다.");
+    //   }
+    // }
   };
 
-  const handleSubmit = e => {
+  // 비유저 삭제
+  const nonUserDeleteSubmit = async e => {
     e.preventDefault();
-    onSubmit(password);
-    setPassword("");
-    handleDelete();
-  };
+    const nonUserPassword = {
+      password: password
+    };
 
-  const handleEditSubmit = e => {
-    e.preventDefault();
-    onSubmit(editedComment);
-    setEditedComment("");
-  };
-
-  const handleDelete = async () => {
     try {
-      setError(""); // 에러 초기화
-
-      // 댓글 삭제 요청 보내기
-      const response = await axios.delete(
-        `/api/v1/moin/detail/comments/${id}/delete_tmp`,
-        {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`
-          },
-          data: { password }
-        }
+      const response = await axios.post(
+        `moin/detail/comments/${id}/delete_tmp`,
+        nonUserPassword
       );
 
-      // 요청이 성공한 경우
-      if (response.status === 204) {
-        onDelete();
-        setIsModalOpen(false);
-        alert("삭제되었습니다.");
+      if (response.status === 204 || response.status === 200) {
+        alert("댓글이 삭제가 됐습니다.");
+        // 새로고침
+        window.location.reload();
       }
-    } catch (err) {
-      // 요청이 실패한 경우
-      if (err.response && err.response.status === 400) {
-        setError("올바르지 않은 비밀번호입니다.");
-        alert("올바르지 않은 비밀번호입니다.");
-      } else {
-        setError("댓글 삭제에 실패했습니다.");
-        alert("댓글 삭제에 실패했습니다.");
-      }
+    } catch (error) {
+      alert("비밀번호가 틀렸습니다.");
     }
   };
-
-  const formattedDate = new Date(created_at).toLocaleString(); // 날짜 형식 맞춤
 
   if (userInfo && isRegist) {
     return (
@@ -117,7 +132,7 @@ const Comment = ({
                     {writer}
                   </S.AiServiceDetailReviewMyWriter>
                   <S.AiServiceDetailReviewMyDate>
-                    {formattedDate}
+                    {created_at}
                   </S.AiServiceDetailReviewMyDate>
                 </S.AiServiceDetailReviewMyHeader>
                 <S.AiServiceDetailReviewMyContent>
@@ -130,14 +145,14 @@ const Comment = ({
                   id={id}
                   isUser={true}
                   handleEdit={handleEdit}
-                  handleDelete={handleDeleteButton}
+                  handleDelete={UserDeleteSubmit}
                   isBlue={true}
                 />
                 {/* <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
                   수정
                 </S.AiServiceDetailReviewMyButtonEdit>
                 <S.AiServiceDetailReviewMyButtonDelete
-                  onClick={handleDeleteButton}
+                  onClick={UserDeleteSubmit}
                 >
                   삭제
                 </S.AiServiceDetailReviewMyButtonDelete> */}
@@ -199,14 +214,14 @@ const Comment = ({
                     {writer}
                   </S.AiServiceDetailReviewListWriter>
                   <S.AiServiceDetailReviewListDate>
-                    {formattedDate}
+                    {created_at}
                   </S.AiServiceDetailReviewListDate>
                 </S.AiServiceDetailReviewListHeaderWrapper>
                 <EditDelete
                   isWriter={true}
                   isUser={false}
                   id={3}
-                  handleDelete={handleDeleteButton}
+                  handleDelete={UserDeleteSubmit}
                 />
               </S.AiServiceDetailReviewListHeader>
               <S.AiServiceDetailReviewListContent>
@@ -230,13 +245,13 @@ const Comment = ({
                 </S.NotUserDeleteModalContentTitle>
 
                 <S.AiServiceDetailReviewCommentFormWrite
-                  onSubmit={handleSubmit}
+                  onSubmit={nonUserDeleteSubmit}
                 >
                   <S.AiServiceDetailReviewCommentFormWritePwd
                     type="password"
                     inputMode="numeric"
                     value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={handlePasswordChange}
                     pattern="\d{4}"
                     minLength={4}
                     maxLength={4}

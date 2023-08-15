@@ -8,8 +8,6 @@ import CommonCommentList from "../../../common/commonCommentList/CommonCommentLi
 
 const CommentList = ({
   comments,
-  onUpdate,
-  onDelete,
   userInfo,
   myComments,
   currentPage,
@@ -73,10 +71,6 @@ const CommentList = ({
                     content={visibleComments[0].content}
                     writer={visibleComments[0].writer}
                     created_at={visibleComments[0].created_at}
-                    onUpdate={updatedComment =>
-                      onUpdate(visibleComments[0].id, updatedComment)
-                    }
-                    onDelete={() => onDelete(visibleComments[0].id)}
                     userInfo={userInfo}
                     isRegist={true}
                   />
@@ -99,10 +93,6 @@ const CommentList = ({
                         content={comment.content}
                         writer={comment.writer}
                         created_at={comment.created_at}
-                        onUpdate={updatedComment =>
-                          onUpdate(comment.id, updatedComment)
-                        }
-                        onDelete={() => onDelete(comment.id)}
                         userInfo={userInfo}
                         isRegist={true}
                       />
@@ -126,8 +116,6 @@ const CommentList = ({
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
-        onUpdate={onUpdate}
-        onDelete={onDelete}
         userInfo={userInfo}
         count={comments.count}
       />

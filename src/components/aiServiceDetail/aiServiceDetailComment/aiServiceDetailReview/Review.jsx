@@ -51,20 +51,6 @@ function Review() {
 
   const [showForm, setShowForm] = useState(true); // 댓글 작성 폼 보이기 여부 (댓글 삭제 시 다시 댓글 보이게)
 
-  const handleUpdateComment = (id, updatedComment) => {
-    setComments(prevComments =>
-      prevComments.map(comment =>
-        comment.id === id ? { ...comment, content: updatedComment } : comment
-      )
-    );
-  };
-
-  const handleDeleteComment = id => {
-    setComments(prevComments =>
-      prevComments.filter(comment => comment.id !== id)
-    );
-  };
-
   const handleSubmitComment = async (commentText, password) => {
     // /api/v1/moin/detail/{aiName}/comments
     let newComment = "";
@@ -118,8 +104,6 @@ function Review() {
         alert("댓글 등록에 실패하였습니다.");
       }
     }
-
-    // setComments(prevComments => [...prevComments, newComment]);
     setShowForm(false); // 댓글 등록 후 댓글 작성 폼 감추기
   };
 
@@ -139,11 +123,6 @@ function Review() {
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
       <CommentList
         comments={comments}
-        onUpdate={handleUpdateComment}
-        onDelete={commentId => {
-          handleDeleteComment(commentId);
-          setShowForm(true); // 댓글 삭제 후 댓글 작성 폼 보이도록 설정
-        }}
         userInfo={userInfo}
         myComments={myComments}
         currentPage={currentPage}

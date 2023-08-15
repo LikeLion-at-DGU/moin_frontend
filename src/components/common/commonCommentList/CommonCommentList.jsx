@@ -8,8 +8,6 @@ const CommonCommentList = ({
   itemsPerPage,
   currentPage,
   handlePageChange,
-  onUpdate,
-  onDelete,
   userInfo,
   count
 }) => {
@@ -33,8 +31,6 @@ const CommonCommentList = ({
             content={comment.content}
             writer={comment.writer}
             created_at={comment.created_at}
-            onUpdate={updatedComment => onUpdate(comment.id, updatedComment)}
-            onDelete={() => onDelete(comment.id)}
             userInfo={userInfo}
           />
         ))}
