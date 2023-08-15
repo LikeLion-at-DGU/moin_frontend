@@ -45,11 +45,11 @@ function About() {
   const [currentSection, setCurrentSection] = useState("none");
   useEffect(() => {
     getCurrentSection();
-    console.log(position);
+    // console.log(position);
   }, [position]);
 
   useEffect(() => {
-    console.log(currentSection);
+    // console.log(currentSection);
   }, [currentSection]);
 
   const Ref_AboutSection1 = useRef();
