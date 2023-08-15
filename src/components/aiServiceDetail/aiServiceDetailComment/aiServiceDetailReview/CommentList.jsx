@@ -44,7 +44,7 @@ const CommentList = ({
       : mySortedComments.slice(0, 1); // 처음엔 한 개만 보이게 설정
 
     return (
-      <>
+      <S.MyCommentWrapper>
         {mySortedComments.length > 0 && (
           <>
             <S.AiServiceDetailReviewCommentMyReviewWrap>
@@ -92,7 +92,7 @@ const CommentList = ({
             </S.SlideCommentsWrap>
           </>
         )}
-      </>
+      </S.MyCommentWrapper>
     );
   };
 
