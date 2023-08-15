@@ -4,14 +4,14 @@ import Paging from "../paging/Paging";
 import Comment from "../../aiServiceDetail/aiServiceDetailComment/aiServiceDetailReview/Comment";
 
 const CommonCommentList = ({
-  currentItems,
   comments,
   itemsPerPage,
   currentPage,
   handlePageChange,
   onUpdate,
   onDelete,
-  userInfo
+  userInfo,
+  count
 }) => {
   // 댓글 내용 부분만 추출
   const commentsContent = comments.results;
@@ -42,7 +42,7 @@ const CommonCommentList = ({
         <S.AiServiceDetailReviewListPaging>
           <Paging
             page={currentPage}
-            count={sortedComments.length}
+            count={count}
             postPerPage={itemsPerPage}
             setPage={handlePageChange}
           />

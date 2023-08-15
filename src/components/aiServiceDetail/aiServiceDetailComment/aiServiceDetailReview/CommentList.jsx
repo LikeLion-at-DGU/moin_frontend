@@ -44,11 +44,6 @@ const CommentList = ({
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
 
-  // 현재 페이지의 댓글 목록 계산
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortedComments.slice(indexOfFirstItem, indexOfLastItem);
-
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
@@ -129,7 +124,6 @@ const CommentList = ({
       </S.ReviewHeader>
       {/* CommonCommentList 컴포넌트로 대체 */}
       <CommonCommentList
-        currentItems={currentItems}
         comments={comments}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
@@ -137,6 +131,7 @@ const CommentList = ({
         onUpdate={onUpdate}
         onDelete={onDelete}
         userInfo={userInfo}
+        count={comments.count}
       />
     </>
   );

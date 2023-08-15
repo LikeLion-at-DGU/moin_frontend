@@ -85,6 +85,11 @@ function Review() {
     setShowForm(false); // 댓글 등록 후 댓글 작성 폼 감추기
   };
 
+  //페이지변경
+  useEffect(() => {
+    fetchData();
+  }, [currentPage]);
+
   return (
     <>
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />

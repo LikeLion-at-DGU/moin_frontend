@@ -21,7 +21,6 @@ const Comment = ({
   const [password, setPassword] = useState(""); // 비회원 댓글 삭제 비밀번호
   const [error, setError] = useState("");
 
-  console.log("writer", writer);
   if (!writer) {
     return <></>;
   }
@@ -129,6 +128,7 @@ const Comment = ({
                 <EditDelete
                   isWriter={true}
                   id={key}
+                  isUser={true}
                   handleEdit={handleEdit}
                   handleDelete={handleDeleteButton}
                   isBlue={true}
@@ -202,20 +202,19 @@ const Comment = ({
                     {formattedDate}
                   </S.AiServiceDetailReviewListDate>
                 </S.AiServiceDetailReviewListHeaderWrapper>
-                <EditDelete isWriter={true} id={3} />
+                <EditDelete
+                  isWriter={true}
+                  isUser={false}
+                  id={3}
+                  handleDelete={handleDeleteButton}
+                />
               </S.AiServiceDetailReviewListHeader>
               <S.AiServiceDetailReviewListContent>
                 {content}
               </S.AiServiceDetailReviewListContent>
             </S.AiServiceDetailReviewMyWrap>
             {!userInfo && (
-              <S.AiServiceDetailReviewMyButtonNotUser>
-                <S.AiServiceDetailReviewMyButtonDeleteNotUser
-                  onClick={handleDeleteButton}
-                >
-                  삭제
-                </S.AiServiceDetailReviewMyButtonDeleteNotUser>
-              </S.AiServiceDetailReviewMyButtonNotUser>
+              <S.AiServiceDetailReviewMyButtonNotUser></S.AiServiceDetailReviewMyButtonNotUser>
             )}
 
             {/* 삭제 모달 */}
