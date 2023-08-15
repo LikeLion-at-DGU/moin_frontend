@@ -14,16 +14,28 @@ function CommunityCreatPost() {
 
   const selectMenuHandler = index => {
     setCurrentTab(index);
+    // index = 0 : 자유 게시판
+    // index = 1 : 이용꿀팁
+    // index = 2 : Q&A
+
+    // index별 다른 게시판 내용
+    if (index === 0) {
+      setValue("**자유 게시판 내용을 입력해주세요.**");
+    } else if (index === 1) {
+      setValue("**이용꿀팁 내용을 입력해주세요.**");
+    } else if (index === 2) {
+      setValue("**Q&A 내용을 입력해주세요.**");
+    }
   };
 
-  const [value, setValue] = useState("**내용을 입력해주세요.**");
+  const [value, setValue] = useState("**자유 게시판 내용을 입력해주세요.**");
 
   const [boardColor, setBoardColor] = useState(false);
 
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
-        <AIS.AiServiceDetailCommentCategory>
+        <S.AiServiceDetailCommentCategory2>
           <AIS.AiServiceDetailCommentCategoryTabMenu>
             <AIS.AiServiceDetailCommentCategoryMenuItem
               isActive={currentTab === 0}

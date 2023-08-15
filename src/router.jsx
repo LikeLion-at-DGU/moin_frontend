@@ -67,6 +67,10 @@ const router = createBrowserRouter([
             element: <AuthSignup />
           },
           {
+            path: "create/soical",
+            element: <AuthSignup />
+          },
+          {
             path: "reset",
             element: <AuthReset />
           }

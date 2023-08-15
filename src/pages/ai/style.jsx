@@ -13,7 +13,7 @@ export const AiServiceDetailCommentWrap = styled.div`
 
 export const AiServiceDetailCommentCategory = styled.div`
   display: flex;
-  width: 110rem;
+  width: 93%;
   border-bottom: 3px solid #f0f0f0;
 `;
 
