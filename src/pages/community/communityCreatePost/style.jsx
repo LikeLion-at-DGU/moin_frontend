@@ -51,3 +51,35 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   margin-top: 2rem;
 `;
+export const SelcetorWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 2rem;
+`;
+
+export const SelcetorDescriptionText = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 700;
+`;
+
+export const Select = styled.select`
+  /* 스타일링을 원하는대로 설정하세요 */
+  background-color: #4285f4;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const Option = styled.option`
+  /* 스타일링을 원하는대로 설정하세요 */
+`;
