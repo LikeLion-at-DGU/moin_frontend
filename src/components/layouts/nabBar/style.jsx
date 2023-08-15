@@ -136,6 +136,7 @@ export const NavSideBarMenu = styled.div`
 
 export const NavSideBarHeader = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 10rem;
   margin-bottom: 4rem;
