@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style";
 
-function Modal({ isOpen, onClose, onConfirm }) {
+function Modal({ isOpen, onClose, onConfirm, content }) {
   return (
     <S.NotUserDeleteModal
       isOpen={isOpen}
@@ -10,9 +10,7 @@ function Modal({ isOpen, onClose, onConfirm }) {
       ariaHideApp={false}
     >
       <S.NotUserDeleteModalContentWrap>
-        <S.DeleteModalContentTitle>
-          정말로 삭제하시겠습니까?
-        </S.DeleteModalContentTitle>
+        <S.DeleteModalContentTitle>{content}</S.DeleteModalContentTitle>
         <S.DeleteModalContentButtonWrap>
           <S.NotUserDeleteModalContentButtonConfirm onClick={onConfirm}>
             확인

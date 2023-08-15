@@ -192,6 +192,7 @@ const Comment = ({
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onConfirm={userCommentOnclick}
+                content={"정말로 삭제하시겠습니까?"}
               />
             </S.AiServiceDetailReviewMyLi>
           </>
