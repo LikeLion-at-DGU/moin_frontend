@@ -17,7 +17,7 @@ function AiServiceDetail() {
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
 
-  console.log(aiName);
+  // console.log(aiName);
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,7 +25,6 @@ function AiServiceDetail() {
   const fetchData = async () => {
     try {
       const response = await axios.get(`/moin/detail/${aiName}`);
-      console.log("gd", response.data);
 
       const detailData = response.data;
 
@@ -36,17 +35,13 @@ function AiServiceDetail() {
     }
   };
 
-  console.log("gdd", data);
-  console.log("gd2", introContent);
-  console.log(introContent);
-
   // 탭 기능 구현
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabContents = [
     <AiServiceDescription />,
     <AiServiceDetailReview introContent={introContent} />,
-    <AiServiceDetailTip />
+    <AiServiceDetailTip aiName={aiName} />
   ];
 
   const selectMenuHandler = index => {
