@@ -18,14 +18,18 @@ function SuggestionDetailPage() {
   const [aiName, setAiName] = useState("");
   const [isWriter, setIsWriter] = useState(false);
   const [isUser, setIsUser] = useState(true);
-  const [comment, setComment] = useState({
-    id: 1,
-    community: 17,
-    writer: "haha",
-    created_at: "2023/08/12 20:07",
-    updated_at: "2023/08/12 20:07",
-    content: "댓글 달았찡!"
-  });
+
+  const [comment, setComment] = useState({});
+
+  const fetchComment = async () => {
+    try {
+      const response = await axios.get(`suggestions/${id}/comments`);
+      console.log(response);
+      setComment(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // writer 확인
   const fetchIsWriter = async () => {
@@ -52,6 +56,7 @@ function SuggestionDetailPage() {
       fetchIsWriter();
     }
     fetchDetail();
+    fetchComment();
   }, []);
 
   const fetchDetail = async () => {
@@ -68,7 +73,7 @@ function SuggestionDetailPage() {
     }
   };
 
-  // 디테일 렌더링
+  // ------------------ 디테일 렌더링 ------------------
   const renderDetail = () => {
     return !detail ? (
       <>
@@ -94,14 +99,18 @@ function SuggestionDetailPage() {
     );
   };
 
-  return (
-    <S.DetailPageWrapper>
-      <CommuntiyDetailPageType type={"suggestion"} aiName={aiName} />
-      <S.DetailDiviner />
-      {renderDetail()}
-      <S.DetailCommentHeader>MOIN 답변</S.DetailCommentHeader>
-      <S.DetailDiviner />
-      <AS.AiServiceDetailReviewMyWrap>
+  // ------------------ 댓글 렌더링 ------------------
+  const renderComment = () => {
+    return !comment || comment.length ? (
+      <>
+        <AS.AiServiceDetailReviewListContent
+          style={{ marginLeft: "0rem", color: "#282828" }}
+        >
+          작성된 답변이 없습니다.
+        </AS.AiServiceDetailReviewListContent>
+      </>
+    ) : (
+      <>
         <AS.AiServiceDetailReviewListHeader>
           <AS.AiServiceDetailReviewListHeaderWrapper>
             <AS.AiServiceDetailReviewListWriter>
@@ -116,6 +125,20 @@ function SuggestionDetailPage() {
         <AS.AiServiceDetailReviewListContent>
           {comment.content}
         </AS.AiServiceDetailReviewListContent>
+      </>
+    );
+  };
+
+  return (
+    <S.DetailPageWrapper>
+      <CommuntiyDetailPageType type={"suggestion"} aiName={aiName} />
+      <S.DetailDiviner />
+      {renderDetail()}
+
+      <S.DetailCommentHeader>MOIN 답변</S.DetailCommentHeader>
+      <S.DetailDiviner />
+      <AS.AiServiceDetailReviewMyWrap>
+        {renderComment()}
       </AS.AiServiceDetailReviewMyWrap>
     </S.DetailPageWrapper>
   );

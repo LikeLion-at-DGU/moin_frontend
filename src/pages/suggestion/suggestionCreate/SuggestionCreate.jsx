@@ -17,7 +17,7 @@ function SuggestionCreate() {
   const [aiOption, setAiOption] = useState([]);
   const [currentAiOption, setCurrentAiOption] = useState("");
 
-  const [url, setUrl] = useState("https://");
+  const [url, setUrl] = useState("");
   const getCurrentAiOption = option => {
     setCurrentAiOption(option);
   };
@@ -45,11 +45,6 @@ function SuggestionCreate() {
   }, []);
 
   const handleClickWirte = async () => {
-    if (!url.startsWith("https://")) {
-      alert("https://로 시작하는 링크를 입력해주세요.");
-      return;
-    }
-
     if (title === "") {
       alert("제목을 입력해주세요.");
       return;
@@ -66,11 +61,12 @@ function SuggestionCreate() {
 
       console.log(currentAiOption);
       const data = {
-        ai: 5,
+        ai: currentAiOption == "" ? null : currentAiOption,
         title: title,
         content: value,
         url: url
       };
+
       console.log(headers);
       console.log(data);
       const response = await axios.post("suggestions", data, {

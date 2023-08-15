@@ -87,11 +87,10 @@ function CommunityCreatPost() {
 
       console.log(currentAiOption);
       const data = {
-        ai: currentAiOption,
+        ai: currentAiOption ?? null,
         category: category,
         title: title,
-        content: value,
-        image: []
+        content: value
       };
       console.log(headers);
       console.log(data);

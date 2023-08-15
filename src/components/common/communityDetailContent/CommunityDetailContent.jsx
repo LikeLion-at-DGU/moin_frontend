@@ -5,6 +5,8 @@ import PencilIcon from "../../../assets/images/icon/pencil.png";
 import EditDelete from "../editDelete/EditDelete";
 import axios from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
   const navigate = useNavigate();
@@ -35,6 +37,22 @@ const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
     navigate(`/community/edit/${id}`);
   };
 
+  const markdown = `
+  # 해딩
+
+  **굵게**
+  
+  하이 ㅋ
+
+  \`\`\`
+
+  code block
+
+  \`\`\`
+
+  > 인용쓰
+  `;
+
   return (
     <>
       <S.DetailTitleWrapper>
@@ -51,7 +69,14 @@ const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
         <S.DetailTitleGrayInfo>작성자 : {detail.writer}</S.DetailTitleGrayInfo>
         <S.DetailTitleGrayInfo>{detail.created_at}</S.DetailTitleGrayInfo>
       </S.DetailTitleInfoWrapper>
-      <S.DetailContent>{detail.content}</S.DetailContent>
+      <S.DetailContent>
+        <S.MarkdownWrapper>
+          <ReactMarkdown
+            children={detail.content}
+            remarkPlugins={[remarkGfm]}
+          />
+        </S.MarkdownWrapper>
+      </S.DetailContent>
     </>
   );
 };
