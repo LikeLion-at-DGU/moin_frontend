@@ -68,6 +68,7 @@ const CommentList = ({
                   {/* 보여지는 첫 번째 댓글 */}
                   <Comment
                     key={visibleComments[0].id}
+                    id={visibleComments[0].id}
                     content={visibleComments[0].content}
                     writer={visibleComments[0].writer}
                     created_at={visibleComments[0].created_at}

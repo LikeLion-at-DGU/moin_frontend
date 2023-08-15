@@ -45,39 +45,35 @@ const Comment = ({
     setIsEditing(false);
   };
 
-  // 유저 삭제
+  // 삭제 버튼 누르면 모달 창 열기
   const UserDeleteSubmit = () => {
     setIsModalOpen(true);
+  };
 
-    // if (userInfo) {
-    //   const accessToken = userInfo.accessToken; // 추출한 accessToken
-    //   const headers = {
-    //     Authorization: `Bearer ${accessToken}` // Bearer Token 설정
-    //   };
-    //   newComment = {
-    //     content: commentText
-    //   };
-    //   try {
-    //     const response = await axios.post(
-    //       `/api/v1/moin/detail/${aiName}/comments`,
-    //       newComment,
-    //       {
-    //         headers
-    //       }
-    //     );
+  // 유저 삭제
+  const userCommentOnclick = async () => {
+    const accessToken = userInfo.accessToken; // 추출한 accessToken
+    const headers = {
+      Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+    };
 
-    //     console.log("회원 댓글 등록 : ");
-    //     console.log(response);
-    //     if (response.status === 200) {
-    //       alert("댓글이 등록되었습니다.");
-    //       fetchData();
-    //       fetchDataMy();
-    //     }
-    //   } catch (e) {
-    //     console.log(e);
-    //     alert("댓글 등록에 실패하였습니다.");
-    //   }
-    // }
+    try {
+      const response = await axios.delete(`moin/detail/comments/${id}`, {
+        headers
+      });
+
+      console.log("회원 댓글 삭제: ");
+      console.log(response);
+      if (response.status === 204) {
+        alert("댓글이 삭제되었습니다.");
+        setIsModalOpen(false);
+        // 새로고침
+        window.location.reload();
+      }
+    } catch (e) {
+      console.log(e);
+      alert("댓글 삭제에 실패했습니다.");
+    }
   };
 
   // 비유저 삭제
@@ -170,7 +166,9 @@ const Comment = ({
                     정말로 삭제하시겠습니까?
                   </S.DeleteModalContentTitle>
                   <S.DeleteModalContentButtonWrap>
-                    <S.NotUserDeleteModalContentButtonConfirm type="submit">
+                    <S.NotUserDeleteModalContentButtonConfirm
+                      onClick={userCommentOnclick}
+                    >
                       확인
                     </S.NotUserDeleteModalContentButtonConfirm>
                     <S.NotUserDeleteModalContentButtonCancle

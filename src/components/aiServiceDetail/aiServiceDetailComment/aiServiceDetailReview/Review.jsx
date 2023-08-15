@@ -38,10 +38,18 @@ function Review() {
     }
   };
 
+  // 내 댓글
   const fetchDataMy = async () => {
     try {
-      const response = await axios.get(`/moin/detail/${aiName}/mycomments`);
+      const accessToken = userInfo.accessToken; // 추출한 accessToken
+      console.log(userInfo);
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
 
+      const response = await axios.get(`/moin/detail/${aiName}/mycomments`, {
+        headers
+      });
       const detailData = response.data;
       setMyComments(detailData);
     } catch (e) {
@@ -52,7 +60,7 @@ function Review() {
   const [showForm, setShowForm] = useState(true); // 댓글 작성 폼 보이기 여부 (댓글 삭제 시 다시 댓글 보이게)
 
   const handleSubmitComment = async (commentText, password) => {
-    // /api/v1/moin/detail/{aiName}/comments
+    // moin/detail/{aiName}/comments
     let newComment = "";
     if (userInfo) {
       const accessToken = userInfo.accessToken; // 추출한 accessToken
@@ -64,7 +72,7 @@ function Review() {
       };
       try {
         const response = await axios.post(
-          `/api/v1/moin/detail/${aiName}/comments`,
+          `moin/detail/${aiName}/comments`,
           newComment,
           {
             headers
@@ -97,7 +105,9 @@ function Review() {
         if (response.status === 200) {
           alert("댓글이 등록되었습니다.");
           fetchData();
-          fetchDataMy();
+          if (userInfo) {
+            fetchDataMy();
+          }
         }
       } catch (e) {
         console.log(e);
@@ -110,7 +120,9 @@ function Review() {
   // 초반 셋팅
   useEffect(() => {
     fetchData();
-    fetchDataMy();
+    if (userInfo) {
+      fetchDataMy();
+    }
   }, []);
 
   //페이지변경
