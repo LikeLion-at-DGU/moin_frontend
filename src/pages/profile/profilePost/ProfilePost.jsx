@@ -45,8 +45,6 @@ function ProfilePost() {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
 
-      let apiUrl = "";
-
       const response = await axios.get(
         `/mypage/posts${currentOption}?page=${currentPage}`,
         {
