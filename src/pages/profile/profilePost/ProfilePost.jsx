@@ -17,6 +17,21 @@ function ProfilePost() {
   const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(0);
 
+  // 셀렉터 옵션 (전체, qnas, commons, tips, suggestions)
+  const SelectorOption = [
+    { value: "", title: "전체" },
+    { value: "/qnas", title: "Q&A" },
+    { value: "/commons", title: "자유게시판" },
+    { value: "/tips", title: "꿀팁" },
+    { value: "/suggestions", title: "건의사항" }
+  ];
+
+  // 옵션 선택하기
+  const [currentOption, setCurrentOption] = useState("");
+  const getCurrentOption = option => {
+    setCurrentOption(option);
+  };
+
   useEffect(() => {
     if (userInfo) {
       fetchData();
@@ -30,9 +45,14 @@ function ProfilePost() {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
 
-      const response = await axios.get(`/mypage/posts?page=${currentPage}`, {
-        headers
-      });
+      let apiUrl = "";
+
+      const response = await axios.get(
+        `/mypage/posts${currentOption}?page=${currentPage}`,
+        {
+          headers
+        }
+      );
 
       const detailData = response.data;
       setData(detailData);
