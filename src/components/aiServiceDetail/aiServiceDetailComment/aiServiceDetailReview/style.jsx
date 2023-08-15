@@ -141,7 +141,7 @@ export const AiServiceDetailReviewCommentFormWrite = styled.form`
   margin-top: 2rem;
   /* margin-left: 2rem; */
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 export const AiServiceDetailReviewCommentFormWriteTextArea = styled.textarea`
