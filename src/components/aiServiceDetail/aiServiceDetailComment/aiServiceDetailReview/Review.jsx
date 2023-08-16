@@ -133,7 +133,7 @@ function Review() {
   }, [currentPage]);
 
   return (
-    <>
+    <S.ReviewWrapper>
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
       <CommentList
         comments={comments}
@@ -142,7 +142,7 @@ function Review() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-    </>
+    </S.ReviewWrapper>
   );
 }
 

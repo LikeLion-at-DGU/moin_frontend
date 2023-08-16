@@ -37,19 +37,29 @@ function AiServiceDetail() {
 
   const fetchData = async () => {
     try {
-      const accessToken = userInfo.accessToken; // 추출한 accessToken
-      console.log(userInfo);
-      const headers = {
-        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
-      };
+      if (userInfo) {
+        const accessToken = userInfo.accessToken; // 추출한 accessToken
+        console.log(userInfo);
+        const headers = {
+          Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+        };
 
-      const response = await axios.get(`/moin/detail/${aiName}`, { headers });
+        const response = await axios.get(`/moin/detail/${aiName}`, { headers });
 
-      const detailData = response.data;
+        const detailData = response.data;
 
-      setIntroContent(detailData);
-      setData(detailData);
-      setIsLiked(detailData.is_liked);
+        setIntroContent(detailData);
+        setData(detailData);
+        setIsLiked(detailData.is_liked);
+      } else {
+        const response = await axios.get(`/moin/detail/${aiName}`);
+
+        const detailData = response.data;
+
+        setIntroContent(detailData);
+        setData(detailData);
+        setIsLiked(detailData.is_liked);
+      }
     } catch (e) {
       console.log(e);
     }
