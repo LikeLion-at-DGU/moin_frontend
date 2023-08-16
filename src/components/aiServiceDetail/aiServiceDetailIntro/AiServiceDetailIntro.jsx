@@ -96,7 +96,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   return (
     <>
       {/* {item.name} */} <ToastContainer />
-      {/* 로그아웃 클릭 시 띄우는 모달창 */}
+      {/* 비회원 좋아요 클릭 시 띄우는 모달창 */}
       <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <S.AiServiceDetailWrap key={introContent.id}>
         <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
