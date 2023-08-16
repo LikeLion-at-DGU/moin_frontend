@@ -35,6 +35,7 @@ const SuggestionList = ({
     <>
       <S.AiServiceDetailTipWrap>
         <NoticeBanner
+          title={"이용안내"}
           content={
             "건의사항은 관리자 열람 이후, 건의 내용에 따라 답변까지 3-5일 소요됩니다."
           }

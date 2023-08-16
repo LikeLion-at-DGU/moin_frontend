@@ -1,11 +1,11 @@
 import React from "react";
 import * as S from "./style";
 
-function NoticeBanner({ content }) {
+function NoticeBanner({ title, content }) {
   return (
     <>
       <S.SuggestionHeaderWrapper>
-        <S.SuggestionHeaderText>💡&nbsp;&nbsp;이용안내 </S.SuggestionHeaderText>
+        <S.SuggestionHeaderText>💡&nbsp;&nbsp;{title} </S.SuggestionHeaderText>
         {content}
       </S.SuggestionHeaderWrapper>
     </>
