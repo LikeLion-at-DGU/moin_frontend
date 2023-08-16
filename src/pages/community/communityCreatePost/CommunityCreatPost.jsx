@@ -149,7 +149,14 @@ function CommunityCreatPost() {
               ))}
             </S.Select>
             <S.SelcetorDescriptionText>
-              *이용꿀팁 게시글은 서비스 선택이 필수적입니다.(Q&A는 선택사항)
+              {currentTab === 1 ? (
+                // 이용꿀팁 게시글은 서비스 선택이 필수적입니다.(Q&A는 선택사항)
+                <strong style={{ color: "#FF5D47", fontSize: "1.5rem" }}>
+                  *필수
+                </strong>
+              ) : (
+                <>*선택</>
+              )}
             </S.SelcetorDescriptionText>
           </S.SelcetorWrapper>
         ) : (
