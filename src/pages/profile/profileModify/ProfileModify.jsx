@@ -3,26 +3,32 @@ import ProfileHeader from "../../../components/profile/profileHeader/ProfileHead
 import MypageSetting from "../../../assets/images/icon/mypageSettingBlue.png";
 
 import * as S from "../../auths/authSignup/style";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "../../../api/axios";
+
 function ProfileModify() {
+  const { state } = useLocation();
   const [user, setUser] = useState({
-    job: "",
-    nickname: "",
-    introduce: ""
+    job: state.job,
+    nickname: state.nickname,
+    introduce: state.description
   });
+
+  console.log(state);
 
   const [jobs, setJobs] = useState([]);
 
   const jobList = [
-    "개발자",
-    "디자이너",
-    "기획자",
-    "마케터",
-    "영상/사진 작가",
-    "번역가",
-    "대학생",
+    "IT",
+    "디자인",
+    "학생",
+    "마케팅",
+    "연구",
+    "금융",
+    "교육",
     "기타"
   ];
+
   const navigate = useNavigate();
   useEffect(() => {
     // 데이터 통신해서 API넣기
@@ -34,8 +40,8 @@ function ProfileModify() {
     // 모든 필수 정보가 입력되었는지 확인
 
     try {
-      // axios.post("/signup", user);
       alert("수정이 완료되었습니다.");
+
       navigate("/mypage");
     } catch (error) {
       alert("수정에 실패했습니다.");
