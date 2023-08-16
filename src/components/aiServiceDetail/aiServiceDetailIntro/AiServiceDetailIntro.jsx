@@ -62,7 +62,6 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
 
         if (response.status === 200) {
           setIsLiked(false);
-          setLikeCnt(likeCnt - 1);
         }
       } else {
         const response = await axios.post(`moin/detail/${aiName}/like`, null, {
@@ -70,7 +69,6 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
         });
         if (response.status === 200) {
           setIsLiked(true);
-          setLikeCnt(likeCnt + 1);
         }
       }
     } catch (error) {}

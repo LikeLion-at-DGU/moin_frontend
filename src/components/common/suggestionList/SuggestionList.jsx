@@ -9,6 +9,7 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../noPage/NoPage";
+import NoticeBanner from "../noticeBanner/NoticeBanner";
 
 const SuggestionList = ({
   data,
@@ -33,13 +34,13 @@ const SuggestionList = ({
   return (
     <>
       <S.AiServiceDetailTipWrap>
-        <S.SuggestionHeaderWrapper>
-          <S.SuggestionHeaderText>
-            💡&nbsp;&nbsp;이용안내{" "}
-          </S.SuggestionHeaderText>
-          건의사항은 관리자 열람 이후, 건의 내용에 따라 답변까지 3-5일
-          소요됩니다.
-        </S.SuggestionHeaderWrapper>
+        <NoticeBanner
+          title={"이용안내"}
+          content={
+            "건의사항은 관리자 열람 이후, 건의 내용에 따라 답변까지 3-5일 소요됩니다."
+          }
+        />
+
         <S.AiServiceDetailTipHeader>
           <S.AiServiceDetailTipHeaderWriteContent
             onClick={() => {
@@ -83,7 +84,7 @@ const SuggestionList = ({
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.created_at}
+                    {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.reflected_status === 0 ? (

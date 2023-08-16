@@ -75,6 +75,7 @@ function CommunityQna() {
   return (
     <>
       <TipsList
+        category="qna"
         data={qnaContent}
         url={"/community/qnas/"}
         writeUrl={"/community/create"}

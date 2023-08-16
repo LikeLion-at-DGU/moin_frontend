@@ -41,8 +41,10 @@ export const CommunityCreateButton = styled.button`
   font-weight: 700;
   margin-top: 2rem;
   cursor: pointer;
-  &:focus {
-    outline: none;
+  &:hover {
+    background-color: white;
+    color: #4285f4;
+    border: 1px solid #4285f4;
   }
 `;
 export const ButtonWrapper = styled.div`
@@ -81,5 +83,6 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option`
-  /* 스타일링을 원하는대로 설정하세요 */
+  background-color: #ffffff;
+  color: #333333;
 `;

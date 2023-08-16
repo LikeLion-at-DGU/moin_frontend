@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./style";
 
@@ -34,7 +34,9 @@ const List = ({
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
-
+  const location = useLocation();
+  const decodeName = decodeURI(location.pathname.split("/")[2]);
+  console.log(decodeName);
   return (
     <>
       <S.AiServiceDetailTipWrap>
@@ -43,7 +45,11 @@ const List = ({
             <S.AiServiceDetailTipHeaderWriteContent
               onClick={() => {
                 // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo ? navigate("/login") : navigate(writeUrl);
+                !userInfo
+                  ? navigate("/login")
+                  : navigate(writeUrl, {
+                      state: { category: "tip", ai: decodeName }
+                    });
               }}
             >
               <S.StyledPencilIcon />
@@ -71,7 +77,12 @@ const List = ({
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  좋아요
+                </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  조회수
+                </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
@@ -85,20 +96,23 @@ const List = ({
                       ? idx + 1 + (currentPage - 1) * itemsPerPage
                       : count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
-                    {data.title}
-                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTdTitle>
+                    {data.title}{" "}
+                    <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>
+                      [{data.comments_cnt}]
+                    </strong>
+                  </S.AiServiceDetailTipTableTdTitle>
                   <S.AiServiceDetailTipTableTd>
                     {data.ai}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.created_at}
+                    {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    <S.LikeIcon />
                     {data.likes_cnt}
-                    <S.CommentIcon />
-                    {data.comments_cnt}
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
+                    {data.view_cnt}
                   </S.AiServiceDetailTipTableTd>
                 </S.AiServiceDetailTipTableTrContent>
               ))}
