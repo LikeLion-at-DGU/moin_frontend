@@ -21,6 +21,7 @@ function SuggestionDetailPage() {
 
   const [comment, setComment] = useState({});
 
+  // 좋아요
   const fetchComment = async () => {
     try {
       const response = await axios.get(`suggestions/${id}/comments`);
@@ -62,10 +63,9 @@ function SuggestionDetailPage() {
   const fetchDetail = async () => {
     try {
       const response = await axios.get(`suggestions/${id}`);
-      console.log(response);
+
       setDetail(response.data);
       setAiName(response.data.ai);
-
       setLikeCount(response.data.likes_cnt);
       setDetail(response.data);
     } catch (error) {
@@ -82,7 +82,13 @@ function SuggestionDetailPage() {
       </>
     ) : (
       <>
-        <CommunityDetailContent detail={detail} isWriter={isWriter} id={id} />
+        <CommunityDetailContent
+          detail={detail}
+          isWriter={isWriter}
+          id={id}
+          user={user}
+          type={"suggestion"}
+        />
         <S.DetailDiviner />
         <S.LikeViewWrapper>
           <S.DetailViewText>

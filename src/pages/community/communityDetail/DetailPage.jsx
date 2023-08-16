@@ -135,6 +135,7 @@ function DetailPage() {
           isWriter={isWriter}
           id={detail.id}
           user={user}
+          type={"community"}
         />
         <S.DetailDiviner />
         <S.LikeViewWrapper>
