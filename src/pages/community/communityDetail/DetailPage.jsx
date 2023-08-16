@@ -15,7 +15,7 @@ import CommonCommentList from "../../../components/common/commonCommentList/Comm
 
 function DetailPage() {
   const [user, setUser] = useRecoilState(userState);
-
+  const [commentContent, setCommentContent] = useState("");
   const [comments, setComments] = useState({});
   const [viewCnt, setViewCnt] = useState(0);
   const [isFirst, setIsFirst] = useState(true);
@@ -34,7 +34,22 @@ function DetailPage() {
   const [isWriter, setIsWriter] = useState(false);
   const [detail, setDetail] = useState({});
   const [likeImage, setLikeImage] = useState(ThumbOutlineIcon);
-  let nowView = 0;
+
+  // 댓글 가져오기
+  // /api/v1/communities/posts/{post_id}/comments?page={num}
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(
+        `communities/posts/${id}/comments?page=${currentPage}`
+      );
+      console.log(response);
+      setComments(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 좋아요 토글
   const handleLikeToggle = async () => {
     if (!user) {
       // 로그인 모달창\
@@ -113,6 +128,7 @@ function DetailPage() {
       fetchIsWriter();
     }
     fetchDetail();
+    fetchComments();
   }, []);
 
   // 처음 Detail 렌더링
@@ -121,6 +137,12 @@ function DetailPage() {
     fetchDetail();
   }, [likeImage]);
 
+  // 새 페이지마다 댓글 가져오기
+  useEffect(() => {
+    fetchComments();
+  }, [currentPage]);
+
+  // ChangeCommentValue
   // 디테일 렌더링
   const renderDetail = () => {
     return !detail ? (
