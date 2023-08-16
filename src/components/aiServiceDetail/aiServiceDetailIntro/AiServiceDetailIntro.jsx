@@ -15,6 +15,7 @@ import CompanyIcon from "../../../assets/images/icon/company.png";
 import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
 import Modal from "../../common/modal/Modal";
+import LoginModal from "../../common/modal/loginModal/LoginModal";
 
 import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
 import { ToastContainer, toast } from "react-toastify";
@@ -43,11 +44,11 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   // 비회원 비활성화 기능 클릭 시 띄우는 모달창
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 비회원이 비활성화 기능 클릭 시 로그인 창으로 이동
-  const NonUserSubmit = () => {
-    navigate("/login");
-    return;
-  };
+  // // 비회원이 비활성화 기능 클릭 시 로그인 창으로 이동
+  // const NonUserSubmit = () => {
+  //   navigate("/login");
+  //   return;
+  // };
 
   const handleLikeToggle = async () => {
     // 비회원이 좋아요 버튼 클릭 시 모달창 띄우기
@@ -98,12 +99,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
     <>
       {/* {item.name} */} <ToastContainer />
       {/* 로그아웃 클릭 시 띄우는 모달창 */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onConfirm={NonUserSubmit}
-        content={"로그인이 필요한 서비스입니다."}
-      />
+      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <S.AiServiceDetailWrap key={introContent.id}>
         <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
         <S.AiServiceDetailHeader>
