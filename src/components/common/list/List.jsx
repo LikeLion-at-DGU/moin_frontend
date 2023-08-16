@@ -77,7 +77,12 @@ const List = ({
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  좋아요
+                </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  조회수
+                </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
@@ -92,7 +97,10 @@ const List = ({
                       : count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.title}
+                    {data.title}{" "}
+                    <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>
+                      [{data.comments_cnt}]
+                    </strong>
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.ai}
@@ -101,11 +109,9 @@ const List = ({
                     {data.created_at}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    <S.LikeIcon />
                     {data.likes_cnt}
-                    <S.CommentIcon />
-                    {data.comments_cnt}
-                    <S.EyeIcon />
+                  </S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTd>
                     {data.view_cnt}
                   </S.AiServiceDetailTipTableTd>
                 </S.AiServiceDetailTipTableTrContent>
