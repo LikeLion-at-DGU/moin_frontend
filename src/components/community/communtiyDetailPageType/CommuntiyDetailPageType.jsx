@@ -22,7 +22,7 @@ function CommuntiyDetailPageType({ type, aiName }) {
           ? "건의사항"
           : type === "notice"
           ? "공지사항"
-          : "기타"}
+          : "수정"}
       </S.DetailPageTypeText>
     </S.DetailPageType>
   );

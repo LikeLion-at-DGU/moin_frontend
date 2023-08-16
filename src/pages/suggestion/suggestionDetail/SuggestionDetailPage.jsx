@@ -15,17 +15,16 @@ function SuggestionDetailPage() {
   const [user] = useRecoilState(userState);
 
   const [detail, setDetail] = useState({});
-  const [aiName, setAiName] = useState("");
   const [isWriter, setIsWriter] = useState(false);
   const [isUser, setIsUser] = useState(true);
 
-  const [comment, setComment] = useState({});
+  const [comment, setComment] = useState([]);
 
   // 좋아요
   const fetchComment = async () => {
     try {
       const response = await axios.get(`suggestions/${id}/comments`);
-      console.log(response);
+
       setComment(response.data);
     } catch (error) {
       console.log(error);
@@ -65,9 +64,6 @@ function SuggestionDetailPage() {
       const response = await axios.get(`suggestions/${id}`);
 
       setDetail(response.data);
-      setAiName(response.data.ai);
-      setLikeCount(response.data.likes_cnt);
-      setDetail(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -84,7 +80,7 @@ function SuggestionDetailPage() {
       <>
         <CommunityDetailContent
           detail={detail}
-          isWriter={isWriter}
+          isWriter={false}
           id={id}
           user={user}
           type={"suggestion"}
@@ -105,39 +101,39 @@ function SuggestionDetailPage() {
     );
   };
 
-  // ------------------ 댓글 렌더링 ------------------
+  // ------------------ 댓글 렌더링 -----------------
+  console.log(comment[0]);
   const renderComment = () => {
-    return !comment || comment.length ? (
-      <>
-        <AS.AiServiceDetailReviewListContent
-          style={{ marginLeft: "0rem", color: "#282828" }}
-        >
-          작성된 답변이 없습니다.
-        </AS.AiServiceDetailReviewListContent>
-      </>
+    return comment.length === 0 ? (
+      <AS.AiServiceDetailReviewListContent
+        style={{ marginLeft: "0rem", color: "#282828" }}
+      >
+        작성된 답변이 없습니다.
+      </AS.AiServiceDetailReviewListContent>
     ) : (
-      <>
-        <AS.AiServiceDetailReviewListHeader>
-          <AS.AiServiceDetailReviewListHeaderWrapper>
-            <AS.AiServiceDetailReviewListWriter>
-              {comment.writer}
-            </AS.AiServiceDetailReviewListWriter>
-            <AS.AiServiceDetailReviewListDate>
-              {comment.created_at}
-            </AS.AiServiceDetailReviewListDate>
-          </AS.AiServiceDetailReviewListHeaderWrapper>
-          <EditDelete isWriter={false} id={comment.id} />
-        </AS.AiServiceDetailReviewListHeader>
-        <AS.AiServiceDetailReviewListContent>
-          {comment.content}
-        </AS.AiServiceDetailReviewListContent>
-      </>
+      comment.map(commentItem => (
+        <S.Wrapper key={commentItem.id}>
+          <AS.AiServiceDetailReviewListHeader>
+            <AS.AiServiceDetailReviewListHeaderWrapper>
+              <AS.AiServiceDetailReviewListWriter>
+                {commentItem.writer}
+              </AS.AiServiceDetailReviewListWriter>
+              <AS.AiServiceDetailReviewListDate>
+                {commentItem.created_at}
+              </AS.AiServiceDetailReviewListDate>
+            </AS.AiServiceDetailReviewListHeaderWrapper>
+            <EditDelete isWriter={false} id={commentItem.id} />
+          </AS.AiServiceDetailReviewListHeader>
+          <AS.AiServiceDetailReviewListContent>
+            {commentItem.content}
+          </AS.AiServiceDetailReviewListContent>
+        </S.Wrapper>
+      ))
     );
   };
-
   return (
     <S.DetailPageWrapper>
-      <CommuntiyDetailPageType type={"suggestion"} aiName={aiName} />
+      <CommuntiyDetailPageType type={"suggestion"} aiName={""} />
       <S.DetailDiviner />
       {renderDetail()}
 

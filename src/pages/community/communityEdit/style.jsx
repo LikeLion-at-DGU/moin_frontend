@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 export const EditWraaper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  width: 80%;
+
+  max-width: 1178px;
   margin: 0 auto;
   margin-top: 10rem;
   text-align: center;
