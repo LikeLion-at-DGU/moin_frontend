@@ -15,6 +15,7 @@ import Review from "./Review";
 import { userState } from "../../../../context/authState";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
+import LoginModal from "../../../common/modal/loginModal/LoginModal";
 
 const ARRAY = [0, 1, 2, 3, 4];
 
@@ -22,6 +23,9 @@ export function AiServiceDetailReview({ introContent, setRating }) {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const navigate = useNavigate();
+
+  // 비회원 비활성화 기능 클릭 시 띄우는 모달창
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 별점 기본값 설정
   const [clicked, setClicked] = useState(
@@ -71,10 +75,10 @@ export function AiServiceDetailReview({ introContent, setRating }) {
     } catch (e) {}
   };
 
-  // 로그인하지 않은 경우 로그인 페이지로 이동
   const handleSubmit = () => {
+    // 비회원이 별점 등록 버튼 클릭 시 모달창 띄우기
     if (!userInfo) {
-      navigate("/login");
+      setIsModalOpen(true);
       return;
     }
     sendReview();
@@ -83,6 +87,11 @@ export function AiServiceDetailReview({ introContent, setRating }) {
   return (
     <>
       <S.AiServiceDetailReviewWrap>
+        {/* 비회원 별점 클릭 시 띄우는 모달창 */}
+        <LoginModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
         <S.AiServiceDetailReviewStarWrap>
           <S.AiServiceDetailReviewStarMy>
             <S.AiServiceDetailReviewStarMyHeader>
