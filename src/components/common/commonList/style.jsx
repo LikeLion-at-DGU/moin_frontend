@@ -105,6 +105,13 @@ export const AiServiceDetailTipTableTd = styled.td`
   text-align: center;
 `;
 
+export const AiServiceDetailTipTableTdTitle = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: flex-start;
+`;
+
 export const LikeIcon = styled(FaRegThumbsUp)`
   color: black;
   font-size: 1.4rem;

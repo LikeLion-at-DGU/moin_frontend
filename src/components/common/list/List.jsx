@@ -96,17 +96,17 @@ const List = ({
                       ? idx + 1 + (currentPage - 1) * itemsPerPage
                       : count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTdTitle>
                     {data.title}{" "}
                     <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>
                       [{data.comments_cnt}]
                     </strong>
-                  </S.AiServiceDetailTipTableTd>
+                  </S.AiServiceDetailTipTableTdTitle>
                   <S.AiServiceDetailTipTableTd>
                     {data.ai}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.created_at}
+                    {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.likes_cnt}

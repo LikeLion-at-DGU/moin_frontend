@@ -83,7 +83,7 @@ const SuggestionList = ({
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.created_at}
+                    {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.reflected_status === 0 ? (

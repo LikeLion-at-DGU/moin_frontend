@@ -56,7 +56,7 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.created_at}
+                    {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.view_cnt}
