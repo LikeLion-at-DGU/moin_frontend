@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style.jsx";
 import AboutSection1_Banner from "./AboutSection1/AboutSection1_Banner.png";
-import AboutSection1_Smartphone from "./AboutSection1/AboutSection1_Smartphone.png";
+import AboutSection1_Smartphone1 from "./AboutSection1/AboutSection1_Smartphone1.png";
+import AboutSection1_Smartphone2 from "./AboutSection1/AboutSection1_Smartphone2.png";
 import AboutSection1_Ellipse from "./AboutSection1/AboutSection1_Ellipse.png";
 import AboutSection1_3d1 from "./AboutSection1/AboutSection1_3d1.png";
 import AboutSection1_3d2 from "./AboutSection1/AboutSection1_3d2.png";
@@ -44,13 +45,9 @@ function About() {
 
   const [currentSection, setCurrentSection] = useState("none");
   useEffect(() => {
+    console.log(Ref_AboutSection1.current.offsetBottom);
     getCurrentSection();
-    // console.log(position);
   }, [position]);
-
-  useEffect(() => {
-    // console.log(currentSection);
-  }, [currentSection]);
 
   const Ref_AboutSection1 = useRef();
   const Ref_AboutSection2 = useRef();
@@ -61,21 +58,39 @@ function About() {
   const getCurrentSection = () => {
     if (
       position >= Ref_AboutSection1.current.offsetTop - 50 &&
-      position < Ref_AboutSection2.current.offsetTop - 50
+      position <
+        Ref_AboutSection1.current.offsetTop +
+          Ref_AboutSection1.current.offsetHeight -
+          30
     ) {
       setCurrentSection("AboutSection1");
     } else if (
-      position >= Ref_AboutSection2.current.offsetTop - 50 &&
-      position < Ref_AboutSection3_1.current.offsetTop - 50
+      position >=
+        Ref_AboutSection1.current.offsetTop +
+          Ref_AboutSection1.current.offsetHeight -
+          30 &&
+      position <
+        Ref_AboutSection2.current.offsetTop +
+          Ref_AboutSection2.current.offsetHeight -
+          50
     ) {
       setCurrentSection("AboutSection2");
     } else if (
-      position >= Ref_AboutSection3_1.current.offsetTop - 50 &&
-      position < Ref_AboutSection3_2.current.offsetTop - 50
+      position >=
+        Ref_AboutSection2.current.offsetTop +
+          Ref_AboutSection2.current.offsetHeight -
+          50 &&
+      position <
+        Ref_AboutSection3_1.current.offsetTop +
+          Ref_AboutSection3_1.current.offsetHeight -
+          50
     ) {
       setCurrentSection("AboutSection3_1");
     } else if (
-      position >= Ref_AboutSection3_2.current.offsetTop - 50 &&
+      position <
+        Ref_AboutSection3_2.current.offsetTop +
+          Ref_AboutSection3_2.current.offsetHeight -
+          50 &&
       position < Ref_AboutSection5.current.offsetTop - 200
     ) {
       setCurrentSection("AboutSection3_2");
@@ -107,22 +122,38 @@ function About() {
         >
           {/* 제목 */}
           <S.AboutSection1_Title src={AboutSection1_Banner} />
-          {/* 스마트폰 */}
+          {/* 스마트폰1 */}
           <S.AboutSection_Img
             className={
               currentSection == "AboutSection1"
                 ? "AboutSection1_Smartphone"
                 : "display_none"
             }
-            src={AboutSection1_Smartphone}
-            style={{ width: "30%", top: "60%", left: "50%", zIndex: "2" }}
+            src={AboutSection1_Smartphone1}
+            style={{ width: "60%", top: "57%", left: "55%", zIndex: "3" }}
+          />
+          {/* 스마트폰2 */}
+          <S.AboutSection_Img
+            className={
+              currentSection == "AboutSection1"
+                ? "AboutSection1_Smartphone"
+                : "display_none"
+            }
+            src={AboutSection1_Smartphone2}
+            style={{
+              animationDuration: "1.7s",
+              width: "55%",
+              top: "67%",
+              left: "43%",
+              zIndex: "2"
+            }}
           />
           {/* 텍스트 */}
           <S.AboutSection_Img
             src={AboutSection1_Ellipse}
             style={{
               width: "50%",
-              top: "72%",
+              top: "55%",
               left: "50%"
             }}
           />
@@ -136,9 +167,9 @@ function About() {
             src={AboutSection1_3d1}
             style={{
               animationDuration: "2.6s",
-              width: "20%",
-              top: "37%",
-              left: "24%"
+              width: "17%",
+              top: "45%",
+              left: "20%"
 
               // transform: "rotate(-10.219deg)"
             }}
@@ -154,8 +185,8 @@ function About() {
             style={{
               animationDuration: "2.4s",
               width: "15%",
-              top: "65%",
-              left: "15%"
+              top: "72%",
+              left: "12%"
             }}
           />
 
@@ -170,8 +201,8 @@ function About() {
             style={{
               animationDuration: "2.5s",
               width: "18%",
-              top: "43%",
-              left: "75%"
+              top: "46%",
+              left: "80%"
 
               // transform: "rotate(13.687deg)"
             }}
@@ -186,9 +217,9 @@ function About() {
             src={AboutSection1_3d2}
             style={{
               animationDuration: "4s",
-              width: "15%",
-              top: "70%",
-              left: "82%"
+              width: "13%",
+              top: "72%",
+              left: "85%"
             }}
           />
         </S.AboutSection_Body>
