@@ -41,7 +41,7 @@ function CommentInput({ isUser, id, fetchDetail, fetchComments }) {
     }
   };
 
-  return !isUser ? (
+  return !userInfo ? (
     <>
       <S.DetailCommentInputWrapper
         onClick={() => {
@@ -49,7 +49,7 @@ function CommentInput({ isUser, id, fetchDetail, fetchComments }) {
         }}
       >
         <S.DetailCommentInput
-          placeholder="로그인 후 댓글을 작성할 수 있습니다."
+          placeholder="커뮤니티는 로그인 후 댓글을 작성할 수 있습니다."
           disabled
         />
         <S.DetailCommentButton>로그인</S.DetailCommentButton>

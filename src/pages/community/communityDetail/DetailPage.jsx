@@ -86,18 +86,41 @@ function DetailPage() {
   };
 
   const fetchDetail = async () => {
-    try {
-      const response = await axios.get(`communities/${type}/${id}`);
-      setDetail(response.data);
-      if (isFirst) {
-        setViewCnt(response.data.view_cnt);
-        setIsFirst(false);
+    if (user) {
+      const accessToken = user.accessToken ?? null; // 추출한 accessToken
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+      try {
+        const response = await axios.get(`communities/${type}/${id}`, {
+          headers
+        });
+        if (isFirst) {
+          setViewCnt(response.data.view_cnt);
+          setIsFirst(false);
 
-        setLikeImage(response.data.is_liked ? ThumbIcon : ThumbOutlineIcon);
-      }
-      setCommentContent();
-      setAiName(response.data.ai);
-    } catch (error) {}
+          setLikeImage(response.data.is_liked ? ThumbIcon : ThumbOutlineIcon);
+        }
+        setDetail(response.data);
+
+        setCommentContent();
+        setAiName(response.data.ai);
+      } catch (error) {}
+    } else {
+      try {
+        const response = await axios.get(`communities/${type}/${id}`);
+        if (isFirst) {
+          setViewCnt(response.data.view_cnt);
+          setIsFirst(false);
+
+          setLikeImage(response.data.is_liked ? ThumbIcon : ThumbOutlineIcon);
+        }
+        setDetail(response.data);
+
+        setCommentContent();
+        setAiName(response.data.ai);
+      } catch (error) {}
+    }
   };
 
   // writer 확인
