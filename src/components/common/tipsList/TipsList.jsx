@@ -34,7 +34,7 @@ const TipsList = ({
   //Paging
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
-  console.log(data);
+
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);

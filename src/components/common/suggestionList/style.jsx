@@ -50,9 +50,16 @@ export const AiServiceDetailTipWrap = styled.div`
 // 헤더 (글쓰기, 정렬순)
 export const AiServiceDetailTipHeader = styled.div`
   display: flex;
+  align-items: center;
 
   width: 95%;
   margin-top: 3.1rem;
+  cursor: pointer;
+
+  :hover {
+    color: white;
+    background-color: #4285f4;
+  }
 `;
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
@@ -76,13 +83,6 @@ export const AiServiceDetailTipHeaderWriteContent = styled.div`
   border-radius: 10px;
   border: 2px solid #4285f4;
   padding: 0.7rem 1rem;
-
-  cursor: pointer;
-
-  :hover {
-    color: white;
-    background-color: #4285f4;
-  }
 `;
 
 export const StyledPencilIcon = styled(BiSolidPencil)`

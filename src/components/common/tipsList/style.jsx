@@ -44,6 +44,8 @@ export const AiServiceDetailTipHeaderWrite = styled.div`
 
 export const AiServiceDetailTipHeaderWriteContent = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
   font-weight: 500;
   color: #4285f4;
