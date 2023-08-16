@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import axios from "../../../api/axios";
-function CommentInput({ isUser, id }) {
+function CommentInput({ isUser, id, fetchDetail, fetchComments }) {
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const navigate = useNavigate();
   const [content, setContent] = useState("");
@@ -32,13 +32,13 @@ function CommentInput({ isUser, id }) {
         }
       );
       if (response.status === 200) {
-        alert("댓글이 등록되었습니다.");
+        setContent("");
+        fetchDetail();
+        fetchComments();
       }
     } catch (err) {
       console.log(err);
     }
-
-    setContent("");
   };
 
   return !isUser ? (
