@@ -105,6 +105,8 @@ const List = ({
                     {data.likes_cnt}
                     <S.CommentIcon />
                     {data.comments_cnt}
+                    <S.EyeIcon />
+                    {data.view_cnt}
                   </S.AiServiceDetailTipTableTd>
                 </S.AiServiceDetailTipTableTrContent>
               ))}

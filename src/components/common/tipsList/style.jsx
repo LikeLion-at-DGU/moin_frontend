@@ -1,6 +1,7 @@
 import { styled, keyframes } from "styled-components";
 import { BiSolidPencil } from "react-icons/bi";
 import { FaRegThumbsUp } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa6";
 import { FaRegCommentAlt } from "react-icons/fa";
 
 const fadeInAnimation = keyframes`
@@ -21,6 +22,14 @@ export const AiServiceDetailTipTableTrContent = styled.tr`
     background-color: #f0f0f0;
   }
 `;
+
+export const EyeIcon = styled(FaEye)`
+  color: black;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+`;
+
 export const AiServiceDetailTipWrap = styled.div`
   display: flex;
   flex-direction: column;
