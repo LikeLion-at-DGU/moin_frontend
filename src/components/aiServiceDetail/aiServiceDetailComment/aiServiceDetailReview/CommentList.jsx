@@ -76,7 +76,7 @@ const CommentList = ({
             {myCommentsContent.length > 1 && (
               <S.MoreButtonWrap>
                 <S.MoreButton onClick={handleToggleShowMore}>
-                  {showMore ? "접기" : "펼치기"}
+                  {showMore ? "접기 ∧" : "펼치기 ∨"}
                 </S.MoreButton>
               </S.MoreButtonWrap>
             )}

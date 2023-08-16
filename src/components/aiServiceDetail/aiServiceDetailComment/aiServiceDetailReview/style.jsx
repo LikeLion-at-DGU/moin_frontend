@@ -141,7 +141,6 @@ export const AiServiceDetailReviewCommentFormWrite = styled.form`
   margin-top: 2rem;
   /* margin-left: 2rem; */
   justify-content: center;
-  align-items: center;
 `;
 
 export const AiServiceDetailReviewCommentFormWriteTextArea = styled.textarea`
@@ -432,6 +431,7 @@ export const MyCommentsWrap = styled.div`
 export const MoreButtonWrap = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding-right: 6rem;
 `;
 
 export const MoreButton = styled.button`
