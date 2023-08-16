@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./style";
 
@@ -34,7 +34,9 @@ const List = ({
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
-
+  const location = useLocation();
+  const decodeName = decodeURI(location.pathname.split("/")[2]);
+  console.log(decodeName);
   return (
     <>
       <S.AiServiceDetailTipWrap>
@@ -43,7 +45,11 @@ const List = ({
             <S.AiServiceDetailTipHeaderWriteContent
               onClick={() => {
                 // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo ? navigate("/login") : navigate(writeUrl);
+                !userInfo
+                  ? navigate("/login")
+                  : navigate(writeUrl, {
+                      state: { category: "tip", ai: decodeName }
+                    });
               }}
             >
               <S.StyledPencilIcon />

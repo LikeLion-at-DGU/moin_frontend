@@ -42,7 +42,11 @@ const CommonList = ({
             <S.AiServiceDetailTipHeaderWriteContent
               onClick={() => {
                 // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo ? navigate("/login") : navigate(writeUrl);
+                !userInfo
+                  ? navigate("/login")
+                  : navigate(writeUrl, {
+                      state: { category: "common", ai: null }
+                    });
               }}
             >
               <S.StyledPencilIcon />

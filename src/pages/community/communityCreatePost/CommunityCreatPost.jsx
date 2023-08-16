@@ -9,13 +9,15 @@ import "./mdEditorStyle.css";
 import * as AIS from "../../ai/style";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function CommunityCreatPost() {
   const navigate = useNavigate();
   // ai
   const [aiOption, setAiOption] = useState([]);
   const [currentAiOption, setCurrentAiOption] = useState("");
+
+  const { state } = useLocation();
   // 탭 기능 구현
   const [currentTab, setCurrentTab] = useState(0);
   const [category, setCategory] = useState("common"); // 카테고리
@@ -61,6 +63,16 @@ function CommunityCreatPost() {
 
   // ai목록 불러오기
   useEffect(() => {
+    console.log(state);
+    setCurrentTab(
+      state.category === "undefined"
+        ? 0
+        : state.category === "common"
+        ? 0
+        : state.category === "tip"
+        ? 1
+        : 2
+    );
     fetchAiContent();
   }, []);
 
@@ -85,7 +97,6 @@ function CommunityCreatPost() {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
 
-      console.log(currentAiOption);
       const data = {
         ai: currentAiOption ?? null,
         category: category,
@@ -106,6 +117,7 @@ function CommunityCreatPost() {
       alert("게시글 작성에 실패하였습니다.");
     }
   };
+  console.log(state.ai);
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
@@ -142,11 +154,26 @@ function CommunityCreatPost() {
               onChange={e => getCurrentAiOption(e.target.value)}
             >
               <S.Option value={null}>▿ 서비스 선택</S.Option>
-              {aiOption.map((ai, index) => (
-                <S.Option key={index} value={ai.title}>
-                  {ai.title}
-                </S.Option>
-              ))}
+              {
+                state.ai !== "" ? (
+                  <S.Option value={state.ai} selected>
+                    {state.ai}
+                  </S.Option>
+                ) : (
+                  <></>
+                ) // 수정할 때 기존 ai가 있으면 기존 ai를 선택한 상태로 둔다.
+              }
+              {aiOption.map((ai, index) =>
+                state.ai === ai.title ? (
+                  <></>
+                ) : (
+                  <>
+                    <S.Option key={index} value={ai.title}>
+                      {ai.title}
+                    </S.Option>
+                  </>
+                )
+              )}
             </S.Select>
             <S.SelcetorDescriptionText>
               {currentTab === 1 ? (

@@ -72,6 +72,7 @@ function CommunityTips() {
   return (
     <>
       <TipsList
+        category={"tip"}
         data={tipContent}
         url={"/community/tips/"}
         writeUrl={"/community/create"}
