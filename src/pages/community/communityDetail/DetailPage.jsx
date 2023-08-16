@@ -15,7 +15,7 @@ import CommonCommentList from "../../../components/common/commonCommentList/Comm
 
 function DetailPage() {
   const [user, setUser] = useRecoilState(userState);
-
+  const [commentContent, setCommentContent] = useState("");
   const [comments, setComments] = useState({});
   const [viewCnt, setViewCnt] = useState(0);
   const [isFirst, setIsFirst] = useState(true);
@@ -34,7 +34,20 @@ function DetailPage() {
   const [isWriter, setIsWriter] = useState(false);
   const [detail, setDetail] = useState({});
   const [likeImage, setLikeImage] = useState(ThumbOutlineIcon);
-  let nowView = 0;
+
+  // 댓글 가져오기
+  // /api/v1/communities/posts/{post_id}/comments?page={num}
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(
+        `communities/posts/${id}/comments?page=${currentPage}`
+      );
+      setComments(response.data);
+      console.log(response.data);
+    } catch (error) {}
+  };
+
+  // 좋아요 토글
   const handleLikeToggle = async () => {
     if (!user) {
       // 로그인 모달창\
@@ -56,8 +69,7 @@ function DetailPage() {
         const response = await axios.delete(`communities/${type}/${id}`, {
           headers
         });
-        console.log(response);
-        console.log("안좋아요ㅕ");
+
         if (response.status === 200) {
           setLikeImage(ThumbOutlineIcon);
         }
@@ -65,8 +77,7 @@ function DetailPage() {
         const response = await axios.post(`communities/${type}/${id}`, null, {
           headers
         });
-        console.log(response);
-        console.log("좋아요");
+
         if (response.status === 200) {
           setLikeImage(ThumbIcon);
         }
@@ -75,16 +86,40 @@ function DetailPage() {
   };
 
   const fetchDetail = async () => {
-    try {
-      const response = await axios.get(`communities/${type}/${id}`);
-      setDetail(response.data);
-      if (isFirst) {
-        setViewCnt(response.data.view_cnt);
-        setIsFirst(false);
-      }
-      setAiName(response.data.ai);
-    } catch (error) {
-      console.log(error);
+    if (user) {
+      const accessToken = user.accessToken ?? null; // 추출한 accessToken
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+      try {
+        const response = await axios.get(`communities/${type}/${id}`, {
+          headers
+        });
+        if (isFirst) {
+          setViewCnt(response.data.view_cnt);
+          setIsFirst(false);
+
+          setLikeImage(response.data.is_liked ? ThumbIcon : ThumbOutlineIcon);
+        }
+        setDetail(response.data);
+
+        setCommentContent();
+        setAiName(response.data.ai);
+      } catch (error) {}
+    } else {
+      try {
+        const response = await axios.get(`communities/${type}/${id}`);
+        if (isFirst) {
+          setViewCnt(response.data.view_cnt);
+          setIsFirst(false);
+
+          setLikeImage(response.data.is_liked ? ThumbIcon : ThumbOutlineIcon);
+        }
+        setDetail(response.data);
+
+        setCommentContent();
+        setAiName(response.data.ai);
+      } catch (error) {}
     }
   };
 
@@ -92,7 +127,7 @@ function DetailPage() {
   const fetchIsWriter = async () => {
     try {
       const accessToken = user.accessToken; // 추출한 accessToken
-      console.log(user);
+
       const headers = {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
@@ -101,11 +136,12 @@ function DetailPage() {
         headers
       });
       setIsWriter(response.data.is_writer);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
-
+  // 페이지 변경 핸들러
+  const handlePageChange = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
   // 처음 Detail 렌더링
   useEffect(() => {
     // 유저가 있을 경우 writer인지 확인
@@ -113,6 +149,7 @@ function DetailPage() {
       fetchIsWriter();
     }
     fetchDetail();
+    fetchComments();
   }, []);
 
   // 처음 Detail 렌더링
@@ -121,6 +158,12 @@ function DetailPage() {
     fetchDetail();
   }, [likeImage]);
 
+  // 새 페이지마다 댓글 가져오기
+  useEffect(() => {
+    fetchComments();
+  }, [currentPage]);
+
+  // ChangeCommentValue
   // 디테일 렌더링
   const renderDetail = () => {
     return !detail ? (
@@ -135,6 +178,7 @@ function DetailPage() {
           isWriter={isWriter}
           id={detail.id}
           user={user}
+          type={"community"}
         />
         <S.DetailDiviner />
         <S.LikeViewWrapper>
@@ -148,6 +192,26 @@ function DetailPage() {
           />
           <S.DetailViewText>{detail.likes_cnt}</S.DetailViewText>
         </S.LikeViewWrapper>
+      </>
+    );
+  };
+
+  const renderComment = () => {
+    return !comments ? (
+      <></>
+    ) : (
+      <>
+        <CommonCommentList
+          comments={comments}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+          userInfo={user} // 사용자 정보
+          count={comments.count}
+          category={"community"}
+          fetchComments={fetchComments}
+          fetchDetail={fetchDetail}
+        />
       </>
     );
   };
@@ -166,18 +230,14 @@ function DetailPage() {
 
       {/* 댓글 입력 */}
       <S.DetailCommentHeader>답변 {detail.comments_cnt}</S.DetailCommentHeader>
-      <CommentInput isUser={isUser} id={detail.id} />
+      <CommentInput
+        isUser={isUser}
+        id={detail.id}
+        fetchDetail={fetchDetail}
+        fetchComments={fetchComments}
+      />
       {/* <S.DetailDiviner /> */}
-      {/* <CommonCommentList
-        currentItems={comments.results} // 사용할 댓글 데이터 배열
-        comments={comments.results} // 전체 댓글 데이터 배열
-        itemsPerPage={itemsPerPage} // 한 페이지당 보여줄 댓글 수
-        currentPage={currentPage} // 현재 페이지
-        handlePageChange={pageNumber => setCurrentPage(pageNumber)} // 페이지 변경 핸들러
-        onUpdate={null} // 댓글 업데이트 핸들러
-        onDelete={null}
-        userInfo={user} // 사용자 정보
-      /> */}
+      {renderComment()}
     </S.DetailPageWrapper>
   );
 }

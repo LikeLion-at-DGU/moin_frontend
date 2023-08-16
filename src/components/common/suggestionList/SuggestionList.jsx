@@ -79,9 +79,9 @@ const SuggestionList = ({
                   <S.AiServiceDetailTipTableTd>
                     {count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTdTitle>
                     {data.title}
-                  </S.AiServiceDetailTipTableTd>
+                  </S.AiServiceDetailTipTableTdTitle>
                   <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.created_at.split(" ")[0]}

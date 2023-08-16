@@ -107,6 +107,12 @@ export const LikeIcon = styled(FaRegThumbsUp)`
   font-size: 1.4rem;
   margin-right: 0.5rem;
 `;
+export const AiServiceDetailTipTableTdTitle = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: flex-start;
+`;
 
 export const CommentIcon = styled(FaRegCommentAlt)`
   color: black;

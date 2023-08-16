@@ -94,6 +94,13 @@ export const AiServiceDetailTipTableTh = styled.th`
   font-size: 1.6rem;
   border-bottom: 2px solid #f0f0f0;
 `;
+
+export const AiServiceDetailTipTableTdTitle = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: flex-start;
+`;
 export const AiServiceDetailTipTableTrContent = styled.tr`
   cursor: pointer;
 
