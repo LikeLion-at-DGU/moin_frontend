@@ -11,14 +11,13 @@ import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
-function CommunityCreatPost() {
+function SuggestionCreate() {
   const navigate = useNavigate();
   // ai
   const [aiOption, setAiOption] = useState([]);
   const [currentAiOption, setCurrentAiOption] = useState("");
-  // 탭 기능 구현
-  const [currentTab, setCurrentTab] = useState(0);
-  const [category, setCategory] = useState("common"); // 카테고리
+
+  const [url, setUrl] = useState("");
   const getCurrentAiOption = option => {
     setCurrentAiOption(option);
   };
@@ -35,27 +34,8 @@ function CommunityCreatPost() {
     }
   };
 
-  const selectMenuHandler = index => {
-    setCurrentTab(index);
-    setCategory(index === 0 ? "common" : index === 1 ? "tip" : "qna");
-    // index = 0 : 자유 게시판
-    // index = 1 : 이용꿀팁
-    // index = 2 : Q&A
-
-    // index별 다른 게시판 내용
-    if (index === 0) {
-      // common
-      setValue("**자유 게시판 내용을 입력해주세요.**");
-    } else if (index === 1) {
-      // tip
-      setValue("**이용꿀팁 내용을 입력해주세요.**");
-    } else if (index === 2) {
-      // qna
-      setValue("**Q&A 내용을 입력해주세요.**");
-    }
-  };
   const [title, setTitle] = useState(""); // 제목
-  const [value, setValue] = useState("**자유 게시판 내용을 입력해주세요.**");
+  const [value, setValue] = useState("**건의사항 내용을 입력해주세요.**");
 
   const [boardColor, setBoardColor] = useState(false);
 
@@ -65,12 +45,6 @@ function CommunityCreatPost() {
   }, []);
 
   const handleClickWirte = async () => {
-    if (category === "tip") {
-      if (currentAiOption === "▿ 서비스 선택") {
-        alert("이용꿀팁 게시판은 서비스를 선택하셔야합니다.");
-        return;
-      }
-    }
     if (title === "") {
       alert("제목을 입력해주세요.");
       return;
@@ -87,75 +61,47 @@ function CommunityCreatPost() {
 
       console.log(currentAiOption);
       const data = {
-        ai: currentAiOption ?? null,
-        category: category,
+        ai: currentAiOption,
         title: title,
-        content: value
+        content: value,
+        url: url
       };
+
       console.log(headers);
       console.log(data);
-      const response = await axios.post("communities/posts", data, {
+      const response = await axios.post("suggestions", data, {
         headers
       });
       console.log(response);
       if (response.status === 201) {
-        alert("게시글이 작성되었습니다.");
-        navigate("/community");
+        alert("건의사항이 작성 되었습니다.");
+        navigate("/suggestion");
       }
     } catch (e) {
-      alert("게시글 작성에 실패하였습니다.");
+      alert("건의사항 작성에 실패하였습니다.");
     }
   };
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
-        <S.CommuntiyCreateHeader> 글 작성</S.CommuntiyCreateHeader>
-
-        <AIS.AiServiceDetailCommentCategory>
-          <AIS.AiServiceDetailCommentCategoryTabMenu>
-            <AIS.AiServiceDetailCommentCategoryMenuItem
-              isActive={currentTab === 0}
-              onClick={() => selectMenuHandler(0)}
-            >
-              자유 게시판
-            </AIS.AiServiceDetailCommentCategoryMenuItem>
-            <AIS.AiServiceDetailCommentCategoryMenuItem
-              isActive={currentTab === 1}
-              onClick={() => selectMenuHandler(1)}
-            >
-              이용꿀팁
-            </AIS.AiServiceDetailCommentCategoryMenuItem>
-            <AIS.AiServiceDetailCommentCategoryMenuItem
-              isActive={currentTab === 2}
-              onClick={() => selectMenuHandler(2)}
-            >
-              Q&A
-            </AIS.AiServiceDetailCommentCategoryMenuItem>
-          </AIS.AiServiceDetailCommentCategoryTabMenu>
-        </AIS.AiServiceDetailCommentCategory>
-        {/* // current tab 1,2일때 인공지능 선택 */}
-        {currentTab === 1 || currentTab === 2 ? (
-          <S.SelcetorWrapper>
-            <S.Select
-              required
-              name="ais"
-              onChange={e => getCurrentAiOption(e.target.value)}
-            >
-              <S.Option value={null}>▿ 서비스 선택</S.Option>
-              {aiOption.map((ai, index) => (
-                <S.Option key={index} value={ai.title}>
-                  {ai.title}
-                </S.Option>
-              ))}
-            </S.Select>
-            <S.SelcetorDescriptionText>
-              *이용꿀팁 게시글은 서비스 선택이 필수적입니다.(Q&A는 선택사항)
-            </S.SelcetorDescriptionText>
-          </S.SelcetorWrapper>
-        ) : (
-          <></>
-        )}
-
+        <S.CommuntiyCreateHeader> 건의사항 작성</S.CommuntiyCreateHeader>
+        <S.SelcetorWrapper>
+          <S.Select
+            required
+            name="ais"
+            onChange={e => getCurrentAiOption(e.target.value)}
+          >
+            <S.Option value={null}>▿ 서비스 선택</S.Option>
+            {aiOption.map((ai, index) => (
+              <S.Option key={index} value={ai.title}>
+                {ai.title}
+              </S.Option>
+            ))}
+          </S.Select>
+          <S.SelcetorDescriptionText>
+            *서비스 선택은 선택사항 입니다.
+          </S.SelcetorDescriptionText>
+        </S.SelcetorWrapper>
         <S.CommunityCreateTitle
           placeholder="제목을 입력해주세요."
           maxLength="100"
@@ -212,7 +158,14 @@ function CommunityCreatPost() {
             data-color-mode="light"
           />
         </FileDrop>
-
+        <S.CommunityCreateTitle
+          placeholder="참고가능한 링크를 입력해주세요"
+          maxLength="100"
+          onChange={e => {
+            setUrl(e.target.value);
+          }}
+          value={url}
+        />
         {/* // 작성완료버튼 */}
         <S.ButtonWrapper>
           <S.CommunityCreateButton onClick={handleClickWirte}>
@@ -224,4 +177,4 @@ function CommunityCreatPost() {
   );
 }
 
-export default CommunityCreatPost;
+export default SuggestionCreate;
