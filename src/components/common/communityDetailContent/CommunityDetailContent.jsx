@@ -48,7 +48,7 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
 
   // edit으로 보내기
   const handleEdit = () => {
-    navigate(`/community/edit/${id}`);
+    navigate(`/community/edit/${id}`, { state: { detail } });
   };
 
   const markdown = `
