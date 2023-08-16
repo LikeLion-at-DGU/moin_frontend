@@ -9,6 +9,7 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../noPage/NoPage";
+import NoticeBanner from "../noticeBanner/NoticeBanner";
 
 const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
   const navigate = useNavigate();
@@ -24,6 +25,10 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
   return (
     <>
       <S.AiServiceDetailTipWrap>
+        <NoticeBanner
+          title={"공지안내"}
+          content={"중요한정보! 모두 여기에 모였다!"}
+        />
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
         {data && data.length > 0 ? (
@@ -51,12 +56,12 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
                   <S.AiServiceDetailTipTableTd>
                     {count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
+                  <S.AiServiceDetailTipTableTdTitle>
                     {data.title}
-                  </S.AiServiceDetailTipTableTd>
+                  </S.AiServiceDetailTipTableTdTitle>
                   <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.created_at}
+                    {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.view_cnt}

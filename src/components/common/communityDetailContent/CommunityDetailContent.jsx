@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
+const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -19,12 +19,26 @@ const CommunityDetailContent = ({ detail, isWriter, id, user }) => {
         const headers = {
           Authorization: `Bearer ${accessToken}` // Bearer Token 설정
         };
-        const response = await axios.delete(`communities/posts/${id}`, {
-          headers
-        });
-        console.log(response);
-        if (response.status === 204) {
-          navigate("/community");
+        if (type == "suggestion") {
+          // suggestions/{suggestion_id}
+          const response = await axios.delete(`suggestions/${id}`, {
+            headers
+          });
+          console.log(response);
+          if (response.status === 204) {
+            navigate("/suggestion");
+          }
+        } else {
+          const response = await axios.delete(`communities/posts/${id}`, {
+            headers
+          });
+          console.log(response);
+          if (response.status === 204) {
+            if (type == "suggestion") {
+              navigate("/suggestion");
+            }
+            navigate("/community");
+          }
         }
       } catch (e) {
         console.log(e);

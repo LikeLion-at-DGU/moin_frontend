@@ -137,6 +137,8 @@ function Review() {
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
       <CommentList
         comments={comments}
+        fetchDataMy={fetchDataMy}
+        fetchData={fetchData}
         userInfo={userInfo}
         myComments={myComments}
         currentPage={currentPage}
