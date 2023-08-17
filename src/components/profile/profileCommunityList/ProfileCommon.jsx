@@ -19,6 +19,9 @@ function ProfileCommon({ category }) {
 
   const [count, setCount] = useState(0);
 
+  // 카테고리 옵션
+  const [categoryOption, setCateogoryOption] = useState("");
+
   const fetchData = async () => {
     try {
       const accessToken = userInfo.accessToken; // 추출한 accessToken
@@ -26,11 +29,13 @@ function ProfileCommon({ category }) {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
 
-      const response = await axios.get(`mypage/community/likes`, {
-        headers
-      });
+      const response = await axios.get(
+        `mypage/community/likes?&page=${currentPage}`,
+        {
+          headers
+        }
+      );
 
-      const detailData = response.data;
       setData(response.data.results);
       setCount(response.data.count);
     } catch (e) {
