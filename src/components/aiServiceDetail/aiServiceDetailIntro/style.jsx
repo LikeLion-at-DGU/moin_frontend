@@ -107,9 +107,8 @@ export const AiServiceThumbnailImg = styled.img`
 export const AiServiceDetailContentDescription = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 2%;
+  padding-left: 2%;
   flex-grow: 1;
-  /* max-width: 60%; */
 
   * {
     overflow: hidden;
