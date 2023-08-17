@@ -446,7 +446,7 @@ export const MyCommentsWrap = styled.div`
 export const MoreButtonWrap = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding-right: 6rem;
+  padding-right: 1rem;
 `;
 
 export const MoreButton = styled.button`

@@ -56,6 +56,7 @@ const List = ({
               글쓰기
             </S.AiServiceDetailTipHeaderWriteContent>
           </S.AiServiceDetailTipHeaderWrite>
+
           <S.AiServiceDetailTipHeaderSort>
             <Selector
               options={SelectorOption}
@@ -63,6 +64,7 @@ const List = ({
             />
           </S.AiServiceDetailTipHeaderSort>
         </S.AiServiceDetailTipHeader>
+
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
         {data && data.length > 0 ? (
