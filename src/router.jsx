@@ -30,6 +30,7 @@ import NoticeDetailPage from "./pages/notice/noticeDetail/noticeDetail";
 import CommunityCreatPost from "./pages/community/communityCreatePost/CommunityCreatPost";
 import CommunityEdit from "./pages/community/communityEdit/CommunityEdit";
 import SuggestionCreate from "./pages/suggestion/suggestionCreate/SuggestionCreate";
+import AuthReseting from "./pages/auths/authReseting/AuthReseting";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
             element: <ProfileFavoritePost />
           }
         ]
+      },
+      {
+        path: "auth/reset/:uid/:token",
+        element: <AuthReseting />
       },
 
       {
