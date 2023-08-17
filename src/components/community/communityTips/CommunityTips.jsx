@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./style";
-import List from "../../common/list/List";
-import TipsList from "../../common/tipsList/TipsList";
+
 import axios from "../../../api/axios";
 import PostList from "../../common/postList/PostList";
 function CommunityTips() {
@@ -74,21 +72,6 @@ function CommunityTips() {
     <>
       <PostList
         use={"communityTips"}
-        category={"tip"}
-        data={tipContent}
-        url={"/community/tips/"}
-        writeUrl={"/community/create"}
-        currentOption={currentOption}
-        currentAiOption={currentAiOption}
-        SelectorOption={SelectorOption}
-        aiOption={aiOption}
-        getCurrentOption={getCurrentOption}
-        getCurrentAiOption={getCurrentAiOption}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        count={count}
-      />
-      <TipsList
         category={"tip"}
         data={tipContent}
         url={"/community/tips/"}

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./style";
-import List from "../../common/list/List";
-import CommonList from "../../common/commonList/CommonList";
+
 import axios from "../../../api/axios";
 import PostList from "../../common/postList/PostList";
-import Community from "../../../pages/community/Community";
 
 function CommunityCommon() {
   const [commonContent, setCommonContent] = useState([]);

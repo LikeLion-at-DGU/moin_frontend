@@ -102,6 +102,12 @@ export const PostListTableTd = styled.td`
   border-bottom: 2px solid #f0f0f0;
   text-align: center;
 `;
+
+export const StatusText = styled.p`
+  color: ${props => props.color};
+  font-size: 1.6rem;
+`;
+
 export const PostListTableTdTitle = styled.td`
   padding: 2rem;
   font-size: 1.6rem;

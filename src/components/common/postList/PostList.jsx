@@ -16,11 +16,11 @@ const PostList = ({
   data,
   url,
   writeUrl,
-  currentOption,
+  currentOption = "",
   currentAiOption = "",
   SelectorOption,
   aiOption = "",
-  getCurrentOption,
+  getCurrentOption = "",
   getCurrentAiOption = "",
   currentPage,
   setCurrentPage,
@@ -36,6 +36,12 @@ const PostList = ({
       break;
     case "communityQnA":
       thList = ["번호", "제목", "서비스명", "등록일시", "좋아요", "조회수"];
+      break;
+    case "notice":
+      thList = ["번호", "제목", "등록일시", "조회수"];
+      break;
+    case "suggestion":
+      thList = ["번호", "제목", "등록일시", "반영여부"];
       break;
   }
 
@@ -105,29 +111,37 @@ const PostList = ({
               <></>
             )}
             {/* 글작성 버튼 */}
-            <S.PostListHeaderWrite>
-              {/* 로그인하지 않은 경우 로그인 페이지로 이동하기 */}
-              <S.PostListHeaderWriteContent
-                onClick={() => {
-                  !userInfo
-                    ? navigate("/login")
-                    : navigate(writeUrl, {
-                        state: { category: category, ai: currentAiOption }
-                      });
-                }}
-              >
-                <S.StyledPencilIcon />
-                글쓰기
-              </S.PostListHeaderWriteContent>
-            </S.PostListHeaderWrite>
+            {use != "notice" ? (
+              <S.PostListHeaderWrite>
+                {/* 로그인하지 않은 경우 로그인 페이지로 이동하기 */}
+                <S.PostListHeaderWriteContent
+                  onClick={() => {
+                    !userInfo
+                      ? navigate("/login")
+                      : navigate(writeUrl, {
+                          state: { category: category, ai: currentAiOption }
+                        });
+                  }}
+                >
+                  <S.StyledPencilIcon />
+                  글쓰기
+                </S.PostListHeaderWriteContent>
+              </S.PostListHeaderWrite>
+            ) : (
+              <></>
+            )}
           </S.PostListHeaderWrapper>
 
-          <S.PostListHeaderSort>
-            <Selector
-              options={SelectorOption}
-              getCurrentOption={getCurrentOption}
-            />
-          </S.PostListHeaderSort>
+          {currentOption != "" ? (
+            <S.PostListHeaderSort>
+              <Selector
+                options={SelectorOption}
+                getCurrentOption={getCurrentOption}
+              />
+            </S.PostListHeaderSort>
+          ) : (
+            <></>
+          )}
         </S.PostListHeader>
 
         <S.PostListLine></S.PostListLine>
@@ -163,9 +177,15 @@ const PostList = ({
                   {ifThListContain("제목") ? (
                     <S.PostListTableTdTitle>
                       {data.title}{" "}
-                      <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>
-                        [{data.comments_cnt}]
-                      </strong>
+                      {data.comments_cnt != undefined ? (
+                        <strong
+                          style={{ fontSize: "1.6rem", color: "#4285F4" }}
+                        >
+                          [{data.comments_cnt}]
+                        </strong>
+                      ) : (
+                        <></>
+                      )}
                     </S.PostListTableTdTitle>
                   ) : (
                     <></>
@@ -193,6 +213,20 @@ const PostList = ({
 
                   {ifThListContain("조회수") ? (
                     <S.PostListTableTd>{data.view_cnt}</S.PostListTableTd>
+                  ) : (
+                    <></>
+                  )}
+
+                  {ifThListContain("반영여부") ? (
+                    <S.PostListTableTd>
+                      {data.reflected_status === 0 ? (
+                        <S.StatusText color="#282828">대기중</S.StatusText>
+                      ) : data.reflected_status === 1 ? (
+                        <S.StatusText color="#4285F4">반영</S.StatusText>
+                      ) : (
+                        <S.StatusText color="#FF5D47">미반영</S.StatusText>
+                      )}
+                    </S.PostListTableTd>
                   ) : (
                     <></>
                   )}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import * as AIS from "../ai/style";
 import Banner from "../../components/common/banner/Banner";
-import List from "../../components/common/list/List";
+
 import CommunityQna from "../../components/community/communityQna/CommunityQna";
 import CommunityCommon from "../../components/community/communityCommon/CommunityCommon";
 import CommunityTips from "../../components/community/communityTips/CommunityTips";

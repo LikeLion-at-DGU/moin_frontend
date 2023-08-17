@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./style";
 
 import axios from "../../../api/axios";
 
