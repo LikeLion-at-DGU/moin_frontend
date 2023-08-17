@@ -26,12 +26,11 @@ export const AiServiceDetailWrap = styled.div`
   justify-content: center;
   color: ${colors.black};
 
-  width: 100%;
+  width: 99%;
+
   max-width: 1178px;
 
   * {
-    flex-shrink: 0;
-
     white-space: nowrap;
     overflow: hidden;
   }
@@ -79,6 +78,7 @@ export const AiServiceDetailRegistrant = styled.div`
 export const AiServiceDetailContent = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin-top: 1.1rem;
   width: 100%;
   max-width: 1178px;
@@ -86,6 +86,7 @@ export const AiServiceDetailContent = styled.div`
 
 export const AiServiceThumbnail = styled.div`
   position: relative;
+  flex-shrink: 0;
   width: 40rem;
   height: 39.4rem;
   border-radius: 10px;
@@ -107,7 +108,7 @@ export const AiServiceThumbnailImg = styled.img`
 export const AiServiceDetailContentDescription = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 2%;
+  padding-left: 2%;
   flex-grow: 1;
 
   * {
@@ -119,7 +120,7 @@ export const AiServiceDetailContentDescriptionCompany = styled.div`
   display: flex;
   flex-direction: row;
   align-items: end;
-  margin-top: 5.3rem;
+  margin-top: 4.5rem;
   font-size: 1.3rem;
   font-weight: 700;
 `;
@@ -133,26 +134,32 @@ export const AiServiceDetailContentDescriptionCompanyImg = styled.img`
 
 export const AiServiceDetailContentDescriptionName = styled.div`
   display: flex;
-  margin-top: 1rem;
+  margin-top: 0.4rem;
   font-size: 4.8rem;
   font-weight: 600;
+  line-height: 6rem;
 `;
 
 export const AiServiceDetailContentDescriptionIntro = styled.div`
   display: flex;
+  width: 100%;
 
+  height: 5rem;
   margin-top: 1rem;
-  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.7rem;
   font-weight: 500;
-  /* white-space: pre-line; */
+  line-height: 2.2rem;
+  /* white-space: nowrap; */
+  white-space: pre-line;
 `;
 
 export const AiServiceDetailContentDescriptionJob = styled.div`
   display: flex;
   align-content: center;
-  margin-top: 3rem;
+  margin: 0.6rem 0;
   background-color: #fff;
-  width: 37rem;
+  width: 35rem;
   height: 3rem;
   border-radius: 5px;
   color: ${colors.black};
@@ -179,7 +186,6 @@ export const AiServiceDetailContentDescriptionJobContent = styled.div`
 export const AiServiceDetailContentDescriptionStar = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 1rem;
 `;
 
 export const AiServiceDetailContentDescriptionStarIcon = styled.div`
