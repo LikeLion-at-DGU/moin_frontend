@@ -16,7 +16,8 @@ const ProfileList = ({
   currentPage,
   setCurrentPage,
   count,
-  islike
+  islike,
+  iscomment
 }) => {
   const [userInfo, setUserInfo] = useRecoilState(userState);
   console.log("islike", islike);
@@ -56,7 +57,10 @@ const ProfileList = ({
                   <></>
                 )}
 
-                <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  {" "}
+                  {iscomment ? "내용" : "제목"}
+                </S.AiServiceDetailTipTableTh>
 
                 <S.AiServiceDetailTipTableTh>
                   등록일시
@@ -91,6 +95,8 @@ const ProfileList = ({
                           url = "/community/qnas/";
                         } else if (data.category === "건의사항") {
                           url = "/suggestion/";
+                        } else if (data.category === "ai") {
+                          url = "/ai/";
                         } else {
                           return;
                         }
@@ -107,6 +113,7 @@ const ProfileList = ({
                         {data.category === "tip" && "이용 꿀팁"}
                         {data.category === "qna" && "Q&A"}
                         {data.category === "건의사항" && "건의사항"}
+                        {data.category === "ai" && "ai"}
                       </S.AiServiceDetailTipTableTd>
 
                       {islike ? (
@@ -120,7 +127,7 @@ const ProfileList = ({
                       )}
 
                       <S.AiServiceDetailTipTableTdTitle>
-                        {data.title}
+                        {iscomment ? data.content : data.title}
 
                         {islike ? (
                           <>

@@ -25,8 +25,7 @@ function ProfileFavoritePost() {
 
   const [count, setCount] = useState(0);
 
-  // 데이터
-  const [islike, setIslike] = useState(true);
+  const [islike, setIslike] = useState(true); // 좋아요한 게시물인지 판별
 
   const fetchData = async () => {
     try {

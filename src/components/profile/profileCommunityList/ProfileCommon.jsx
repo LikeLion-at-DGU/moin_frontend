@@ -9,7 +9,8 @@ function ProfileCommon({
   currentPage,
   setCurrentPage,
   count,
-  islike
+  islike,
+  iscomment
 }) {
   return (
     <>
@@ -20,6 +21,7 @@ function ProfileCommon({
         setCurrentPage={setCurrentPage}
         count={count}
         islike={islike}
+        iscomment={iscomment}
       />
     </>
   );

@@ -26,7 +26,7 @@ function ProfilePost() {
   // 카테고리
   const [category, setCategory] = useState("");
 
-  // 데이터
+  // 좋아요한 게시물인지 판별
   const [islike, setIslike] = useState(false);
 
   const fetchData = async () => {
