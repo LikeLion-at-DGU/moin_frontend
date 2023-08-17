@@ -67,7 +67,6 @@ const SuggestionList = ({
                 <S.AiServiceDetailTipTableTh>
                   반영여부
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>

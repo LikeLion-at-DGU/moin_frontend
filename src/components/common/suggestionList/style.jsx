@@ -73,12 +73,13 @@ export const AiServiceDetailTipLine = styled.div`
   display: flex;
   margin-top: 2rem;
   background: #4285f4;
-  width: 110rem;
+  width: 100%;
   height: 2px;
 `;
 
 // 이용꿀팁 목록
 export const AiServiceDetailTipTable = styled.table`
+  width: 90%;
   margin: 0 auto;
   width: 100%;
 `;

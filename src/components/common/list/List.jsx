@@ -37,6 +37,29 @@ const List = ({
   const location = useLocation();
   const decodeName = decodeURI(location.pathname.split("/")[2]);
   console.log(decodeName);
+
+  const [isMobile, setisMobile] = useState(false);
+
+  //윈도우가 550px 이하면  모바일버전을 연다
+  const resizingHandler = () => {
+    if (window.innerWidth < 550) {
+      setisMobile(true);
+    } else {
+      setisMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    if (window.innerWidth <= 550) {
+      setisMobile(true);
+    }
+    window.addEventListener("resize", resizingHandler);
+
+    return () => {
+      window.removeEventListener("resize", resizingHandler);
+    };
+  });
+
   return (
     <>
       <S.AiServiceDetailTipWrap>
@@ -56,6 +79,7 @@ const List = ({
               글쓰기
             </S.AiServiceDetailTipHeaderWriteContent>
           </S.AiServiceDetailTipHeaderWrite>
+
           <S.AiServiceDetailTipHeaderSort>
             <Selector
               options={SelectorOption}
@@ -63,13 +87,21 @@ const List = ({
             />
           </S.AiServiceDetailTipHeaderSort>
         </S.AiServiceDetailTipHeader>
+
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
         {data && data.length > 0 ? (
           <S.AiServiceDetailTipTable>
             <S.AiServiceDetailTipTableThead>
               <S.AiServiceDetailTipTableTr>
-                <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
+                {isMobile ? (
+                  <></>
+                ) : (
+                  <S.AiServiceDetailTipTableTh>
+                    번호
+                  </S.AiServiceDetailTipTableTh>
+                )}
+
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>
                   서비스명
@@ -91,11 +123,16 @@ const List = ({
                   key={data.id}
                   onClick={() => navigate(`${url}${data.id}`)}
                 >
-                  <S.AiServiceDetailTipTableTd>
-                    {currentOption === "popular" || currentOption === "like"
-                      ? idx + 1 + (currentPage - 1) * itemsPerPage
-                      : count - idx - (currentPage - 1) * itemsPerPage}
-                  </S.AiServiceDetailTipTableTd>
+                  {isMobile ? (
+                    <></>
+                  ) : (
+                    <S.AiServiceDetailTipTableTd>
+                      {currentOption === "popular" || currentOption === "like"
+                        ? idx + 1 + (currentPage - 1) * itemsPerPage
+                        : count - idx - (currentPage - 1) * itemsPerPage}
+                    </S.AiServiceDetailTipTableTd>
+                  )}
+
                   <S.AiServiceDetailTipTableTdTitle>
                     {data.title}{" "}
                     <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>

@@ -10,7 +10,7 @@ import * as AIS from "../../ai/style";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import { useLocation, useNavigate } from "react-router-dom";
-import CommuntiyDetailPageType from "../../../components/community/communtiyDetailPageType/CommuntiyDetailPageType";
+import CommuntiyDetailPageType from "../communtiyDetailPageType/CommuntiyDetailPageType";
 
 function CommunityCreatPost() {
   const navigate = useNavigate();
@@ -129,7 +129,7 @@ function CommunityCreatPost() {
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
-        <CommuntiyDetailPageType type={`${category}s`} aiName={null} />
+        {/* <CommuntiyDetailPageType type={`${category}s`} aiName={null} /> */}
 
         <AIS.AiServiceDetailCommentCategory>
           <AIS.AiServiceDetailCommentCategoryTabMenu>
@@ -153,79 +153,81 @@ function CommunityCreatPost() {
             </AIS.AiServiceDetailCommentCategoryMenuItem>
           </AIS.AiServiceDetailCommentCategoryTabMenu>
         </AIS.AiServiceDetailCommentCategory>
-        {/* // current tab 1,2일때 인공지능 선택 */}
-        {currentTab === 1 || currentTab === 2 ? (
-          <S.SelcetorWrapper>
-            <S.Select
-              required
-              name="ais"
-              onChange={e => getCurrentAiOption(e.target.value)}
-            >
-              <S.Option value={null}>▿ 서비스 선택</S.Option>
-              {
-                state.ai !== "" ? (
-                  <S.Option value={state.ai} selected>
-                    {state.ai}
-                  </S.Option>
-                ) : (
-                  <></>
-                ) // 수정할 때 기존 ai가 있으면 기존 ai를 선택한 상태로 둔다.
-              }
-              {aiOption.map((ai, index) =>
-                state.ai === ai.title ? (
-                  <></>
-                ) : (
-                  <>
-                    <S.Option key={index} value={ai.title}>
-                      {ai.title}
+        <S.CreatePost>
+          {/* // current tab 1,2일때 인공지능 선택 */}
+          {currentTab === 1 || currentTab === 2 ? (
+            <S.SelcetorWrapper>
+              <S.Select
+                required
+                name="ais"
+                onChange={e => getCurrentAiOption(e.target.value)}
+              >
+                <S.Option value={null}>▿ 서비스 선택</S.Option>
+                {
+                  state.ai !== "" ? (
+                    <S.Option value={state.ai} selected>
+                      {state.ai}
                     </S.Option>
-                  </>
-                )
-              )}
-            </S.Select>
-            <S.SelcetorDescriptionText>
-              {currentTab === 1 ? (
-                // 이용꿀팁 게시글은 서비스 선택이 필수적입니다.(Q&A는 선택사항)
-                <strong style={{ color: "#FF5D47", fontSize: "1.5rem" }}>
-                  *필수
-                </strong>
-              ) : (
-                <>*선택</>
-              )}
-            </S.SelcetorDescriptionText>
-          </S.SelcetorWrapper>
-        ) : (
-          <></>
-        )}
+                  ) : (
+                    <></>
+                  ) // 수정할 때 기존 ai가 있으면 기존 ai를 선택한 상태로 둔다.
+                }
+                {aiOption.map((ai, index) =>
+                  state.ai === ai.title ? (
+                    <></>
+                  ) : (
+                    <>
+                      <S.Option key={index} value={ai.title}>
+                        {ai.title}
+                      </S.Option>
+                    </>
+                  )
+                )}
+              </S.Select>
+              <S.SelcetorDescriptionText>
+                {currentTab === 1 ? (
+                  // 이용꿀팁 게시글은 서비스 선택이 필수적입니다.(Q&A는 선택사항)
+                  <strong style={{ color: "#FF5D47", fontSize: "1.5rem" }}>
+                    *필수
+                  </strong>
+                ) : (
+                  <>*선택</>
+                )}
+              </S.SelcetorDescriptionText>
+            </S.SelcetorWrapper>
+          ) : (
+            <></>
+          )}
 
-        <S.CommunityCreateTitle
-          placeholder="제목을 입력해주세요."
-          maxLength="100"
-          onChange={e => {
-            setTitle(e.target.value);
-          }}
-          value={title}
-        />
-        <FileDrop
-          onDragOver={() => setBoardColor(true)}
-          onDragLeave={() => setBoardColor(false)}
-          onDrop={files => handleImageUpload(files)}
-        >
-          <MDEditor
-            height={"400px"}
-            value={value}
-            onChange={setValue}
-            preview="edit"
-            data-color-mode="light"
+          <S.CommunityCreateTitle
+            placeholder="제목을 입력해주세요."
+            maxLength="100"
+            onChange={e => {
+              setTitle(e.target.value);
+            }}
+            value={title}
           />
-        </FileDrop>
+          <FileDrop
+            onDragOver={() => setBoardColor(true)}
+            onDragLeave={() => setBoardColor(false)}
+            onDrop={files => handleImageUpload(files)}
+          >
+            <MDEditor
+              height={"400px"}
+              value={value}
+              onChange={setValue}
+              preview="edit"
+              data-color-mode="light"
+            />
+          </FileDrop>
 
-        {/* // 작성완료버튼 */}
-        <S.ButtonWrapper>
-          <S.CommunityCreateButton onClick={handleClickWrite}>
-            작성완료
-          </S.CommunityCreateButton>
-        </S.ButtonWrapper>
+          {/* // 작성완료버튼 */}
+          <S.ButtonWrapper>
+            <S.CommunityCreateButton onClick={handleClickWrite}>
+              작성완료
+            </S.CommunityCreateButton>
+          </S.ButtonWrapper>
+        </S.CreatePost>
       </AIS.AiServiceDetailCommentWrap>
     </>
   );

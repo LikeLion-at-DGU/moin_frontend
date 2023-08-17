@@ -31,6 +31,7 @@ export const EyeIcon = styled(FaEye)`
 `;
 
 export const AiServiceDetailTipWrap = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +44,7 @@ export const AiServiceDetailTipHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 5.1rem;
+  margin-top: 5rem;
 `;
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
@@ -94,7 +95,7 @@ export const AiServiceDetailTipLine = styled.div`
   display: flex;
   margin-top: 2.7rem;
   background: #4285f4;
-  width: 110rem;
+  width: 100%;
   height: 2px;
 `;
 
