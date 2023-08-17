@@ -10,7 +10,7 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../../common/noPage/NoPage";
 
-const CommonList = ({ data, currentPage, setCurrentPage, count }) => {
+const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
@@ -23,6 +23,8 @@ const CommonList = ({ data, currentPage, setCurrentPage, count }) => {
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
+
+  let index = -1;
 
   return (
     <>
@@ -51,51 +53,60 @@ const CommonList = ({ data, currentPage, setCurrentPage, count }) => {
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
-              {data.map((data, idx) => (
-                <S.AiServiceDetailTipTableTrContent
-                  key={data.id}
-                  onClick={() => {
-                    let url;
+              {data.map((data, idx) => {
+                if (data.category === category || category === "total") {
+                  index = index + 1;
+                  return (
+                    <S.AiServiceDetailTipTableTrContent
+                      key={data.id}
+                      onClick={() => {
+                        let url;
 
-                    if (data.category === "common") {
-                      url = "/community/commons/";
-                    } else if (data.category === "tip") {
-                      url = "/community/tips/";
-                    } else if (data.category === "qna") {
-                      url = "/community/qnas/";
-                    } else {
-                      return;
-                    }
+                        if (data.category === "common") {
+                          url = "/community/commons/";
+                        } else if (data.category === "tip") {
+                          url = "/community/tips/";
+                        } else if (data.category === "qna") {
+                          url = "/community/qnas/";
+                        } else {
+                          return;
+                        }
 
-                    navigate(`${url}${data.id}`);
-                  }}
-                >
-                  <S.AiServiceDetailTipTableTd>
-                    {idx + 1 + (currentPage - 1) * itemsPerPage}
-                  </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
-                    {data.category === "common" && "자유 게시판"}
-                    {data.category === "tip" && "이용 꿀팁"}
-                    {data.category === "qna" && "Q&A"}
-                  </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTdTitle>
-                    {data.title}
-                    <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>
-                      [{data.comments_cnt}]
-                    </strong>
-                  </S.AiServiceDetailTipTableTdTitle>
+                        navigate(`${url}${data.id}`);
+                      }}
+                    >
+                      <S.AiServiceDetailTipTableTd>
+                        {index + 1 + (currentPage - 1) * itemsPerPage}
+                      </S.AiServiceDetailTipTableTd>
 
-                  <S.AiServiceDetailTipTableTd>
-                    {data.created_at.split(" ")[0]}
-                  </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
-                    {data.likes_cnt}
-                  </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
-                    {data.view_cnt}
-                  </S.AiServiceDetailTipTableTd>
-                </S.AiServiceDetailTipTableTrContent>
-              ))}
+                      <S.AiServiceDetailTipTableTd>
+                        {data.category === "common" && "자유 게시판"}
+                        {data.category === "tip" && "이용 꿀팁"}
+                        {data.category === "qna" && "Q&A"}
+                      </S.AiServiceDetailTipTableTd>
+                      <S.AiServiceDetailTipTableTdTitle>
+                        {data.title}
+                        <strong
+                          style={{ fontSize: "1.6rem", color: "#4285F4" }}
+                        >
+                          [{data.comments_cnt}]
+                        </strong>
+                      </S.AiServiceDetailTipTableTdTitle>
+
+                      <S.AiServiceDetailTipTableTd>
+                        {data.created_at.split(" ")[0]}
+                      </S.AiServiceDetailTipTableTd>
+                      <S.AiServiceDetailTipTableTd>
+                        {data.likes_cnt}
+                      </S.AiServiceDetailTipTableTd>
+                      <S.AiServiceDetailTipTableTd>
+                        {data.view_cnt}
+                      </S.AiServiceDetailTipTableTd>
+                    </S.AiServiceDetailTipTableTrContent>
+                  );
+                }
+                return null; // 카테고리가 맞지 않는 경우 렌더링하지 않음
+              })}
             </S.AiServiceDetailTipTableTbody>
           </S.AiServiceDetailTipTable>
         ) : (

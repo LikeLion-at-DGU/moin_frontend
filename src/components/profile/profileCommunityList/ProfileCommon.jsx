@@ -7,7 +7,7 @@ import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import axios from "../../../api/axios";
 
-function ProfileCommon() {
+function ProfileCommon({ category }) {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
@@ -54,7 +54,7 @@ function ProfileCommon() {
     <>
       <ProfileList
         data={data}
-        // url={"/community/commons/"}
+        category={category}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         count={count}
