@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import * as CS from "../community/style";
+
 import Banner from "../../components/common/banner/Banner";
-import List from "../../components/common/list/List";
-import NoticeList from "../../components/common/noticeList/NoticeList";
+
 import axios from "../../api/axios";
+import PostList from "../../components/common/postList/PostList";
+import NoticeBanner from "../../components/common/noticeBanner/NoticeBanner";
 
 function Notice() {
   const [noticeContent, setNoticeContent] = useState([]);
@@ -41,15 +42,18 @@ function Notice() {
         titleEnglish="NOTICE"
         image={<S.NoticeIconImg />}
       />
-      <CS.CommunityContentWrapper>
-        <NoticeList
-          data={noticeContent}
-          url={"/notice/"}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          count={count}
-        />
-      </CS.CommunityContentWrapper>
+      <NoticeBanner
+        title={"공지안내"}
+        content={"MOIN의 새로운 소식과 공지사항을 확인해보세요!"}
+      />
+      <PostList
+        use={"notice"}
+        data={noticeContent}
+        url={"/notice/"}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        count={count}
+      />
     </S.NoticeWrapper>
   );
 }

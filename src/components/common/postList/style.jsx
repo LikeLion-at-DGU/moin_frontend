@@ -15,15 +15,8 @@ const fadeInAnimation = keyframes`
   }
 `;
 
-export const AiServiceDetailTipTableTrContent = styled.tr`
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
-`;
-
-export const AiServiceDetailTipWrap = styled.div`
+export const PostListWrap = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,20 +25,25 @@ export const AiServiceDetailTipWrap = styled.div`
 `;
 
 // 헤더 (글쓰기, 정렬순)
-export const AiServiceDetailTipHeader = styled.div`
+export const PostListHeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 5.1rem;
+  align-items: center;
+`;
+export const PostListHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rem;
+  width: 100%;
 `;
 
-export const AiServiceDetailTipHeaderWrite = styled.div`
+export const PostListHeaderWrite = styled.div`
   :hover {
     color: white;
     background-color: #4285f4;
   }
 `;
 
-export const AiServiceDetailTipHeaderWriteContent = styled.div`
+export const PostListHeaderWriteContent = styled.div`
   display: flex;
   font-size: 2rem;
   font-weight: 500;
@@ -54,7 +52,7 @@ export const AiServiceDetailTipHeaderWriteContent = styled.div`
   border-radius: 10px;
   border: 2px solid #4285f4;
   padding: 0.7rem 1rem;
-  margin-right: 88rem;
+
   cursor: pointer;
 
   :hover {
@@ -68,44 +66,49 @@ export const StyledPencilIcon = styled(BiSolidPencil)`
   margin-right: 0.5rem;
 `;
 
-export const AiServiceDetailTipHeaderSort = styled.div`
+export const PostListHeaderSort = styled.div`
   display: flex;
 `;
 
-export const AiServiceDetailTipLine = styled.div`
+export const PostListLine = styled.div`
   display: flex;
   margin-top: 2.7rem;
   background: #4285f4;
-  width: 110rem;
+  width: 100%;
   height: 2px;
 `;
 
 // 이용꿀팁 목록
-export const AiServiceDetailTipTable = styled.table`
+export const PostListTable = styled.table`
   margin: 0 auto;
   width: 100%;
 `;
 
-export const AiServiceDetailTipTableThead = styled.thead``;
-export const AiServiceDetailTipTableTbody = styled.tbody`
+export const PostListTableThead = styled.thead``;
+export const PostListTableTbody = styled.tbody`
   animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
 
-export const AiServiceDetailTipTableTr = styled.tr``;
-export const AiServiceDetailTipTableTh = styled.th`
+export const PostListTableTr = styled.tr``;
+export const PostListTableTh = styled.th`
   padding: 2rem;
   font-size: 1.6rem;
   border-bottom: 2px solid #f0f0f0;
 `;
 
-export const AiServiceDetailTipTableTd = styled.td`
+export const PostListTableTd = styled.td`
   padding: 2rem;
   font-size: 1.6rem;
   border-bottom: 2px solid #f0f0f0;
   text-align: center;
 `;
 
-export const AiServiceDetailTipTableTdTitle = styled.td`
+export const StatusText = styled.p`
+  color: ${props => props.color};
+  font-size: 1.6rem;
+`;
+
+export const PostListTableTdTitle = styled.td`
   padding: 2rem;
   font-size: 1.6rem;
   border-bottom: 2px solid #f0f0f0;
@@ -132,7 +135,7 @@ export const EyeIcon = styled(FaEye)`
   margin-left: 0.5rem;
 `;
 
-export const AiServiceDetailTipPaging = styled.div`
+export const PostListPaging = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,4 +143,33 @@ export const AiServiceDetailTipPaging = styled.div`
   position: relative;
   bottom: 0;
   transform: translate(-50%, 0);
+`;
+
+export const PostListTableTrContent = styled.tr`
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
+export const Select = styled.select`
+  /* 스타일링을 원하는대로 설정하세요 */
+  background-color: #4285f4;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 1rem 0.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-right: 2rem;
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const Option = styled.option`
+  background-color: white;
+  color: #333333;
+  /* 스타일링을 원하는대로 설정하세요 */
 `;

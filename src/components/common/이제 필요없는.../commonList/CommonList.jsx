@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./style";
 
 // 컴포넌트
-import Selector from "../selector/Selector";
-import Paging from "../paging/Paging";
+import Selector from "../../selector/Selector";
+import Paging from "../../paging/Paging";
 import { useRecoilState } from "recoil";
-import { userState } from "../../../context/authState";
-import NoPage from "../noPage/NoPage";
+import { userState } from "../../../../context/authState";
+import NoPage from "../../noPage/NoPage";
 
-const List = ({
+const CommonList = ({
   data,
   url,
   writeUrl,
@@ -21,7 +21,6 @@ const List = ({
   setCurrentPage,
   count
 }) => {
-  // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
@@ -34,9 +33,7 @@ const List = ({
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
-  const location = useLocation();
-  const decodeName = decodeURI(location.pathname.split("/")[2]);
-  console.log(decodeName);
+
   return (
     <>
       <S.AiServiceDetailTipWrap>
@@ -48,7 +45,7 @@ const List = ({
                 !userInfo
                   ? navigate("/login")
                   : navigate(writeUrl, {
-                      state: { category: "tip", ai: decodeName }
+                      state: { category: "common", ai: "" }
                     });
               }}
             >
@@ -71,9 +68,8 @@ const List = ({
               <S.AiServiceDetailTipTableTr>
                 <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh>
-                  서비스명
-                </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
+
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
@@ -102,9 +98,8 @@ const List = ({
                       [{data.comments_cnt}]
                     </strong>
                   </S.AiServiceDetailTipTableTdTitle>
-                  <S.AiServiceDetailTipTableTd>
-                    {data.ai}
-                  </S.AiServiceDetailTipTableTd>
+
+                  <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
@@ -137,4 +132,4 @@ const List = ({
   );
 };
 
-export default List;
+export default CommonList;

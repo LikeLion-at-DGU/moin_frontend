@@ -63,7 +63,7 @@ export const AiServiceDetailShareImg = styled.img`
 `;
 
 // 클립보드
-export const CopyToClipboardElement = styled.text`
+export const CopyToClipboardElement = styled.div`
   width: 100%;
 `;
 

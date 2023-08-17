@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import RightArrowBlue from "../../../assets/images/icon/rightArrowBlue.png";
 
 function CommuntiyDetailPageType({ type, aiName }) {
   return (
@@ -10,7 +9,7 @@ function CommuntiyDetailPageType({ type, aiName }) {
           <S.DetailPageAiText>{aiName}</S.DetailPageAiText>
         </>
       )}
-      <S.RightArrowBlueIcon src={RightArrowBlue} />
+
       <S.DetailPageTypeText>
         {type === "commons"
           ? "자유게시판"

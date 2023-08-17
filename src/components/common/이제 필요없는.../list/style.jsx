@@ -2,6 +2,7 @@ import { styled, keyframes } from "styled-components";
 import { BiSolidPencil } from "react-icons/bi";
 import { FaRegThumbsUp } from "react-icons/fa6";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { FaEye } from "react-icons/fa6";
 
 const fadeInAnimation = keyframes`
   from {
@@ -15,6 +16,7 @@ const fadeInAnimation = keyframes`
 `;
 
 export const AiServiceDetailTipWrap = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,8 +27,9 @@ export const AiServiceDetailTipWrap = styled.div`
 // 헤더 (글쓰기, 정렬순)
 export const AiServiceDetailTipHeader = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 5.1rem;
+  justify-content: space-between;
+  margin-top: 5rem;
+  width: 100%;
 `;
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
@@ -45,7 +48,7 @@ export const AiServiceDetailTipHeaderWriteContent = styled.div`
   border-radius: 10px;
   border: 2px solid #4285f4;
   padding: 0.7rem 1rem;
-  margin-right: 88rem;
+
   cursor: pointer;
 
   :hover {
@@ -65,9 +68,9 @@ export const AiServiceDetailTipHeaderSort = styled.div`
 
 export const AiServiceDetailTipLine = styled.div`
   display: flex;
-  margin-top: 3rem;
+  margin-top: 2.7rem;
   background: #4285f4;
-  width: 110rem;
+  width: 100%;
   height: 2px;
 `;
 
@@ -81,13 +84,7 @@ export const AiServiceDetailTipTableThead = styled.thead``;
 export const AiServiceDetailTipTableTbody = styled.tbody`
   animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
-export const AiServiceDetailTipTableTrContent = styled.tr`
-  cursor: pointer;
 
-  &:hover {
-    background-color: #f0f0f0;
-  }
-`;
 export const AiServiceDetailTipTableTr = styled.tr``;
 export const AiServiceDetailTipTableTh = styled.th`
   padding: 2rem;
@@ -101,12 +98,6 @@ export const AiServiceDetailTipTableTd = styled.td`
   border-bottom: 2px solid #f0f0f0;
   text-align: center;
 `;
-
-export const LikeIcon = styled(FaRegThumbsUp)`
-  color: black;
-  font-size: 1.4rem;
-  margin-right: 0.5rem;
-`;
 export const AiServiceDetailTipTableTdTitle = styled.td`
   padding: 2rem;
   font-size: 1.6rem;
@@ -114,7 +105,20 @@ export const AiServiceDetailTipTableTdTitle = styled.td`
   text-align: flex-start;
 `;
 
+export const LikeIcon = styled(FaRegThumbsUp)`
+  color: black;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+`;
+
 export const CommentIcon = styled(FaRegCommentAlt)`
+  color: black;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+`;
+
+export const EyeIcon = styled(FaEye)`
   color: black;
   font-size: 1.4rem;
   margin-right: 0.5rem;
@@ -129,4 +133,12 @@ export const AiServiceDetailTipPaging = styled.div`
   position: relative;
   bottom: 0;
   transform: translate(-50%, 0);
+`;
+
+export const AiServiceDetailTipTableTrContent = styled.tr`
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;

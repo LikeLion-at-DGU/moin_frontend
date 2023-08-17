@@ -25,16 +25,8 @@ export const AiServiceDetailTipWrap = styled.div`
 // 헤더 (글쓰기, 정렬순)
 export const AiServiceDetailTipHeader = styled.div`
   display: flex;
-  align-items: center;
-
-  width: 95%;
-  margin-top: 3.1rem;
-  cursor: pointer;
-
-  :hover {
-    color: white;
-    background-color: #4285f4;
-  }
+  justify-content: space-around;
+  margin-top: 5.1rem;
 `;
 
 export const AiServiceDetailTipHeaderWrite = styled.div`
@@ -42,11 +34,6 @@ export const AiServiceDetailTipHeaderWrite = styled.div`
     color: white;
     background-color: #4285f4;
   }
-  display: flex;
-  flex-direction: row;
-  // start
-  justify-self: flex-start;
-  align-items: flex-start;
 `;
 
 export const AiServiceDetailTipHeaderWriteContent = styled.div`
@@ -58,6 +45,13 @@ export const AiServiceDetailTipHeaderWriteContent = styled.div`
   border-radius: 10px;
   border: 2px solid #4285f4;
   padding: 0.7rem 1rem;
+  margin-right: 88rem;
+  cursor: pointer;
+
+  :hover {
+    color: white;
+    background-color: #4285f4;
+  }
 `;
 
 export const StyledPencilIcon = styled(BiSolidPencil)`
@@ -71,9 +65,9 @@ export const AiServiceDetailTipHeaderSort = styled.div`
 
 export const AiServiceDetailTipLine = styled.div`
   display: flex;
-  margin-top: 2rem;
+  margin-top: 3rem;
   background: #4285f4;
-  width: 110rem;
+  width: 100%;
   height: 2px;
 `;
 
@@ -87,26 +81,18 @@ export const AiServiceDetailTipTableThead = styled.thead``;
 export const AiServiceDetailTipTableTbody = styled.tbody`
   animation: ${fadeInAnimation} 0.5s ease-in-out;
 `;
-
-export const AiServiceDetailTipTableTr = styled.tr``;
-export const AiServiceDetailTipTableTh = styled.th`
-  padding: 2rem;
-  font-size: 1.6rem;
-  border-bottom: 2px solid #f0f0f0;
-`;
-
-export const AiServiceDetailTipTableTdTitle = styled.td`
-  padding: 2rem;
-  font-size: 1.6rem;
-  border-bottom: 2px solid #f0f0f0;
-  text-align: flex-start;
-`;
 export const AiServiceDetailTipTableTrContent = styled.tr`
   cursor: pointer;
 
   &:hover {
     background-color: #f0f0f0;
   }
+`;
+export const AiServiceDetailTipTableTr = styled.tr``;
+export const AiServiceDetailTipTableTh = styled.th`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
 `;
 
 export const AiServiceDetailTipTableTd = styled.td`
@@ -120,6 +106,12 @@ export const LikeIcon = styled(FaRegThumbsUp)`
   color: black;
   font-size: 1.4rem;
   margin-right: 0.5rem;
+`;
+export const AiServiceDetailTipTableTdTitle = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: flex-start;
 `;
 
 export const CommentIcon = styled(FaRegCommentAlt)`
@@ -137,9 +129,4 @@ export const AiServiceDetailTipPaging = styled.div`
   position: relative;
   bottom: 0;
   transform: translate(-50%, 0);
-`;
-
-export const StatusText = styled.p`
-  color: ${props => props.color};
-  font-size: 1.6rem;
 `;

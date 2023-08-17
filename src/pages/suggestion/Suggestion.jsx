@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import * as CS from "../community/style";
+
 import Banner from "../../components/common/banner/Banner";
-import List from "../../components/common/list/List";
-import SuggestionList from "../../components/common/suggestionList/SuggestionList";
+
 import axios from "../../api/axios";
+import NoticeBanner from "../../components/common/noticeBanner/NoticeBanner";
+import PostList from "../../components/common/postList/PostList";
 
 function Suggestion() {
   const [sugestionContent, setSugestionContent] = useState([]);
@@ -41,16 +42,21 @@ function Suggestion() {
         titleEnglish="SUGGESTION"
         image={<S.SuggestionIconImg />}
       />
-      <CS.CommunityContentWrapper>
-        <SuggestionList
-          data={sugestionContent}
-          url={"/suggestion/"}
-          writeUrl={"/suggestion/create"}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          count={count}
-        />
-      </CS.CommunityContentWrapper>
+      <NoticeBanner
+        title={"이용안내"}
+        content={
+          "건의사항은 관리자 열람 이후, 건의 내용에 따라 답변까지 3-5일 소요됩니다."
+        }
+      />
+      <PostList
+        use={"suggestion"}
+        data={sugestionContent}
+        url={"/suggestion/"}
+        writeUrl={"/suggestion/create"}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        count={count}
+      />
     </S.SuggestionWrapper>
   );
 }

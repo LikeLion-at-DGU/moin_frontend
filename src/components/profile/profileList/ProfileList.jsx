@@ -10,7 +10,15 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../../common/noPage/NoPage";
 
-const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
+const ProfileList = ({
+  data,
+  category,
+  currentPage,
+  setCurrentPage,
+  count,
+  islike,
+  iscomment
+}) => {
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const navigate = useNavigate();
@@ -39,17 +47,33 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                 <S.AiServiceDetailTipTableTh>
                   카테고리
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
+                {islike ? (
+                  <>
+                    <S.AiServiceDetailTipTableTh>
+                      서비스명
+                    </S.AiServiceDetailTipTableTh>
+                  </>
+                ) : (
+                  <></>
+                )}
+
+                <S.AiServiceDetailTipTableTh>
+                  {iscomment ? "내용" : "제목"}
+                </S.AiServiceDetailTipTableTh>
 
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh>
-                  좋아요
-                </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh>
-                  조회수
-                </S.AiServiceDetailTipTableTh>
+
+                {islike ? (
+                  <>
+                    <S.AiServiceDetailTipTableTh>
+                      좋아요
+                    </S.AiServiceDetailTipTableTh>
+                  </>
+                ) : (
+                  <></>
+                )}
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
@@ -68,11 +92,19 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                           url = "/community/tips/";
                         } else if (data.category === "qna") {
                           url = "/community/qnas/";
+                        } else if (data.category === "건의사항") {
+                          url = "/suggestion/";
+                        } else if (data.category === "ai") {
+                          url = "/AiService/";
                         } else {
                           return;
                         }
 
-                        navigate(`${url}${data.id}`);
+                        navigate(
+                          `${url}${
+                            iscomment ? data.ai || data.community_id : data.id
+                          }`
+                        );
                       }}
                     >
                       <S.AiServiceDetailTipTableTd>
@@ -83,25 +115,49 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                         {data.category === "common" && "자유 게시판"}
                         {data.category === "tip" && "이용 꿀팁"}
                         {data.category === "qna" && "Q&A"}
+                        {data.category === "건의사항" && "건의사항"}
+                        {data.category === "ai" && "ai"}
                       </S.AiServiceDetailTipTableTd>
+
+                      {islike ? (
+                        <>
+                          <S.AiServiceDetailTipTableTd>
+                            {data.ai}
+                          </S.AiServiceDetailTipTableTd>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
                       <S.AiServiceDetailTipTableTdTitle>
-                        {data.title}
-                        <strong
-                          style={{ fontSize: "1.6rem", color: "#4285F4" }}
-                        >
-                          [{data.comments_cnt}]
-                        </strong>
+                        {iscomment ? data.content : data.title}
+
+                        {islike ? (
+                          <>
+                            <strong
+                              style={{ fontSize: "1.6rem", color: "#4285F4" }}
+                            >
+                              [{data.comments_cnt}]
+                            </strong>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </S.AiServiceDetailTipTableTdTitle>
 
                       <S.AiServiceDetailTipTableTd>
                         {data.created_at.split(" ")[0]}
                       </S.AiServiceDetailTipTableTd>
-                      <S.AiServiceDetailTipTableTd>
-                        {data.likes_cnt}
-                      </S.AiServiceDetailTipTableTd>
-                      <S.AiServiceDetailTipTableTd>
-                        {data.view_cnt}
-                      </S.AiServiceDetailTipTableTd>
+
+                      {islike ? (
+                        <>
+                          <S.AiServiceDetailTipTableTd>
+                            {data.likes_cnt}
+                          </S.AiServiceDetailTipTableTd>
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </S.AiServiceDetailTipTableTrContent>
                   );
                 }
@@ -128,4 +184,4 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
   );
 };
 
-export default CommonList;
+export default ProfileList;

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 
 // 컴포넌트
-import List from "../../../common/list/List";
+import PostList from "../../../common/postList/PostList";
 import axios from "../../../../api/axios";
+import { useLocation } from "react-router-dom";
 
 export function AiServiceDetailTip({ aiName }) {
   // 현재 페이지
@@ -47,14 +48,21 @@ export function AiServiceDetailTip({ aiName }) {
     fetchTipContent();
   }, [currentPage]);
 
+  const location = useLocation();
+  const decodeName = decodeURI(location.pathname.split("/")[2]);
+  console.log(decodeName);
+
   return (
     <>
-      <List
+      <PostList
+        use={"communityTips"}
+        category={"tip"}
         data={tipContent}
         url={"/community/tips/"}
         writeUrl={"/community/create"}
         currentOption={currentOption}
         SelectorOption={SelectorOption}
+        currentAiOption={decodeName}
         getCurrentOption={getCurrentOption}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

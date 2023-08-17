@@ -9,14 +9,12 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../noPage/NoPage";
+import NoticeBanner from "../noticeBanner/NoticeBanner";
 
-const CommonList = ({
+const SuggestionList = ({
   data,
   url,
   writeUrl,
-  SelectorOption,
-  currentOption,
-  getCurrentOption,
   currentPage,
   setCurrentPage,
   count
@@ -28,7 +26,6 @@ const CommonList = ({
   //Paging
   // 한 페이지당 보여줄 댓글 수
   const itemsPerPage = 10;
-
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
@@ -37,28 +34,23 @@ const CommonList = ({
   return (
     <>
       <S.AiServiceDetailTipWrap>
+        <NoticeBanner
+          title={"이용안내"}
+          content={
+            "건의사항은 관리자 열람 이후, 건의 내용에 따라 답변까지 3-5일 소요됩니다."
+          }
+        />
+
         <S.AiServiceDetailTipHeader>
-          <S.AiServiceDetailTipHeaderWrite>
-            <S.AiServiceDetailTipHeaderWriteContent
-              onClick={() => {
-                // 로그인하지 않은 경우 로그인 페이지로 이동
-                !userInfo
-                  ? navigate("/login")
-                  : navigate(writeUrl, {
-                      state: { category: "common", ai: "" }
-                    });
-              }}
-            >
-              <S.StyledPencilIcon />
-              글쓰기
-            </S.AiServiceDetailTipHeaderWriteContent>
-          </S.AiServiceDetailTipHeaderWrite>
-          <S.AiServiceDetailTipHeaderSort>
-            <Selector
-              options={SelectorOption}
-              getCurrentOption={getCurrentOption}
-            />
-          </S.AiServiceDetailTipHeaderSort>
+          <S.AiServiceDetailTipHeaderWriteContent
+            onClick={() => {
+              // 로그인하지 않은 경우 로그인 페이지로 이동
+              !userInfo ? navigate("/login") : navigate(writeUrl);
+            }}
+          >
+            <S.StyledPencilIcon />
+            글쓰기
+          </S.AiServiceDetailTipHeaderWriteContent>
         </S.AiServiceDetailTipHeader>
         <S.AiServiceDetailTipLine></S.AiServiceDetailTipLine>
         {/* 데이터 목록 */}
@@ -69,15 +61,11 @@ const CommonList = ({
                 <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
-
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>
-                  좋아요
-                </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh>
-                  조회수
+                  반영여부
                 </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
@@ -88,26 +76,23 @@ const CommonList = ({
                   onClick={() => navigate(`${url}${data.id}`)}
                 >
                   <S.AiServiceDetailTipTableTd>
-                    {currentOption === "popular" || currentOption === "like"
-                      ? idx + 1 + (currentPage - 1) * itemsPerPage
-                      : count - idx - (currentPage - 1) * itemsPerPage}
+                    {count - idx - (currentPage - 1) * itemsPerPage}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTdTitle>
-                    {data.title}{" "}
-                    <strong style={{ fontSize: "1.6rem", color: "#4285F4" }}>
-                      [{data.comments_cnt}]
-                    </strong>
+                    {data.title}
                   </S.AiServiceDetailTipTableTdTitle>
-
                   <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
                     {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
                   <S.AiServiceDetailTipTableTd>
-                    {data.likes_cnt}
-                  </S.AiServiceDetailTipTableTd>
-                  <S.AiServiceDetailTipTableTd>
-                    {data.view_cnt}
+                    {data.reflected_status === 0 ? (
+                      <S.StatusText color="#282828">대기중</S.StatusText>
+                    ) : data.reflected_status === 1 ? (
+                      <S.StatusText color="#4285F4">반영</S.StatusText>
+                    ) : (
+                      <S.StatusText color="#FF5D47">미반영</S.StatusText>
+                    )}
                   </S.AiServiceDetailTipTableTd>
                 </S.AiServiceDetailTipTableTrContent>
               ))}
@@ -132,4 +117,4 @@ const CommonList = ({
   );
 };
 
-export default CommonList;
+export default SuggestionList;

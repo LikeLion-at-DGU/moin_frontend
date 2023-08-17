@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
 // 컴포넌트
-import Selector from "../selector/Selector";
-import Paging from "../paging/Paging";
-import { useRecoilState } from "recoil";
-import { userState } from "../../../context/authState";
-import NoPage from "../noPage/NoPage";
-import NoticeBanner from "../noticeBanner/NoticeBanner";
+
+import Paging from "../../paging/Paging";
+
+import NoPage from "../../noPage/NoPage";
+import NoticeBanner from "../../noticeBanner/NoticeBanner";
 
 const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
   const navigate = useNavigate();
@@ -37,14 +36,13 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
               <S.AiServiceDetailTipTableTr>
                 <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
+
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>
                   조회수
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
@@ -59,7 +57,7 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
                   <S.AiServiceDetailTipTableTdTitle>
                     {data.title}
                   </S.AiServiceDetailTipTableTdTitle>
-                  <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
+
                   <S.AiServiceDetailTipTableTd>
                     {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>
