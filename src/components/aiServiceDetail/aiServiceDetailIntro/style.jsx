@@ -9,12 +9,16 @@ export const AiServiceDetailIntroWrapper = styled.div`
   width: 100%;
   height: 54rem;
   position: relative;
+  @media (max-width: 550px) {
+    height: auto;
+  }
 `;
 
 export const AiServiceDetailBanner = styled.div`
   display: flex;
   width: 100%;
   height: 87%;
+  max-height: 46.98rem;
   background-color: rgba(0, 10, 65, 0.97);
   position: absolute;
 `;
@@ -82,6 +86,12 @@ export const AiServiceDetailContent = styled.div`
   margin-top: 1.1rem;
   width: 100%;
   max-width: 1178px;
+  @media (max-width: 550px) {
+    flex-direction: column;
+    * {
+      color: #282828;
+    }
+  }
 `;
 
 export const AiServiceThumbnail = styled.div`
@@ -89,7 +99,7 @@ export const AiServiceThumbnail = styled.div`
   flex-shrink: 0;
   width: 40rem;
   height: 39.4rem;
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 `;
@@ -120,7 +130,7 @@ export const AiServiceDetailContentDescriptionCompany = styled.div`
   display: flex;
   flex-direction: row;
   align-items: end;
-  margin-top: 4.5rem;
+  margin-top: 4.2rem;
   font-size: 1.3rem;
   font-weight: 700;
 `;
@@ -204,11 +214,11 @@ export const AiServiceDetailContentDescriptionStarCnt = styled.div`
 
 export const AiServiceDetailContentDescriptionBottom = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
 export const AiServiceDetailContentDescriptionBottomLink = styled.div`
-  margin-top: 2rem;
   :hover {
     color: white;
     background-color: #4285f4;
