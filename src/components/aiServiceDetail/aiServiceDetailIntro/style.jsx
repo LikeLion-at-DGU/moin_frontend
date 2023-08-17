@@ -26,7 +26,8 @@ export const AiServiceDetailWrap = styled.div`
   justify-content: center;
   color: ${colors.black};
 
-  width: 100%;
+  width: 99%;
+
   max-width: 1178px;
 
   * {
@@ -156,7 +157,7 @@ export const AiServiceDetailContentDescriptionIntro = styled.div`
 export const AiServiceDetailContentDescriptionJob = styled.div`
   display: flex;
   align-content: center;
-  margin-top: 1rem;
+  margin: 0.6rem 0;
   background-color: #fff;
   width: 35rem;
   height: 3rem;

@@ -212,35 +212,30 @@ const Comment = ({
             <S.AiServiceDetailReviewMyLi>
               <S.AiServiceDetailReviewMyWrap>
                 <S.AiServiceDetailReviewMyHeader>
-                  <S.AiServiceDetailReviewMyWriter>
-                    {writer}
-                  </S.AiServiceDetailReviewMyWriter>
-                  <S.AiServiceDetailReviewMyDate>
-                    {created_at}
-                  </S.AiServiceDetailReviewMyDate>
+                  <S.AiServiceDetailReviewMyHeaderWrapper>
+                    <S.AiServiceDetailReviewMyWriter>
+                      {writer}
+                    </S.AiServiceDetailReviewMyWriter>
+                    <S.AiServiceDetailReviewMyDate>
+                      {created_at}
+                    </S.AiServiceDetailReviewMyDate>
+                  </S.AiServiceDetailReviewMyHeaderWrapper>
+
+                  <EditDelete
+                    isWriter={true}
+                    id={id}
+                    isUser={false}
+                    handleEdit={handleEdit}
+                    handleDelete={UserDeleteSubmit}
+                    isBlue={true}
+                  />
                 </S.AiServiceDetailReviewMyHeader>
+
                 <S.AiServiceDetailReviewMyContent>
                   {content}
                 </S.AiServiceDetailReviewMyContent>
               </S.AiServiceDetailReviewMyWrap>
-              <S.AiServiceDetailReviewMyButton>
-                <EditDelete
-                  isWriter={true}
-                  id={id}
-                  isUser={false}
-                  handleEdit={handleEdit}
-                  handleDelete={UserDeleteSubmit}
-                  isBlue={true}
-                />
-                {/* <S.AiServiceDetailReviewMyButtonEdit onClick={handleEdit}>
-                  수정
-                </S.AiServiceDetailReviewMyButtonEdit>
-                <S.AiServiceDetailReviewMyButtonDelete
-                  onClick={UserDeleteSubmit}
-                >
-                  삭제
-                </S.AiServiceDetailReviewMyButtonDelete> */}
-              </S.AiServiceDetailReviewMyButton>
+              {/* <S.AiServiceDetailReviewMyButton></S.AiServiceDetailReviewMyButton> */}
 
               {/* ------------ 유저 삭제 모달 ------------ */}
               <Modal

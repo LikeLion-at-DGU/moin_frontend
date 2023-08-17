@@ -119,10 +119,6 @@ export function AiServiceDetailReview({ introContent, setRating }) {
                     })}
                   </S.Stars>
                 </S.Wrap>
-                {/* <Star
-                  starNum={userInfo ? introContent[0].my_rating_point : 0}
-                  starSize={2.4}
-                /> */}
               </S.AiServiceDetailReviewStarMyContentIcon>
 
               <S.AiServiceDetailReviewStarMyContentSubmit
@@ -144,6 +140,7 @@ export function AiServiceDetailReview({ introContent, setRating }) {
                 평균 만족도
               </S.AiServiceDetailReviewStarHeaderTitle>
             </S.AiServiceDetailReviewStarAvgHeader>
+
             <S.AiServiceDetailReviewStarAvgContent>
               <S.AiServiceDetailReviewStarAvgContentResult>
                 <S.AiServiceDetailReviewStarAvgContentResultAi>
@@ -158,6 +155,7 @@ export function AiServiceDetailReview({ introContent, setRating }) {
                   ({introContent.rating_cnt})
                 </S.AiServiceDetailReviewStarAvgContentResultCnt>
               </S.AiServiceDetailReviewStarAvgContentResult>
+
               <S.AiServiceDetailReviewStarAvgContentIcon>
                 <Star starNum={introContent.avg_point} starSize={3} />
               </S.AiServiceDetailReviewStarAvgContentIcon>
