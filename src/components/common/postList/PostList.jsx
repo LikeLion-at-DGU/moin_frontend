@@ -44,7 +44,6 @@ const PostList = ({
       thList = ["번호", "제목", "등록일시", "반영여부"];
       break;
   }
-  console.log(thList);
 
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -154,11 +153,46 @@ const PostList = ({
         {/* 데이터 목록 */}
         {data && data.length > 0 ? (
           isMobile ? (
-            <S.PostListMobileWrapper>
+            <S.PostListMobile>
               {data.map((data, idx) => (
-                <div>{data.title}</div>
+                <S.PostListMobileWrapper>
+                  <S.PostListMobukeWrapperBox1>
+                    {ifThListContain("서비스명") ? (
+                      <S.PostListMobileServiceTitle>
+                        {data.ai}
+                      </S.PostListMobileServiceTitle>
+                    ) : (
+                      <></>
+                    )}
+                    <S.PostListMobileTitle>{data.title}</S.PostListMobileTitle>
+                    <S.PostListMobileDescription>
+                      {ifThListContain("등록일시") ? (
+                        <S.PostListMobileContent>
+                          {data.created_at.split(" ")[1]}
+                        </S.PostListMobileContent>
+                      ) : (
+                        <></>
+                      )}
+
+                      {ifThListContain("조회수") ? (
+                        <S.PostListMobileContent>
+                          조회 {data.view_cnt}
+                        </S.PostListMobileContent>
+                      ) : (
+                        <></>
+                      )}
+                    </S.PostListMobileDescription>
+                  </S.PostListMobukeWrapperBox1>
+                  {ifThListContain("좋아요") ? (
+                    <S.PostListMobileContent>
+                      좋아요 {data.likes_cnt}
+                    </S.PostListMobileContent>
+                  ) : (
+                    <></>
+                  )}
+                </S.PostListMobileWrapper>
               ))}
-            </S.PostListMobileWrapper>
+            </S.PostListMobile>
           ) : (
             // 데탑
 
