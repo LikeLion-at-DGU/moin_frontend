@@ -4,7 +4,7 @@ export const SuggestionHeaderWrapper = styled.div`
   display: flex;
   justify-content: row;
   align-items: center;
-  width: 95%;
+  width: 90%;
   padding: 1.5rem 3rem;
   background-color: #f0f0f0;
   border-radius: 20px;

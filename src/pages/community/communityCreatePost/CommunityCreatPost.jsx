@@ -74,17 +74,23 @@ function CommunityCreatPost() {
 
     const formdata = new FormData();
     formdata.append("image", image);
-
     formdata.append("app", "community");
 
-    const headers = { "Content-Type": image.type };
-
     try {
-      const response = await axios.post("upload-image", formdata, { headers });
-      const image_url = "https://moin.dcs-hyungjoon.com/media/" + image.name;
-      const imageName = image_url.substring(image_url.lastIndexOf("/") + 1);
-      const newValue = value + `\n\n![${image.name}](${image_url})`;
-      setValue(newValue);
+      const response = await fetch("http://101.101.209.178/upload-image", {
+        method: "POST",
+        body: formdata
+      });
+
+      const responseData = await response.json(); // Parse JSON response
+
+      if (response.ok) {
+        const image_url = responseData.image_url; // Assuming the JSON response has an 'image_url' property
+        const newValue = value + `\n\n![${image.name}](${image_url})`;
+        setValue(newValue);
+      } else {
+        console.error("Image upload failed with status:", response.status);
+      }
     } catch (error) {
       console.error("Error uploading image:", error);
     }
