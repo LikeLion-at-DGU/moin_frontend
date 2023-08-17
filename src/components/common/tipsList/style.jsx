@@ -158,7 +158,7 @@ export const Select = styled.select`
   border: none;
   border-radius: 10px;
   color: white;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   font-size: 2rem;
   font-weight: 500;
   margin-right: 2rem;
@@ -168,6 +168,8 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option`
+  background-color: white;
+  color: #333333;
   /* 스타일링을 원하는대로 설정하세요 */
 `;
 

@@ -16,7 +16,7 @@ import CommonCommentList from "../../../components/common/commonCommentList/Comm
 function DetailPage() {
   const [user, setUser] = useRecoilState(userState);
   const [commentContent, setCommentContent] = useState("");
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState([]);
   const [viewCnt, setViewCnt] = useState(0);
   const [isFirst, setIsFirst] = useState(true);
   // 한 페이지당 보여줄 댓글 수
@@ -196,9 +196,10 @@ function DetailPage() {
     );
   };
 
+  console.log(comments);
   const renderComment = () => {
-    return !comments ? (
-      <></>
+    return comments.length === 0 ? (
+      <>작성된 답변이 없습니다.</>
     ) : (
       <>
         <CommonCommentList

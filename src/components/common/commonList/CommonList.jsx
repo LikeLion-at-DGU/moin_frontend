@@ -45,7 +45,7 @@ const CommonList = ({
                 !userInfo
                   ? navigate("/login")
                   : navigate(writeUrl, {
-                      state: { category: "common", ai: null }
+                      state: { category: "common", ai: "" }
                     });
               }}
             >
