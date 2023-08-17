@@ -20,7 +20,7 @@ const ProfileList = ({
   iscomment
 }) => {
   const [userInfo, setUserInfo] = useRecoilState(userState);
-  console.log("islike", islike);
+
   const navigate = useNavigate();
 
   //Paging
@@ -58,7 +58,6 @@ const ProfileList = ({
                 )}
 
                 <S.AiServiceDetailTipTableTh>
-                  {" "}
                   {iscomment ? "내용" : "제목"}
                 </S.AiServiceDetailTipTableTh>
 
@@ -101,7 +100,7 @@ const ProfileList = ({
                           return;
                         }
 
-                        navigate(`${url}${data.id}`);
+                        navigate(`${url}${data.ai_id}`);
                       }}
                     >
                       <S.AiServiceDetailTipTableTd>

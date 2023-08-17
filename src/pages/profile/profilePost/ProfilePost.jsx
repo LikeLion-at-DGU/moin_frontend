@@ -57,7 +57,6 @@ function ProfilePost() {
       console.log(e);
     }
   };
-  console.log(data);
 
   //페이지변경
   useEffect(() => {

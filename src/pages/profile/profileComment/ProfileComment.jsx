@@ -54,16 +54,12 @@ function ProfileComment() {
       setData(response.data.results);
       setCount(response.data.count);
       setIscomment(true);
-
-      // console.log("작성한 댓글");
-      // console.log(data); // 데이터 확인용
-
-      // console.log(category);
     } catch (e) {
       console.log(e);
     }
   };
 
+  console.log(data);
   //페이지변경
   useEffect(() => {
     fetchData();
@@ -133,7 +129,7 @@ function ProfileComment() {
   };
   return (
     <>
-      <ProfileHeader title="댓글" img={MypageChat} />
+      <ProfileHeader title="내가 작성한 댓글" img={MypageChat} />
       <S.CommunityWrapper>
         <S.CommunityContentWrapper>
           <S.AiServiceDetailCommentWrap>

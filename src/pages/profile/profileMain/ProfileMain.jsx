@@ -149,7 +149,7 @@ function ProfileMain() {
           userDetailInfo={null}
         />
         <AuthContentBox
-          content="댓글 단 게시물"
+          content="내가 작성한 댓글"
           img={MypageChat}
           link="comment"
           userDetailInfo={null}
