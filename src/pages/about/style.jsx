@@ -46,6 +46,10 @@ export const AboutSection_Img = styled.img`
   transform: translate(-50%, -50%);
 `;
 
+export const AboutSection_Img_r = styled.img`
+  z-index: 1;
+`;
+
 export const AboutSection1_Title = styled.img`
   position: absolute;
   transform: translate(-50%, -50%);
@@ -122,13 +126,12 @@ export const AboutSection5 = styled.div`
 
 export const AboutSection6 = styled.div`
   width: 100vw;
-  height: calc(100vh + 1px);
-
+  padding: 20rem 0;
   position: relative;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   background: linear-gradient(to bottom, white, #000a41);
 `;

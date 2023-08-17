@@ -24,6 +24,11 @@ import AboutSection4_ServiceDetail from "./AboutSection4/AboutSection4_ServiceDe
 import AboutSection5_Title from "./AboutSection5/AboutSection5_Title.png";
 import AboutSection5_GotoMain from "./AboutSection5/AboutSection5_GotoMain.png";
 
+import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.svg";
+import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.svg";
+import AboutUs1 from "./AboutSection6/AboutUs1.jpeg";
+import AboutUs2 from "./AboutSection6/AboutUs2.jpeg";
+import AboutUs3 from "./AboutSection6/AboutUs3.jpeg";
 import "./animation.css";
 
 function About() {
@@ -73,6 +78,8 @@ function About() {
       position < Ref_AboutSection3_2.current.offsetTop + 100
     ) {
       setCurrentSection("AboutSection3_2");
+    } else if (position < Ref_AboutSection5.current.offsetTop - 100) {
+      setCurrentSection("AboutSection5");
     }
     // else if (
     //   position >=
@@ -286,7 +293,7 @@ function About() {
           src={AboutSection3_TeamMoin}
           style={{
             animationDelay: "0.5s",
-            opacity: "0",
+
             width: "100%",
             top: "50%",
             left: "50%"
@@ -300,43 +307,39 @@ function About() {
             currentSection == "AboutSection3_2" ? "AboutSection3_Fadein" : ""
           }
           src={AboutSection3_WhyMoin}
-          style={{ opacity: "0", width: "40%", top: "50%", left: "50%" }}
+          style={{ width: "40%", top: "50%", left: "50%" }}
         />
       </S.AboutSection3>
 
       <S.AboutSection4>
-        <S.AboutSection_Img
+        <S.AboutSection_Img_r
           src={AboutSection4_ServiceDetail}
           style={{
-            position: "relative",
-            width: "90%",
-            transform: "Translate(0,0)"
+            width: "90%"
           }}
         />
       </S.AboutSection4>
 
       <S.AboutSection5 ref={Ref_AboutSection5}>
-        <S.AboutSection_Img
+        <S.AboutSection_Img_r
           src={AboutSection5_Title}
           style={{
-            position: "relative",
             width: "30%",
-            transform: "Translate(0,0)",
+
             paddingBottom: "5rem"
           }}
         />
 
         {/* 메인페이지로 이동하기 */}
-        <S.AboutSection_Img
+        <S.AboutSection_Img_r
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
           }
           src={AboutSection5_GotoMain}
           style={{
             opacity: "0",
-            position: "relative",
-            width: "15%",
-            transform: "Translate(0,0)"
+
+            width: "15%"
           }}
           onClick={() => {
             navigate("/");
@@ -344,9 +347,54 @@ function About() {
         />
       </S.AboutSection5>
 
-      <S.AboutSection6></S.AboutSection6>
+      <S.AboutSection6>
+        {/* 모인스토리 */}
+        <S.AboutSection_Img_r
+          className={
+            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+          }
+          src={AboutSection6_MoinStory}
+          style={{
+            width: "30%",
+            marginBottom: "20rem"
+          }}
+        />
 
-      <S.AboutSection7 />
+        {/* 어바웃 어스 */}
+        <S.AboutSection_Img_r
+          className={
+            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+          }
+          src={AboutSection6_AboutUs}
+          style={{
+            width: "70%",
+            marginBottom: "2rem"
+          }}
+        />
+
+        <S.AboutSection_Img_r
+          className={
+            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+          }
+          src={AboutUs2}
+          style={{
+            width: "70%",
+            borderRadius: "3rem"
+          }}
+        />
+      </S.AboutSection6>
+
+      <S.AboutSection7>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/DQWsN3lIfEY"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        />
+      </S.AboutSection7>
     </S.AboutWrapper>
   );
 }
