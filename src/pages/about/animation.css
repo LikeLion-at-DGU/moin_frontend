@@ -21,6 +21,7 @@
 .AboutSection2 {
   animation-duration: 2s;
   animation-name: fadein;
+  animation-fill-mode: forwards;
 }
 
 .AboutSection2_Popup1 {
