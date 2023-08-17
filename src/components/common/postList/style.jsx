@@ -173,3 +173,5 @@ export const Option = styled.option`
   color: #333333;
   /* 스타일링을 원하는대로 설정하세요 */
 `;
+
+export const PostListMobileWrapper = styled.div``;
