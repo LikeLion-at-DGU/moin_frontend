@@ -18,9 +18,6 @@ export const AiServiceDescriptionWrap = styled.div`
   align-items: center;
   margin-top: 5rem;
   animation: ${fadeInAnimation} 0.5s ease-in-out;
-  * {
-    border: 1px solid black;
-  }
 `;
 
 export const AiServiceDescriptionIntroTitle = styled.div`
