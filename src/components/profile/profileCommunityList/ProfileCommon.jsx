@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style";
-import MypageStar from "../../../assets/images/icon/mypageStarBlue.png";
-import ProfileHeader from "../../../components/profile/profileHeader/ProfileHeader";
+
+import ProfileList from "../profileList/ProfileList";
 
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import axios from "../../../api/axios";
-import ProfileCommon from "../../../components/profile/profileCommunityList/ProfileCommon";
 
-function ProfileFavoritePost() {
+function ProfileCommon() {
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
   // 데이터
   const [data, setData] = useState();
+
+  // 현재 페이지
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [count, setCount] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -27,25 +31,36 @@ function ProfileFavoritePost() {
       });
 
       const detailData = response.data;
-      setData(detailData);
-      console.log("좋아요한 게시글", detailData); // 데이터 확인용
+      setData(response.data.results);
+      setCount(response.data.count);
     } catch (e) {
       console.log(e);
     }
   };
-
+  console.log("좋아요한 게시글", data); // 데이터 확인용
+  console.log("count", count);
   useEffect(() => {
     if (userInfo) {
       fetchData();
     }
   }, []);
 
+  //페이지변경
+  useEffect(() => {
+    fetchData();
+  }, [currentPage]);
+
   return (
     <>
-      <ProfileHeader title="좋아요한 게시글" img={MypageStar} />
-      <ProfileCommon />
+      <ProfileList
+        data={data}
+        // url={"/community/commons/"}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        count={count}
+      />
     </>
   );
 }
 
-export default ProfileFavoritePost;
+export default ProfileCommon;
