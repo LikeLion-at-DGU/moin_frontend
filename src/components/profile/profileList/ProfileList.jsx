@@ -39,6 +39,9 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                 <S.AiServiceDetailTipTableTh>
                   카테고리
                 </S.AiServiceDetailTipTableTh>
+                <S.AiServiceDetailTipTableTh>
+                  서비스명
+                </S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
 
                 <S.AiServiceDetailTipTableTh>
@@ -46,9 +49,6 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                 </S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>
                   좋아요
-                </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh>
-                  조회수
                 </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
@@ -84,6 +84,9 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                         {data.category === "tip" && "이용 꿀팁"}
                         {data.category === "qna" && "Q&A"}
                       </S.AiServiceDetailTipTableTd>
+                      <S.AiServiceDetailTipTableTd>
+                        {data.ai}
+                      </S.AiServiceDetailTipTableTd>
                       <S.AiServiceDetailTipTableTdTitle>
                         {data.title}
                         <strong
@@ -98,9 +101,6 @@ const CommonList = ({ data, category, currentPage, setCurrentPage, count }) => {
                       </S.AiServiceDetailTipTableTd>
                       <S.AiServiceDetailTipTableTd>
                         {data.likes_cnt}
-                      </S.AiServiceDetailTipTableTd>
-                      <S.AiServiceDetailTipTableTd>
-                        {data.view_cnt}
                       </S.AiServiceDetailTipTableTd>
                     </S.AiServiceDetailTipTableTrContent>
                   );
