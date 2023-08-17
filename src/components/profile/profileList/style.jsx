@@ -76,7 +76,7 @@ export const AiServiceDetailTipLine = styled.div`
   display: flex;
   margin-top: 2.7rem;
   background: #4285f4;
-  width: 110rem;
+  width: 100%;
   height: 2px;
 `;
 
