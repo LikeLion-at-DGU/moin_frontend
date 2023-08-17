@@ -9,6 +9,7 @@ import Paging from "../paging/Paging";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../context/authState";
 import NoPage from "../noPage/NoPage";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const PostList = ({
   use,
@@ -155,7 +156,10 @@ const PostList = ({
           isMobile ? (
             <S.PostListMobile>
               {data.map((data, idx) => (
-                <S.PostListMobileWrapper>
+                <S.PostListMobileWrapper
+                  key={data.id}
+                  onClick={() => navigate(`${url}${data.id}`)}
+                >
                   <S.PostListMobukeWrapperBox1>
                     {ifThListContain("서비스명") ? (
                       <S.PostListMobileServiceTitle>
@@ -181,12 +185,36 @@ const PostList = ({
                       ) : (
                         <></>
                       )}
+                      {data.comments_cnt != undefined ? (
+                        <S.PostListMobileContent>
+                          댓글 {data.comments_cnt}
+                        </S.PostListMobileContent>
+                      ) : (
+                        <></>
+                      )}
                     </S.PostListMobileDescription>
                   </S.PostListMobukeWrapperBox1>
+
                   {ifThListContain("좋아요") ? (
-                    <S.PostListMobileContent>
-                      좋아요 {data.likes_cnt}
-                    </S.PostListMobileContent>
+                    <S.PostListMobukeWrapperBox2 style={{ color: "gray" }}>
+                      <AiOutlineHeart style={{ color: "#4285F4" }} />{" "}
+                      {data.likes_cnt}
+                    </S.PostListMobukeWrapperBox2>
+                  ) : (
+                    <></>
+                  )}
+                  {ifThListContain("반영여부") ? (
+                    <S.PostListMobukeWrapperBox2
+                      style={{ color: "gray", backgroundColor: "#F8F8FA" }}
+                    >
+                      {data.reflected_status === 0 ? (
+                        <S.StatusText color="#282828">대기중</S.StatusText>
+                      ) : data.reflected_status === 1 ? (
+                        <S.StatusText color="#4285F4">반영</S.StatusText>
+                      ) : (
+                        <S.StatusText color="#FF5D47">미반영</S.StatusText>
+                      )}
+                    </S.PostListMobukeWrapperBox2>
                   ) : (
                     <></>
                   )}
