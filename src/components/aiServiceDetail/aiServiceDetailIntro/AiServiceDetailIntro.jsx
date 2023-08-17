@@ -94,13 +94,16 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   };
 
   return (
-    <>
-      {/* {item.name} */} <ToastContainer />
+    <S.AiServiceDetailIntroWrapper>
+      {/* {item.name} */}
+      <ToastContainer />
       {/* 비회원 좋아요 클릭 시 띄우는 모달창 */}
       <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      <S.AiServiceDetailBanner />
       <S.AiServiceDetailWrap key={introContent.id}>
-        <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
         <S.AiServiceDetailHeader>
+          {/* 클립보드 */}
           <S.CopyToClipboardElement>
             <S.AiServiceDetailShare>
               <CopyToClipboard text={introContent.url} onCopy={notify}>
@@ -108,7 +111,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
               </CopyToClipboard>
             </S.AiServiceDetailShare>
           </S.CopyToClipboardElement>
-
+          {/* 모인등록자 */}
           <S.AiServiceDetailRegistrant>
             MOIN 등록자 : {introContent.applier}
           </S.AiServiceDetailRegistrant>
@@ -159,6 +162,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
                 </S.AiServiceDetailContentDescriptionStarCnt>
               </S.AiServiceDetailContentDescriptionStar>
 
+              {/* 조회수+키워드 */}
               <S.AiServiceDetailContentDescriptionEndWrap>
                 {/* 조회수 */}
                 <S.AiServiceDetailContentDescriptionViews>
@@ -177,6 +181,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
                   ))} */}
                 </S.AiServiceDetailContentDescriptionKeywordWrap>
               </S.AiServiceDetailContentDescriptionEndWrap>
+
               <S.AiServiceDetailContentDescriptionBottom>
                 {/* 서비스 바로가기 */}
                 <S.AiServiceDetailContentDescriptionBottomLink>
@@ -205,6 +210,6 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
           </S.AiServiceDetailContent>
         </S.AiServiceDetailHeader>
       </S.AiServiceDetailWrap>
-    </>
+    </S.AiServiceDetailIntroWrapper>
   );
 }

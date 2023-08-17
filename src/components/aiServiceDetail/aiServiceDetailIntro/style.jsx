@@ -2,36 +2,53 @@ import { styled } from "styled-components";
 import colors from "../../../style/theme";
 import { Link } from "react-router-dom";
 
+export const AiServiceDetailIntroWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 54rem;
+  position: relative;
+`;
+
+export const AiServiceDetailBanner = styled.div`
+  display: flex;
+  width: 100%;
+  height: 87%;
+  background-color: rgba(0, 10, 65, 0.97);
+  position: absolute;
+`;
+
 export const AiServiceDetailWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: ${colors.black};
-`;
 
-export const AiServiceDetailBanner = styled.div`
-  display: flex;
   width: 100%;
-  height: 47rem;
-  background-color: rgba(0, 10, 65, 0.97);
-  position: absolute;
-  top: 6rem;
+  max-width: 1178px;
+
+  * {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;
 
 export const AiServiceDetailHeader = styled.div`
+  width: 100%;
   display: flex;
-  max-width: 1178px;
   flex-direction: column;
   color: #fff;
   position: relative;
-  margin-left: -12rem;
 `;
 
 export const AiServiceDetailShare = styled.div`
   display: flex;
   margin-top: 2.9rem;
-  margin-right: -12rem;
+  margin-right: 1.3rem;
   justify-content: right;
   transition: transform 450ms;
   :hover {
@@ -47,7 +64,9 @@ export const AiServiceDetailShareImg = styled.img`
 `;
 
 // 클립보드
-export const CopyToClipboardElement = styled.text``;
+export const CopyToClipboardElement = styled.text`
+  width: 100%;
+`;
 
 export const AiServiceDetailRegistrant = styled.div`
   display: flex;
@@ -61,11 +80,13 @@ export const AiServiceDetailContent = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 1.1rem;
+  width: 100%;
+  max-width: 1178px;
 `;
 
 export const AiServiceThumbnail = styled.div`
   position: relative;
-  width: 44.2rem;
+  width: 40rem;
   height: 39.4rem;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -86,7 +107,12 @@ export const AiServiceThumbnailImg = styled.img`
 export const AiServiceDetailContentDescription = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 6rem;
+  margin: 0 2%;
+  flex-grow: 1;
+
+  * {
+    overflow: hidden;
+  }
 `;
 
 export const AiServiceDetailContentDescriptionCompany = styled.div`
@@ -114,10 +140,11 @@ export const AiServiceDetailContentDescriptionName = styled.div`
 
 export const AiServiceDetailContentDescriptionIntro = styled.div`
   display: flex;
+
   margin-top: 1rem;
   font-size: 2rem;
   font-weight: 500;
-  white-space: pre-line;
+  /* white-space: pre-line; */
 `;
 
 export const AiServiceDetailContentDescriptionJob = styled.div`
@@ -125,7 +152,7 @@ export const AiServiceDetailContentDescriptionJob = styled.div`
   align-content: center;
   margin-top: 3rem;
   background-color: #fff;
-  width: 39.5rem;
+  width: 37rem;
   height: 3rem;
   border-radius: 5px;
   color: ${colors.black};
@@ -163,25 +190,6 @@ export const AiServiceDetailContentDescriptionStarCnt = styled.div`
   display: flex;
   font-size: 1.4rem;
   margin-left: 1rem;
-`;
-
-export const AiServiceDetailContentDescriptionKeywordWrap = styled.div`
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-right: -12rem;
-  margin-top: 0.5rem;
-  width: 100%;
-`;
-
-export const AiServiceDetailContentDescriptionKeyword = styled.div`
-  display: flex;
-  font-size: 1.4rem;
-  font-weight: 600;
-  background: #ffb6a7;
-  margin-right: 1.2rem;
-  border-radius: 4.5px;
-  padding: 0.5rem 1rem;
 `;
 
 // export const StyledKeyword = styled(Keyword)`
@@ -241,16 +249,22 @@ export const AiServiceDetailContentDescriptionBottomHeartCnt = styled.div`
 // 조회수 추가
 
 export const AiServiceDetailContentDescriptionEndWrap = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
 export const AiServiceDetailContentDescriptionViews = styled.div`
   display: flex;
-  width: 20rem;
+
   font-size: 1.2rem;
   font-weight: 600;
+`;
+
+export const AiServiceDetailContentDescriptionKeywordWrap = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 // 좋아요 버튼 기능
