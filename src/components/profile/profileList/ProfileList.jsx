@@ -95,12 +95,16 @@ const ProfileList = ({
                         } else if (data.category === "건의사항") {
                           url = "/suggestion/";
                         } else if (data.category === "ai") {
-                          url = "/ai/";
+                          url = "/AiService/";
                         } else {
                           return;
                         }
 
-                        navigate(`${url}${data.ai_id}`);
+                        navigate(
+                          `${url}${
+                            iscomment ? data.ai || data.community_id : data.id
+                          }`
+                        );
                       }}
                     >
                       <S.AiServiceDetailTipTableTd>
