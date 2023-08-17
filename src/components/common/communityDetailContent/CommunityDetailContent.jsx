@@ -7,6 +7,7 @@ import axios from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import MarkdownPreview from "@uiw/react-markdown-preview";
 
 const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
   const navigate = useNavigate();
@@ -51,22 +52,8 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
     navigate(`/community/edit/${id}`, { state: { detail } });
   };
 
-  const markdown = `
-  # 해딩
-
-  **굵게**
-  
-  하이 ㅋ
-
-  \`\`\`
-
-  code block
-
-  \`\`\`
-
-  > 인용쓰
-  `;
-
+  const markdown = `${detail.content}<!--rehype:style=font-size: 1.8rem;-->`;
+  console.log(markdown);
   return (
     <>
       <S.DetailTitleWrapper>
@@ -84,12 +71,10 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
         <S.DetailTitleGrayInfo>{detail.created_at}</S.DetailTitleGrayInfo>
       </S.DetailTitleInfoWrapper>
       <S.DetailContent>
-        <S.MarkdownWrapper>
-          <ReactMarkdown
-            children={detail.content}
-            remarkPlugins={[remarkGfm]}
-          />
-        </S.MarkdownWrapper>
+        <div data-color-mode="light">
+          <MarkdownPreview source={markdown} />
+        </div>
+        <S.MarkdownWrapper></S.MarkdownWrapper>
       </S.DetailContent>
     </>
   );

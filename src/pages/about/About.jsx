@@ -26,9 +26,9 @@ import AboutSection5_GotoMain from "./AboutSection5/AboutSection5_GotoMain.png";
 
 // import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.svg";
 // import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.svg";
-import AboutUs1 from "./AboutSection6/AboutUs1.jpeg";
-import AboutUs2 from "./AboutSection6/AboutUs2.jpeg";
-import AboutUs3 from "./AboutSection6/AboutUs3.jpeg";
+import AboutUs1 from "./AboutSection6/aboutUs1.jpeg";
+import AboutUs2 from "./AboutSection6/aboutUs2.jpeg";
+import AboutUs3 from "./AboutSection6/aboutUs3.jpeg";
 import "./animation.css";
 
 function About() {
