@@ -101,7 +101,9 @@ const ProfileList = ({
                         }
 
                         navigate(
-                          `${url}${iscomment ? data.ai || data.id : data.id}`
+                          `${url}${
+                            iscomment ? data.ai || data.community_id : data.id
+                          }`
                         );
                       }}
                     >
