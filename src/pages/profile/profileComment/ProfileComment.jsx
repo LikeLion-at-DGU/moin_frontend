@@ -55,10 +55,10 @@ function ProfileComment() {
       setCount(response.data.count);
       setIscomment(true);
 
-      console.log("작성한 댓글");
-      console.log(data); // 데이터 확인용
+      // console.log("작성한 댓글");
+      // console.log(data); // 데이터 확인용
 
-      console.log(category);
+      // console.log(category);
     } catch (e) {
       console.log(e);
     }

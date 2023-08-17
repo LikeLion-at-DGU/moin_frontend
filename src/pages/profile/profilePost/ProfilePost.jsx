@@ -29,6 +29,13 @@ function ProfilePost() {
   // 좋아요한 게시물인지 판별
   const [islike, setIslike] = useState(false);
 
+  // 초기세팅
+  useEffect(() => {
+    if (userInfo) {
+      fetchData();
+    }
+  }, [currentTab]);
+
   const fetchData = async () => {
     try {
       const accessToken = userInfo.accessToken; // 추출한 accessToken
@@ -51,12 +58,6 @@ function ProfilePost() {
     }
   };
   console.log(data);
-  // 초기세팅
-  useEffect(() => {
-    if (userInfo) {
-      fetchData();
-    }
-  }, []);
 
   //페이지변경
   useEffect(() => {
