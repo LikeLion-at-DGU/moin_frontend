@@ -69,9 +69,9 @@ export default function NavBar() {
 
   const [isMobile, setisMobile] = useState(false);
 
-  //윈도우가 640px 이하면  모바일버전을 연다
+  //윈도우가 550px 이하면  모바일버전을 연다
   const resizingHandler = () => {
-    if (window.innerWidth < 640) {
+    if (window.innerWidth < 550) {
       setisMobile(true);
     } else {
       setisMobile(false);
@@ -79,7 +79,7 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-    if (window.innerWidth <= 640) {
+    if (window.innerWidth <= 550) {
       setisMobile(true);
     }
     window.addEventListener("resize", resizingHandler);

@@ -37,7 +37,7 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
               <S.AiServiceDetailTipTableTr>
                 <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh></S.AiServiceDetailTipTableTh>
+
                 <S.AiServiceDetailTipTableTh>
                   등록일시
                 </S.AiServiceDetailTipTableTh>
@@ -58,7 +58,7 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
                   <S.AiServiceDetailTipTableTdTitle>
                     {data.title}
                   </S.AiServiceDetailTipTableTdTitle>
-                  <S.AiServiceDetailTipTableTd></S.AiServiceDetailTipTableTd>
+
                   <S.AiServiceDetailTipTableTd>
                     {data.created_at.split(" ")[0]}
                   </S.AiServiceDetailTipTableTd>

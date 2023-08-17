@@ -32,7 +32,7 @@ function MainBannerList() {
 
   useEffect(() => {
     if (window.innerWidth <= 550) {
-      setCurrentBanner(bannersMobile);
+      setCurrentBanners(bannersMobile);
     }
     window.addEventListener("resize", resizingHandler);
 
