@@ -45,9 +45,9 @@ function About() {
 
   const [currentSection, setCurrentSection] = useState("none");
   useEffect(() => {
-    console.log(Ref_AboutSection1.current.offsetBottom);
+    console.log(currentSection, position);
     getCurrentSection();
-  }, [position]);
+  }, [currentSection, position]);
 
   const Ref_AboutSection1 = useRef();
   const Ref_AboutSection2 = useRef();
@@ -56,59 +56,60 @@ function About() {
   const Ref_AboutSection5 = useRef();
 
   const getCurrentSection = () => {
-    if (
-      position >= Ref_AboutSection1.current.offsetTop - 50 &&
-      position <
-        Ref_AboutSection1.current.offsetTop +
-          Ref_AboutSection1.current.offsetHeight -
-          30
-    ) {
+    if (position < Ref_AboutSection1.current.offsetTop + 100) {
       setCurrentSection("AboutSection1");
     } else if (
-      position >=
-        Ref_AboutSection1.current.offsetTop +
-          Ref_AboutSection1.current.offsetHeight -
-          30 &&
-      position <
-        Ref_AboutSection2.current.offsetTop +
-          Ref_AboutSection2.current.offsetHeight -
-          50
+      position >= Ref_AboutSection1.current.offsetTop + 100 &&
+      position < Ref_AboutSection2.current.offsetTop + 100
     ) {
       setCurrentSection("AboutSection2");
     } else if (
-      position >=
-        Ref_AboutSection2.current.offsetTop +
-          Ref_AboutSection2.current.offsetHeight -
-          50 &&
-      position <
-        Ref_AboutSection3_1.current.offsetTop +
-          Ref_AboutSection3_1.current.offsetHeight -
-          50
+      position >= Ref_AboutSection2.current.offsetTop + 100 &&
+      position < Ref_AboutSection3_1.current.offsetTop + 100
     ) {
       setCurrentSection("AboutSection3_1");
     } else if (
-      position <
-        Ref_AboutSection3_2.current.offsetTop +
-          Ref_AboutSection3_2.current.offsetHeight -
-          50 &&
-      position < Ref_AboutSection5.current.offsetTop - 200
+      position >= Ref_AboutSection3_1.current.offsetTop + 100 &&
+      position < Ref_AboutSection3_2.current.offsetTop + 100
     ) {
       setCurrentSection("AboutSection3_2");
-    } else if (position >= Ref_AboutSection5.current.offsetTop - 200) {
-      setCurrentSection("AboutSection5");
-    } else {
-      setCurrentSection("none");
     }
+    // else if (
+    //   position >=
+    //     Ref_AboutSection1.current.offsetTop +
+    //       Ref_AboutSection1.current.offsetHeight -
+    //       30 &&
+    //   position <
+    //     Ref_AboutSection2.current.offsetTop +
+    //       Ref_AboutSection2.current.offsetHeight -
+    //       50
+    // ) {
+    //   setCurrentSection("AboutSection2");
+    // } else if (
+    //   position >=
+    //     Ref_AboutSection2.current.offsetTop +
+    //       Ref_AboutSection2.current.offsetHeight -
+    //       50 &&
+    //   position <
+    //     Ref_AboutSection3_1.current.offsetTop +
+    //       Ref_AboutSection3_1.current.offsetHeight -
+    //       50
+    // ) {
+    //   setCurrentSection("AboutSection3_1");
+    // } else if (
+    //   position <
+    //     Ref_AboutSection3_2.current.offsetTop +
+    //       Ref_AboutSection3_2.current.offsetHeight -
+    //       50 &&
+    //   position < Ref_AboutSection5.current.offsetTop - 200
+    // ) {
+    //   setCurrentSection("AboutSection3_2");
+    // } else if (position >= Ref_AboutSection5.current.offsetTop - 200) {
+    //   setCurrentSection("AboutSection5");
+    // } else {
+    //   setCurrentSection("none");
+    // }
   };
-
-  useEffect(() => {
-    if (Ref_AboutSection1.current) {
-      console.log("AboutSection1", Ref_AboutSection1.current.offsetTop);
-    }
-    if (Ref_AboutSection2.current) {
-      console.log("AboutSection2", Ref_AboutSection2.current.offsetTop);
-    }
-  }, []);
 
   return (
     <S.AboutWrapper>
@@ -116,9 +117,7 @@ function About() {
       <S.AboutSection1 ref={Ref_AboutSection1}>
         <S.AboutSpace />
         <S.AboutSection_Body
-          className={
-            currentSection == "AboutSection1" ? "AboutSection1" : "display_none"
-          }
+          className={currentSection == "AboutSection1" ? "AboutSection1" : ""}
         >
           {/* 제목 */}
           <S.AboutSection1_Title src={AboutSection1_Banner} />
@@ -127,7 +126,7 @@ function About() {
             className={
               currentSection == "AboutSection1"
                 ? "AboutSection1_Smartphone"
-                : "display_none"
+                : ""
             }
             src={AboutSection1_Smartphone1}
             style={{ width: "60%", top: "57%", left: "55%", zIndex: "3" }}
@@ -137,7 +136,7 @@ function About() {
             className={
               currentSection == "AboutSection1"
                 ? "AboutSection1_Smartphone"
-                : "display_none"
+                : ""
             }
             src={AboutSection1_Smartphone2}
             style={{
@@ -234,11 +233,7 @@ function About() {
 
         <S.AboutSection_Body>
           <S.AboutSection_Img
-            className={
-              currentSection == "AboutSection2"
-                ? "AboutSection2"
-                : "display_none"
-            }
+            className={currentSection == "AboutSection2" ? "AboutSection2" : ""}
             src={AboutSection2_Person}
             style={{ width: "60%", top: "50%", left: "50%", zIndex: 0 }}
           />
@@ -246,9 +241,7 @@ function About() {
           {/* 급속도로 발전하는 인공지능, 급변하는 사회 */}
           <S.AboutSection_Box
             className={
-              currentSection == "AboutSection2"
-                ? "AboutSection2_Popup1"
-                : "display_none"
+              currentSection == "AboutSection2" ? "AboutSection2_Popup1" : ""
             }
             style={{ animationDelay: "0.2s" }}
           >
@@ -266,9 +259,7 @@ function About() {
           {/* 그속에서 인공지능 서비스 활용능력이 디지털 격차를 가속화하고 있지 않나요? */}
           <S.AboutSection_Box
             className={
-              currentSection == "AboutSection2"
-                ? "AboutSection2_Popup2"
-                : "display_none"
+              currentSection == "AboutSection2" ? "AboutSection2_Popup2" : ""
             }
             style={{ animationDelay: "0.2s" }}
           >
@@ -293,7 +284,13 @@ function About() {
             currentSection == "AboutSection3_1" ? "AboutSection3_Fadein" : ""
           }
           src={AboutSection3_TeamMoin}
-          style={{ opacity: "0", width: "100%", top: "50%", left: "50%" }}
+          style={{
+            animationDelay: "0.5s",
+            opacity: "0",
+            width: "100%",
+            top: "50%",
+            left: "50%"
+          }}
         />
       </S.AboutSection3>
 
