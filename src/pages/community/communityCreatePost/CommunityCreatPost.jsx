@@ -15,13 +15,13 @@ import CommuntiyDetailPageType from "../communtiyDetailPageType/CommuntiyDetailP
 function CommunityCreatPost() {
   const navigate = useNavigate();
   const [aiOption, setAiOption] = useState([]);
-  const [currentAiOption, setCurrentAiOption] = useState("");
   const { state } = useLocation();
+  const [currentAiOption, setCurrentAiOption] = useState(state.ai);
   const [currentTab, setCurrentTab] = useState(0);
-  const [category, setCategory] = useState("common");
+  const [category, setCategory] = useState(state.category);
   const [user, setUser] = useRecoilState(userState);
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState("**자유 게시판 내용을 입력해주세요.**");
+  const [value, setValue] = useState("내용을 입력해주세요.");
   const [boardColor, setBoardColor] = useState(false);
   const [header, setHeader] = useState("");
   useEffect(() => {
@@ -35,6 +35,7 @@ function CommunityCreatPost() {
         : 2
     );
 
+    setCategory(state.category);
     fetchAiContent();
   }, []);
 
@@ -94,7 +95,12 @@ function CommunityCreatPost() {
   };
 
   const handleClickWrite = async () => {
-    if (category === "tip" && currentAiOption === "▿ 서비스 선택") {
+    console.log("ASDasdasdsadasd");
+    console.log(currentAiOption);
+    if (
+      category === "tip" &&
+      (currentAiOption === "▿ 서비스 선택" || currentAiOption === "")
+    ) {
       alert("이용꿀팁 게시판은 서비스를 선택하셔야 합니다.");
       return;
     }
