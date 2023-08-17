@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import List from "../../common/list/List";
+
 import axios from "../../../api/axios";
-import TipsList from "../../common/tipsList/TipsList";
+
+import PostList from "../../common/postList/PostList";
 
 function CommunityQna() {
   const [qnaContent, setQnaContent] = useState([]);
@@ -74,7 +75,8 @@ function CommunityQna() {
 
   return (
     <>
-      <TipsList
+      <PostList
+        use={"communityQnA"}
         category="qna"
         data={qnaContent}
         url={"/community/qnas/"}

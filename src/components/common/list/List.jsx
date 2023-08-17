@@ -11,6 +11,7 @@ import { userState } from "../../../context/authState";
 import NoPage from "../noPage/NoPage";
 
 const List = ({
+  use,
   data,
   url,
   writeUrl,
@@ -21,6 +22,7 @@ const List = ({
   setCurrentPage,
   count
 }) => {
+  const thList = ["번호", "제목", "서비스명", "등록일시", "좋아요", "조회수"];
   // 회원 정보
   const [userInfo, setUserInfo] = useRecoilState(userState);
 
@@ -94,13 +96,12 @@ const List = ({
           <S.AiServiceDetailTipTable>
             <S.AiServiceDetailTipTableThead>
               <S.AiServiceDetailTipTableTr>
-                {isMobile ? (
-                  <></>
-                ) : (
-                  <S.AiServiceDetailTipTableTh>
-                    번호
+                {thList.map((thTitle, idx) => (
+                  <S.AiServiceDetailTipTableTh key={idx}>
+                    {번호}
                   </S.AiServiceDetailTipTableTh>
-                )}
+                ))}
+                <S.AiServiceDetailTipTableTh>번호</S.AiServiceDetailTipTableTh>
 
                 <S.AiServiceDetailTipTableTh>제목</S.AiServiceDetailTipTableTh>
                 <S.AiServiceDetailTipTableTh>
