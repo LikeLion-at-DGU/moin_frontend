@@ -174,4 +174,44 @@ export const Option = styled.option`
   /* 스타일링을 원하는대로 설정하세요 */
 `;
 
-export const PostListMobileWrapper = styled.div``;
+export const PostListMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const PostListMobileWrapper = styled.div`
+  width: 100%;
+  display: flex;
+
+  padding: 2rem 1rem;
+  border-bottom: 2px solid #f0f0f0;
+`;
+
+export const PostListMobukeWrapperBox1 = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PostListMobileTitle = styled.div`
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+`;
+export const PostListMobileDescription = styled.div`
+  display: flex;
+`;
+
+export const PostListMobileServiceTitle = styled.div`
+  font-size: 2rem;
+
+  margin-bottom: 1rem;
+  color: gray;
+`;
+
+export const PostListMobileContent = styled.div`
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: gray;
+`;
