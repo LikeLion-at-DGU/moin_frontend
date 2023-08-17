@@ -6,15 +6,94 @@ import ProfileHeader from "../../../components/profile/profileHeader/ProfileHead
 
 import ProfileCommon from "../../../components/profile/profileCommunityList/ProfileCommon";
 
+import { userState } from "../../../context/authState";
+import { useRecoilState } from "recoil";
+import axios from "../../../api/axios";
+
 function ProfileFavoritePost() {
   // 탭 기능 구현
   const [currentTab, setCurrentTab] = useState(0);
 
+  // 회원 정보
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
+  // 데이터
+  const [data, setData] = useState();
+
+  // 현재 페이지
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [count, setCount] = useState(0);
+
+  // 데이터
+  const [islike, setIslike] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const accessToken = userInfo.accessToken; // 추출한 accessToken
+      const headers = {
+        Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+      };
+
+      const response = await axios.get(
+        `mypage/community/likes?&page=${currentPage}`,
+        {
+          headers
+        }
+      );
+
+      setData(response.data.results);
+      setCount(response.data.count);
+      setIslike(true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      fetchData();
+    }
+  }, []);
+
+  //페이지변경
+  useEffect(() => {
+    fetchData();
+  }, [currentPage]);
+
   const tabContents = [
-    <ProfileCommon category={"total"} />,
-    <ProfileCommon category={"common"} />,
-    <ProfileCommon category={"tip"} />,
-    <ProfileCommon category={"qna"} />
+    <ProfileCommon
+      category={"total"}
+      data={data}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      count={count}
+      islike={islike}
+    />,
+    <ProfileCommon
+      category={"common"}
+      data={data}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      count={count}
+      islike={islike}
+    />,
+    <ProfileCommon
+      category={"tip"}
+      data={data}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      count={count}
+      islike={islike}
+    />,
+    <ProfileCommon
+      category={"qna"}
+      data={data}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      count={count}
+      islike={islike}
+    />
   ];
 
   const selectMenuHandler = index => {
