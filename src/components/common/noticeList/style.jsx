@@ -65,7 +65,7 @@ export const AiServiceDetailTipHeaderSort = styled.div`
 
 export const AiServiceDetailTipLine = styled.div`
   display: flex;
-  margin-top: 8rem;
+  margin-top: 3rem;
   background: #4285f4;
   width: 110rem;
   height: 2px;
@@ -106,6 +106,12 @@ export const LikeIcon = styled(FaRegThumbsUp)`
   color: black;
   font-size: 1.4rem;
   margin-right: 0.5rem;
+`;
+export const AiServiceDetailTipTableTdTitle = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: flex-start;
 `;
 
 export const CommentIcon = styled(FaRegCommentAlt)`

@@ -2,6 +2,7 @@ import { styled, keyframes } from "styled-components";
 import { BiSolidPencil } from "react-icons/bi";
 import { FaRegThumbsUp } from "react-icons/fa6";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { FaEye } from "react-icons/fa6";
 
 const fadeInAnimation = keyframes`
   from {
@@ -95,6 +96,12 @@ export const AiServiceDetailTipTableTd = styled.td`
   border-bottom: 2px solid #f0f0f0;
   text-align: center;
 `;
+export const AiServiceDetailTipTableTdTitle = styled.td`
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #f0f0f0;
+  text-align: flex-start;
+`;
 
 export const LikeIcon = styled(FaRegThumbsUp)`
   color: black;
@@ -103,6 +110,13 @@ export const LikeIcon = styled(FaRegThumbsUp)`
 `;
 
 export const CommentIcon = styled(FaRegCommentAlt)`
+  color: black;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+`;
+
+export const EyeIcon = styled(FaEye)`
   color: black;
   font-size: 1.4rem;
   margin-right: 0.5rem;

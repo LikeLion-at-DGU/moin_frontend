@@ -10,6 +10,7 @@ import * as AIS from "../../ai/style";
 import { userState } from "../../../context/authState";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
+import CommuntiyDetailPageType from "../../../components/community/communtiyDetailPageType/CommuntiyDetailPageType";
 
 function SuggestionCreate() {
   const navigate = useNavigate();
@@ -84,23 +85,29 @@ function SuggestionCreate() {
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
-        <S.CommuntiyCreateHeader> 건의사항 작성</S.CommuntiyCreateHeader>
+        <CommuntiyDetailPageType type={`suggestion`} aiName={null} />
+
         <S.SelcetorWrapper>
-          <S.Select
-            required
-            name="ais"
-            onChange={e => getCurrentAiOption(e.target.value)}
-          >
-            <S.Option value={null}>▿ 서비스 선택</S.Option>
-            {aiOption.map((ai, index) => (
-              <S.Option key={index} value={ai.title}>
-                {ai.title}
-              </S.Option>
-            ))}
-          </S.Select>
-          <S.SelcetorDescriptionText>
-            *서비스 선택은 선택사항 입니다.
-          </S.SelcetorDescriptionText>
+          <S.SlectorTextWrapper>
+            <S.Select
+              required
+              name="ais"
+              onChange={e => getCurrentAiOption(e.target.value)}
+            >
+              <S.Option value={null}>▿ 서비스 선택</S.Option>▿
+              {aiOption.map((ai, index) => (
+                <S.Option key={index} value={ai.title}>
+                  {ai.title}
+                </S.Option>
+              ))}
+            </S.Select>
+            <S.SelcetorDescriptionText>*선택</S.SelcetorDescriptionText>
+          </S.SlectorTextWrapper>
+          <div>
+            <S.SelcetorDescriptionText style={{ color: "#ACACAC" }}>
+              ❗️건의사항은 수정 및 삭제가 불가합니다. 신중한 작성 부탁드립니다.
+            </S.SelcetorDescriptionText>
+          </div>
         </S.SelcetorWrapper>
         <S.CommunityCreateTitle
           placeholder="제목을 입력해주세요."
@@ -159,7 +166,7 @@ function SuggestionCreate() {
           />
         </FileDrop>
         <S.CommunityCreateTitle
-          placeholder="참고가능한 링크를 입력해주세요"
+          placeholder="수정 및 추가를 원하는 페이지에 해당하는 링크를 첨부해주세요."
           maxLength="100"
           onChange={e => {
             setUrl(e.target.value);

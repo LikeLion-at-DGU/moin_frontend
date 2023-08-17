@@ -14,14 +14,15 @@ export const CommuntiyCreateHeader = styled.div`
   border: 1px solid #4285f4;
   padding: 1rem;
   border-radius: 16px;
+  width: 10%;
 `;
 export const CommunityCreateTitle = styled.input`
   margin-top: 2rem;
   width: 100%;
   height: 4rem;
 
-  border: 1px solid #f0f0f0;
-  border-radius: 81px;
+  border: 1px solid #d9d9df;
+  border-radius: 10px;
   padding: 0 10px;
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -41,8 +42,10 @@ export const CommunityCreateButton = styled.button`
   font-weight: 700;
   margin-top: 2rem;
   cursor: pointer;
-  &:focus {
-    outline: none;
+  &:hover {
+    background-color: white;
+    color: #4285f4;
+    border: 1px solid #4285f4;
   }
 `;
 export const ButtonWrapper = styled.div`
@@ -81,5 +84,6 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option`
-  /* 스타일링을 원하는대로 설정하세요 */
+  background-color: #ffffff;
+  color: #333333;
 `;

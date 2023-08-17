@@ -84,7 +84,7 @@ function Review() {
         console.log("회원 댓글 등록 : ");
         console.log(response);
         if (response.status === 200) {
-          alert("댓글이 등록되었습니다.");
+          // alert("댓글이 등록되었습니다.");
           fetchData();
           fetchDataMy();
         }
@@ -105,7 +105,7 @@ function Review() {
         console.log("비회원 댓글 등록 : ");
         console.log(response);
         if (response.status === 200) {
-          alert("댓글이 등록되었습니다.");
+          // alert("댓글이 등록되었습니다.");
           fetchData();
           if (userInfo) {
             fetchDataMy();
@@ -137,6 +137,8 @@ function Review() {
       <CommentForm onSubmit={handleSubmitComment} userInfo={userInfo} />
       <CommentList
         comments={comments}
+        fetchDataMy={fetchDataMy}
+        fetchData={fetchData}
         userInfo={userInfo}
         myComments={myComments}
         currentPage={currentPage}

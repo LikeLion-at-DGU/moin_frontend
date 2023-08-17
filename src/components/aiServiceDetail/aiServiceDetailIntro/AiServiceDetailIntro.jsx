@@ -14,6 +14,8 @@ import CompanyIcon from "../../../assets/images/icon/company.png";
 // 컴포넌트
 import Like from "../../common/like/Like";
 import Star from "../../common/star/Star";
+import Modal from "../../common/modal/Modal";
+import LoginModal from "../../common/modal/loginModal/LoginModal";
 
 import { CopyToClipboard } from "react-copy-to-clipboard/src"; // 클립보드
 import { ToastContainer, toast } from "react-toastify";
@@ -39,10 +41,19 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   const location = useLocation();
   const aiName = decodeURI(location.pathname.split("/")[2]);
 
+  // 비회원 비활성화 기능 클릭 시 띄우는 모달창
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // // 비회원이 비활성화 기능 클릭 시 로그인 창으로 이동
+  // const NonUserSubmit = () => {
+  //   navigate("/login");
+  //   return;
+  // };
+
   const handleLikeToggle = async () => {
+    // 비회원이 좋아요 버튼 클릭 시 모달창 띄우기
     if (!userInfo) {
-      // 로그인하지 않은 경우 로그인 페이지로 이동
-      navigate("/login");
+      setIsModalOpen(true);
       return;
     }
 
@@ -62,7 +73,6 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
 
         if (response.status === 200) {
           setIsLiked(false);
-          setLikeCnt(likeCnt - 1);
         }
       } else {
         const response = await axios.post(`moin/detail/${aiName}/like`, null, {
@@ -70,7 +80,6 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
         });
         if (response.status === 200) {
           setIsLiked(true);
-          setLikeCnt(likeCnt + 1);
         }
       }
     } catch (error) {}
@@ -85,11 +94,16 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
   };
 
   return (
-    <>
-      {/* {item.name} */} <ToastContainer />
+    <S.AiServiceDetailIntroWrapper>
+      {/* {item.name} */}
+      <ToastContainer />
+      {/* 비회원 좋아요 클릭 시 띄우는 모달창 */}
+      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      <S.AiServiceDetailBanner />
       <S.AiServiceDetailWrap key={introContent.id}>
-        <S.AiServiceDetailBanner></S.AiServiceDetailBanner>
         <S.AiServiceDetailHeader>
+          {/* 클립보드 */}
           <S.CopyToClipboardElement>
             <S.AiServiceDetailShare>
               <CopyToClipboard text={introContent.url} onCopy={notify}>
@@ -97,7 +111,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
               </CopyToClipboard>
             </S.AiServiceDetailShare>
           </S.CopyToClipboardElement>
-
+          {/* 모인등록자 */}
           <S.AiServiceDetailRegistrant>
             MOIN 등록자 : {introContent.applier}
           </S.AiServiceDetailRegistrant>
@@ -148,6 +162,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
                 </S.AiServiceDetailContentDescriptionStarCnt>
               </S.AiServiceDetailContentDescriptionStar>
 
+              {/* 조회수+키워드 */}
               <S.AiServiceDetailContentDescriptionEndWrap>
                 {/* 조회수 */}
                 <S.AiServiceDetailContentDescriptionViews>
@@ -166,6 +181,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
                   ))} */}
                 </S.AiServiceDetailContentDescriptionKeywordWrap>
               </S.AiServiceDetailContentDescriptionEndWrap>
+
               <S.AiServiceDetailContentDescriptionBottom>
                 {/* 서비스 바로가기 */}
                 <S.AiServiceDetailContentDescriptionBottomLink>
@@ -194,6 +210,6 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
           </S.AiServiceDetailContent>
         </S.AiServiceDetailHeader>
       </S.AiServiceDetailWrap>
-    </>
+    </S.AiServiceDetailIntroWrapper>
   );
 }

@@ -31,7 +31,7 @@ export const DetailPageAiText = styled.div`
   align-items: center;
   font-weight: 700;
   margin-right: 1rem;
-  border: 1px solid #aeafb9;
+  border: none;
   background: #4285f4;
   color: #fff;
 `;

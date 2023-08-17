@@ -10,7 +10,7 @@ import { BsChevronCompactRight } from "react-icons/bs";
 
 import * as S from "./style";
 import { userState } from "../../../context/authState";
-import MainLogo from "../../../assets/images/moin_logo.png";
+import MoinLogoBase from "../../../assets/images/moin_logo_base.svg";
 
 export default function NavBar() {
   //사이드바 열고 닫는 함수
@@ -102,7 +102,7 @@ export default function NavBar() {
   return (
     <S.NavWrapper>
       <S.NavLogo>
-        <S.NavLogoIcon src={MainLogo} alt="MO:IN" />
+        <S.NavLogoIcon src={MoinLogoBase} alt="MO:IN" />
         <S.NavLogoTitle to={`/`}> MO:IN</S.NavLogoTitle>
       </S.NavLogo>
 
