@@ -82,6 +82,42 @@ function SuggestionCreate() {
       alert("건의사항 작성에 실패하였습니다.");
     }
   };
+
+  const handleImageUpload = async files => {
+    const image = files[0];
+    if (image.size >= 3000000) {
+      alert("3MB 이상 파일은 업로드가 불가능합니다.");
+      return;
+    }
+    const allowedFormats = ["image/png", "image/jpeg", "image/jpg"];
+    if (!allowedFormats.includes(image.type)) {
+      alert("png, jpg, jpeg 파일이 아닙니다.");
+      return;
+    }
+
+    const formdata = new FormData();
+    formdata.append("image", image);
+    formdata.append("app", "suggestion");
+
+    try {
+      const response = await fetch("http://101.101.209.178/upload-image", {
+        method: "POST",
+        body: formdata
+      });
+
+      const responseData = await response.json(); // Parse JSON response
+
+      if (response.ok) {
+        const image_url = responseData.image_url; // Assuming the JSON response has an 'image_url' property
+        const newValue = value + `\n\n![${image.name}](${image_url})`;
+        setValue(newValue);
+      } else {
+        console.error("Image upload failed with status:", response.status);
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
   return (
     <>
       <AIS.AiServiceDetailCommentWrap>
@@ -119,43 +155,9 @@ function SuggestionCreate() {
         />
 
         <FileDrop
-          onDragOver={event => {
-            setBoardColor(true);
-          }}
-          onDragLeave={event => {
-            setBoardColor(false);
-          }}
-          onDrop={(files, event) => {
-            const formdata = new FormData();
-            formdata.append("image", files[0]);
-            formdata.append("id", 0); // Replace with the appropriate community id
-            const headers = { "Content-Type": files[0].type };
-            if (files[0].size >= 3000000) {
-              alert("3MB 이상 파일은 업로드가 불가능합니다.");
-            } else if (
-              files[0].type === "image/png" ||
-              files[0].type === "image/jpeg" ||
-              files[0].type === "image/jpg"
-            ) {
-              axios
-                .post("communities/upload-image", formdata, { headers })
-                .then(function (response) {
-                  const image_url = response.data.image_url;
-                  let imageName = image_url.substring(
-                    image_url.lastIndexOf("/") + 1
-                  );
-                  let newValue =
-                    value + `\n\n![${files[0].name}](${image_url})`;
-                  setValue(newValue);
-                })
-                .catch(function (error) {
-                  console.error("Error uploading image:", error);
-                });
-            } else {
-              alert("png, jpg, jpeg 파일이 아닙니다.");
-            }
-            setBoardColor(false);
-          }}
+          onDragOver={() => setBoardColor(true)}
+          onDragLeave={() => setBoardColor(false)}
+          onDrop={files => handleImageUpload(files)}
         >
           <MDEditor
             height={"400px"}
