@@ -44,7 +44,6 @@ const NoticeList = ({ data, url, currentPage, setCurrentPage, count }) => {
                 <S.AiServiceDetailTipTableTh>
                   조회수
                 </S.AiServiceDetailTipTableTh>
-                <S.AiServiceDetailTipTableTh> </S.AiServiceDetailTipTableTh>
               </S.AiServiceDetailTipTableTr>
             </S.AiServiceDetailTipTableThead>
             <S.AiServiceDetailTipTableTbody>
