@@ -3,7 +3,9 @@ import * as S from "./style";
 import * as AIS from "../../ai/style";
 import * as CS from "../communityCreatePost/style";
 import { useLocation, useNavigate } from "react-router-dom";
-import CommuntiyDetailPageType from "../../../components/community/communtiyDetailPageType/CommuntiyDetailPageType";
+
+import CommuntiyDetailPageType from "../communtiyDetailPageType/CommuntiyDetailPageType";
+
 import { FileDrop } from "react-file-drop";
 import MDEditor from "@uiw/react-md-editor";
 import { userState } from "../../../context/authState";

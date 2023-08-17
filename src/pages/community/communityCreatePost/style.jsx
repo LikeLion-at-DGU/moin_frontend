@@ -6,6 +6,12 @@ export const AiServiceDetailCommentCategory2 = styled.div`
   border-bottom: 3px solid #f0f0f0;
 `;
 
+export const CreatePost = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+`;
 export const CommuntiyCreateHeader = styled.div`
   color: #4285f4;
   font-size: 2rem;
