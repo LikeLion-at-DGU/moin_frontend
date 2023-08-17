@@ -44,7 +44,7 @@ function Notice() {
       />
       <NoticeBanner
         title={"공지안내"}
-        content={"중요한정보! 모두 여기에 모였다!"}
+        content={"MOIN의 새로운 소식과 공지사항을 확인해보세요!"}
       />
       <PostList
         use={"notice"}
