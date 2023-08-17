@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./style";
-import List from "../../common/list/List";
-import TipsList from "../../common/tipsList/TipsList";
+
 import axios from "../../../api/axios";
+import PostList from "../../common/postList/PostList";
 function CommunityTips() {
   const [tipContent, setTipContent] = useState([]);
 
@@ -71,7 +70,8 @@ function CommunityTips() {
 
   return (
     <>
-      <TipsList
+      <PostList
+        use={"communityTips"}
         category={"tip"}
         data={tipContent}
         url={"/community/tips/"}
