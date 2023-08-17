@@ -2,18 +2,22 @@ import { styled } from "styled-components";
 import colors from "../../style/theme";
 
 export const AiServiceDetailCommentWrap = styled.div`
+  width: 100%;
+  max-width: 1178px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; // 수정
-  justify-content: center;
-  margin-bottom: 10rem;
-  color: ${colors.black};
+  align-items: center;
+  justify-content: start;
+
   margin-top: 5.7rem;
+  margin-bottom: 10rem;
+
+  color: ${colors.black};
 `;
 
 export const AiServiceDetailCommentCategory = styled.div`
   display: flex;
-  width: 93%;
+  width: 100%;
   border-bottom: 3px solid #f0f0f0;
 `;
 

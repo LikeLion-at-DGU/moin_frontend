@@ -32,6 +32,7 @@ export function AiServiceDescription() {
   return (
     <>
       <S.AiServiceDescriptionWrap>
+        {/* 서비스 소개 */}
         <S.AiServiceDescriptionIntroTitle>
           <S.AiServiceDescriptionIntroIcon
             src={DescriptionHeartIcon}
@@ -39,9 +40,12 @@ export function AiServiceDescription() {
           />
           서비스 소개
         </S.AiServiceDescriptionIntroTitle>
+
         <S.AiServiceDescriptionIntroContent>
           {data.introduce}
         </S.AiServiceDescriptionIntroContent>
+
+        {/* 상세기능 */}
         <S.AiServiceDescriptionFunctionTitle>
           <S.AiServiceDescriptionBulbIcon
             src={DescriptionBulbIcon}
