@@ -24,8 +24,8 @@ import AboutSection4_ServiceDetail from "./AboutSection4/AboutSection4_ServiceDe
 import AboutSection5_Title from "./AboutSection5/AboutSection5_Title.png";
 import AboutSection5_GotoMain from "./AboutSection5/AboutSection5_GotoMain.png";
 
-import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.svg";
-import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.svg";
+// import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.svg";
+// import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.svg";
 import AboutUs1 from "./AboutSection6/AboutUs1.jpeg";
 import AboutUs2 from "./AboutSection6/AboutUs2.jpeg";
 import AboutUs3 from "./AboutSection6/AboutUs3.jpeg";
@@ -349,7 +349,7 @@ function About() {
 
       <S.AboutSection6>
         {/* 모인스토리 */}
-        <S.AboutSection_Img_r
+        {/* <S.AboutSection_Img_r
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
           }
@@ -358,10 +358,10 @@ function About() {
             width: "30%",
             marginBottom: "20rem"
           }}
-        />
+        /> */}
 
         {/* 어바웃 어스 */}
-        <S.AboutSection_Img_r
+        {/* <S.AboutSection_Img_r
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
           }
@@ -370,7 +370,7 @@ function About() {
             width: "70%",
             marginBottom: "2rem"
           }}
-        />
+        /> */}
 
         <S.AboutSection_Img_r
           className={
