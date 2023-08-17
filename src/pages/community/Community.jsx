@@ -33,19 +33,19 @@ function Community() {
           <AIS.AiServiceDetailCommentCategory>
             <AIS.AiServiceDetailCommentCategoryTabMenu>
               <AIS.AiServiceDetailCommentCategoryMenuItem
-                isActive={currentTab === 0}
+                $isActive={currentTab === 0}
                 onClick={() => selectMenuHandler(0)}
               >
                 자유 게시판
               </AIS.AiServiceDetailCommentCategoryMenuItem>
               <AIS.AiServiceDetailCommentCategoryMenuItem
-                isActive={currentTab === 1}
+                $isActive={currentTab === 1}
                 onClick={() => selectMenuHandler(1)}
               >
                 이용꿀팁
               </AIS.AiServiceDetailCommentCategoryMenuItem>
               <AIS.AiServiceDetailCommentCategoryMenuItem
-                isActive={currentTab === 2}
+                $isActive={currentTab === 2}
                 onClick={() => selectMenuHandler(2)}
               >
                 Q&A

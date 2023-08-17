@@ -149,7 +149,6 @@ const PostList = ({
         {data && data.length > 0 ? (
           <S.PostListTable>
             <S.PostListTableThead>
-              {" "}
               <S.PostListTableTr>
                 {thList.map((thTitle, idx) => (
                   <S.PostListTableTh key={idx}>{thTitle}</S.PostListTableTh>
