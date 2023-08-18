@@ -1,13 +1,11 @@
 import React from "react";
 import * as S from "./style"; // 해당 컴포넌트에 사용되는 스타일 파일 경로를 임포트해주세요.
-import BinIcon from "../../../assets/images/icon/bin.png";
-import PencilIcon from "../../../assets/images/icon/pencil.png";
+
 import EditDelete from "../editDelete/EditDelete";
 import axios from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import MarkdownPreview from "@uiw/react-markdown-preview";
+
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
   const navigate = useNavigate();
@@ -33,7 +31,7 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
           const response = await axios.delete(`communities/posts/${id}`, {
             headers
           });
-          console.log(response);
+
           if (response.status === 204) {
             if (type == "suggestion") {
               navigate("/suggestion");
@@ -70,12 +68,15 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
         <S.DetailTitleGrayInfo>작성자 : {detail.writer}</S.DetailTitleGrayInfo>
         <S.DetailTitleGrayInfo>{detail.created_at}</S.DetailTitleGrayInfo>
       </S.DetailTitleInfoWrapper>
-      <S.DetailContent>
+
+      <ReactMarkdown className={"markDown"} children={detail.content} />
+
+      {/* <S.DetailContent>
         <div data-color-mode="light">
           <MarkdownPreview source={markdown} />
         </div>
         <S.MarkdownWrapper></S.MarkdownWrapper>
-      </S.DetailContent>
+      </S.DetailContent> */}
     </>
   );
 };

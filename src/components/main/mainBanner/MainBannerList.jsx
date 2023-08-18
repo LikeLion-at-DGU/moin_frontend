@@ -10,15 +10,22 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "./pagination.css";
 
-import bannerImg1 from "./banner1.png";
-import bannerImg2 from "./banner2.png";
-import bannerImg3 from "./banner3.png";
+import DeepDive from "./img/DeepDive.jpeg";
+import DeepDiveMobile from "./img/DeepDiveMovbile.jpeg";
+import EventPresent from "./img/EventPresent.png";
+import EventPresentMobile from "./img/EventPresentMobile.png";
 
-import bannerMobileImg1 from "./bannerMobile1.svg";
+import { Link } from "react-router-dom";
 
 function MainBannerList() {
-  const bannersDesktop = [bannerImg1, bannerImg2, bannerImg3];
-  const bannersMobile = [bannerMobileImg1];
+  const bannersDesktop = [
+    { img: EventPresent, url: "" },
+    { img: DeepDive, url: "https://www.instagram.com/deep.daiv/" }
+  ];
+  const bannersMobile = [
+    { img: EventPresentMobile, url: "" },
+    { img: DeepDiveMobile, url: "https://www.instagram.com/deep.daiv/" }
+  ];
 
   const [currentBanners, setCurrentBanners] = useState(bannersDesktop);
   //윈도우가 640px 이하면  모바일버전을 연다
@@ -50,9 +57,11 @@ function MainBannerList() {
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
         >
-          {currentBanners.map(banner => (
-            <SwiperSlide key={banner}>
-              <Banner bannerImg={banner} />
+          {currentBanners.map((banner, idx) => (
+            <SwiperSlide key={idx}>
+              <Link to={banner.url} target="_blank">
+                <Banner bannerImg={banner.img} />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

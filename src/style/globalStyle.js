@@ -1,15 +1,45 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+.markDown{
+  *{font-size:2rem}
+  strong{
+    font-weight: 900;
+  }
+  em{
+    font-style: italic;
+  }
+  h1{
+    font-size: 4rem;
+  }
+  h2{
+    font-size: 3.5rem;
+  }
+  h3{
+    font-size: 3.0rem;
+  }
+  h4{
+    font-size: 3.0rem;
+  }
+  h5{
+    font-size: 2.5rem;
+  }
+  h6{
+    font-size: 1.5rem;
+  }
+  a{
+    color: blue;
+  }
+}
   :root {
     --vh: 100%;
    }
 
   html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
+  h1, h2, h3, h4, h5, h6, p, blockquote, 
+  a, abbr, acronym, address, big, cite, 
+  del, em, strong, dfn,  img, ins, kbd, q, s, samp,
+  small, strike,  sub, sup, tt, var,
   b, u, i, center,
   dl, dt, dd, menu, ol, ul, li,
   fieldset, form, label, legend,
