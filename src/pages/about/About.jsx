@@ -24,8 +24,10 @@ import AboutSection4_ServiceDetail from "./AboutSection4/AboutSection4_ServiceDe
 import AboutSection5_Title from "./AboutSection5/AboutSection5_Title.png";
 import AboutSection5_GotoMain from "./AboutSection5/AboutSection5_GotoMain.png";
 
-// import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.svg";
-// import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.svg";
+import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.png";
+import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.png";
+import AboutSection6_DGU from "./AboutSection6/AboutSection6_DGU.png";
+import AboutSection6_Making from "./AboutSection6/AboutSection6_Making.png";
 import AboutUs1 from "./AboutSection6/aboutUs1.jpeg";
 import AboutUs2 from "./AboutSection6/aboutUs2.jpeg";
 import AboutUs3 from "./AboutSection6/aboutUs3.jpeg";
@@ -58,7 +60,10 @@ function About() {
   const Ref_AboutSection2 = useRef();
   const Ref_AboutSection3_1 = useRef();
   const Ref_AboutSection3_2 = useRef();
+  const Ref_AboutSection4 = useRef();
   const Ref_AboutSection5 = useRef();
+  const Ref_AboutSection6 = useRef();
+  const Ref_AboutSection7 = useRef();
 
   const getCurrentSection = () => {
     if (position < Ref_AboutSection1.current.offsetTop + 100) {
@@ -78,44 +83,14 @@ function About() {
       position < Ref_AboutSection3_2.current.offsetTop + 100
     ) {
       setCurrentSection("AboutSection3_2");
-    } else if (position < Ref_AboutSection5.current.offsetTop - 100) {
+    } else if (
+      position >= Ref_AboutSection4.current.offsetTop + 700 &&
+      position < Ref_AboutSection5.current.offsetTop + 100
+    ) {
       setCurrentSection("AboutSection5");
+    } else if (position >= Ref_AboutSection5.current.offsetTop + 100) {
+      setCurrentSection("AboutSection6");
     }
-    // else if (
-    //   position >=
-    //     Ref_AboutSection1.current.offsetTop +
-    //       Ref_AboutSection1.current.offsetHeight -
-    //       30 &&
-    //   position <
-    //     Ref_AboutSection2.current.offsetTop +
-    //       Ref_AboutSection2.current.offsetHeight -
-    //       50
-    // ) {
-    //   setCurrentSection("AboutSection2");
-    // } else if (
-    //   position >=
-    //     Ref_AboutSection2.current.offsetTop +
-    //       Ref_AboutSection2.current.offsetHeight -
-    //       50 &&
-    //   position <
-    //     Ref_AboutSection3_1.current.offsetTop +
-    //       Ref_AboutSection3_1.current.offsetHeight -
-    //       50
-    // ) {
-    //   setCurrentSection("AboutSection3_1");
-    // } else if (
-    //   position <
-    //     Ref_AboutSection3_2.current.offsetTop +
-    //       Ref_AboutSection3_2.current.offsetHeight -
-    //       50 &&
-    //   position < Ref_AboutSection5.current.offsetTop - 200
-    // ) {
-    //   setCurrentSection("AboutSection3_2");
-    // } else if (position >= Ref_AboutSection5.current.offsetTop - 200) {
-    //   setCurrentSection("AboutSection5");
-    // } else {
-    //   setCurrentSection("none");
-    // }
   };
 
   return (
@@ -307,11 +282,11 @@ function About() {
             currentSection == "AboutSection3_2" ? "AboutSection3_Fadein" : ""
           }
           src={AboutSection3_WhyMoin}
-          style={{ width: "40%", top: "50%", left: "50%" }}
+          style={{ width: "40%", top: "50%", left: "50%", minWidth: "300px" }}
         />
       </S.AboutSection3>
 
-      <S.AboutSection4>
+      <S.AboutSection4 ref={Ref_AboutSection4}>
         <S.AboutSection_Img_r
           src={AboutSection4_ServiceDetail}
           style={{
@@ -324,8 +299,7 @@ function About() {
         <S.AboutSection_Img_r
           src={AboutSection5_Title}
           style={{
-            width: "30%",
-
+            width: "60%",
             paddingBottom: "5rem"
           }}
         />
@@ -333,13 +307,17 @@ function About() {
         {/* 메인페이지로 이동하기 */}
         <S.AboutSection_Img_r
           className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+            currentSection == "AboutSection5" ||
+            currentSection == "AboutSection6"
+              ? "AboutSection3_Fadein"
+              : ""
           }
           src={AboutSection5_GotoMain}
           style={{
             opacity: "0",
-
-            width: "15%"
+            animationDelay: "0.5s",
+            width: "20%",
+            minWidth: "150px"
           }}
           onClick={() => {
             navigate("/");
@@ -347,53 +325,79 @@ function About() {
         />
       </S.AboutSection5>
 
-      <S.AboutSection6>
+      <S.AboutSection6
+        ref={Ref_AboutSection6}
+        className={currentSection == "AboutSection6" ? "" : "display_none"}
+      >
         {/* 모인스토리 */}
-        {/* <S.AboutSection_Img_r
+        <S.AboutSection_Img_r
           className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+            currentSection == "AboutSection6" ? "AboutSection2_Popup1" : ""
           }
           src={AboutSection6_MoinStory}
           style={{
-            width: "30%",
-            marginBottom: "20rem"
+            width: "40%",
+            marginBottom: "30rem",
+            minWidth: "300px"
           }}
-        /> */}
+        />
 
         {/* 어바웃 어스 */}
-        {/* <S.AboutSection_Img_r
-          className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
-          }
+        <S.AboutSection_Img_r
           src={AboutSection6_AboutUs}
           style={{
             width: "70%",
             marginBottom: "2rem"
           }}
-        /> */}
+        />
 
+        <S.AboutSection_Img_r
+          src={AboutUs2}
+          style={{
+            width: "70%",
+            borderRadius: "3rem",
+            marginBottom: "5rem"
+          }}
+        />
+        {/* 어바웃 어스 */}
         <S.AboutSection_Img_r
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
           }
-          src={AboutUs2}
+          src={AboutSection6_DGU}
           style={{
-            width: "70%",
-            borderRadius: "3rem"
+            width: "60%"
           }}
         />
       </S.AboutSection6>
 
-      <S.AboutSection7>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/DQWsN3lIfEY"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
+      <S.AboutSection7 ref={Ref_AboutSection7}>
+        <S.AboutSection_Img
+          className={
+            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+          }
+          src={AboutSection6_Making}
+          style={{
+            width: "70%",
+            top: "5%",
+            left: "50%"
+          }}
         />
+        <S.AboutSection_Body>
+          <S.AboutSection_Iframe
+            style={{
+              width: "70%",
+              height: "70%",
+              top: "50%",
+              left: "50%"
+            }}
+            src="https://www.youtube.com/embed/DQWsN3lIfEY"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
+        </S.AboutSection_Body>
       </S.AboutSection7>
     </S.AboutWrapper>
   );
