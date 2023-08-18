@@ -60,7 +60,10 @@ function About() {
   const Ref_AboutSection2 = useRef();
   const Ref_AboutSection3_1 = useRef();
   const Ref_AboutSection3_2 = useRef();
+  const Ref_AboutSection4 = useRef();
   const Ref_AboutSection5 = useRef();
+  const Ref_AboutSection6 = useRef();
+  const Ref_AboutSection7 = useRef();
 
   const getCurrentSection = () => {
     if (position < Ref_AboutSection1.current.offsetTop + 100) {
@@ -80,8 +83,13 @@ function About() {
       position < Ref_AboutSection3_2.current.offsetTop + 100
     ) {
       setCurrentSection("AboutSection3_2");
-    } else if (position < Ref_AboutSection5.current.offsetTop - 100) {
+    } else if (
+      position >= Ref_AboutSection4.current.offsetTop + 700 &&
+      position < Ref_AboutSection5.current.offsetTop + 100
+    ) {
       setCurrentSection("AboutSection5");
+    } else if (position >= Ref_AboutSection5.current.offsetTop + 100) {
+      setCurrentSection("AboutSection6");
     }
   };
 
@@ -274,11 +282,11 @@ function About() {
             currentSection == "AboutSection3_2" ? "AboutSection3_Fadein" : ""
           }
           src={AboutSection3_WhyMoin}
-          style={{ width: "40%", top: "50%", left: "50%" }}
+          style={{ width: "40%", top: "50%", left: "50%", minWidth: "300px" }}
         />
       </S.AboutSection3>
 
-      <S.AboutSection4>
+      <S.AboutSection4 ref={Ref_AboutSection4}>
         <S.AboutSection_Img_r
           src={AboutSection4_ServiceDetail}
           style={{
@@ -291,8 +299,7 @@ function About() {
         <S.AboutSection_Img_r
           src={AboutSection5_Title}
           style={{
-            width: "30%",
-
+            width: "60%",
             paddingBottom: "5rem"
           }}
         />
@@ -300,13 +307,17 @@ function About() {
         {/* 메인페이지로 이동하기 */}
         <S.AboutSection_Img_r
           className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+            currentSection == "AboutSection5" ||
+            currentSection == "AboutSection6"
+              ? "AboutSection3_Fadein"
+              : ""
           }
           src={AboutSection5_GotoMain}
           style={{
             opacity: "0",
-
-            width: "15%"
+            animationDelay: "0.5s",
+            width: "20%",
+            minWidth: "150px"
           }}
           onClick={() => {
             navigate("/");
@@ -314,24 +325,25 @@ function About() {
         />
       </S.AboutSection5>
 
-      <S.AboutSection6>
+      <S.AboutSection6
+        ref={Ref_AboutSection6}
+        className={currentSection == "AboutSection6" ? "" : "display_none"}
+      >
         {/* 모인스토리 */}
         <S.AboutSection_Img_r
           className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+            currentSection == "AboutSection6" ? "AboutSection2_Popup1" : ""
           }
           src={AboutSection6_MoinStory}
           style={{
             width: "40%",
-            marginBottom: "30rem"
+            marginBottom: "30rem",
+            minWidth: "300px"
           }}
         />
 
         {/* 어바웃 어스 */}
         <S.AboutSection_Img_r
-          className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
-          }
           src={AboutSection6_AboutUs}
           style={{
             width: "70%",
@@ -340,9 +352,6 @@ function About() {
         />
 
         <S.AboutSection_Img_r
-          className={
-            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
-          }
           src={AboutUs2}
           style={{
             width: "70%",
@@ -362,7 +371,7 @@ function About() {
         />
       </S.AboutSection6>
 
-      <S.AboutSection7>
+      <S.AboutSection7 ref={Ref_AboutSection7}>
         <S.AboutSection_Img
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
