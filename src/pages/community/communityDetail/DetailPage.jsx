@@ -43,7 +43,6 @@ function DetailPage() {
         `communities/posts/${id}/comments?page=${currentPage}`
       );
       setComments(response.data);
-      console.log(response.data);
     } catch (error) {}
   };
 
@@ -196,7 +195,6 @@ function DetailPage() {
     );
   };
 
-  console.log(comments);
   const renderComment = () => {
     return comments.length === 0 ? (
       <>작성된 답변이 없습니다.</>

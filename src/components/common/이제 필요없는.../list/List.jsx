@@ -38,7 +38,6 @@ const List = ({
   };
   const location = useLocation();
   const decodeName = decodeURI(location.pathname.split("/")[2]);
-  console.log(decodeName);
 
   const [isMobile, setisMobile] = useState(false);
 

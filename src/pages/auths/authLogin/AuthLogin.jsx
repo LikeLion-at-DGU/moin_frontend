@@ -114,11 +114,11 @@ export default function AuthLogin() {
               </S.UnderButtonText>
             </S.UnderButtonTextWrapper>
 
-            <S.AuthSignUpButtonDiv>
+            {/* <S.AuthSignUpButtonDiv>
               소셜을 통해 더 간편하게 가입하고 로그인해요!
-            </S.AuthSignUpButtonDiv>
+            </S.AuthSignUpButtonDiv> */}
 
-            <AuthSocialButton
+            {/* <AuthSocialButton
               onClick={() => {
                 onClickSocialLogin("kakao");
               }}
@@ -133,7 +133,7 @@ export default function AuthLogin() {
               imgSrc={GoogleIcon}
               altText="구글 로고"
               buttonText="Google 로그인"
-            />
+            /> */}
           </S.AuthButtonWrapper>
         </S.AuthForm>
       </S.AuthWrapper>

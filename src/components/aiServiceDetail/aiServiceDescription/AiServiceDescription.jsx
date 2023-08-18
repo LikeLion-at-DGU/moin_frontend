@@ -24,9 +24,7 @@ export function AiServiceDescription() {
       const detailData = response.data[0];
 
       setData(detailData);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   return (

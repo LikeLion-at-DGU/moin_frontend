@@ -32,9 +32,7 @@ export function AiServiceDetailTip({ aiName }) {
       const tipContentData = response.data.results;
       setCount(response.data.count);
       setTipContent(tipContentData);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   // 초기 ai option
@@ -50,7 +48,6 @@ export function AiServiceDetailTip({ aiName }) {
 
   const location = useLocation();
   const decodeName = decodeURI(location.pathname.split("/")[2]);
-  console.log(decodeName);
 
   return (
     <>

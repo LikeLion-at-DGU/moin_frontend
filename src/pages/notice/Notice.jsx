@@ -6,6 +6,7 @@ import Banner from "../../components/common/banner/Banner";
 import axios from "../../api/axios";
 import PostList from "../../components/common/postList/PostList";
 import NoticeBanner from "../../components/common/noticeBanner/NoticeBanner";
+import Loading from "../../components/common/loading/Loading";
 
 function Notice() {
   const [noticeContent, setNoticeContent] = useState([]);
@@ -13,6 +14,7 @@ function Notice() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [count, setCount] = useState(0);
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
     fetchNoticeContent();
@@ -26,9 +28,8 @@ function Notice() {
       setCount(response.data.count);
 
       setNoticeContent(ContentData);
-    } catch (e) {
-      console.log(e);
-    }
+      setInit(true);
+    } catch (e) {}
   };
   //페이지변경
   useEffect(() => {
@@ -46,14 +47,23 @@ function Notice() {
         title={"공지안내"}
         content={"MOIN의 새로운 소식과 공지사항을 확인해보세요!"}
       />
-      <PostList
-        use={"notice"}
-        data={noticeContent}
-        url={"/notice/"}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        count={count}
-      />
+
+      {init ? (
+        <>
+          <PostList
+            use={"notice"}
+            data={noticeContent}
+            url={"/notice/"}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            count={count}
+          />
+        </>
+      ) : (
+        <>
+          <Loading />
+        </>
+      )}
     </S.NoticeWrapper>
   );
 }

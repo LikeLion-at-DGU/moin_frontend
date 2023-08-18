@@ -54,12 +54,9 @@ function ProfileComment() {
       setData(response.data.results);
       setCount(response.data.count);
       setIscomment(true);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
-  console.log(data);
   //페이지변경
   useEffect(() => {
     fetchData();

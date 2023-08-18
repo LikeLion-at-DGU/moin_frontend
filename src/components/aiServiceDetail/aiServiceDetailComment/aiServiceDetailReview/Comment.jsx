@@ -88,7 +88,6 @@ const Comment = ({
           headers
         }
       );
-      console.log(response);
       if (response.status === 200) {
         alert("댓글이 수정되었습니다.");
 
@@ -96,7 +95,6 @@ const Comment = ({
         window.location.reload();
       }
     } catch (e) {
-      console.log(e);
       alert("댓글 수정에 실패했습니다.");
     }
 
@@ -121,15 +119,12 @@ const Comment = ({
         headers
       });
 
-      console.log("회원 댓글 삭제: ");
-      console.log(response);
       if (response.status === 204) {
         setIsModalOpen(false);
         fetchComments();
         fetchDetail();
       }
     } catch (e) {
-      console.log(e);
       alert("댓글 삭제에 실패했습니다.");
     }
   };
@@ -155,7 +150,6 @@ const Comment = ({
         fetchDetail();
       }
     } catch (e) {
-      console.log(e);
       alert("댓글 삭제에 실패했습니다.");
     }
   };

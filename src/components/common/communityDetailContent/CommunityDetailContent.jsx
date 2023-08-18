@@ -14,7 +14,6 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       try {
         const accessToken = user.accessToken; // 추출한 accessToken
-        console.log(user);
         const headers = {
           Authorization: `Bearer ${accessToken}` // Bearer Token 설정
         };
@@ -23,7 +22,7 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
           const response = await axios.delete(`suggestions/${id}`, {
             headers
           });
-          console.log(response);
+
           if (response.status === 204) {
             navigate("/suggestion");
           }
@@ -39,9 +38,7 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
             navigate("/community");
           }
         }
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     }
   };
 
@@ -51,7 +48,7 @@ const CommunityDetailContent = ({ detail, isWriter, id, user, type }) => {
   };
 
   const markdown = `${detail.content}<!--rehype:style=font-size: 1.8rem;-->`;
-  console.log(markdown);
+
   return (
     <>
       <S.DetailTitleWrapper>
