@@ -3,6 +3,13 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 .markDown{
   *{font-size:2rem}
+  hr{
+margin: 2rem 0;
+  }
+  p{
+    padding: 2rem 0;
+    line-height: 120%;
+  }
   strong{
     font-weight: 900;
   }
@@ -11,24 +18,34 @@ export const GlobalStyle = createGlobalStyle`
   }
   h1{
     font-size: 4rem;
+    padding: 2rem 0;
   }
   h2{
     font-size: 3.5rem;
+    padding: 2rem 0;
   }
   h3{
     font-size: 3.0rem;
+    padding: 2rem 0;
   }
   h4{
     font-size: 3.0rem;
+    padding: 2rem 0;
   }
   h5{
     font-size: 2.5rem;
+    padding: 2rem 0;
   }
   h6{
     font-size: 1.5rem;
+    padding: 1rem 0;
   }
   a{
     color: blue;
+  }
+  img{
+    width: 100%;
+    margin: 1rem 0;
   }
 }
   :root {
