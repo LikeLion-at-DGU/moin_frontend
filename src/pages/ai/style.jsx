@@ -11,7 +11,10 @@ export const AiServiceDetailCommentWrap = styled.div`
 
   margin-top: 5.7rem;
   margin-bottom: 10rem;
-
+  background-color: white;
+  @media (max-width: 550px) {
+    margin-top: 3rem;
+  }
   color: ${colors.black};
 `;
 

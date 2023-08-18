@@ -7,16 +7,20 @@ export const AiServiceDetailIntroWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 54rem;
-  position: relative;
+  /* height: 54rem; */
 `;
 
 export const AiServiceDetailBanner = styled.div`
   display: flex;
   width: 100%;
-  height: 87%;
+
+  height: 46.98rem;
   background-color: rgba(0, 10, 65, 0.97);
   position: absolute;
+
+  @media (max-width: 550px) {
+    height: 35.4rem;
+  }
 `;
 
 export const AiServiceDetailWrap = styled.div`
@@ -26,14 +30,9 @@ export const AiServiceDetailWrap = styled.div`
   justify-content: center;
   color: ${colors.black};
 
-  width: 99%;
+  width: 98%;
 
   max-width: 1178px;
-
-  * {
-    white-space: nowrap;
-    overflow: hidden;
-  }
 `;
 
 export const AiServiceDetailHeader = styled.div`
@@ -89,9 +88,14 @@ export const AiServiceThumbnail = styled.div`
   flex-shrink: 0;
   width: 40rem;
   height: 39.4rem;
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
+  background-color: white;
+  @media (max-width: 550px) {
+    width: 25rem;
+    height: 25rem;
+  }
 `;
 
 export const AiServiceThumbnailImg = styled.img`
@@ -110,19 +114,18 @@ export const AiServiceDetailContentDescription = styled.div`
   flex-direction: column;
   padding-left: 2%;
   flex-grow: 1;
-
-  * {
-    overflow: hidden;
-  }
 `;
 
 export const AiServiceDetailContentDescriptionCompany = styled.div`
   display: flex;
   flex-direction: row;
   align-items: end;
-  margin-top: 4.5rem;
+  margin-top: 4.2rem;
   font-size: 1.3rem;
   font-weight: 700;
+  @media (max-width: 550px) {
+    margin-top: 1.1rem;
+  }
 `;
 
 export const AiServiceDetailContentDescriptionCompanyImg = styled.img`
@@ -130,6 +133,10 @@ export const AiServiceDetailContentDescriptionCompanyImg = styled.img`
   width: 3rem;
   height: 3.2rem;
   margin-right: 0.7rem;
+  @media (max-width: 550px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 
 export const AiServiceDetailContentDescriptionName = styled.div`
@@ -138,6 +145,9 @@ export const AiServiceDetailContentDescriptionName = styled.div`
   font-size: 4.8rem;
   font-weight: 600;
   line-height: 6rem;
+  @media (max-width: 550px) {
+    font-size: 4rem;
+  }
 `;
 
 export const AiServiceDetailContentDescriptionIntro = styled.div`
@@ -147,6 +157,19 @@ export const AiServiceDetailContentDescriptionIntro = styled.div`
   height: 5rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 2.2rem;
+  /* white-space: nowrap; */
+  white-space: pre-line;
+`;
+
+export const AiServiceDetailContentDescriptionIntroMobile = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem;
+
   font-size: 1.7rem;
   font-weight: 500;
   line-height: 2.2rem;
@@ -165,6 +188,9 @@ export const AiServiceDetailContentDescriptionJob = styled.div`
   color: ${colors.black};
   font-size: 1.3rem;
   padding: 0.8rem;
+  @media (max-width: 550px) {
+    width: 90%;
+  }
 `;
 
 export const AiServiceDetailContentDescriptionJobTitle = styled.div`
@@ -204,11 +230,12 @@ export const AiServiceDetailContentDescriptionStarCnt = styled.div`
 
 export const AiServiceDetailContentDescriptionBottom = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-top: 0.2rem;
 `;
 
 export const AiServiceDetailContentDescriptionBottomLink = styled.div`
-  margin-top: 2rem;
   :hover {
     color: white;
     background-color: #4285f4;
@@ -231,8 +258,14 @@ export const AiServiceDetailContentDescriptionBottomHeart = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  margin-right: 2rem;
-  margin-left: 2rem;
+  padding-right: 1rem;
+
+  @media (max-width: 550px) {
+    flex-direction: row;
+    :nth-child(1) {
+      margin-right: 0.2rem;
+    }
+  }
 `;
 
 export const AiServiceDetailContentDescriptionBottomHeartIcon = styled.div`
@@ -266,6 +299,7 @@ export const AiServiceDetailContentDescriptionViews = styled.div`
 
   font-size: 1.2rem;
   font-weight: 600;
+  margin-left: 1rem;
 `;
 
 export const AiServiceDetailContentDescriptionKeywordWrap = styled.div`

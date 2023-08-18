@@ -186,6 +186,9 @@ export const PostListMobileWrapper = styled.div`
 
   padding: 2rem 1rem;
   border-bottom: 2px solid #f0f0f0;
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
 
 export const PostListMobukeWrapperBox1 = styled.div`
@@ -193,10 +196,22 @@ export const PostListMobukeWrapperBox1 = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const PostListMobukeWrapperBox2 = styled.div`
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+
+  padding: 1rem;
+  border-radius: 1rem;
+  * {
+    margin-right: 0.5rem;
+  }
+`;
 
 export const PostListMobileTitle = styled.div`
   font-size: 3rem;
   margin-bottom: 1rem;
+
   flex-grow: 1;
 `;
 export const PostListMobileDescription = styled.div`
