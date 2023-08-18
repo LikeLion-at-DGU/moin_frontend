@@ -4,7 +4,7 @@ import * as S from "./style";
 function PostMonitorList(data, url, currentPage, count, use) {
   let thList = [];
   let posts = data.data;
-  console.log(posts);
+
   switch (use) {
     case "communityCommon":
       thList = ["번호", "제목", "등록일시", "좋아요", "조회수"];

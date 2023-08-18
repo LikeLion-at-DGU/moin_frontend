@@ -16,7 +16,7 @@ function AuthReset() {
         const response = await axios.post("auth/password-reset", {
           email: email
         });
-        console.log(response);
+
         alert("초기화 메일이 발송되었습니다.");
         navigate("/");
       } catch (error) {

@@ -47,7 +47,6 @@ function ProfileMain() {
       });
 
       setUserDetailInfo(response.data);
-      console.log(response.data);
 
       if (response.status === 200) {
         // setUserInfo(response.data);

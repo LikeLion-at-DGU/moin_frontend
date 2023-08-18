@@ -39,7 +39,7 @@ function AiServiceDetail() {
     try {
       if (userInfo) {
         const accessToken = userInfo.accessToken; // 추출한 accessToken
-        console.log(userInfo);
+
         const headers = {
           Authorization: `Bearer ${accessToken}` // Bearer Token 설정
         };
@@ -60,9 +60,7 @@ function AiServiceDetail() {
         setData(detailData);
         setIsLiked(detailData.is_liked);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   // 탭 기능 구현

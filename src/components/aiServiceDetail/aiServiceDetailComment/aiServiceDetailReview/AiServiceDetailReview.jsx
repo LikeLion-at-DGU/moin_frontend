@@ -51,14 +51,12 @@ export function AiServiceDetailReview({ introContent, setRating }) {
   const sendReview = async () => {
     let score = clicked.filter(Boolean).length;
     setRating(score);
-    console.log("Selected Rating:", score);
 
     // moin/detail/{title}/rate로 patch 요청
     // bearer token 필요
 
     try {
       const accessToken = userInfo.accessToken; // 추출한 accessToken
-      console.log(userInfo);
       const headers = {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };

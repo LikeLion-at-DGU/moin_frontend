@@ -44,9 +44,7 @@ function ProfileFavoritePost() {
       setData(response.data.results);
       setCount(response.data.count);
       setIslike(true);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   useEffect(() => {

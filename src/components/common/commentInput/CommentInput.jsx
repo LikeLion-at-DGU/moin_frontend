@@ -36,9 +36,7 @@ function CommentInput({ isUser, id, fetchDetail, fetchComments }) {
         fetchDetail();
         fetchComments();
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return !userInfo ? (

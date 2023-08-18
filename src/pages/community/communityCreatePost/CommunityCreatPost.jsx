@@ -43,9 +43,7 @@ function CommunityCreatPost() {
     try {
       const response = await axios.get("moin/all/ai");
       setAiOption(response.data);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   const selectMenuHandler = index => {
@@ -101,8 +99,6 @@ function CommunityCreatPost() {
   };
 
   const handleClickWrite = async () => {
-    console.log("ASDasdasdsadasd");
-    console.log(currentAiOption);
     if (
       category === "tip" &&
       (currentAiOption === "▿ 서비스 선택" || currentAiOption === "")
