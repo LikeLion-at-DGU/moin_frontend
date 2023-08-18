@@ -30,9 +30,7 @@ function SuggestionCreate() {
       const response = await axios.get("moin/all/ai");
       const aiData = response.data;
       setAiOption(aiData);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   const [title, setTitle] = useState(""); // 제목
@@ -60,7 +58,6 @@ function SuggestionCreate() {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
 
-      console.log(currentAiOption);
       const data = {
         ai: currentAiOption,
         title: title,
@@ -68,12 +65,10 @@ function SuggestionCreate() {
         url: url
       };
 
-      console.log(headers);
-      console.log(data);
       const response = await axios.post("suggestions", data, {
         headers
       });
-      console.log(response);
+
       if (response.status === 201) {
         alert("건의사항이 작성 되었습니다.");
         navigate("/suggestion");

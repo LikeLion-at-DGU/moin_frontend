@@ -90,10 +90,6 @@ const PostList = ({
     };
   });
 
-  useEffect(() => {
-    console.log(isMobile);
-  }, [isMobile]);
-
   return (
     <>
       <S.PostListWrap>

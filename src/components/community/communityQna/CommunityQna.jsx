@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../../api/axios";
 
 import PostList from "../../common/postList/PostList";
+import Loading from "../../common/loading/Loading";
 
 function CommunityQna() {
   const [qnaContent, setQnaContent] = useState([]);
@@ -17,6 +18,7 @@ function CommunityQna() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(1);
+  const [init, setInit] = useState(false);
 
   const SelectorOption = [
     { value: "recent", title: "최신순" },
@@ -36,9 +38,7 @@ function CommunityQna() {
       const response = await axios.get("moin/all/ai");
       const aiData = response.data;
       setAiOption(aiData);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   const fetchQnaContent = async () => {
@@ -51,9 +51,8 @@ function CommunityQna() {
       const qnaContentData = response.data.results;
       setCount(response.data.count);
       setQnaContent(qnaContentData);
-    } catch (e) {
-      console.log(e);
-    }
+      setInit(true);
+    } catch (e) {}
   };
 
   // 초기 ai option
@@ -74,22 +73,30 @@ function CommunityQna() {
 
   return (
     <>
-      <PostList
-        use={"communityQnA"}
-        category="qna"
-        data={qnaContent}
-        url={"/community/qnas/"}
-        writeUrl={"/community/create"}
-        currentOption={currentOption}
-        currentAiOption={currentAiOption}
-        SelectorOption={SelectorOption}
-        aiOption={aiOption}
-        getCurrentOption={getCurrentOption}
-        getCurrentAiOption={getCurrentAiOption}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        count={count}
-      />
+      {init ? (
+        <>
+          <PostList
+            use={"communityQnA"}
+            category="qna"
+            data={qnaContent}
+            url={"/community/qnas/"}
+            writeUrl={"/community/create"}
+            currentOption={currentOption}
+            currentAiOption={currentAiOption}
+            SelectorOption={SelectorOption}
+            aiOption={aiOption}
+            getCurrentOption={getCurrentOption}
+            getCurrentAiOption={getCurrentAiOption}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            count={count}
+          />
+        </>
+      ) : (
+        <>
+          <Loading />
+        </>
+      )}
     </>
   );
 }

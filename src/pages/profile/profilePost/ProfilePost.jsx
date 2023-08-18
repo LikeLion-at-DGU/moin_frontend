@@ -53,9 +53,7 @@ function ProfilePost() {
       setData(response.data.results);
       setCount(response.data.count);
       setIslike(false);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   //페이지변경

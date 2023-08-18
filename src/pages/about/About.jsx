@@ -29,7 +29,7 @@ import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.png";
 import AboutSection6_DGU from "./AboutSection6/AboutSection6_DGU.png";
 import AboutSection6_Making from "./AboutSection6/AboutSection6_Making.png";
 import AboutUs1 from "./AboutSection6/aboutUs1.jpeg";
-import AboutUs2 from "./AboutSection6/aboutUs2.jpeg";
+import AboutUs2 from "./AboutSection6/aboutUs2.jpg";
 import AboutUs3 from "./AboutSection6/aboutUs3.jpeg";
 import "./animation.css";
 
@@ -52,7 +52,6 @@ function About() {
 
   const [currentSection, setCurrentSection] = useState("none");
   useEffect(() => {
-    console.log(currentSection, position);
     getCurrentSection();
   }, [currentSection, position]);
 

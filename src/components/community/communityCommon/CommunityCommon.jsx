@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import axios from "../../../api/axios";
 import PostList from "../../common/postList/PostList";
+import Loading from "../../common/loading/Loading";
 
 function CommunityCommon() {
   const [commonContent, setCommonContent] = useState([]);
   // 현재 페이지
   const [currentPage, setCurrentPage] = useState(1);
+  const [init, setInit] = useState(false);
 
   const [count, setCount] = useState(0);
 
@@ -30,10 +32,10 @@ function CommunityCommon() {
 
       const commentContentData = response.data.results;
       setCount(response.data.count);
+
       setCommonContent(commentContentData);
-    } catch (e) {
-      console.log(e);
-    }
+      setInit(true);
+    } catch (e) {}
   };
 
   useEffect(() => {
@@ -48,19 +50,27 @@ function CommunityCommon() {
 
   return (
     <>
-      <PostList
-        use={"communityCommon"}
-        category={"common"}
-        data={commonContent}
-        url={"/community/commons/"}
-        writeUrl={"/community/create"}
-        currentOption={currentOption}
-        SelectorOption={SelectorOption}
-        getCurrentOption={getCurrentOption}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        count={count}
-      />
+      {init ? (
+        <>
+          <PostList
+            use={"communityCommon"}
+            category={"common"}
+            data={commonContent}
+            url={"/community/commons/"}
+            writeUrl={"/community/create"}
+            currentOption={currentOption}
+            SelectorOption={SelectorOption}
+            getCurrentOption={getCurrentOption}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            count={count}
+          />
+        </>
+      ) : (
+        <>
+          <Loading />
+        </>
+      )}
     </>
   );
 }

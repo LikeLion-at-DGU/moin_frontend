@@ -26,16 +26,14 @@ function SuggestionDetailPage() {
       const response = await axios.get(`suggestions/${id}/comments`);
 
       setComment(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   // writer 확인
   const fetchIsWriter = async () => {
     try {
       const accessToken = user.accessToken; // 추출한 accessToken
-      console.log(user);
+
       const headers = {
         Authorization: `Bearer ${accessToken}` // Bearer Token 설정
       };
@@ -44,9 +42,7 @@ function SuggestionDetailPage() {
         headers
       });
       setIsWriter(response.data.is_writer);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   // 처음 Detail 렌더링
@@ -64,9 +60,7 @@ function SuggestionDetailPage() {
       const response = await axios.get(`suggestions/${id}`);
 
       setDetail(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   // ------------------ 디테일 렌더링 ------------------
@@ -102,7 +96,7 @@ function SuggestionDetailPage() {
   };
 
   // ------------------ 댓글 렌더링 -----------------
-  console.log(comment[0]);
+
   const renderComment = () => {
     return comment.length === 0 ? (
       <AS.AiServiceDetailReviewListContent

@@ -44,7 +44,7 @@ function AuthReseting() {
         `https://moooin.com${url}`,
         requestData
       );
-      console.log(response.status);
+
       if (response.status === 200) {
         alert("비밀번호 변경이 완료되었습니다.");
         navigate("/login");
