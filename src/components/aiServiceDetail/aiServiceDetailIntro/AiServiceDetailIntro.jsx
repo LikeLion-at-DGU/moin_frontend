@@ -93,6 +93,28 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
     });
   };
 
+  const [isMobile, setisMobile] = useState(false);
+
+  //윈도우가 550px 이하면  모바일버전을 연다
+  const resizingHandler = () => {
+    if (window.innerWidth < 550) {
+      setisMobile(true);
+    } else {
+      setisMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    if (window.innerWidth <= 550) {
+      setisMobile(true);
+    }
+    window.addEventListener("resize", resizingHandler);
+
+    return () => {
+      window.removeEventListener("resize", resizingHandler);
+    };
+  });
+
   return (
     <S.AiServiceDetailIntroWrapper>
       {/* {item.name} */}
@@ -113,7 +135,7 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
           </S.CopyToClipboardElement>
           {/* 모인등록자 */}
           <S.AiServiceDetailRegistrant>
-            MOIN 등록자 : {introContent.applier}
+            {introContent.title} 등록자 : {introContent.applier}
           </S.AiServiceDetailRegistrant>
           {/* AI 설명 내용 */}
           <S.AiServiceDetailContent>
@@ -136,9 +158,15 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
               <S.AiServiceDetailContentDescriptionName>
                 {introContent.title}
               </S.AiServiceDetailContentDescriptionName>
-              <S.AiServiceDetailContentDescriptionIntro>
-                {introContent.description}
-              </S.AiServiceDetailContentDescriptionIntro>
+              {/* 서비스소개 */}
+
+              {isMobile ? (
+                <></>
+              ) : (
+                <S.AiServiceDetailContentDescriptionIntro>
+                  {introContent.description}
+                </S.AiServiceDetailContentDescriptionIntro>
+              )}
 
               {/* 인기직군 */}
               <S.AiServiceDetailContentDescriptionJob>
@@ -198,7 +226,11 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
                         handleLikeToggle();
                       }}
                     >
-                      <Like likeSize={"4rem"} likeCheck={isLiked} />
+                      {isMobile ? (
+                        <Like likeSize={"2rem"} likeCheck={isLiked} />
+                      ) : (
+                        <Like likeSize={"4rem"} likeCheck={isLiked} />
+                      )}
                     </S.LikeButton>
                   </S.AiServiceDetailContentDescriptionBottomHeartIcon>
                   <S.AiServiceDetailContentDescriptionBottomHeartCnt>
@@ -209,6 +241,13 @@ export function AiServiceDetailIntro({ introContent, isLiked, setIsLiked }) {
             </S.AiServiceDetailContentDescription>
           </S.AiServiceDetailContent>
         </S.AiServiceDetailHeader>
+        {isMobile ? (
+          <S.AiServiceDetailContentDescriptionIntroMobile>
+            {introContent.description}
+          </S.AiServiceDetailContentDescriptionIntroMobile>
+        ) : (
+          <></>
+        )}
       </S.AiServiceDetailWrap>
     </S.AiServiceDetailIntroWrapper>
   );
