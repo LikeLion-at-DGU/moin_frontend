@@ -24,8 +24,10 @@ import AboutSection4_ServiceDetail from "./AboutSection4/AboutSection4_ServiceDe
 import AboutSection5_Title from "./AboutSection5/AboutSection5_Title.png";
 import AboutSection5_GotoMain from "./AboutSection5/AboutSection5_GotoMain.png";
 
-// import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.svg";
-// import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.svg";
+import AboutSection6_MoinStory from "./AboutSection6/AboutSection6_MoinStory.png";
+import AboutSection6_AboutUs from "./AboutSection6/AboutSection6_AboutUs.png";
+import AboutSection6_DGU from "./AboutSection6/AboutSection6_DGU.png";
+import AboutSection6_Making from "./AboutSection6/AboutSection6_Making.png";
 import AboutUs1 from "./AboutSection6/aboutUs1.jpeg";
 import AboutUs2 from "./AboutSection6/aboutUs2.jpeg";
 import AboutUs3 from "./AboutSection6/aboutUs3.jpeg";
@@ -81,41 +83,6 @@ function About() {
     } else if (position < Ref_AboutSection5.current.offsetTop - 100) {
       setCurrentSection("AboutSection5");
     }
-    // else if (
-    //   position >=
-    //     Ref_AboutSection1.current.offsetTop +
-    //       Ref_AboutSection1.current.offsetHeight -
-    //       30 &&
-    //   position <
-    //     Ref_AboutSection2.current.offsetTop +
-    //       Ref_AboutSection2.current.offsetHeight -
-    //       50
-    // ) {
-    //   setCurrentSection("AboutSection2");
-    // } else if (
-    //   position >=
-    //     Ref_AboutSection2.current.offsetTop +
-    //       Ref_AboutSection2.current.offsetHeight -
-    //       50 &&
-    //   position <
-    //     Ref_AboutSection3_1.current.offsetTop +
-    //       Ref_AboutSection3_1.current.offsetHeight -
-    //       50
-    // ) {
-    //   setCurrentSection("AboutSection3_1");
-    // } else if (
-    //   position <
-    //     Ref_AboutSection3_2.current.offsetTop +
-    //       Ref_AboutSection3_2.current.offsetHeight -
-    //       50 &&
-    //   position < Ref_AboutSection5.current.offsetTop - 200
-    // ) {
-    //   setCurrentSection("AboutSection3_2");
-    // } else if (position >= Ref_AboutSection5.current.offsetTop - 200) {
-    //   setCurrentSection("AboutSection5");
-    // } else {
-    //   setCurrentSection("none");
-    // }
   };
 
   return (
@@ -349,19 +316,19 @@ function About() {
 
       <S.AboutSection6>
         {/* 모인스토리 */}
-        {/* <S.AboutSection_Img_r
+        <S.AboutSection_Img_r
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
           }
           src={AboutSection6_MoinStory}
           style={{
-            width: "30%",
-            marginBottom: "20rem"
+            width: "40%",
+            marginBottom: "30rem"
           }}
-        /> */}
+        />
 
         {/* 어바웃 어스 */}
-        {/* <S.AboutSection_Img_r
+        <S.AboutSection_Img_r
           className={
             currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
           }
@@ -370,7 +337,7 @@ function About() {
             width: "70%",
             marginBottom: "2rem"
           }}
-        /> */}
+        />
 
         <S.AboutSection_Img_r
           className={
@@ -379,21 +346,49 @@ function About() {
           src={AboutUs2}
           style={{
             width: "70%",
-            borderRadius: "3rem"
+            borderRadius: "3rem",
+            marginBottom: "5rem"
+          }}
+        />
+        {/* 어바웃 어스 */}
+        <S.AboutSection_Img_r
+          className={
+            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+          }
+          src={AboutSection6_DGU}
+          style={{
+            width: "60%"
           }}
         />
       </S.AboutSection6>
 
       <S.AboutSection7>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/DQWsN3lIfEY"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
+        <S.AboutSection_Img
+          className={
+            currentSection == "AboutSection5" ? "AboutSection3_Fadein" : ""
+          }
+          src={AboutSection6_Making}
+          style={{
+            width: "70%",
+            top: "5%",
+            left: "50%"
+          }}
         />
+        <S.AboutSection_Body>
+          <S.AboutSection_Iframe
+            style={{
+              width: "70%",
+              height: "70%",
+              top: "50%",
+              left: "50%"
+            }}
+            src="https://www.youtube.com/embed/DQWsN3lIfEY"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
+        </S.AboutSection_Body>
       </S.AboutSection7>
     </S.AboutWrapper>
   );

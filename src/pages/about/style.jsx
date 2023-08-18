@@ -38,6 +38,12 @@ export const AboutSection_Body = styled.div`
   }
 `;
 
+export const AboutSection_Iframe = styled.iframe`
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+`;
+
 export const AboutSection_Box = styled.div``;
 
 export const AboutSection_Img = styled.img`
@@ -126,7 +132,7 @@ export const AboutSection5 = styled.div`
 
 export const AboutSection6 = styled.div`
   width: 100vw;
-  padding: 20rem 0;
+  padding: 10rem 0;
   position: relative;
 
   display: flex;
@@ -138,7 +144,7 @@ export const AboutSection6 = styled.div`
 
 export const AboutSection7 = styled.div`
   width: 100vw;
-  height: 60rem;
+
   background-color: #000a41;
 
   position: relative;
