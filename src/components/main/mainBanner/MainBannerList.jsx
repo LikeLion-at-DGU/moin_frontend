@@ -19,11 +19,11 @@ import { Link } from "react-router-dom";
 
 function MainBannerList() {
   const bannersDesktop = [
-    { img: EventPresent, url: "" },
+    { img: EventPresent, url: "/notice/2" },
     { img: DeepDive, url: "https://www.instagram.com/deep.daiv/" }
   ];
   const bannersMobile = [
-    { img: EventPresentMobile, url: "" },
+    { img: EventPresentMobile, url: "/notice/2" },
     { img: DeepDiveMobile, url: "https://www.instagram.com/deep.daiv/" }
   ];
 
